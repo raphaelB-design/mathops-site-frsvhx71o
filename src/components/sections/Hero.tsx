@@ -43,8 +43,7 @@ export function Hero() {
                 </p>
                 <div className="border-l-2 border-white pl-4 py-2 mt-8">
                   <p className="font-mono text-sm md:text-base text-white uppercase tracking-wider leading-relaxed">
-                    "Não vendemos relatórios, dashboards ou consultoria — entregamos clareza,
-                    inteligência e confiança."
+                    entregamos clareza, inteligência e confiança.
                   </p>
                 </div>
               </div>
