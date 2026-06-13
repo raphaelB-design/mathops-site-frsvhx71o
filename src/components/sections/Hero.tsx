@@ -10,8 +10,8 @@ export function Hero() {
         <div className="absolute inset-0 bg-black/60 z-10" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10" />
         <img
-          src="https://img.usecurling.com/p/1920/1080?q=modern%20dashboard&color=black"
-          alt="Modern Dashboard Visualization"
+          src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2070&q=80"
+          alt="Abstract Data Analytics Interface"
           className="w-full h-full object-cover grayscale opacity-50 scale-105 animate-float"
         />
       </div>
