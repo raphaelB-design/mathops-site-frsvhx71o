@@ -14,14 +14,7 @@ export function Layout() {
     <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black">
       {/* Fixed Transparent Header */}
       <header className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 py-8 mix-blend-difference text-white pointer-events-none">
-        <div className="w-1/3 flex justify-start pointer-events-auto">
-          <button
-            onClick={() => scrollTo('manifesto')}
-            className="font-mono text-xs md:text-sm uppercase tracking-widest hover:text-muted-foreground transition-colors"
-          >
-            Menu
-          </button>
-        </div>
+        <div className="w-1/3 flex justify-start pointer-events-auto"></div>
 
         <div className="w-1/3 flex justify-center pointer-events-auto"></div>
 
