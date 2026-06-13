@@ -23,14 +23,7 @@ export function Layout() {
           </button>
         </div>
 
-        <div className="w-1/3 flex justify-center pointer-events-auto">
-          <button
-            onClick={() => scrollTo('hero')}
-            className="font-display text-lg md:text-2xl uppercase tracking-extreme whitespace-nowrap"
-          >
-            SEUNOME
-          </button>
-        </div>
+        <div className="w-1/3 flex justify-center pointer-events-auto"></div>
 
         <div className="w-1/3 flex justify-end pointer-events-auto">
           <button
