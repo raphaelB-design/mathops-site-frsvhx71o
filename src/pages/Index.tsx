@@ -1,16 +1,24 @@
 import { Hero } from '@/components/sections/Hero'
-import { Manifesto } from '@/components/sections/Manifesto'
-import { PracticeAreas } from '@/components/sections/PracticeAreas'
-import { Team } from '@/components/sections/Team'
+import { Metrics } from '@/components/sections/Metrics'
+import { Solutions } from '@/components/sections/Solutions'
+import { Methodology } from '@/components/sections/Methodology'
+import { Industries } from '@/components/sections/Industries'
+import { FAQ } from '@/components/sections/FAQ'
+import { CTA } from '@/components/sections/CTA'
+import { About } from '@/components/sections/About'
 import { Footer } from '@/components/sections/Footer'
 
 export default function Index() {
   return (
-    <div className="w-full flex flex-col">
+    <div className="w-full flex flex-col bg-black text-white selection:bg-white selection:text-black">
       <Hero />
-      <Manifesto />
-      <PracticeAreas />
-      <Team />
+      <Metrics />
+      <Solutions />
+      <Methodology />
+      <Industries />
+      <FAQ />
+      <CTA />
+      <About />
       <Footer />
     </div>
   )
