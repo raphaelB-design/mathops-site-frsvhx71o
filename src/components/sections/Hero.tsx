@@ -27,7 +27,7 @@ export function Hero() {
             </FadeIn>
 
             <FadeIn delay={400}>
-              <h1 className="font-display text-4xl md:text-6xl lg:text-[6.5rem] uppercase leading-[0.9] tracking-tight text-white mb-8 text-shadow-sm">
+              <h1 className="font-display uppercase leading-[0.9] tracking-tight text-white mb-8 text-shadow-sm text-[3.1rem]">
                 Suas decisões são tão confiáveis quanto os dados por trás delas?
               </h1>
             </FadeIn>
