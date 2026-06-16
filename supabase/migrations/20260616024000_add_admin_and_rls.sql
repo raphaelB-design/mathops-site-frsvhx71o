@@ -7,6 +7,15 @@ DECLARE
   v_admin1_id uuid;
   v_admin2_id uuid;
 BEGIN
+  -- Insert/Update public.authorized_users first to avoid trigger errors
+  INSERT INTO public.authorized_users (email, is_admin)
+  VALUES ('raphael_batista@outlook.com', true)
+  ON CONFLICT (email) DO UPDATE SET is_admin = true;
+
+  INSERT INTO public.authorized_users (email, is_admin)
+  VALUES ('priscilla.vicent@outlook.com', true)
+  ON CONFLICT (email) DO UPDATE SET is_admin = true;
+
   -- Admin 1
   IF NOT EXISTS (SELECT 1 FROM auth.users WHERE email = 'raphael_batista@outlook.com') THEN
     v_admin1_id := gen_random_uuid();
@@ -52,15 +61,6 @@ BEGIN
       '', '', '', '', '', NULL, '', '', ''
     );
   END IF;
-
-  -- Insert/Update public.authorized_users
-  INSERT INTO public.authorized_users (email, is_admin)
-  VALUES ('raphael_batista@outlook.com', true)
-  ON CONFLICT (email) DO UPDATE SET is_admin = true;
-
-  INSERT INTO public.authorized_users (email, is_admin)
-  VALUES ('priscilla.vicent@outlook.com', true)
-  ON CONFLICT (email) DO UPDATE SET is_admin = true;
 END $DO_BLOCK$;
 
 -- 3. RLS Policies
