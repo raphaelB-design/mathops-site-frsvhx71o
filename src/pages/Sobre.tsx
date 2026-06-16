@@ -19,8 +19,8 @@ export default function Sobre() {
 
         <div className="relative z-10 container px-4 md:px-6 mx-auto text-center">
           <FadeIn>
-            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter uppercase mb-6">
-              Nossa <span className="text-accent italic font-serif lowercase">História</span>
+            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-6">
+              Sobre a MathOps
             </h1>
             <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground font-serif italic">
               Defendendo o patrimônio e a liberdade com excelência, discrição e precisão estratégica

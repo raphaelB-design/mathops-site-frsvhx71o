@@ -62,7 +62,7 @@ export function Layout() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8 font-mono text-sm uppercase tracking-wider text-muted-foreground">
+        <nav className="hidden md:flex items-center gap-8 font-mono text-sm tracking-wider text-muted-foreground">
           {navLinks.map((link) =>
             link.path ? (
               <Link
@@ -128,7 +128,7 @@ export function Layout() {
               <X className="w-6 h-6" />
             </button>
           </div>
-          <nav className="flex flex-col items-center justify-center flex-1 gap-8 font-display text-2xl uppercase tracking-wider">
+          <nav className="flex flex-col items-center justify-center flex-1 gap-8 font-display text-2xl tracking-wider">
             {navLinks.map((link) =>
               link.path ? (
                 <Link
