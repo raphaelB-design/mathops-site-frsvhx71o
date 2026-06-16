@@ -26,8 +26,12 @@ export function Hero() {
 
           <FadeIn delay={300}>
             <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.95] tracking-tight mb-8">
-              Rigor matemático que transforma{' '}
-              <span className="text-accent italic pr-4">complexidade.</span>
+              &nbsp;Transformando{' '}
+              <span className="text-accent italic pr-4">
+                complexidade&nbsp;<span>em Estratégia</span>
+                <span>.</span>
+                <br />
+              </span>
             </h1>
           </FadeIn>
 
