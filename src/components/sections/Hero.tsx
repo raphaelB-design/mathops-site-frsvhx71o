@@ -37,9 +37,8 @@ export function Hero() {
 
           <FadeIn delay={500}>
             <p className="font-body text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed mb-10">
-              A arquitetura analítica definitiva para operações complexas. Aplicamos modelagem
-              estatística avançada e engenharia de dados para erradicar a intuição do processo
-              decisório.
+              A arquitetura analítica para operações complexas. Aplicamos modelagem estatística
+              avançada e engenharia de dados para erradicar a intuição do processo decisório.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button
