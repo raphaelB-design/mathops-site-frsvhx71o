@@ -23,6 +23,13 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 import { Badge } from '@/components/ui/badge'
 import { Loader2, Trash2, ArrowLeft, ShieldAlert } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast'
@@ -32,14 +39,16 @@ type AuthorizedUser = {
   email: string
   created_at: string
   is_admin: boolean
+  role: 'admin' | 'consultor' | 'user'
 }
 
 export default function Admin() {
   const { session, loading: authLoading, user } = useAuth()
-  const [isAdmin, setIsAdmin] = useState<boolean | null>(null)
+  const [userRole, setUserRole] = useState<'admin' | 'consultor' | 'user' | null>(null)
   const [users, setUsers] = useState<AuthorizedUser[]>([])
   const [loading, setLoading] = useState(true)
   const [newEmail, setNewEmail] = useState('')
+  const [newRole, setNewRole] = useState<'admin' | 'consultor' | 'user'>('user')
   const [adding, setAdding] = useState(false)
   const [deletingId, setDeletingId] = useState<string | null>(null)
   const { toast } = useToast()
@@ -48,7 +57,7 @@ export default function Admin() {
     if (!authLoading && user?.email) {
       checkAdminStatus()
     } else if (!authLoading && !user) {
-      setIsAdmin(false)
+      setUserRole(null)
       setLoading(false)
     }
   }, [user, authLoading])
@@ -61,14 +70,17 @@ export default function Admin() {
         .eq('email', user?.email || '')
         .single()
 
-      if (error || !(data as any)?.is_admin) {
-        setIsAdmin(false)
+      if (error || !data) {
+        setUserRole(null)
       } else {
-        setIsAdmin(true)
-        fetchUsers()
+        const role = (data as any).role || ((data as any).is_admin ? 'admin' : 'user')
+        setUserRole(role as 'admin' | 'consultor' | 'user')
+        if (role === 'admin' || role === 'consultor') {
+          fetchUsers()
+        }
       }
     } catch (err) {
-      setIsAdmin(false)
+      setUserRole(null)
     } finally {
       setLoading(false)
     }
@@ -81,7 +93,11 @@ export default function Admin() {
       .order('created_at', { ascending: false })
 
     if (!error && data) {
-      setUsers(data as AuthorizedUser[])
+      const mapped = data.map((u: any) => ({
+        ...u,
+        role: u.role || (u.is_admin ? 'admin' : 'user'),
+      }))
+      setUsers(mapped as AuthorizedUser[])
     }
   }
 
@@ -99,7 +115,7 @@ export default function Admin() {
     setAdding(true)
     const { error } = await supabase
       .from('authorized_users')
-      .insert([{ email: newEmail.toLowerCase() }])
+      .insert([{ email: newEmail.toLowerCase(), role: newRole, is_admin: newRole === 'admin' }])
 
     setAdding(false)
 
@@ -108,15 +124,18 @@ export default function Admin() {
         title: 'Erro ao adicionar',
         description: error.message.includes('unique constraint')
           ? 'Este e-mail já está autorizado.'
-          : 'Ocorreu um erro ao autorizar o e-mail.',
+          : 'Ocorreu um erro ao autorizar o e-mail. Verifique suas permissões.',
         variant: 'destructive',
       })
     } else {
       toast({
         title: 'E-mail autorizado',
-        description: `${newEmail} foi adicionado à lista de acesso.`,
+        description: `${newEmail} foi adicionado à lista de acesso como ${
+          newRole === 'admin' ? 'Administrador' : newRole === 'consultor' ? 'Consultor' : 'Usuário'
+        }.`,
       })
       setNewEmail('')
+      setNewRole('user')
       fetchUsers()
     }
   }
@@ -130,7 +149,7 @@ export default function Admin() {
     if (error) {
       toast({
         title: 'Erro ao remover',
-        description: 'Não foi possível remover o acesso deste e-mail.',
+        description: 'Não foi possível remover o acesso. Verifique suas permissões.',
         variant: 'destructive',
       })
     } else {
@@ -154,14 +173,14 @@ export default function Admin() {
     return <Navigate to="/login" replace />
   }
 
-  if (isAdmin === false) {
+  if (userRole !== 'admin' && userRole !== 'consultor') {
     return (
       <div className="min-h-screen bg-[#030303] flex flex-col items-center justify-center text-white p-6">
         <ShieldAlert className="w-16 h-16 text-destructive mb-6" />
         <h1 className="font-display text-3xl font-bold mb-4">Acesso Negado</h1>
         <p className="text-muted-foreground font-body text-center max-w-md mb-8">
           Você não tem permissão para acessar o painel administrativo. Esta área é restrita a
-          gestores autorizados.
+          gestores e consultores autorizados.
         </p>
         <Button asChild>
           <Link to="/dashboard">Voltar ao Dashboard</Link>
@@ -189,41 +208,66 @@ export default function Admin() {
               <h1 className="font-display text-3xl font-bold tracking-tight">Painel de Gestão</h1>
             </div>
             <p className="text-muted-foreground font-body ml-12">
-              Gerenciamento de Usuários Autorizados
+              {userRole === 'admin'
+                ? 'Gerenciamento de Usuários Autorizados'
+                : 'Visualização de Usuários Autorizados (Leitura)'}
             </p>
           </div>
+          <Badge
+            variant="outline"
+            className="border-white/20 px-3 py-1 font-mono uppercase text-xs tracking-widest"
+          >
+            {userRole === 'admin' ? 'Acesso: Administrador' : 'Acesso: Consultor'}
+          </Badge>
         </div>
 
         <div className="bg-white/5 border border-white/10 rounded-lg p-6 md:p-8">
-          <form
-            onSubmit={handleAddUser}
-            className="flex flex-col md:flex-row gap-4 items-end mb-10"
-          >
-            <div className="space-y-2 flex-1 w-full">
-              <label
-                htmlFor="email"
-                className="font-mono text-xs uppercase tracking-widest text-muted-foreground"
-              >
-                Novo e-mail autorizado
-              </label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="nome@empresa.com"
-                value={newEmail}
-                onChange={(e) => setNewEmail(e.target.value)}
-                className="bg-black/50 border-white/20 text-white placeholder:text-white/30 h-12"
-              />
-            </div>
-            <Button
-              type="submit"
-              disabled={adding || !newEmail}
-              className="h-12 px-8 bg-white text-black hover:bg-white/90 font-bold tracking-wide w-full md:w-auto"
+          {userRole === 'admin' && (
+            <form
+              onSubmit={handleAddUser}
+              className="flex flex-col md:flex-row gap-4 items-end mb-10"
             >
-              {adding ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : null}
-              Autorizar E-mail
-            </Button>
-          </form>
+              <div className="space-y-2 flex-1 w-full">
+                <label
+                  htmlFor="email"
+                  className="font-mono text-xs uppercase tracking-widest text-muted-foreground"
+                >
+                  Novo e-mail autorizado
+                </label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="nome@empresa.com"
+                  value={newEmail}
+                  onChange={(e) => setNewEmail(e.target.value)}
+                  className="bg-black/50 border-white/20 text-white placeholder:text-white/30 h-12"
+                />
+              </div>
+              <div className="space-y-2 w-full md:w-56">
+                <label className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                  Nível de Acesso
+                </label>
+                <Select value={newRole} onValueChange={(val: any) => setNewRole(val)}>
+                  <SelectTrigger className="h-12 bg-black/50 border-white/20 text-white font-body">
+                    <SelectValue placeholder="Selecione..." />
+                  </SelectTrigger>
+                  <SelectContent className="bg-[#111] border-white/10 text-white">
+                    <SelectItem value="admin">Administrador</SelectItem>
+                    <SelectItem value="consultor">Consultor</SelectItem>
+                    <SelectItem value="user">Usuário</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <Button
+                type="submit"
+                disabled={adding || !newEmail}
+                className="h-12 px-8 bg-white text-black hover:bg-white/90 font-bold tracking-wide w-full md:w-auto"
+              >
+                {adding ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : null}
+                Autorizar E-mail
+              </Button>
+            </form>
+          )}
 
           <div className="border border-white/10 rounded-lg overflow-hidden bg-black/20">
             <Table>
@@ -236,18 +280,20 @@ export default function Admin() {
                     Data de Autorização
                   </TableHead>
                   <TableHead className="text-muted-foreground font-mono uppercase text-xs">
-                    Status
+                    Nível
                   </TableHead>
-                  <TableHead className="text-muted-foreground font-mono uppercase text-xs text-right">
-                    Ações
-                  </TableHead>
+                  {userRole === 'admin' && (
+                    <TableHead className="text-muted-foreground font-mono uppercase text-xs text-right">
+                      Ações
+                    </TableHead>
+                  )}
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {users.length === 0 ? (
                   <TableRow className="border-white/10 hover:bg-white/5">
                     <TableCell
-                      colSpan={4}
+                      colSpan={userRole === 'admin' ? 4 : 3}
                       className="text-center py-8 text-muted-foreground font-body"
                     >
                       Nenhum usuário encontrado.
@@ -268,60 +314,69 @@ export default function Admin() {
                         })}
                       </TableCell>
                       <TableCell>
-                        {u.is_admin ? (
+                        {u.role === 'admin' ? (
                           <Badge
                             variant="default"
-                            className="bg-accent/20 text-accent hover:bg-accent/30 border-none"
+                            className="bg-accent/20 text-accent hover:bg-accent/30 border-none uppercase text-[10px] tracking-wider"
                           >
                             Admin
+                          </Badge>
+                        ) : u.role === 'consultor' ? (
+                          <Badge
+                            variant="outline"
+                            className="border-blue-500/30 text-blue-400 bg-blue-500/10 uppercase text-[10px] tracking-wider"
+                          >
+                            Consultor
                           </Badge>
                         ) : (
                           <Badge
                             variant="outline"
-                            className="border-white/20 text-muted-foreground"
+                            className="border-white/20 text-muted-foreground uppercase text-[10px] tracking-wider"
                           >
                             User
                           </Badge>
                         )}
                       </TableCell>
-                      <TableCell className="text-right">
-                        <AlertDialog>
-                          <AlertDialogTrigger asChild>
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              disabled={u.is_admin || deletingId === u.id}
-                              className="text-muted-foreground hover:text-destructive hover:bg-destructive/10"
-                            >
-                              {deletingId === u.id ? (
-                                <Loader2 className="w-4 h-4 animate-spin" />
-                              ) : (
-                                <Trash2 className="w-4 h-4" />
-                              )}
-                            </Button>
-                          </AlertDialogTrigger>
-                          <AlertDialogContent className="bg-[#111] border border-white/10 text-white">
-                            <AlertDialogHeader>
-                              <AlertDialogTitle>Remover acesso?</AlertDialogTitle>
-                              <AlertDialogDescription className="text-muted-foreground">
-                                O usuário <strong>{u.email}</strong> perderá imediatamente o acesso
-                                ao painel. Esta ação não pode ser desfeita.
-                              </AlertDialogDescription>
-                            </AlertDialogHeader>
-                            <AlertDialogFooter>
-                              <AlertDialogCancel className="bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white">
-                                Cancelar
-                              </AlertDialogCancel>
-                              <AlertDialogAction
-                                onClick={() => handleDeleteUser(u.id, u.email)}
-                                className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                      {userRole === 'admin' && (
+                        <TableCell className="text-right">
+                          <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                disabled={u.role === 'admin' || deletingId === u.id}
+                                className="text-muted-foreground hover:text-destructive hover:bg-destructive/10"
                               >
-                                Remover Acesso
-                              </AlertDialogAction>
-                            </AlertDialogFooter>
-                          </AlertDialogContent>
-                        </AlertDialog>
-                      </TableCell>
+                                {deletingId === u.id ? (
+                                  <Loader2 className="w-4 h-4 animate-spin" />
+                                ) : (
+                                  <Trash2 className="w-4 h-4" />
+                                )}
+                              </Button>
+                            </AlertDialogTrigger>
+                            <AlertDialogContent className="bg-[#111] border border-white/10 text-white">
+                              <AlertDialogHeader>
+                                <AlertDialogTitle>Remover acesso?</AlertDialogTitle>
+                                <AlertDialogDescription className="text-muted-foreground">
+                                  O usuário <strong>{u.email}</strong> perderá imediatamente o
+                                  acesso ao painel. Esta ação não pode ser desfeita.
+                                </AlertDialogDescription>
+                              </AlertDialogHeader>
+                              <AlertDialogFooter>
+                                <AlertDialogCancel className="bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white">
+                                  Cancelar
+                                </AlertDialogCancel>
+                                <AlertDialogAction
+                                  onClick={() => handleDeleteUser(u.id, u.email)}
+                                  className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                                >
+                                  Remover Acesso
+                                </AlertDialogAction>
+                              </AlertDialogFooter>
+                            </AlertDialogContent>
+                          </AlertDialog>
+                        </TableCell>
+                      )}
                     </TableRow>
                   ))
                 )}
