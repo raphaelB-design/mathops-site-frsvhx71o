@@ -40,7 +40,6 @@ export function Layout() {
     { label: 'Serviços', id: 'services' },
     { label: 'Metodologia', id: 'methodology' },
     { label: 'Setores', id: 'industries' },
-    { label: 'Sobre', id: 'about' },
   ]
 
   return (
