@@ -103,7 +103,7 @@ export default function Login() {
           </h2>
           <p className="text-muted-foreground font-body">
             {isLogin
-              ? 'Faça login para acessar seu dashboard exclusivo.'
+              ? 'Faça login para acessar seu projeto'
               : 'Crie sua conta para acessar a área restrita.'}
           </p>
         </div>
