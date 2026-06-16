@@ -1,11 +1,29 @@
 import { useAuth } from '@/hooks/use-auth'
-import { Navigate } from 'react-router-dom'
+import { Navigate, Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { LogOut, FileText, UserCircle, Briefcase, Activity } from 'lucide-react'
 import { Loader2 } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { supabase } from '@/lib/supabase/client'
 
 export default function Dashboard() {
   const { session, loading, signOut, user } = useAuth()
+  const [isAdmin, setIsAdmin] = useState(false)
+
+  useEffect(() => {
+    if (user?.email) {
+      supabase
+        .from('authorized_users')
+        .select('*')
+        .eq('email', user.email)
+        .single()
+        .then(({ data }) => {
+          if (data && (data as any).is_admin) {
+            setIsAdmin(true)
+          }
+        })
+    }
+  }, [user])
 
   if (loading) {
     return (
@@ -27,14 +45,25 @@ export default function Dashboard() {
             <h1 className="font-display text-4xl font-bold tracking-tight mb-2">Área do Cliente</h1>
             <p className="text-muted-foreground font-body">Bem-vindo(a), {user?.email}</p>
           </div>
-          <Button
-            onClick={() => signOut()}
-            variant="outline"
-            className="border-white/20 bg-transparent text-white hover:bg-white/10 transition-colors"
-          >
-            <LogOut className="w-4 h-4 mr-2" />
-            Sair
-          </Button>
+          <div className="flex flex-wrap items-center gap-4">
+            {isAdmin && (
+              <Button
+                asChild
+                variant="outline"
+                className="border-accent/50 text-accent hover:bg-accent/10 transition-colors"
+              >
+                <Link to="/admin">Área Administrativa</Link>
+              </Button>
+            )}
+            <Button
+              onClick={() => signOut()}
+              variant="outline"
+              className="border-white/20 bg-transparent text-white hover:bg-white/10 transition-colors"
+            >
+              <LogOut className="w-4 h-4 mr-2" />
+              Sair
+            </Button>
+          </div>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
