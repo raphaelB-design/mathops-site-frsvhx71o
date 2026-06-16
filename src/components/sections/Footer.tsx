@@ -1,4 +1,5 @@
 import { ArrowUp } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 export function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -39,6 +40,12 @@ export function Footer() {
             >
               Setores
             </a>
+            <Link
+              to="/login"
+              className="font-body text-sm text-muted-foreground hover:text-white transition-colors"
+            >
+              Área do Cliente
+            </Link>
           </div>
           <div className="flex flex-col gap-4">
             <h4 className="font-mono text-xs font-bold uppercase tracking-widest text-white">

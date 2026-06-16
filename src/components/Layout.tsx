@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useNavigate, useLocation, Link } from 'react-router-dom'
 import { Menu, X, ArrowUpRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useState, useEffect } from 'react'
@@ -6,6 +6,8 @@ import { useState, useEffect } from 'react'
 export function Layout() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,9 +19,19 @@ export function Layout() {
 
   const scrollTo = (id: string) => {
     setIsMobileMenuOpen(false)
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+    if (location.pathname !== '/') {
+      navigate('/')
+      setTimeout(() => {
+        const element = document.getElementById(id)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 100)
+    } else {
+      const element = document.getElementById(id)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
     }
   }
 
@@ -41,12 +53,13 @@ export function Layout() {
             : 'bg-background/70 backdrop-blur-sm',
         )}
       >
-        <div
+        <Link
+          to="/"
           className="font-display font-bold text-xl tracking-tight cursor-pointer"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
           MathOps<span className="text-accent">.</span>
-        </div>
+        </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8 font-mono text-sm uppercase tracking-wider text-muted-foreground">
@@ -61,7 +74,13 @@ export function Layout() {
           ))}
         </nav>
 
-        <div className="hidden md:flex">
+        <div className="hidden md:flex items-center gap-4">
+          <Link
+            to="/login"
+            className="font-mono text-xs font-bold uppercase tracking-[0.08em] text-white border border-white/20 px-5 py-2.5 hover:bg-white hover:text-black transition-colors"
+          >
+            Área do Cliente
+          </Link>
           <button
             onClick={() => scrollTo('contact')}
             className="bg-white text-black px-5 py-2.5 font-display font-semibold text-sm hover:bg-accent hover:text-white transition-colors flex items-center gap-2"
@@ -84,9 +103,13 @@ export function Layout() {
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-[60] bg-background/95 backdrop-blur-xl flex flex-col">
           <div className="flex justify-between items-center p-6 border-b border-white/10">
-            <div className="font-display font-bold text-xl">
+            <Link
+              to="/"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="font-display font-bold text-xl"
+            >
               MathOps<span className="text-accent">.</span>
-            </div>
+            </Link>
             <button
               onClick={() => setIsMobileMenuOpen(false)}
               aria-label="Fechar menu"
@@ -105,9 +128,16 @@ export function Layout() {
                 {link.label}
               </button>
             ))}
+            <Link
+              to="/login"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="mt-8 font-mono text-sm font-bold uppercase tracking-[0.08em] text-white border border-white/20 px-8 py-4 w-full max-w-xs text-center hover:bg-white hover:text-black transition-colors"
+            >
+              Área do Cliente
+            </Link>
             <button
               onClick={() => scrollTo('contact')}
-              className="mt-8 bg-white text-black px-8 py-4 font-bold text-lg w-full max-w-xs hover:bg-accent hover:text-white transition-colors flex items-center justify-center gap-2"
+              className="mt-4 bg-white text-black px-8 py-4 font-bold text-lg w-full max-w-xs hover:bg-accent hover:text-white transition-colors flex items-center justify-center gap-2"
             >
               Falar com Especialista <ArrowUpRight className="w-5 h-5" />
             </button>
