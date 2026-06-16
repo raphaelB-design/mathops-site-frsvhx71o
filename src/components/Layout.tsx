@@ -36,10 +36,11 @@ export function Layout() {
   }
 
   const navLinks = [
-    { label: 'Serviços', href: 'services' },
-    { label: 'Metodologia', href: 'methodology' },
-    { label: 'Setores', href: 'industries' },
-    { label: 'Sobre', href: 'about' },
+    { label: 'Sobre a MathOps', path: '/sobre' },
+    { label: 'Serviços', id: 'services' },
+    { label: 'Metodologia', id: 'methodology' },
+    { label: 'Setores', id: 'industries' },
+    { label: 'Sobre', id: 'about' },
   ]
 
   return (
@@ -63,15 +64,25 @@ export function Layout() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8 font-mono text-sm uppercase tracking-wider text-muted-foreground">
-          {navLinks.map((link) => (
-            <button
-              key={link.href}
-              onClick={() => scrollTo(link.href)}
-              className="hover:text-foreground transition-colors"
-            >
-              {link.label}
-            </button>
-          ))}
+          {navLinks.map((link) =>
+            link.path ? (
+              <Link
+                key={link.path}
+                to={link.path}
+                className="hover:text-foreground transition-colors"
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <button
+                key={link.id}
+                onClick={() => scrollTo(link.id!)}
+                className="hover:text-foreground transition-colors"
+              >
+                {link.label}
+              </button>
+            ),
+          )}
         </nav>
 
         <div className="hidden md:flex items-center gap-4">
@@ -119,15 +130,26 @@ export function Layout() {
             </button>
           </div>
           <nav className="flex flex-col items-center justify-center flex-1 gap-8 font-display text-2xl uppercase tracking-wider">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => scrollTo(link.href)}
-                className="hover:text-accent transition-colors"
-              >
-                {link.label}
-              </button>
-            ))}
+            {navLinks.map((link) =>
+              link.path ? (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="hover:text-accent transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <button
+                  key={link.id}
+                  onClick={() => scrollTo(link.id!)}
+                  className="hover:text-accent transition-colors"
+                >
+                  {link.label}
+                </button>
+              ),
+            )}
             <Link
               to="/login"
               onClick={() => setIsMobileMenuOpen(false)}
