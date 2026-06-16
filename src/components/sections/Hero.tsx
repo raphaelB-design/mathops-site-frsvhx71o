@@ -1,87 +1,89 @@
 import { FadeIn } from '@/components/fade-in'
+import { ArrowDown } from 'lucide-react'
 
 export function Hero() {
+  const scrollToNext = () => {
+    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <section
       id="hero"
-      className="relative min-h-[100svh] flex flex-col justify-end pb-24 px-6 md:px-12 w-full overflow-hidden bg-black"
+      className="relative min-h-[calc(100svh-72px)] flex flex-col justify-center px-6 md:px-12 py-20 w-full overflow-hidden bg-background"
     >
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-black/60 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10" />
-        <img
-          src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2070&q=80"
-          alt="Abstract Data Analytics Interface"
-          className="w-full h-full object-cover grayscale opacity-50 scale-105 animate-float"
-        />
-      </div>
+      {/* Background Elements */}
+      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/20 blur-[120px] rounded-full z-0 pointer-events-none" />
 
-      <div className="relative z-20 max-w-7xl mx-auto w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-          <div className="lg:col-span-8">
-            <FadeIn delay={200}>
-              <p className="font-mono text-xs md:text-sm uppercase tracking-widest text-muted-foreground mb-6 md:mb-8 flex items-center gap-2">
-                <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
-                Inteligência Decisória Baseada em Dados
-              </p>
-            </FadeIn>
+      <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col lg:flex-row gap-16 items-center">
+        <div className="flex-1 flex flex-col items-start text-left">
+          <FadeIn delay={100}>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-white/10 bg-white/5 rounded-full mb-8 font-mono text-xs uppercase tracking-widest text-muted-foreground">
+              <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse" />
+              Decision Intelligence Framework
+            </div>
+          </FadeIn>
 
-            <FadeIn delay={400}>
-              <h1 className="font-display uppercase leading-[0.9] tracking-tight text-white mb-8 text-shadow-sm text-[3.1rem]">
-                Suas decisões são tão confiáveis quanto os dados por trás delas?
-              </h1>
-            </FadeIn>
+          <FadeIn delay={300}>
+            <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.95] tracking-tight mb-8">
+              Rigor matemático que transforma{' '}
+              <span className="text-accent italic pr-4">complexidade.</span>
+            </h1>
+          </FadeIn>
 
-            <FadeIn delay={600}>
-              <div className="space-y-6 max-w-3xl">
-                <p className="font-body text-xl md:text-2xl text-muted-foreground leading-relaxed">
-                  Unimos o rigor metodológico do{' '}
-                  <strong className="text-white font-medium">Lean Six Sigma</strong> à{' '}
-                  <strong className="text-white font-medium">modelagem matemática</strong> e
-                  arquitetura de <strong className="text-white font-medium">BI</strong> para
-                  transformar complexidade em resultados mensuráveis.
-                </p>
-                <div className="border-l-2 border-white pl-4 py-2 mt-8">
-                  <p className="font-mono text-sm md:text-base text-white uppercase tracking-wider leading-relaxed">
-                    entregamos clareza, inteligência e confiança.
-                  </p>
-                </div>
-              </div>
-            </FadeIn>
-          </div>
+          <FadeIn delay={500}>
+            <p className="font-body text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed mb-10">
+              A arquitetura analítica definitiva para operações complexas. Aplicamos modelagem
+              estatística avançada e engenharia de dados para erradicar a intuição do processo
+              decisório.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button
+                onClick={() =>
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                }
+                className="bg-white text-black px-8 py-4 font-display font-semibold text-base hover:bg-accent hover:text-white transition-colors"
+              >
+                Agendar Diagnóstico
+              </button>
+              <button
+                onClick={scrollToNext}
+                className="px-8 py-4 font-display font-semibold text-base border border-white/10 hover:bg-white/5 transition-colors flex items-center justify-center gap-2 group"
+              >
+                Explorar Método{' '}
+                <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
+              </button>
+            </div>
+          </FadeIn>
+        </div>
 
-          <div className="lg:col-span-4 flex flex-col gap-8 lg:pb-4">
+        <div className="w-full lg:w-[400px] flex flex-col gap-4">
+          <FadeIn delay={700}>
+            <div className="p-6 border border-white/10 bg-black/40 backdrop-blur-md flex flex-col gap-2 hover:border-accent/50 transition-colors">
+              <span className="font-mono text-xs text-muted-foreground uppercase tracking-wider">
+                Qualidade de Processo
+              </span>
+              <span className="font-display text-5xl font-bold text-white">4.8σ</span>
+              <span className="font-body text-sm text-muted-foreground">
+                Nível Six Sigma alcançado
+              </span>
+            </div>
+          </FadeIn>
+          <div className="grid grid-cols-2 gap-4">
             <FadeIn delay={800}>
-              <div className="grid grid-cols-2 lg:grid-cols-1 gap-4">
-                <div className="border border-white/10 bg-black/40 p-5 backdrop-blur-md hover:bg-white/5 transition-colors duration-300">
-                  <p className="font-mono text-xs text-muted-foreground mb-2">Tempo de Decisão</p>
-                  <p className="font-display text-3xl md:text-4xl text-white">-38%</p>
-                </div>
-                <div className="border border-white/10 bg-black/40 p-5 backdrop-blur-md hover:bg-white/5 transition-colors duration-300">
-                  <p className="font-mono text-xs text-muted-foreground mb-2">
-                    Qualidade de Processo
-                  </p>
-                  <p className="font-display text-3xl md:text-4xl text-white">4.8σ</p>
-                </div>
-                <div className="border border-white/10 bg-black/40 p-5 backdrop-blur-md hover:bg-white/5 transition-colors duration-300 col-span-2 lg:col-span-1">
-                  <p className="font-mono text-xs text-muted-foreground mb-2">
-                    Precisão de Cálculo
-                  </p>
-                  <p className="font-display text-3xl md:text-4xl text-white">Absoluta</p>
-                </div>
+              <div className="p-6 border border-white/10 bg-black/40 backdrop-blur-md flex flex-col gap-2 hover:border-accent/50 transition-colors h-full">
+                <span className="font-mono text-xs text-muted-foreground uppercase tracking-wider">
+                  Tempo de Decisão
+                </span>
+                <span className="font-display text-4xl font-bold text-white">-38%</span>
               </div>
             </FadeIn>
-
-            <FadeIn delay={1000}>
-              <div className="flex flex-wrap gap-2">
-                {['Lean Six Sigma', 'DMAIC', 'PMBOK', 'ISO 9001', 'LGPD'].map((cert) => (
-                  <span
-                    key={cert}
-                    className="px-3 py-1.5 border border-white/20 text-[10px] uppercase font-mono text-muted-foreground rounded-full hover:border-white hover:text-white transition-colors cursor-default"
-                  >
-                    {cert}
-                  </span>
-                ))}
+            <FadeIn delay={900}>
+              <div className="p-6 border border-white/10 bg-black/40 backdrop-blur-md flex flex-col gap-2 hover:border-accent/50 transition-colors h-full">
+                <span className="font-mono text-xs text-muted-foreground uppercase tracking-wider">
+                  Precisão de Cálculo
+                </span>
+                <span className="font-display text-4xl font-bold text-white">100%</span>
               </div>
             </FadeIn>
           </div>

@@ -1,47 +1,57 @@
 import { FadeIn } from '@/components/fade-in'
+import { Factory, Truck, Stethoscope, Building2, Landmark, ShoppingCart } from 'lucide-react'
 
-const sectors = [
-  'Indústria',
-  'Logística',
-  'Agronegócio',
-  'Construção Civil',
-  'Varejo',
-  'Saúde',
-  'Finanças',
-  'Energia',
-  'Telecom',
+const industries = [
+  { icon: Building2, name: 'Construção Civil', desc: 'Previsibilidade de insumos e cronogramas.' },
+  { icon: Factory, name: 'Manufatura', desc: 'Otimização de OEE e controle de refugo.' },
+  { icon: Stethoscope, name: 'Saúde', desc: 'Gestão de leitos e predição de altas.' },
+  { icon: Truck, name: 'Logística', desc: 'Roteirização inteligente e malha otimizada.' },
+  { icon: Landmark, name: 'Finanças', desc: 'Modelos de crédito e análise de risco.' },
+  { icon: ShoppingCart, name: 'Varejo', desc: 'Precificação dinâmica e controle de estoque.' },
 ]
 
 export function Industries() {
   return (
-    <section className="py-[120px] px-6 md:px-12 w-full bg-black relative overflow-hidden border-b border-white/10">
-      <div className="absolute inset-0 z-0 opacity-10">
-        <div className="absolute top-0 left-1/4 w-[1px] h-full bg-white/20" />
-        <div className="absolute top-0 left-2/4 w-[1px] h-full bg-white/20" />
-        <div className="absolute top-0 left-3/4 w-[1px] h-full bg-white/20" />
-      </div>
-
-      <div className="max-w-7xl mx-auto w-full flex flex-col items-center text-center relative z-10">
+    <section
+      id="industries"
+      className="py-24 md:py-32 px-6 md:px-12 w-full border-t border-white/10"
+    >
+      <div className="max-w-7xl mx-auto w-full">
         <FadeIn>
-          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-16">
-            Verticais · Especialização Setorial
-          </p>
-        </FadeIn>
-
-        <FadeIn delay={200}>
-          <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-            {sectors.map((sector) => (
-              <div
-                key={sector}
-                className="px-8 py-4 border border-white/20 bg-black hover:bg-white hover:text-black transition-all duration-500 cursor-default"
-              >
-                <span className="font-display text-2xl md:text-3xl uppercase tracking-wider">
-                  {sector}
-                </span>
-              </div>
-            ))}
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div>
+              <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
+                Aplicações Setoriais
+              </span>
+              <h2 className="font-display text-4xl md:text-5xl font-bold">
+                Experiência Cross-Industry
+              </h2>
+            </div>
+            <p className="font-body text-lg text-muted-foreground max-w-sm">
+              A matemática independe do setor. Modelos lógicos podem otimizar desde a linha de
+              produção até a jornada do paciente.
+            </p>
           </div>
         </FadeIn>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {industries.map((ind, idx) => {
+            const Icon = ind.icon
+            return (
+              <FadeIn key={ind.name} delay={100 + idx * 100}>
+                <div className="p-8 border border-white/10 bg-white/5 flex flex-col gap-6 hover:bg-white/10 transition-colors cursor-default group">
+                  <div className="w-12 h-12 flex items-center justify-center bg-black/50 border border-white/10 text-white group-hover:text-accent transition-colors">
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-display text-xl font-bold mb-2">{ind.name}</h3>
+                    <p className="font-body text-sm text-muted-foreground">{ind.desc}</p>
+                  </div>
+                </div>
+              </FadeIn>
+            )
+          })}
+        </div>
       </div>
     </section>
   )

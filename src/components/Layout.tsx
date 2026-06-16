@@ -1,52 +1,124 @@
 import { Outlet } from 'react-router-dom'
-import { MessageCircle } from 'lucide-react'
+import { Menu, X, ArrowUpRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { useState, useEffect } from 'react'
 
 export function Layout() {
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 60)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   const scrollTo = (id: string) => {
+    setIsMobileMenuOpen(false)
     const element = document.getElementById(id)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
     }
   }
 
+  const navLinks = [
+    { label: 'Serviços', href: 'services' },
+    { label: 'Metodologia', href: 'methodology' },
+    { label: 'Setores', href: 'industries' },
+    { label: 'Sobre', href: 'about' },
+  ]
+
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black">
-      {/* Fixed Transparent Header */}
-      <header className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 py-8 mix-blend-difference text-white pointer-events-none">
-        <div className="w-1/3 flex justify-start pointer-events-auto"></div>
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
+      {/* Navbar */}
+      <header
+        className={cn(
+          'fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 transition-all duration-300',
+          isScrolled
+            ? 'bg-background/92 backdrop-blur-md border-b border-white/5'
+            : 'bg-background/70 backdrop-blur-sm',
+        )}
+      >
+        <div
+          className="font-display font-bold text-xl tracking-tight cursor-pointer"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          MathOps<span className="text-accent">.</span>
+        </div>
 
-        <div className="w-1/3 flex justify-center pointer-events-auto"></div>
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-8 font-mono text-sm uppercase tracking-wider text-muted-foreground">
+          {navLinks.map((link) => (
+            <button
+              key={link.href}
+              onClick={() => scrollTo(link.href)}
+              className="hover:text-foreground transition-colors"
+            >
+              {link.label}
+            </button>
+          ))}
+        </nav>
 
-        <div className="w-1/3 flex justify-end pointer-events-auto">
+        <div className="hidden md:flex">
           <button
             onClick={() => scrollTo('contact')}
-            className="font-mono text-xs md:text-sm uppercase tracking-widest hover:text-muted-foreground transition-colors"
+            className="bg-white text-black px-5 py-2.5 font-display font-semibold text-sm hover:bg-accent hover:text-white transition-colors flex items-center gap-2"
           >
-            Contato
+            Falar com Especialista <ArrowUpRight className="w-4 h-4" />
           </button>
         </div>
+
+        {/* Mobile Toggle */}
+        <button
+          className="md:hidden text-foreground p-2"
+          onClick={() => setIsMobileMenuOpen(true)}
+          aria-label="Abrir menu"
+        >
+          <Menu className="w-6 h-6" />
+        </button>
       </header>
 
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-[60] bg-background/95 backdrop-blur-xl flex flex-col">
+          <div className="flex justify-between items-center p-6 border-b border-white/10">
+            <div className="font-display font-bold text-xl">
+              MathOps<span className="text-accent">.</span>
+            </div>
+            <button
+              onClick={() => setIsMobileMenuOpen(false)}
+              aria-label="Fechar menu"
+              className="p-2"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
+          <nav className="flex flex-col items-center justify-center flex-1 gap-8 font-display text-2xl uppercase tracking-wider">
+            {navLinks.map((link) => (
+              <button
+                key={link.href}
+                onClick={() => scrollTo(link.href)}
+                className="hover:text-accent transition-colors"
+              >
+                {link.label}
+              </button>
+            ))}
+            <button
+              onClick={() => scrollTo('contact')}
+              className="mt-8 bg-white text-black px-8 py-4 font-bold text-lg w-full max-w-xs hover:bg-accent hover:text-white transition-colors flex items-center justify-center gap-2"
+            >
+              Falar com Especialista <ArrowUpRight className="w-5 h-5" />
+            </button>
+          </nav>
+        </div>
+      )}
+
       {/* Main Content */}
-      <main className="w-full">
+      <main className="flex-1 w-full mt-[72px]">
         <Outlet />
       </main>
-
-      {/* Discreet WhatsApp Utility */}
-      <a
-        href="https://wa.me/5511999999999"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={cn(
-          'fixed bottom-8 right-8 z-50 p-4 rounded-full',
-          'bg-black border border-border group',
-          'hover:border-muted-foreground transition-colors duration-500',
-        )}
-        aria-label="Contato via WhatsApp"
-      >
-        <MessageCircle className="w-5 h-5 text-muted-foreground group-hover:text-white transition-colors duration-500" />
-      </a>
     </div>
   )
 }

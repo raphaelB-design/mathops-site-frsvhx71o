@@ -1,6 +1,6 @@
 /* Global styles - Theme, font, utilities, animations and global components */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&family=EB+Garamond:wght@400&family=IBM+Plex+Mono:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,36 +8,35 @@
 
 @layer base {
   :root {
-    /* Pure Black Theme */
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    --background: 0 0% 1.2%; /* #030303 */
+    --foreground: 46 22% 96%; /* #f5f4f0 */
 
-    --card: 0 0% 3%;
-    --card-foreground: 0 0% 100%;
+    --card: 0 0% 5%;
+    --card-foreground: 46 22% 96%;
 
-    --popover: 0 0% 3%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 46 22% 96%;
 
-    --primary: 0 0% 100%;
-    --primary-foreground: 0 0% 0%;
+    --primary: 46 22% 96%;
+    --primary-foreground: 0 0% 1.2%;
 
     --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary-foreground: 46 22% 96%;
 
-    --muted: 0 0% 80%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 214 62% 86%; /* Ice Blue #c3d9f3 */
-    --accent-foreground: 0 0% 0%;
+    --accent: 216 58% 42%; /* #2d5fa8 */
+    --accent-foreground: 46 22% 96%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive-foreground: 46 22% 96%;
 
-    --border: 0 0% 15%; /* Hairline #262626 */
-    --input: 0 0% 15%;
-    --ring: 0 0% 100%;
+    --border: 0 0% 12%;
+    --input: 0 0% 12%;
+    --ring: 216 58% 42%;
 
-    --radius: 0px; /* Monumental blocky feel */
+    --radius: 0.5rem;
   }
 
   * {
@@ -45,7 +44,7 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased selection:bg-white selection:text-black font-body;
+    @apply bg-background text-foreground antialiased selection:bg-accent selection:text-white font-body overflow-x-hidden;
   }
 
   /* NEVER REMOVE THIS */

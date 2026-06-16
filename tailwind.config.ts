@@ -26,10 +26,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['"Cormorant Garamond"', 'serif'],
-        body: ['"EB Garamond"', 'serif'],
-        mono: ['"IBM Plex Mono"', 'monospace'],
-        sans: ['"EB Garamond"', 'serif'], // Fallback to body font
+        display: ['"Space Grotesk"', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+        mono: ['"Space Mono"', 'monospace'],
+        sans: ['Inter', 'sans-serif'],
       },
       letterSpacing: {
         extreme: '0.4em',
@@ -77,6 +77,15 @@ export default {
       },
       transitionTimingFunction: {
         smooth: 'cubic-bezier(0.16, 1, 0.3, 1)',
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+      },
+      animation: {
+        marquee: 'marquee 25s linear infinite',
       },
     },
   },
