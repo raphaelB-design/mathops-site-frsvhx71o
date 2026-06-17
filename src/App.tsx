@@ -5,6 +5,7 @@ import { Toaster as Sonner } from '@/components/ui/sonner'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import Layout from './components/Layout'
 import { AuthProvider } from './hooks/use-auth'
+import { IndexSkeleton } from './components/skeletons/IndexSkeleton'
 
 const Index = lazy(() => import('./pages/Index'))
 const NotFound = lazy(() => import('./pages/NotFound'))
@@ -32,7 +33,14 @@ const App = () => (
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route element={<Layout />}>
-              <Route path="/" element={<Index />} />
+              <Route
+                path="/"
+                element={
+                  <Suspense fallback={<IndexSkeleton />}>
+                    <Index />
+                  </Suspense>
+                }
+              />
               <Route path="/sobre" element={<Sobre />} />
               <Route path="/login" element={<Login />} />
               <Route path="/dashboard" element={<Dashboard />} />
