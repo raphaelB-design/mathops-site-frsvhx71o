@@ -16,43 +16,7 @@ export default function Carreiras() {
         </p>
       </FadeIn>
 
-      <FadeIn delay={0.2} className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="p-8 border border-white/10 bg-white/5 backdrop-blur-sm flex flex-col gap-4 group hover:bg-white/10 transition-colors">
-          <h3 className="font-display text-2xl font-bold group-hover:text-accent transition-colors">
-            Engenheiro de Dados Sênior
-          </h3>
-          <p className="font-body text-muted-foreground">
-            Buscamos um especialista em arquiteturas distribuídas e pipelines de dados escaláveis
-            para liderar a estruturação de fundações analíticas.
-          </p>
-          <div className="mt-auto pt-6">
-            <Button
-              variant="outline"
-              className="w-full sm:w-auto font-mono uppercase tracking-widest text-xs gap-2"
-            >
-              Ver Detalhes <ArrowUpRight className="w-4 h-4" />
-            </Button>
-          </div>
-        </div>
-
-        <div className="p-8 border border-white/10 bg-white/5 backdrop-blur-sm flex flex-col gap-4 group hover:bg-white/10 transition-colors">
-          <h3 className="font-display text-2xl font-bold group-hover:text-accent transition-colors">
-            Cientista de Dados Pleno
-          </h3>
-          <p className="font-body text-muted-foreground">
-            Atue no desenvolvimento de modelos preditivos e algoritmos de otimização para resolver
-            problemas complexos de negócios.
-          </p>
-          <div className="mt-auto pt-6">
-            <Button
-              variant="outline"
-              className="w-full sm:w-auto font-mono uppercase tracking-widest text-xs gap-2"
-            >
-              Ver Detalhes <ArrowUpRight className="w-4 h-4" />
-            </Button>
-          </div>
-        </div>
-      </FadeIn>
+      <FadeIn delay={0.2} className="grid grid-cols-1 md:grid-cols-2 gap-8"></FadeIn>
     </div>
   )
 }
