@@ -10,6 +10,7 @@ import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import Admin from './pages/Admin'
 import Sobre from './pages/Sobre'
+import Carreiras from './pages/Carreiras'
 import { AuthProvider } from './hooks/use-auth'
 
 const App = () => (
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/servicos/:slug" element={<ServiceLayer />} />
+            <Route path="/carreiras" element={<Carreiras />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
