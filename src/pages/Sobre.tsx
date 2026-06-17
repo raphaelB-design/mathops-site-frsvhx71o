@@ -12,6 +12,10 @@ export default function Sobre() {
           <img
             src="https://img.usecurling.com/p/1920/1080?q=law%20firm%20office&color=black"
             alt="MathOps Office"
+            width={1920}
+            height={1080}
+            fetchPriority="high"
+            loading="eager"
             className="w-full h-full object-cover opacity-40 mix-blend-luminosity grayscale"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
