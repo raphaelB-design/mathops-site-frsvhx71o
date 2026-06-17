@@ -28,8 +28,8 @@ export function Hero() {
             <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.95] tracking-tight mb-8 text-[#ffffff]">
               Transforme&nbsp;{' '}
               <span className="text-accent italic pr-4">
-                complexidade&nbsp;<span className="text-white not-italic">em Estratégia</span>
-                <span className="text-white not-italic">.</span>
+                complexidade&nbsp;<span className="text-[#ffffff] not-italic">em Estratégia</span>
+                <span className="text-[#ffffff] not-italic">.</span>
                 <br />
               </span>
             </h1>

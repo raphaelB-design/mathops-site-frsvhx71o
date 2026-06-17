@@ -1,4 +1,5 @@
 import { FadeIn } from '@/components/fade-in'
+import { useEffect, useRef, useState } from 'react'
 
 const metrics = [
   { value: '40+', label: 'Infraestruturas de Dados Entregues' },
@@ -6,6 +7,67 @@ const metrics = [
   { value: '4.8σ', label: 'Score de Eficiência em Processos' },
   { value: '30M+', label: 'Em custos operacionais reduzidos' },
 ]
+
+function AnimatedNumber({ value }: { value: string }) {
+  const [count, setCount] = useState(0)
+  const [isVisible, setIsVisible] = useState(false)
+  const ref = useRef<HTMLSpanElement>(null)
+
+  const numMatch = value.match(/[\d.]+/)
+  const numValue = numMatch ? parseFloat(numMatch[0]) : 0
+  const prefix = numMatch ? value.substring(0, value.indexOf(numMatch[0])) : ''
+  const suffix = numMatch ? value.substring(value.indexOf(numMatch[0]) + numMatch[0].length) : value
+  const isFloat = numMatch && numMatch[0].includes('.')
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.1 },
+    )
+    if (ref.current) {
+      observer.observe(ref.current)
+    }
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!isVisible) return
+
+    let startTime: number | null = null
+    const duration = 2000 // 2 seconds
+
+    const animate = (time: number) => {
+      if (!startTime) startTime = time
+      const progress = Math.min((time - startTime) / duration, 1)
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4)
+
+      setCount(numValue * easeOutQuart)
+
+      if (progress < 1) {
+        requestAnimationFrame(animate)
+      } else {
+        setCount(numValue)
+      }
+    }
+
+    requestAnimationFrame(animate)
+  }, [isVisible, numValue])
+
+  const displayValue = isFloat ? count.toFixed(1) : Math.round(count).toString()
+
+  return (
+    <span ref={ref}>
+      {prefix}
+      {displayValue}
+      {suffix}
+    </span>
+  )
+}
 
 export function Metrics() {
   return (
@@ -22,7 +84,7 @@ export function Metrics() {
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
 
                 <h3 className="font-display text-4xl md:text-5xl font-bold text-white group-hover:text-accent transition-colors">
-                  {metric.value}
+                  <AnimatedNumber value={metric.value} />
                 </h3>
                 <p className="font-mono text-xs font-bold uppercase tracking-widest text-muted-foreground leading-relaxed mt-auto">
                   {metric.label}
