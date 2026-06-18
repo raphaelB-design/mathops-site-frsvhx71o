@@ -377,9 +377,9 @@ export default function Carreiras() {
               <span className="text-white">.</span>
             </h1>
             <p className="font-body text-xl text-muted-foreground max-w-2xl leading-relaxed mb-10">
-              Na MathOps, você vai resolver problemas reais de empresas reais — com rigor
-              matemático, autonomia técnica e impacto mensurável. Sem burocracia. Sem hierarquia de
-              slide.
+              Na MathOps, você vai resolver problemas reais de empresas reais&nbsp; com matemáticos,
+              estatisticos, especialistas em processos e autonomia técnica e impacto
+              mensurável.&nbsp;
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button
