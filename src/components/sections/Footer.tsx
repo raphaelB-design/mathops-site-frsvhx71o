@@ -117,10 +117,10 @@ export function Footer() {
               Contato
             </h4>
             <a
-              href="mailto:contato@mathops.com.br"
-              className="font-body text-sm text-muted-foreground hover:text-white transition-colors flex items-center gap-2"
+              href="mailto:contato@mathopsstrategy.com.br"
+              className="flex items-center gap-2 text-sm text-muted-foreground hover:text-white transition-colors"
             >
-              <Mail className="w-4 h-4" /> contato@mathops.com.br
+              <Mail className="w-4 h-4" /> contato@mathopsstrategy.com.br
             </a>
             <div className="font-body text-sm text-muted-foreground flex items-center gap-2">
               <MapPin className="w-4 h-4" /> São Paulo, SP — Brasil
