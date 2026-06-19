@@ -1,4 +1,5 @@
 import { FadeIn } from '@/components/fade-in'
+import { SlideUpMask } from '@/components/slide-up-mask'
 import { Separator } from '@/components/ui/separator'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Check } from 'lucide-react'
@@ -24,7 +25,7 @@ export default function Sobre() {
         <div className="relative z-10 container px-4 md:px-6 mx-auto text-center">
           <FadeIn>
             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-6">
-              Sobre a MathOps
+              <SlideUpMask delay={100}>Sobre a MathOps</SlideUpMask>
             </h1>
             <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground font-serif italic">
               Defendendo o patrimônio e a liberdade com excelência, discrição e precisão estratégica
@@ -39,9 +40,11 @@ export default function Sobre() {
         <div className="max-w-4xl mx-auto">
           <FadeIn>
             <div className="flex flex-col items-center text-center space-y-4 mb-16">
-              <h2 className="font-mono text-sm font-bold uppercase tracking-[0.2em] text-accent">
-                Manifesto Institucional
-              </h2>
+              <SlideUpMask>
+                <h2 className="font-mono text-sm font-bold uppercase tracking-[0.2em] text-accent">
+                  Manifesto Institucional
+                </h2>
+              </SlideUpMask>
               <Separator className="w-12 bg-accent/50" />
             </div>
 
@@ -65,7 +68,7 @@ export default function Sobre() {
       <section className="container px-4 md:px-6 mx-auto mt-24">
         <FadeIn>
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <Card className="bg-white/5 border-white/10 backdrop-blur-sm rounded-none border-t-2 border-t-accent hover:bg-white/10 transition-colors">
+            <Card className="bg-white/5 border-white/10 backdrop-blur-sm rounded-none border-t-2 border-t-accent hover:bg-white/10 transition-all duration-500 ease-smooth hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(255,255,255,0.1)] hover:border-white/20">
               <CardHeader>
                 <CardTitle className="font-display text-2xl uppercase tracking-wider">
                   Missão
@@ -77,7 +80,7 @@ export default function Sobre() {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/5 border-white/10 backdrop-blur-sm rounded-none border-t-2 border-t-accent hover:bg-white/10 transition-colors">
+            <Card className="bg-white/5 border-white/10 backdrop-blur-sm rounded-none border-t-2 border-t-accent hover:bg-white/10 transition-all duration-500 ease-smooth hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(255,255,255,0.1)] hover:border-white/20">
               <CardHeader>
                 <CardTitle className="font-display text-2xl uppercase tracking-wider">
                   Visão
@@ -90,7 +93,7 @@ export default function Sobre() {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/5 border-white/10 backdrop-blur-sm rounded-none border-t-2 border-t-accent hover:bg-white/10 transition-colors">
+            <Card className="bg-white/5 border-white/10 backdrop-blur-sm rounded-none border-t-2 border-t-accent hover:bg-white/10 transition-all duration-500 ease-smooth hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(255,255,255,0.1)] hover:border-white/20">
               <CardHeader>
                 <CardTitle className="font-display text-2xl uppercase tracking-wider">
                   Valores

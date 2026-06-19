@@ -1,4 +1,5 @@
 import { FadeIn } from '@/components/fade-in'
+import { SlideUpMask } from '@/components/slide-up-mask'
 import { CandidateForm } from '@/components/CandidateForm'
 import { ArrowUpRight, BookOpen, Heart, Shield, TrendingUp, Users, Zap } from 'lucide-react'
 
@@ -50,9 +51,12 @@ export default function Carreiras() {
             <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-6 block">
               Carreiras · MathOps Strategy
             </span>
-            <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl leading-[0.92] tracking-tight mb-6">
-              Construa coisas <span className="text-accent italic">que importam</span>
-              <span className="text-white">.</span>
+            <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl leading-[0.92] tracking-tight mb-6 flex flex-wrap gap-x-3 gap-y-2">
+              <SlideUpMask delay={100}>Construa coisas</SlideUpMask>
+              <SlideUpMask delay={200}>
+                <span className="text-accent italic">que importam</span>
+                <span className="text-white">.</span>
+              </SlideUpMask>
             </h1>
             <p className="font-body text-xl text-muted-foreground max-w-2xl leading-relaxed mb-10">
               Na MathOps, você vai resolver problemas reais de empresas reais&nbsp; com matemáticos,
@@ -64,14 +68,14 @@ export default function Carreiras() {
                 onClick={() =>
                   document.getElementById('candidatura')?.scrollIntoView({ behavior: 'smooth' })
                 }
-                className="bg-white text-black px-8 py-4 font-display font-semibold text-base hover:bg-accent hover:text-white transition-colors flex items-center gap-2 group w-fit"
+                className="bg-white text-black px-8 py-4 font-display font-semibold text-base hover:bg-accent hover:text-white transition-all duration-500 ease-smooth hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(45,95,168,0.3)] flex items-center gap-2 group w-fit"
               >
                 Ver Vagas Abertas
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-500 ease-smooth" />
               </button>
               <a
                 href="mailto:talentos@mathops.com.br"
-                className="px-8 py-4 font-display font-semibold text-base border border-white/15 hover:border-white/30 hover:bg-white/5 transition-colors flex items-center justify-center gap-2 w-fit"
+                className="px-8 py-4 font-display font-semibold text-base border border-white/15 hover:border-white/30 hover:bg-white/5 transition-all duration-500 ease-smooth hover:-translate-y-1 flex items-center justify-center gap-2 w-fit"
               >
                 Candidatura Espontânea
               </a>
@@ -110,15 +114,15 @@ export default function Carreiras() {
             <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
               Nossa Cultura
             </span>
-            <h2 className="font-display text-3xl md:text-4xl font-bold mb-16">
-              Por que trabalhar na MathOps?
-            </h2>
+            <div className="font-display text-3xl md:text-4xl font-bold mb-16">
+              <SlideUpMask>Por que trabalhar na MathOps?</SlideUpMask>
+            </div>
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border border-white/10">
             {values.map((v, i) => (
               <FadeIn key={i} delay={i * 60}>
-                <div className="p-8 border-b border-r border-white/10 hover:bg-white/[0.02] transition-colors group flex flex-col gap-4 h-full [&:nth-child(3n)]:border-r-0 [&:nth-last-child(-n+3)]:border-b-0">
+                <div className="p-8 border-b border-r border-white/10 hover:bg-white/[0.04] hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(255,255,255,0.05)] transition-all duration-500 ease-smooth group flex flex-col gap-4 h-full [&:nth-child(3n)]:border-r-0 [&:nth-last-child(-n+3)]:border-b-0 relative before:absolute before:inset-0 before:ring-1 before:ring-white/0 hover:before:ring-white/20 before:transition-all before:duration-500 before:ease-smooth before:z-10">
                   <div className="w-10 h-10 border border-white/10 flex items-center justify-center group-hover:border-accent/40 transition-colors">
                     <v.icon className="w-5 h-5 text-accent" />
                   </div>
@@ -140,9 +144,9 @@ export default function Carreiras() {
             <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
               Processo Seletivo
             </span>
-            <h2 className="font-display text-3xl md:text-4xl font-bold mb-16">
-              Simples, transparente e rápido.
-            </h2>
+            <div className="font-display text-3xl md:text-4xl font-bold mb-16">
+              <SlideUpMask>Simples, transparente e rápido.</SlideUpMask>
+            </div>
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-0">
@@ -173,7 +177,7 @@ export default function Carreiras() {
               },
             ].map((p, i) => (
               <FadeIn key={i} delay={i * 80}>
-                <div className="relative p-8 border-r border-b md:border-b-0 border-white/10 last:border-r-0 group hover:bg-white/[0.02] transition-colors">
+                <div className="relative p-8 border-r border-b md:border-b-0 border-white/10 last:border-r-0 group hover:bg-white/[0.04] hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(255,255,255,0.05)] transition-all duration-500 ease-smooth before:absolute before:inset-0 before:ring-1 before:ring-white/0 hover:before:ring-white/20 before:transition-all before:duration-500 before:ease-smooth before:z-10">
                   <div className="flex items-start justify-between mb-6">
                     <span className="font-mono text-4xl font-bold text-white/10 group-hover:text-accent/20 transition-colors">
                       {p.step}
@@ -202,9 +206,9 @@ export default function Carreiras() {
               <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
                 Candidatura Espontânea
               </span>
-              <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-                Faça parte do time
-              </h2>
+              <div className="font-display text-3xl md:text-4xl font-bold mb-4">
+                <SlideUpMask>Faça parte do time</SlideUpMask>
+              </div>
               <p className="text-muted-foreground">
                 Não temos vagas abertas no momento, mas mantemos um banco de talentos ativo. Se o
                 seu perfil fizer sentido para um projeto futuro, entraremos em contato.

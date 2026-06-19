@@ -71,17 +71,17 @@ export function Hero() {
                 onClick={() =>
                   document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
                 }
-                className="bg-white text-black px-8 py-4 font-display font-semibold text-base hover:bg-accent hover:text-white transition-colors flex items-center gap-2 group"
+                className="bg-white text-black px-8 py-4 font-display font-semibold text-base hover:bg-accent hover:text-white transition-all duration-500 ease-smooth hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(45,95,168,0.3)] flex items-center gap-2 group"
               >
                 Agendar Diagnóstico Gratuito
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-500 ease-smooth" />
               </button>
               <button
                 onClick={scrollToServices}
-                className="px-8 py-4 font-display font-semibold text-base border border-white/15 hover:border-white/30 hover:bg-white/5 transition-colors flex items-center justify-center gap-2 group"
+                className="px-8 py-4 font-display font-semibold text-base border border-white/15 hover:border-white/30 hover:bg-white/5 transition-all duration-500 ease-smooth hover:-translate-y-1 flex items-center justify-center gap-2 group"
               >
                 Ver Portfólio de Serviços
-                <ChevronDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
+                <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform duration-500 ease-smooth" />
               </button>
             </div>
           </FadeIn>
@@ -90,7 +90,7 @@ export function Hero() {
         {/* Stats column */}
         <div className="w-full lg:w-[420px] flex flex-col gap-4 mt-8 lg:mt-0">
           <FadeIn delay={800}>
-            <div className="p-8 border border-white/10 bg-black/40 backdrop-blur-xl hover:bg-black/60 hover:border-accent/50 transition-all duration-500 group rounded-xl w-full">
+            <div className="p-8 border border-white/10 bg-black/40 backdrop-blur-xl hover:bg-black/60 hover:border-accent/50 hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(45,95,168,0.2)] transition-all duration-500 ease-smooth group rounded-xl w-full">
               <span className="font-mono text-xs text-muted-foreground uppercase tracking-widest block mb-3">
                 {stats[0].label}
               </span>
@@ -107,7 +107,7 @@ export function Hero() {
           <div className="grid grid-cols-2 gap-4">
             {stats.slice(1).map((s, i) => (
               <FadeIn key={i} delay={900 + i * 100}>
-                <div className="p-6 border border-white/10 bg-black/40 backdrop-blur-xl hover:bg-black/60 hover:border-accent/50 transition-all duration-500 group rounded-xl h-full flex flex-col justify-between">
+                <div className="p-6 border border-white/10 bg-black/40 backdrop-blur-xl hover:bg-black/60 hover:border-accent/50 hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(45,95,168,0.2)] transition-all duration-500 ease-smooth group rounded-xl h-full flex flex-col justify-between">
                   <div>
                     <span className="font-mono text-[10px] md:text-xs text-muted-foreground uppercase tracking-widest block mb-2">
                       {s.label}
