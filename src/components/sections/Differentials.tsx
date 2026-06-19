@@ -1,50 +1,76 @@
 import { FadeIn } from '@/components/fade-in'
+import { ArrowUpRight } from 'lucide-react'
 
 const diffs = [
   {
+    num: '01',
     title: 'Agnóstico em Tecnologia',
-    desc: 'Não vendemos software. Construímos soluções utilizando as melhores ferramentas (Open Source ou Enterprise) adequadas à sua realidade.',
+    desc: 'Não vendemos software. Construímos soluções utilizando as melhores ferramentas (Open Source ou Enterprise) adequadas à sua realidade operacional e orçamentária.',
   },
   {
-    title: 'Matemática Aplicada',
-    desc: 'Fugimos dos dashboards cosméticos. Nosso foco está nos algoritmos e regras de negócio por trás da interface gráfica.',
+    num: '02',
+    title: 'Matemática por trás da Interface',
+    desc: 'Fugimos de dashboards cosméticos. Nosso foco está nos algoritmos, regras de negócio e na memória de cálculo auditável — a lógica que sustenta qualquer número entregue.',
   },
   {
-    title: 'Transferência de Know-How',
-    desc: 'Documentamos todo o código e modelo arquitetural para que sua equipe interna tenha total autonomia operacional pós-projeto.',
+    num: '03',
+    title: 'Transferência Total de Know-How',
+    desc: 'Documentamos todo código, modelo arquitetural e regra de negócio para que sua equipe interna tenha autonomia operacional completa após o projeto. Sem dependência de nós.',
   },
   {
-    title: 'Escalabilidade Desenvolvida',
-    desc: 'Soluções desenhadas para suportar crescimento em volume de dados (Big Data) sem degradação de performance.',
+    num: '04',
+    title: 'Escalabilidade desde o Dia Zero',
+    desc: 'Soluções desenhadas para suportar crescimento em volume de dados sem degradação de performance. Nenhum retrabalho custoso no futuro.',
   },
   {
+    num: '05',
     title: 'Segurança by Design',
-    desc: 'Arquiteturas de dados concebidas desde o dia zero sob as diretrizes de governança corporativa e conformidade (LGPD/GDPR).',
+    desc: 'Arquiteturas concebidas desde o início sob as diretrizes de governança corporativa e conformidade (LGPD/GDPR). Privacidade não é pós-projeto — é fundação.',
   },
   {
-    title: 'ROI Comprovado',
-    desc: 'Todo projeto inicia com a definição clara de KPIs financeiros e operacionais para demonstrar o retorno exato sobre o investimento.',
+    num: '06',
+    title: 'ROI Definido Antes de Começar',
+    desc: 'Todo projeto inicia com KPIs financeiros e operacionais acordados. Ao final, você mede exatamente o retorno — com os mesmos critérios matemáticos do início.',
   },
 ]
 
 export function Differentials() {
   return (
-    <section className="py-24 md:py-32 px-6 md:px-12 w-full bg-white/5 border-t border-white/10">
+    <section className="py-24 md:py-32 px-6 md:px-12 w-full border-t border-white/10">
       <div className="max-w-7xl mx-auto w-full">
         <FadeIn>
-          <div className="text-center mb-16">
-            <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
-              Por que MathOps Strategy?
-            </h2>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+            <div>
+              <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
+                Nossos Diferenciais
+              </span>
+              <h2 className="font-display text-4xl md:text-5xl font-bold">
+                Por que MathOps Strategy?
+              </h2>
+            </div>
+            <button
+              onClick={() =>
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+              }
+              className="shrink-0 flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-white transition-colors group"
+            >
+              Validar comigo{' '}
+              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </button>
           </div>
         </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border border-white/10">
           {diffs.map((diff, idx) => (
-            <FadeIn key={idx} delay={idx * 100}>
-              <div className="flex flex-col gap-4">
-                <div className="w-8 h-1 bg-accent mb-2" />
-                <h3 className="font-display text-xl font-bold">{diff.title}</h3>
+            <FadeIn key={idx} delay={idx * 60}>
+              <div className="flex flex-col gap-4 p-8 border-b border-r border-white/10 hover:bg-white/[0.02] transition-colors group last:border-r-0 [&:nth-child(3n)]:border-r-0 [&:nth-last-child(-n+3)]:border-b-0 h-full">
+                <div className="flex items-start justify-between">
+                  <span className="font-mono text-xs text-muted-foreground">{diff.num}</span>
+                  <div className="w-5 h-[2px] bg-accent group-hover:w-8 transition-all" />
+                </div>
+                <h3 className="font-display text-xl font-bold group-hover:text-accent transition-colors leading-snug">
+                  {diff.title}
+                </h3>
                 <p className="font-body text-muted-foreground leading-relaxed text-sm">
                   {diff.desc}
                 </p>
