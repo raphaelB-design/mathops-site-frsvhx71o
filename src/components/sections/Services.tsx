@@ -88,15 +88,6 @@ export function Services() {
                       )}
                     </div>
 
-                    <div
-                      className={cn(
-                        'font-mono text-xl font-bold text-white/20 transition-colors mb-4',
-                        hoverAccentClass,
-                      )}
-                    >
-                      0{index + 1}.
-                    </div>
-
                     <h3
                       className={cn(
                         'font-display text-2xl font-bold transition-colors mb-4',
