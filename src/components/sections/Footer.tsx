@@ -23,9 +23,6 @@ export function Footer() {
             <p className="font-display font-bold text-lg mb-1">
               Pronto para transformar dados em estratégia?
             </p>
-            <p className="text-sm text-muted-foreground">
-              Diagnóstico gratuito · 45 minutos · Sem compromisso
-            </p>
           </div>
           <a
             href="mailto:strategy@mathops.com.br"
