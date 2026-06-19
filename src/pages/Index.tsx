@@ -7,6 +7,7 @@ import { Methodology } from '@/components/sections/Methodology'
 import { Industries } from '@/components/sections/Industries'
 import { Differentials } from '@/components/sections/Differentials'
 import { FAQ } from '@/components/sections/FAQ'
+import { CrmCtaBanner } from '@/components/sections/CrmCtaBanner'
 import { QuoteCTA } from '@/components/sections/QuoteCTA'
 import { Footer } from '@/components/sections/Footer'
 
@@ -22,6 +23,7 @@ export default function Index() {
       <Industries />
       <Differentials />
       <FAQ />
+      <CrmCtaBanner />
       <QuoteCTA />
       <Footer />
     </div>

@@ -2,6 +2,7 @@ import { Outlet, useNavigate, useLocation, Link } from 'react-router-dom'
 import { Menu, X, ArrowUpRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useState, useEffect } from 'react'
+import { trackClick } from '@/services/analytics'
 
 export function Layout() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -89,6 +90,7 @@ export function Layout() {
             href="https://www.goskip.dev/raphael-batista-743c8/builder/1094ba2d-765b-4854-b5f2-c331d8d10ef4"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackClick('crm_access_click', 'header_desktop')}
             className="font-mono text-xs font-bold uppercase tracking-[0.08em] text-white border border-white/20 px-5 py-2.5 hover:bg-white hover:text-black transition-colors"
           >
             Área do Cliente
@@ -155,7 +157,10 @@ export function Layout() {
               href="https://www.goskip.dev/raphael-batista-743c8/builder/1094ba2d-765b-4854-b5f2-c331d8d10ef4"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                setIsMobileMenuOpen(false)
+                trackClick('crm_access_click', 'header_mobile')
+              }}
               className="mt-8 font-mono text-sm font-bold uppercase tracking-[0.08em] text-white border border-white/20 px-8 py-4 w-full max-w-xs text-center hover:bg-white hover:text-black transition-colors"
             >
               Área do Cliente
