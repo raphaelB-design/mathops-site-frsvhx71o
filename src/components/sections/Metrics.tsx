@@ -5,7 +5,7 @@ const metrics = [
   { value: '40+', label: 'Infraestruturas de Dados Entregues' },
   { value: '100%', label: 'Taxa de Retorno (ROI) em 12 meses' },
   { value: '4.8σ', label: 'Score de Eficiência em Processos' },
-  { value: '30M+', label: 'Em custos operacionais reduzidos' },
+  { value: '-38%', label: 'Em custos operacionais' },
 ]
 
 function AnimatedNumber({ value }: { value: string }) {
@@ -13,7 +13,7 @@ function AnimatedNumber({ value }: { value: string }) {
   const [isVisible, setIsVisible] = useState(false)
   const ref = useRef<HTMLSpanElement>(null)
 
-  const numMatch = value.match(/[\d.]+/)
+  const numMatch = value.match(/[-+]?[\d.]+/)
   const numValue = numMatch ? parseFloat(numMatch[0]) : 0
   const prefix = numMatch ? value.substring(0, value.indexOf(numMatch[0])) : ''
   const suffix = numMatch ? value.substring(value.indexOf(numMatch[0]) + numMatch[0].length) : value

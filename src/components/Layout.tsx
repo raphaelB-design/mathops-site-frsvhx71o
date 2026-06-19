@@ -47,10 +47,10 @@ export function Layout() {
       {/* Navbar */}
       <header
         className={cn(
-          'fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 transition-all duration-300',
+          'fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 transition-all duration-300 border-b',
           isScrolled
-            ? 'bg-background/92 backdrop-blur-md border-b border-white/5'
-            : 'bg-background/70 backdrop-blur-sm',
+            ? 'bg-black/90 backdrop-blur-xl border-white/10'
+            : 'bg-transparent border-transparent',
         )}
       >
         <Link
