@@ -3,14 +3,30 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { Toaster } from '@/components/ui/toaster'
 import { Toaster as Sonner } from '@/components/ui/sonner'
 import { TooltipProvider } from '@/components/ui/tooltip'
-import Layout from './components/Layout'
-import { IndexSkeleton } from './components/skeletons/IndexSkeleton'
+import { Layout } from '@/components/Layout'
+import { IndexSkeleton } from '@/components/skeletons/IndexSkeleton'
 
-const Index = lazy(() => import('./pages/Index'))
-const NotFound = lazy(() => import('./pages/NotFound'))
-const ServiceLayer = lazy(() => import('./pages/ServiceLayer'))
-const Sobre = lazy(() => import('./pages/Sobre'))
-const Carreiras = lazy(() => import('./pages/Carreiras'))
+const retryLazy = (componentImport: () => Promise<any>) =>
+  lazy(async () => {
+    try {
+      const component = await componentImport()
+      sessionStorage.removeItem('lazy-reload')
+      return component
+    } catch (error) {
+      if (sessionStorage.getItem('lazy-reload') !== 'true') {
+        sessionStorage.setItem('lazy-reload', 'true')
+        window.location.reload()
+        return new Promise(() => {}) // wait for reload
+      }
+      throw error
+    }
+  })
+
+const Index = retryLazy(() => import('@/pages/Index'))
+const NotFound = retryLazy(() => import('@/pages/NotFound'))
+const ServiceLayer = retryLazy(() => import('@/pages/ServiceLayer'))
+const Sobre = retryLazy(() => import('@/pages/Sobre'))
+const Carreiras = retryLazy(() => import('@/pages/Carreiras'))
 
 const PageLoader = () => (
   <div className="min-h-screen flex flex-col items-center justify-center w-full bg-background">
