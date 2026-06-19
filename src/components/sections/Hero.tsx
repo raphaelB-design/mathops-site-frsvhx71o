@@ -1,4 +1,5 @@
 import { FadeIn } from '@/components/fade-in'
+import { SlideUpMask } from '@/components/slide-up-mask'
 import { ArrowUpRight, ChevronDown } from 'lucide-react'
 import { AnimatedCounter } from '@/components/animated-counter'
 
@@ -50,13 +51,16 @@ export function Hero() {
       {/* Main content */}
       <div className="relative z-10 flex-1 flex flex-col lg:flex-row gap-16 items-center justify-center my-8 max-w-7xl mx-auto w-full">
         <div className="flex-1 flex flex-col items-start text-left">
-          <FadeIn delay={200}>
-            <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.92] tracking-tight mb-8 text-white">
-              Transforme <em className="text-accent not-italic">complexidade</em> em Estratégia.
-            </h1>
-          </FadeIn>
+          <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.92] tracking-tight mb-8 text-white flex flex-wrap gap-x-3 md:gap-x-4 lg:gap-x-5 gap-y-2">
+            <SlideUpMask delay={200}>Transforme</SlideUpMask>
+            <SlideUpMask delay={300}>
+              <em className="text-accent not-italic">complexidade</em>
+            </SlideUpMask>
+            <SlideUpMask delay={400}>em</SlideUpMask>
+            <SlideUpMask delay={500}>Estratégia.</SlideUpMask>
+          </h1>
 
-          <FadeIn delay={400}>
+          <FadeIn delay={600}>
             <p className="font-body text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed mb-10">
               Modelagem estatística avançada, automação de processos e engenharia de dados para
               erradicar a intuição do processo decisório. Resultados verificáveis, metodologia
@@ -85,7 +89,7 @@ export function Hero() {
 
         {/* Stats column */}
         <div className="w-full lg:w-[420px] flex flex-col gap-4 mt-8 lg:mt-0">
-          <FadeIn delay={600}>
+          <FadeIn delay={800}>
             <div className="p-8 border border-white/10 bg-black/40 backdrop-blur-xl hover:bg-black/60 hover:border-accent/50 transition-all duration-500 group rounded-xl w-full">
               <span className="font-mono text-xs text-muted-foreground uppercase tracking-widest block mb-3">
                 {stats[0].label}
@@ -102,7 +106,7 @@ export function Hero() {
           </FadeIn>
           <div className="grid grid-cols-2 gap-4">
             {stats.slice(1).map((s, i) => (
-              <FadeIn key={i} delay={700 + i * 100}>
+              <FadeIn key={i} delay={900 + i * 100}>
                 <div className="p-6 border border-white/10 bg-black/40 backdrop-blur-xl hover:bg-black/60 hover:border-accent/50 transition-all duration-500 group rounded-xl h-full flex flex-col justify-between">
                   <div>
                     <span className="font-mono text-[10px] md:text-xs text-muted-foreground uppercase tracking-widest block mb-2">
@@ -121,7 +125,7 @@ export function Hero() {
       </div>
 
       {/* Scroll hint */}
-      <FadeIn delay={1000}>
+      <FadeIn delay={1200}>
         <button
           onClick={scrollToServices}
           className="relative z-10 flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-white transition-colors mx-auto"
