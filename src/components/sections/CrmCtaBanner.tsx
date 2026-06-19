@@ -6,6 +6,5 @@ export function CrmCtaBanner() {
     trackClick('crm_access_click', 'home_banner')
   }
 
-  return
-  null
+  return null
 }
