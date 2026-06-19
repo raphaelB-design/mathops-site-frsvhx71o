@@ -85,12 +85,14 @@ export function Layout() {
         </nav>
 
         <div className="hidden md:flex items-center gap-4">
-          <Link
-            to="/login"
+          <a
+            href="https://www.goskip.dev/raphael-batista-743c8/builder/1094ba2d-765b-4854-b5f2-c331d8d10ef4"
+            target="_blank"
+            rel="noopener noreferrer"
             className="font-mono text-xs font-bold uppercase tracking-[0.08em] text-white border border-white/20 px-5 py-2.5 hover:bg-white hover:text-black transition-colors"
           >
             Área do Cliente
-          </Link>
+          </a>
           <button
             onClick={() => scrollTo('contact')}
             className="bg-white text-black px-5 py-2.5 font-display font-semibold text-sm hover:bg-accent hover:text-white transition-colors flex items-center gap-2"
@@ -149,13 +151,15 @@ export function Layout() {
                 </button>
               ),
             )}
-            <Link
-              to="/login"
+            <a
+              href="https://www.goskip.dev/raphael-batista-743c8/builder/1094ba2d-765b-4854-b5f2-c331d8d10ef4"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setIsMobileMenuOpen(false)}
               className="mt-8 font-mono text-sm font-bold uppercase tracking-[0.08em] text-white border border-white/20 px-8 py-4 w-full max-w-xs text-center hover:bg-white hover:text-black transition-colors"
             >
               Área do Cliente
-            </Link>
+            </a>
             <button
               onClick={() => scrollTo('contact')}
               className="mt-4 bg-white text-black px-8 py-4 font-bold text-lg w-full max-w-xs hover:bg-accent hover:text-white transition-colors flex items-center justify-center gap-2"

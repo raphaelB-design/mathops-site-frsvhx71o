@@ -1,6 +1,5 @@
 import { ArrowUp, Linkedin, Mail, MapPin, ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { useAuth } from '@/hooks/use-auth'
 
 const serviceLinks = [
   { label: 'Diagnóstico e Visibilidade', slug: 'diagnostico-e-visibilidade' },
@@ -10,8 +9,6 @@ const serviceLinks = [
 ]
 
 export function Footer() {
-  const { user } = useAuth()
-  const clientAreaRoute = user ? '/dashboard' : '/login'
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
   return (
@@ -101,12 +98,14 @@ export function Footer() {
             >
               Trabalhe Conosco
             </Link>
-            <Link
-              to={clientAreaRoute}
+            <a
+              href="https://www.goskip.dev/raphael-batista-743c8/builder/1094ba2d-765b-4854-b5f2-c331d8d10ef4"
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-body text-sm text-muted-foreground hover:text-white transition-colors"
             >
               Área do Cliente
-            </Link>
+            </a>
           </div>
 
           <div className="flex flex-col gap-4">
