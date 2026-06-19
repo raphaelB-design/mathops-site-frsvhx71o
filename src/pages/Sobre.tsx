@@ -11,8 +11,8 @@ export default function Sobre() {
       <section className="relative w-full h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 bg-black">
           <img
-            src="https://img.usecurling.com/p/1920/1080?q=law%20firm%20office&color=black"
-            alt="MathOps Office"
+            src="https://img.usecurling.com/p/1920/1080?q=mirrored%20skyscraper&color=black"
+            alt="MathOps Building"
             width={1920}
             height={1080}
             fetchPriority="high"
