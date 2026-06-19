@@ -27,7 +27,7 @@ VALUES ('curriculos', 'curriculos', false)
 ON CONFLICT (id) DO NOTHING;
 
 -- 5. RLS Policies for storage.objects
-ALTER TABLE storage.objects ENABLE ROW LEVEL SECURITY;
+-- ALTER TABLE storage.objects ENABLE ROW LEVEL SECURITY;
 
 DROP POLICY IF EXISTS "allow_public_upload_curriculos" ON storage.objects;
 CREATE POLICY "allow_public_upload_curriculos"
