@@ -1,10 +1,29 @@
 import { FadeIn } from '@/components/fade-in'
 import { ArrowUpRight, ChevronDown } from 'lucide-react'
+import { AnimatedCounter } from '@/components/animated-counter'
 
 const stats = [
-  { value: '4.8σ', label: 'Qualidade de Processo', sub: 'Nível Six Sigma alcançado' },
-  { value: '−38%', label: 'Tempo de Decisão', sub: 'Redução média em clientes' },
-  { value: '100%', label: 'Rastreabilidade', sub: 'Memória de cálculo auditável' },
+  {
+    value: 4.8,
+    suffix: 'σ',
+    decimals: 1,
+    label: 'Qualidade de Processo',
+    sub: 'Nível Six Sigma alcançado',
+  },
+  {
+    value: -38,
+    suffix: '%',
+    decimals: 0,
+    label: 'Tempo de Decisão',
+    sub: 'Redução média em clientes',
+  },
+  {
+    value: 100,
+    suffix: '%',
+    decimals: 0,
+    label: 'Rastreabilidade',
+    sub: 'Memória de cálculo auditável',
+  },
 ]
 
 export function Hero() {
@@ -68,29 +87,35 @@ export function Hero() {
         </div>
 
         {/* Stats column */}
-        <div className="w-full lg:w-[360px] flex flex-col gap-3">
+        <div className="w-full lg:w-[420px] flex flex-col gap-4 mt-8 lg:mt-0">
           <FadeIn delay={600}>
-            <div className="p-6 border border-white/10 bg-black/50 backdrop-blur-md hover:border-accent/40 transition-colors group">
-              <span className="font-mono text-xs text-muted-foreground uppercase tracking-wider block mb-2">
+            <div className="p-8 border border-white/10 bg-black/40 backdrop-blur-xl hover:bg-black/60 hover:border-accent/50 transition-all duration-500 group rounded-xl w-full">
+              <span className="font-mono text-xs text-muted-foreground uppercase tracking-widest block mb-3">
                 {stats[0].label}
               </span>
-              <span className="font-display text-5xl font-bold text-white block mb-1 group-hover:text-accent transition-colors">
-                {stats[0].value}
+              <span className="font-display text-5xl md:text-6xl font-bold text-white block mb-2 group-hover:text-accent transition-colors duration-500">
+                <AnimatedCounter
+                  value={stats[0].value}
+                  suffix={stats[0].suffix}
+                  decimals={stats[0].decimals}
+                />
               </span>
-              <span className="font-body text-xs text-muted-foreground">{stats[0].sub}</span>
+              <span className="font-body text-sm text-muted-foreground">{stats[0].sub}</span>
             </div>
           </FadeIn>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-4">
             {stats.slice(1).map((s, i) => (
-              <FadeIn key={i} delay={700 + i * 80}>
-                <div className="p-5 border border-white/10 bg-black/50 backdrop-blur-md hover:border-accent/40 transition-colors group h-full">
-                  <span className="font-mono text-xs text-muted-foreground uppercase tracking-wider block mb-2">
-                    {s.label}
-                  </span>
-                  <span className="font-display text-3xl font-bold text-white block mb-1 group-hover:text-accent transition-colors">
-                    {s.value}
-                  </span>
-                  <span className="font-body text-xs text-muted-foreground">{s.sub}</span>
+              <FadeIn key={i} delay={700 + i * 100}>
+                <div className="p-6 border border-white/10 bg-black/40 backdrop-blur-xl hover:bg-black/60 hover:border-accent/50 transition-all duration-500 group rounded-xl h-full flex flex-col justify-between">
+                  <div>
+                    <span className="font-mono text-[10px] md:text-xs text-muted-foreground uppercase tracking-widest block mb-2">
+                      {s.label}
+                    </span>
+                    <span className="font-display text-3xl md:text-4xl font-bold text-white block mb-2 group-hover:text-accent transition-colors duration-500">
+                      <AnimatedCounter value={s.value} suffix={s.suffix} decimals={s.decimals} />
+                    </span>
+                  </div>
+                  <span className="font-body text-xs text-muted-foreground mt-2">{s.sub}</span>
                 </div>
               </FadeIn>
             ))}
