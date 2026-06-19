@@ -3,6 +3,7 @@ import { SlideUpMask } from '@/components/slide-up-mask'
 import { Separator } from '@/components/ui/separator'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Check } from 'lucide-react'
+import heroBg from '@/assets/imagem2026-06-18231310090-99a81.png'
 
 export default function Sobre() {
   return (
@@ -11,10 +12,8 @@ export default function Sobre() {
       <section className="relative w-full h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 bg-black">
           <img
-            src="https://img.usecurling.com/p/1920/1080?q=mirrored%20building%20facade&color=black"
+            src={heroBg}
             alt="MathOps Building Close-up"
-            width={1920}
-            height={1080}
             fetchPriority="high"
             loading="eager"
             className="w-full h-full object-cover opacity-40 mix-blend-luminosity grayscale"
