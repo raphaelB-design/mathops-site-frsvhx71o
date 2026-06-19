@@ -51,11 +51,8 @@ export function Hero() {
       <div className="relative z-10 flex-1 flex flex-col lg:flex-row gap-16 items-center justify-center my-8 max-w-7xl mx-auto w-full">
         <div className="flex-1 flex flex-col items-start text-left">
           <FadeIn delay={200}>
-            <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[0.92] tracking-tight mb-8 text-white">
-              Transforme&nbsp;
-              <span className="text-accent italic">complexidade</span>
-              <br />
-              <span className="text-white">em Estratégia.</span>
+            <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.92] tracking-tight mb-8 text-white">
+              Transforme <em className="text-accent not-italic">complexidade</em> em Estratégia.
             </h1>
           </FadeIn>
 
