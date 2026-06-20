@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 
 const metrics = [
   { value: '40+', label: 'Infraestruturas de Dados Entregues' },
-  { value: '100%', label: 'Taxa de Retorno (ROI) em 12 meses' },
+  { value: '100%', label: 'dos projetos com ROI positivo em 12 meses' },
   { value: '4.8σ', label: 'Score de Eficiência em Processos' },
   { value: '-38%', label: 'De redução em custos operacionais' },
 ]
