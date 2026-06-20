@@ -1,5 +1,14 @@
 import { FadeIn } from '@/components/fade-in'
-import { Factory, Truck, Stethoscope, Building2, Landmark, ShoppingCart } from 'lucide-react'
+import {
+  Factory,
+  Truck,
+  Stethoscope,
+  Building2,
+  Landmark,
+  ShoppingCart,
+  Plane,
+  Tractor,
+} from 'lucide-react'
 
 const industries = [
   { icon: Building2, name: 'Construção Civil', desc: 'Previsibilidade de insumos e cronogramas.' },
@@ -8,6 +17,12 @@ const industries = [
   { icon: Truck, name: 'Logística', desc: 'Roteirização inteligente e malha otimizada.' },
   { icon: Landmark, name: 'Finanças', desc: 'Modelos de crédito e análise de risco.' },
   { icon: ShoppingCart, name: 'Varejo', desc: 'Precificação dinâmica e controle de estoque.' },
+  { icon: Plane, name: 'Aviação', desc: 'Otimização de malha aérea e manutenção preditiva.' },
+  {
+    icon: Tractor,
+    name: 'Agronegócio/Agropecuária',
+    desc: 'Previsão de safra e otimização logística no campo.',
+  },
 ]
 
 export function Industries() {
