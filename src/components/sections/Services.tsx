@@ -46,7 +46,15 @@ export function Services() {
             <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
               Nossas Soluções
             </span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold">Camadas Estratégicas</h2>
+            <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
+              Camadas Estratégicas
+            </h2>
+            <FadeIn delay={200}>
+              <p className="font-body text-muted-foreground leading-relaxed flex-1 mb-8">
+                Substitua tarefas manuais por inteligência aplicada — e tenha um núcleo analítico
+                dedicado, sem o custo de montá-lo internamente.
+              </p>
+            </FadeIn>
           </div>
         </FadeIn>
 
