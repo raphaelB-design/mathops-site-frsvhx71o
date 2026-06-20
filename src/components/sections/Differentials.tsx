@@ -14,7 +14,7 @@ const diffs = [
   },
   {
     num: '03',
-    title: 'Transferência Total de Know-How',
+    title: 'Autonomia por Design',
     desc: 'Documentamos todo código, modelo arquitetural e regra de negócio para que sua equipe interna tenha autonomia operacional completa após o projeto. Sem dependência de nós.',
   },
   {
