@@ -5,7 +5,7 @@ const steps = [
   {
     letter: 'D',
     name: 'Define',
-    desc: 'Mapeamento estratégico do problema, definição de escopo (Project Charter) e alinhamento de KPIs vitais para o negócio.',
+    desc: 'Mapeamento estratégico do problema, definição de escopo (Project Charter) e alinhamento dos KPIs que realmente movem o negócio.',
   },
   {
     letter: 'M',
