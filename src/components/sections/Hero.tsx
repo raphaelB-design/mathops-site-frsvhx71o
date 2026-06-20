@@ -54,7 +54,9 @@ export function Hero() {
           <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.92] tracking-tight mb-8 text-white flex flex-col gap-y-2 md:gap-y-4">
             <span className="flex flex-wrap gap-x-3 md:gap-x-4 lg:gap-x-5 gap-y-2">
               <SlideUpMask delay={200}>Rigor</SlideUpMask>
-              <SlideUpMask delay={300}>matemático</SlideUpMask>
+              <SlideUpMask delay={300}>
+                <em className="text-accent not-italic">matemático</em>
+              </SlideUpMask>
               <SlideUpMask delay={400}>para</SlideUpMask>
             </span>
             <span className="flex flex-wrap gap-x-3 md:gap-x-4 lg:gap-x-5 gap-y-2">
@@ -62,9 +64,7 @@ export function Hero() {
               <SlideUpMask delay={600}>que</SlideUpMask>
               <SlideUpMask delay={700}>não</SlideUpMask>
               <SlideUpMask delay={800}>podem</SlideUpMask>
-              <SlideUpMask delay={900}>
-                <em className="text-accent not-italic">errar</em>
-              </SlideUpMask>
+              <SlideUpMask delay={900}>errar</SlideUpMask>
             </span>
           </h1>
 
