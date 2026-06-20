@@ -40,7 +40,7 @@ export function Footer() {
               MathOps<span className="text-accent">.</span>
             </Link>
             <p className="font-body text-sm text-muted-foreground leading-relaxed pr-4">
-              Consultoria especializada em modelagem matemática, automação de processos e
+              Consultoria boutique especializada em modelagem matemática, automação de processos e
               inteligência analítica para operações complexas.
             </p>
             <div className="flex gap-4">
