@@ -16,7 +16,7 @@ const stats = [
     suffix: '%',
     decimals: 0,
     label: 'Tempo de Decisão',
-    sub: 'Redução média em clientes',
+    sub: 'Redução média no tempo de decisão de nossos clientes',
   },
   {
     value: 100,
