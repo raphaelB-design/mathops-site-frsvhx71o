@@ -15,7 +15,7 @@ const steps = [
   {
     letter: 'A',
     name: 'Analyze',
-    desc: 'Aplicação de inferência estatística para identificar a causa-raiz (root cause) da ineficiência ou da variabilidade.',
+    desc: 'Aplicação de inferência estatística para isolar a causa-raiz real — não os sintomas — da ineficiência ou da variabilidade.',
   },
   {
     letter: 'I',
