@@ -245,11 +245,11 @@ export function QuoteCTA() {
         <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
           <FadeIn>
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
-              Inicie sua Transformação Analítica
+              Decisões de Peso Merecem Fundamento de Peso.
             </h2>
             <p className="font-body text-xl text-white/80 mb-12">
-              Agende uma reunião técnica confidencial. Analisaremos seu cenário atual e
-              estruturaremos um roadmap direto ao ponto, sem compromisso.
+              Reserve uma reunião técnica confidencial. Sem roteiro de vendas, apenas uma análise
+              honesta de onde a matemática muda o seu resultado.
             </p>
             <a
               href="#contact"
