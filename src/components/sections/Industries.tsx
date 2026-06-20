@@ -12,22 +12,59 @@ import {
 } from 'lucide-react'
 
 const industries = [
-  { icon: Building2, name: 'Construção Civil', desc: 'Previsibilidade de insumos e cronogramas.' },
-  { icon: Factory, name: 'Manufatura', desc: 'Otimização de OEE e controle de refugo.' },
-  { icon: Stethoscope, name: 'Saúde', desc: 'Gestão de leitos e predição de altas.' },
-  { icon: Truck, name: 'Logística', desc: 'Roteirização inteligente e malha otimizada.' },
-  { icon: Landmark, name: 'Finanças', desc: 'Modelos de crédito e análise de risco.' },
-  { icon: ShoppingCart, name: 'Varejo', desc: 'Precificação dinâmica e controle de estoque.' },
-  { icon: Plane, name: 'Aviação', desc: 'Otimização de malha aérea e manutenção preditiva.' },
+  {
+    icon: Building2,
+    name: 'Construção Civil',
+    desc: 'Previsibilidade de insumos e cronogramas.',
+    image: 'https://img.usecurling.com/p/600/400?q=architecture&color=black',
+  },
+  {
+    icon: Factory,
+    name: 'Manufatura',
+    desc: 'Otimização de OEE e controle de refugo.',
+    image: 'https://img.usecurling.com/p/600/400?q=factory&color=black',
+  },
+  {
+    icon: Stethoscope,
+    name: 'Saúde',
+    desc: 'Gestão de leitos e predição de altas.',
+    image: 'https://img.usecurling.com/p/600/400?q=hospital&color=black',
+  },
+  {
+    icon: Truck,
+    name: 'Logística',
+    desc: 'Roteirização inteligente e malha otimizada.',
+    image: 'https://img.usecurling.com/p/600/400?q=logistics&color=black',
+  },
+  {
+    icon: Landmark,
+    name: 'Finanças',
+    desc: 'Modelos de crédito e análise de risco.',
+    image: 'https://img.usecurling.com/p/600/400?q=finance&color=black',
+  },
+  {
+    icon: ShoppingCart,
+    name: 'Varejo',
+    desc: 'Precificação dinâmica e controle de estoque.',
+    image: 'https://img.usecurling.com/p/600/400?q=retail&color=black',
+  },
+  {
+    icon: Plane,
+    name: 'Aviação',
+    desc: 'Otimização de malha aérea e manutenção preditiva.',
+    image: 'https://img.usecurling.com/p/600/400?q=aviation&color=black',
+  },
   {
     icon: Tractor,
     name: 'Agronegócio/Agropecuária',
     desc: 'Previsão de safra e otimização logística no campo.',
+    image: 'https://img.usecurling.com/p/600/400?q=agriculture&color=black',
   },
   {
     icon: Zap,
     name: 'Energia & Utilities',
     desc: 'Focado em previsão de demanda, smart grids e eficiência de recursos.',
+    image: 'https://img.usecurling.com/p/600/400?q=energy&color=black',
   },
 ]
 
@@ -35,9 +72,9 @@ export function Industries() {
   return (
     <section
       id="industries"
-      className="py-24 md:py-32 px-6 md:px-12 w-full border-t border-white/10"
+      className="py-24 md:py-32 px-6 md:px-12 w-full border-t border-white/10 relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto w-full">
+      <div className="max-w-7xl mx-auto w-full relative z-10">
         <FadeIn>
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
             <div>
@@ -60,13 +97,29 @@ export function Industries() {
             const Icon = ind.icon
             return (
               <FadeIn key={ind.name} delay={100 + idx * 100}>
-                <div className="p-8 border border-white/10 bg-white/5 flex flex-col gap-6 hover:bg-white/10 transition-colors cursor-default group">
-                  <div className="w-12 h-12 flex items-center justify-center bg-black/50 border border-white/10 text-white group-hover:text-accent transition-colors">
+                <div className="relative overflow-hidden p-8 border border-white/10 bg-black flex flex-col gap-6 cursor-default group h-full min-h-[320px]">
+                  {/* Background Image Layer with Gradient Overlay */}
+                  <div className="absolute inset-0 z-0 opacity-30 group-hover:opacity-60 transition-opacity duration-700 ease-in-out">
+                    <img
+                      src={ind.image}
+                      alt={ind.name}
+                      className="w-full h-full object-cover grayscale scale-100 group-hover:scale-110 transition-transform duration-700 ease-in-out"
+                    />
+                    {/* Gradient Overlay for Readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/30" />
+                  </div>
+
+                  <div className="relative z-10 w-12 h-12 flex items-center justify-center bg-black/50 border border-white/20 text-white group-hover:text-accent group-hover:border-accent/50 transition-colors backdrop-blur-sm shadow-xl">
                     <Icon className="w-6 h-6" />
                   </div>
-                  <div>
-                    <h3 className="font-display text-xl font-bold mb-2">{ind.name}</h3>
-                    <p className="font-body text-sm text-muted-foreground">{ind.desc}</p>
+
+                  <div className="relative z-10 mt-auto pt-8">
+                    <h3 className="font-display text-2xl font-bold mb-3 text-white drop-shadow-md group-hover:text-white transition-colors">
+                      {ind.name}
+                    </h3>
+                    <p className="font-body text-sm text-gray-300 drop-shadow-sm leading-relaxed group-hover:text-gray-200 transition-colors">
+                      {ind.desc}
+                    </p>
                   </div>
                 </div>
               </FadeIn>
