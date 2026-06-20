@@ -55,7 +55,8 @@ export default function ServiceLayer() {
                 <CardContent className="p-6 md:p-8">
                   <h2 className="font-display text-2xl font-bold mb-3">{service.name}</h2>
                   <p className="text-accent text-lg mb-8 font-medium leading-relaxed">
-                    {service.headline}
+                    Descubra se sua empresa está pronta para implementar IA, antes que o
+                    investimento revele isso por você.
                   </p>
 
                   <Accordion
