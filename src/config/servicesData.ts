@@ -3,7 +3,7 @@ export const serviceLayers = {
     title: 'Diagnóstico e Visibilidade',
     headline: 'Elimine gargalos invisíveis e enxergue a realidade dos seus dados.',
     description:
-      'Mapeamento profundo e painéis interativos para eliminar gargalos e decisões baseadas em feeling.',
+      'Mapeamento profundo e painéis interativos que substituem a percepção pela evidência.',
     services: [
       {
         id: 'mapeamento-processos',
