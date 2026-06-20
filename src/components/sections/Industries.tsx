@@ -8,6 +8,7 @@ import {
   ShoppingCart,
   Plane,
   Tractor,
+  Zap,
 } from 'lucide-react'
 
 const industries = [
@@ -22,6 +23,11 @@ const industries = [
     icon: Tractor,
     name: 'Agronegócio/Agropecuária',
     desc: 'Previsão de safra e otimização logística no campo.',
+  },
+  {
+    icon: Zap,
+    name: 'Energia & Utilities',
+    desc: 'Focado em previsão de demanda, smart grids e eficiência de recursos.',
   },
 ]
 
