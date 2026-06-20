@@ -52,12 +52,13 @@ export function Hero() {
       <div className="relative z-10 flex-1 flex flex-col lg:flex-row gap-16 items-center justify-center my-8 max-w-7xl mx-auto w-full">
         <div className="flex-1 flex flex-col items-start text-left">
           <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.92] tracking-tight mb-8 text-white flex flex-wrap gap-x-3 md:gap-x-4 lg:gap-x-5 gap-y-2">
-            <SlideUpMask delay={200}>Transforme</SlideUpMask>
-            <SlideUpMask delay={300}>
-              <em className="text-accent not-italic">complexidade</em>
+            <SlideUpMask delay={200}>Onde</SlideUpMask>
+            <SlideUpMask delay={300}>a</SlideUpMask>
+            <SlideUpMask delay={400}>complexidade</SlideUpMask>
+            <SlideUpMask delay={500}>vira</SlideUpMask>
+            <SlideUpMask delay={600}>
+              <em className="text-accent not-italic">clareza.</em>
             </SlideUpMask>
-            <SlideUpMask delay={400}>em</SlideUpMask>
-            <SlideUpMask delay={500}>Estratégia.</SlideUpMask>
           </h1>
 
           <FadeIn delay={600}>
