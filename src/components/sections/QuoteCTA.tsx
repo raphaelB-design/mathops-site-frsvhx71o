@@ -103,7 +103,7 @@ export function QuoteCTA() {
           <FadeIn>
             <div className="mb-12 text-center md:text-left">
               <h2 className="font-display text-3xl md:text-4xl font-bold mb-4 text-white">
-                Diagnóstico Gratuito
+                Diagnóstico&nbsp;
               </h2>
               <p className="font-body text-white/60 text-lg">
                 Descreva seu cenário atual e estruturaremos um roadmap direto ao ponto, sem
