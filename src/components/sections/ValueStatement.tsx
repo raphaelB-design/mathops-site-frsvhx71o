@@ -22,10 +22,10 @@ export function ValueStatement() {
         <div className="flex flex-col gap-8">
           <FadeIn delay={200}>
             <p className="font-body text-lg md:text-xl text-muted-foreground leading-relaxed">
-              Nossa proposta, <strong className="text-white font-medium">MathOps Strategy</strong>,
-              é a fusão disciplinada entre a engenharia de processos e a ciência de dados.
-              Substituímos o "achismo" corporativo por um ecossistema de inteligência quantitativa
-              auditável, replicável e escalável.
+              <strong className="text-white font-medium">MathOps Strategy</strong>&nbsp;nasce do
+              encontro entre rigor matemático e operação real. Onde antes havia opinião, instalamos
+              evidência: auditável, replicável, escalável em qualquer escala que sua empresa decida
+              crescer.
             </p>
           </FadeIn>
           <FadeIn delay={400}>
