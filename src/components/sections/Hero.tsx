@@ -51,17 +51,21 @@ export function Hero() {
       {/* Main content */}
       <div className="relative z-10 flex-1 flex flex-col lg:flex-row gap-16 items-center justify-center my-8 max-w-7xl mx-auto w-full">
         <div className="flex-1 flex flex-col items-start text-left">
-          <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.92] tracking-tight mb-8 text-white flex flex-wrap gap-x-3 md:gap-x-4 lg:gap-x-5 gap-y-2">
-            <SlideUpMask delay={200}>Rigor</SlideUpMask>
-            <SlideUpMask delay={300}>matemático</SlideUpMask>
-            <SlideUpMask delay={400}>para</SlideUpMask>
-            <SlideUpMask delay={500}>decisões</SlideUpMask>
-            <SlideUpMask delay={600}>que</SlideUpMask>
-            <SlideUpMask delay={700}>não</SlideUpMask>
-            <SlideUpMask delay={800}>podem</SlideUpMask>
-            <SlideUpMask delay={900}>
-              <em className="text-accent not-italic">errar</em>
-            </SlideUpMask>
+          <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.92] tracking-tight mb-8 text-white flex flex-col gap-y-2 md:gap-y-4">
+            <span className="flex flex-wrap gap-x-3 md:gap-x-4 lg:gap-x-5 gap-y-2">
+              <SlideUpMask delay={200}>Rigor</SlideUpMask>
+              <SlideUpMask delay={300}>matemático</SlideUpMask>
+              <SlideUpMask delay={400}>para</SlideUpMask>
+            </span>
+            <span className="flex flex-wrap gap-x-3 md:gap-x-4 lg:gap-x-5 gap-y-2">
+              <SlideUpMask delay={500}>decisões</SlideUpMask>
+              <SlideUpMask delay={600}>que</SlideUpMask>
+              <SlideUpMask delay={700}>não</SlideUpMask>
+              <SlideUpMask delay={800}>podem</SlideUpMask>
+              <SlideUpMask delay={900}>
+                <em className="text-accent not-italic">errar</em>
+              </SlideUpMask>
+            </span>
           </h1>
 
           <FadeIn delay={600}>
