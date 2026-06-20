@@ -230,7 +230,7 @@ export function QuoteCTA() {
                   disabled={isSubmitting}
                   className="w-full bg-white text-black hover:bg-accent hover:text-white transition-colors duration-300 py-6 font-display font-bold text-lg"
                 >
-                  {isSubmitting ? 'Enviando...' : 'Solicitar Diagnóstico'}
+                  {isSubmitting ? 'Enviando...' : 'Enviar para Análise'}
                 </Button>
               </form>
             </Form>
