@@ -88,7 +88,7 @@ export function QuoteCTA() {
               "Dados sem um modelo matemático rigoroso são apenas ruído estatístico caro."
             </h2>
             <p className="font-mono text-sm uppercase tracking-widest text-black/60 font-bold">
-              — Chief Data Strategist, MathOps
+              — Princípio MathOps Strategy
             </p>
           </FadeIn>
         </div>
