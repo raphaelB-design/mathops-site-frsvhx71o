@@ -54,7 +54,7 @@ export function Differentials() {
               }
               className="shrink-0 flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-white transition-colors group"
             >
-              Validar comigo{' '}
+              Discutir seu cenário
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </button>
           </div>
