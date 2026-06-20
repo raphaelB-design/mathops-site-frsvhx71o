@@ -9,7 +9,7 @@ const stats = [
     suffix: 'σ',
     decimals: 1,
     label: 'Qualidade de Processo',
-    sub: 'Nível Six Sigma alcançado',
+    sub: 'Nível Six Sigma sustentado',
   },
   {
     value: -38,
