@@ -80,7 +80,7 @@ export function Hero() {
                 onClick={scrollToServices}
                 className="px-8 py-4 font-display font-semibold text-base border border-white/15 hover:border-white/30 hover:bg-white/5 transition-all duration-500 ease-smooth hover:-translate-y-1 flex items-center justify-center gap-2 group"
               >
-                Ver Portfólio de Serviços
+                Conhecer Nossa Metodologia
                 <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform duration-500 ease-smooth" />
               </button>
             </div>
