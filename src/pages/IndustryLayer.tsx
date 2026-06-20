@@ -46,13 +46,6 @@ export default function IndustryLayer() {
     window.scrollTo({ top: 0, behavior: 'instant' })
   }, [slug])
 
-  if (!slug || !(slug in industriesData)) {
-    return <Navigate to="/" replace />
-  }
-
-  const layer = industriesData[slug as keyof typeof industriesData]
-  const otherIndustries = industriesList.filter((ind) => ind.slug !== slug)
-
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
@@ -62,6 +55,13 @@ export default function IndustryLayer() {
       challenge: '',
     },
   })
+
+  if (!slug || !(slug in industriesData)) {
+    return <Navigate to="/" replace />
+  }
+
+  const layer = industriesData[slug as keyof typeof industriesData]
+  const otherIndustries = industriesList.filter((ind) => ind.slug !== slug)
 
   async function onSubmit(data: ContactFormValues) {
     setIsSubmitting(true)
