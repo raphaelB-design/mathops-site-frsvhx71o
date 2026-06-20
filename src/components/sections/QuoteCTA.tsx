@@ -106,8 +106,8 @@ export function QuoteCTA() {
                 Comece pela Conversa&nbsp;
               </h2>
               <p className="font-body text-white/60 text-lg">
-                Descreva seu cenário atual e estruturaremos um roadmap direto ao ponto, sem
-                compromisso inicial.
+                Toda relação com a MathOps começa por entender o problema antes de propor a solução.
+                Conte-nos o cenário e o resto construímos juntos.
               </p>
             </div>
 
