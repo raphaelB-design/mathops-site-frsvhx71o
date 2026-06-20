@@ -3,7 +3,7 @@ import {
   Factory,
   Truck,
   Stethoscope,
-  RadioTower,
+  Building2,
   Landmark,
   ShoppingCart,
   Plane,
@@ -13,10 +13,10 @@ import {
 
 const industries = [
   {
-    icon: RadioTower,
-    name: 'Telecom',
-    desc: 'Previsão de churn e otimização de infraestrutura de rede.',
-    image: 'https://img.usecurling.com/p/600/400?q=telecom&color=black',
+    icon: Building2,
+    name: 'Construção Civil',
+    desc: 'Otimização de logística de canteiros, gestão de suprimentos e modelagem matemática para cronogramas de grandes obras.',
+    image: 'https://img.usecurling.com/p/600/400?q=construction&color=black',
   },
   {
     icon: Factory,
