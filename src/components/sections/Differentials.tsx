@@ -9,7 +9,7 @@ const diffs = [
   },
   {
     num: '02',
-    title: 'Matemática por trás da Interface',
+    title: 'Substância antes da Forma',
     desc: 'Fugimos de dashboards cosméticos. Nosso foco está nos algoritmos, regras de negócio e na memória de cálculo auditável — a lógica que sustenta qualquer número entregue.',
   },
   {
