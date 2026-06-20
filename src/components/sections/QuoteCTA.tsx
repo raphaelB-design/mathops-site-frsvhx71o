@@ -240,27 +240,6 @@ export function QuoteCTA() {
       </div>
 
       {/* Final CTA */}
-      <div className="py-24 md:py-32 px-6 md:px-12 bg-accent text-white text-center flex flex-col items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff1a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff1a_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-20 pointer-events-none" />
-
-        <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
-          <FadeIn>
-            <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
-              Decisões de Peso Merecem Fundamento de Peso.
-            </h2>
-            <p className="font-body text-xl text-white/80 mb-12">
-              Reserve uma reunião técnica confidencial. Sem roteiro de vendas, apenas uma análise
-              honesta de onde a matemática muda o seu resultado.
-            </p>
-            <a
-              href="#contact"
-              className="bg-white text-accent px-10 py-5 font-display font-bold text-lg hover:bg-black hover:text-white transition-colors duration-300 shadow-xl inline-block"
-            >
-              Falar com um Especialista
-            </a>
-          </FadeIn>
-        </div>
-      </div>
     </section>
   )
 }
