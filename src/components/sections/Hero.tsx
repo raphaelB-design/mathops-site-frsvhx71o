@@ -63,9 +63,8 @@ export function Hero() {
 
           <FadeIn delay={600}>
             <p className="font-body text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed mb-10">
-              Modelagem estatística avançada, automação de processos e engenharia de dados para
-              erradicar a intuição do processo decisório. Resultados verificáveis, metodologia
-              auditável.
+              Construímos a ponte entre o que sua operação sente e o que ela pode provar. Modelagem,
+              automação e dados, não para substituir seu julgamento, mas para blindá-lo.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button
