@@ -5,7 +5,7 @@ const diffs = [
   {
     num: '01',
     title: 'Liberdade de Stack',
-    desc: 'Não vendemos software. Construímos soluções utilizando as melhores ferramentas (Open Source ou Enterprise) adequadas à sua realidade operacional e orçamentária.',
+    desc: 'Escolhemos a ferramenta certa para o seu orçamento e sua realidade - open source ou enterprise, decidido pela matemática, não pelo nosso interesse comercial.',
   },
   {
     num: '02',
