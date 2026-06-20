@@ -25,7 +25,7 @@ const diffs = [
   {
     num: '05',
     title: 'Segurança by Design',
-    desc: 'Arquiteturas concebidas desde o início sob as diretrizes de governança corporativa e conformidade (LGPD/GDPR). Privacidade não é pós-projeto — é fundação.',
+    desc: 'LGPD e GDPR não são uma etapa final - são parte da arquitetura, desde o primeiro dia.',
   },
   {
     num: '06',
