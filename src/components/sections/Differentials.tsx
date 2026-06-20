@@ -10,7 +10,7 @@ const diffs = [
   {
     num: '02',
     title: 'Substância antes da Forma',
-    desc: 'Fugimos de dashboards cosméticos. Nosso foco está nos algoritmos, regras de negócio e na memória de cálculo auditável — a lógica que sustenta qualquer número entregue.',
+    desc: 'Dashboards bonitos são fáceis de fazer. O que é raro é um número em que você pode apostar a decisão.',
   },
   {
     num: '03',
