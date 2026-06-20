@@ -73,7 +73,7 @@ export function Hero() {
                 }
                 className="bg-white text-black px-8 py-4 font-display font-semibold text-base hover:bg-accent hover:text-white transition-all duration-500 ease-smooth hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(45,95,168,0.3)] flex items-center gap-2 group"
               >
-                Agendar Diagnóstico Gratuito
+                Agendar Diagnóstico&nbsp;
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-500 ease-smooth" />
               </button>
               <button
