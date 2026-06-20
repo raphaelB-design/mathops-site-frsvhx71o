@@ -4,7 +4,7 @@ import { ArrowUpRight } from 'lucide-react'
 const diffs = [
   {
     num: '01',
-    title: 'Agnóstico em Tecnologia',
+    title: 'Liberdade de Stack',
     desc: 'Não vendemos software. Construímos soluções utilizando as melhores ferramentas (Open Source ou Enterprise) adequadas à sua realidade operacional e orçamentária.',
   },
   {
