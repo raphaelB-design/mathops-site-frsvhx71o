@@ -15,7 +15,7 @@ const diffs = [
   {
     num: '03',
     title: 'Autonomia por Design',
-    desc: 'Documentamos todo código, modelo arquitetural e regra de negócio para que sua equipe interna tenha autonomia operacional completa após o projeto. Sem dependência de nós.',
+    desc: 'Documentamos cada modelo e cada regra para que sua equipe opere com total independência ao final do projeto.',
   },
   {
     num: '04',
