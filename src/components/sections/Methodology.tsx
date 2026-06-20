@@ -69,8 +69,8 @@ export function Methodology() {
             </span>
             <h2 className="font-display text-4xl md:text-5xl font-bold">Metodologia DMAIC</h2>
             <p className="font-body text-lg text-muted-foreground mt-6 max-w-2xl mx-auto">
-              Adaptamos o principal framework de engenharia de qualidade industrial para o
-              ecossistema de dados corporativos.
+              Importamos e validamos o principal framework de engenharia de qualidade industrial
+              para o ecossistema de dados corporativos.
             </p>
           </div>
         </FadeIn>
