@@ -20,7 +20,7 @@ const steps = [
   {
     letter: 'I',
     name: 'Implement',
-    desc: 'Desenvolvimento e injeção da solução matemática/sistêmica no ambiente de produção com testes A/B.',
+    desc: 'Desenvolvimento e implantação controlada da solução matemática/sistêmica em produção, validada por testes A/B.',
   },
   {
     letter: 'C',
