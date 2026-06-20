@@ -14,7 +14,8 @@ export function ValueStatement() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
         <FadeIn>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-tight tracking-tight">
-            Acreditamos que a intuição é o inimigo silencioso da escala operacional.
+            Empresas não quebram por falta de esforço. Quebram por decisões que pareciam certas e
+            nunca foram testadas.
           </h2>
         </FadeIn>
 
