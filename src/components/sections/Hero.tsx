@@ -2,6 +2,7 @@ import { FadeIn } from '@/components/fade-in'
 import { SlideUpMask } from '@/components/slide-up-mask'
 import { ArrowUpRight, ChevronDown } from 'lucide-react'
 import { AnimatedCounter } from '@/components/animated-counter'
+import { useNavigate } from 'react-router-dom'
 
 const stats = [
   {
@@ -28,6 +29,7 @@ const stats = [
 ]
 
 export function Hero() {
+  const navigate = useNavigate()
   const scrollToServices = () =>
     document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })
 
@@ -84,11 +86,14 @@ export function Hero() {
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-500 ease-smooth" />
               </button>
               <button
-                onClick={scrollToServices}
+                onClick={() => {
+                  window.scrollTo(0, 0)
+                  navigate('/metodologia')
+                }}
                 className="px-8 py-4 font-display font-semibold text-base border border-white/15 hover:border-white/30 hover:bg-white/5 transition-all duration-500 ease-smooth hover:-translate-y-1 flex items-center justify-center gap-2 group"
               >
                 Conhecer Nossa Metodologia
-                <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform duration-500 ease-smooth" />
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-500 ease-smooth" />
               </button>
             </div>
           </FadeIn>

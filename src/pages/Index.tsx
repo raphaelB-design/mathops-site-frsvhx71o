@@ -3,7 +3,6 @@ import { Marquee } from '@/components/sections/Marquee'
 import { ValueStatement } from '@/components/sections/ValueStatement'
 import { Services } from '@/components/sections/Services'
 import { Metrics } from '@/components/sections/Metrics'
-import { Methodology } from '@/components/sections/Methodology'
 import { Industries } from '@/components/sections/Industries'
 import { Differentials } from '@/components/sections/Differentials'
 import { FAQ } from '@/components/sections/FAQ'
@@ -19,7 +18,6 @@ export default function Index() {
       <ValueStatement />
       <Services />
       <Metrics />
-      <Methodology />
       <Industries />
       <Differentials />
       <FAQ />

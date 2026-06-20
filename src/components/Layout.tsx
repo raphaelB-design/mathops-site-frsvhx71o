@@ -39,7 +39,7 @@ export function Layout() {
   const navLinks = [
     { label: 'Sobre a MathOps', path: '/sobre' },
     { label: 'Serviços', id: 'services' },
-    { label: 'Metodologia', id: 'methodology' },
+    { label: 'Metodologia', path: '/metodologia' },
     { label: 'Setores', id: 'industries' },
   ]
 
