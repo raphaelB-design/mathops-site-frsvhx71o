@@ -8,7 +8,7 @@ export function FloatingWhatsApp() {
       rel="noopener noreferrer"
       aria-label="Falar com Especialista no WhatsApp"
       onClick={() => trackClick('whatsapp_click', 'floating_widget')}
-      className="fixed bottom-6 right-6 z-[60] flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] border border-[#25D366] text-white shadow-2xl shadow-[#25D366]/20 transition-all duration-500 ease-out hover:scale-110 hover:-translate-y-1 hover:shadow-[#25D366]/40 group"
+      className="fixed bottom-6 right-6 z-[60] flex items-center justify-center w-14 h-14 rounded-full bg-background/80 backdrop-blur-md border border-border text-foreground shadow-lg transition-all duration-500 ease-out hover:scale-110 hover:-translate-y-1 hover:bg-[#25D366] hover:border-[#25D366] hover:text-white hover:shadow-2xl hover:shadow-[#25D366]/40 group"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
