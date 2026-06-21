@@ -1,6 +1,7 @@
 import { useParams, Link, Navigate, useNavigate } from 'react-router-dom'
 import { serviceLayers } from '@/config/servicesData'
 import { FadeIn } from '@/components/fade-in'
+import { WHATSAPP_URL } from '@/config/constants'
 import { ArrowLeft, ArrowUpRight, CheckCircle2 } from 'lucide-react'
 import {
   Accordion,
@@ -19,16 +20,6 @@ export default function ServiceLayer() {
   }
 
   const layer = serviceLayers[slug as keyof typeof serviceLayers]
-
-  const handleContactClick = () => {
-    navigate('/')
-    setTimeout(() => {
-      const element = document.getElementById('contact')
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-      }
-    }, 100)
-  }
 
   return (
     <div className="w-full flex flex-col min-h-screen pt-24 pb-20 bg-background">
@@ -146,12 +137,14 @@ export default function ServiceLayer() {
 
         <FadeIn delay={400}>
           <div className="mt-16 flex justify-center">
-            <button
-              onClick={handleContactClick}
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-white text-black px-8 py-4 font-display font-semibold text-lg hover:bg-accent hover:text-white transition-colors flex items-center gap-2"
             >
               Falar com um Especialista <ArrowUpRight className="w-5 h-5" />
-            </button>
+            </a>
           </div>
         </FadeIn>
       </div>
