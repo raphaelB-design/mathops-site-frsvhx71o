@@ -96,7 +96,7 @@ export function Layout() {
             Área do Cliente
           </a>
           <a
-            href="https://wa.me/5511991553336?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista%20sobre%20meu%20projeto"
+            href="https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20falar%20com%20um%20especialista%20da%20MathOps."
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackClick('whatsapp_click', 'navbar')}
@@ -169,7 +169,7 @@ export function Layout() {
               Área do Cliente
             </a>
             <a
-              href="https://wa.me/5511991553336?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista%20sobre%20meu%20projeto"
+              href="https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20falar%20com%20um%20especialista%20da%20MathOps."
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => {

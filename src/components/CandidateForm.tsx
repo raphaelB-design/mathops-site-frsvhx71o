@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -39,6 +39,22 @@ export function CandidateForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
 
+  const [num1, setNum1] = useState(0)
+  const [num2, setNum2] = useState(0)
+  const [captchaAnswer, setCaptchaAnswer] = useState('')
+
+  useEffect(() => {
+    generateCaptcha()
+  }, [])
+
+  const generateCaptcha = () => {
+    setNum1(Math.floor(Math.random() * 10) + 1)
+    setNum2(Math.floor(Math.random() * 10) + 1)
+    setCaptchaAnswer('')
+  }
+
+  const isCaptchaValid = parseInt(captchaAnswer) === num1 + num2
+
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: { full_name: '', email: '', area_interest: '', motivation: '' },
@@ -60,12 +76,14 @@ export function CandidateForm() {
       }
       await submitCandidate({ ...values, cv_url })
       setIsSuccess(true)
+      generateCaptcha()
     } catch (error) {
       toast({
         title: 'Erro ao enviar',
         description: 'Ocorreu um erro ao enviar sua candidatura. Tente novamente.',
         variant: 'destructive',
       })
+      generateCaptcha()
     } finally {
       setIsSubmitting(false)
     }
@@ -148,12 +166,8 @@ export function CandidateForm() {
                   <SelectItem value="Modelagem Matemática e Estatística">
                     Modelagem Matemática e Estatística
                   </SelectItem>
-                  <SelectItem value="Inteligência Artificial e Governança">
-                    Inteligência Artificial e Governança
-                  </SelectItem>
-                  <SelectItem value="Comercial e Relacionamento">
-                    Comercial e Relacionamento
-                  </SelectItem>
+                  <SelectItem value="Engenharia de Software">Engenharia de Software</SelectItem>
+                  <SelectItem value="Outros">Outros</SelectItem>
                 </SelectContent>
               </Select>
               <FormMessage />
@@ -166,60 +180,76 @@ export function CandidateForm() {
           name="motivation"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-white">Por que a MathOps Strategy?</FormLabel>
+              <FormLabel className="text-white">Carta de Apresentação / Motivação</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Conte-nos o que te motiva..."
-                  className="bg-transparent border-white/10 text-white resize-none"
-                  rows={5}
+                  placeholder="Conte-nos por que você quer fazer parte da MathOps..."
+                  className="bg-transparent border-white/10 text-white min-h-[120px]"
                   {...field}
                 />
               </FormControl>
-              <div className="text-xs text-right text-muted-foreground">
-                {field.value?.length || 0}/500
-              </div>
               <FormMessage />
             </FormItem>
           )}
         />
 
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-white">
-            Currículo — PDF ou DOCX (opcional)
-          </label>
-          {!file ? (
-            <div className="border-2 border-dashed border-white/10 p-6 flex flex-col items-center justify-center text-center hover:border-accent/50 hover:bg-white/[0.02] transition-colors cursor-pointer relative rounded-md">
-              <input
-                type="file"
-                className="absolute inset-0 opacity-0 cursor-pointer"
-                accept=".pdf,.doc,.docx"
-                onChange={(e) => setFile(e.target.files?.[0] || null)}
-              />
-              <Upload className="w-6 h-6 text-muted-foreground mb-2" />
-              <p className="text-sm text-muted-foreground">Clique ou arraste seu arquivo aqui</p>
-            </div>
-          ) : (
-            <div className="flex items-center justify-between p-4 border border-white/10 bg-white/[0.02] rounded-md">
-              <span className="text-sm text-white truncate max-w-[250px]">{file.name}</span>
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                onClick={() => setFile(null)}
-                className="text-muted-foreground hover:text-white"
-              >
-                <X className="w-4 h-4 mr-2" /> Remover arquivo
-              </Button>
-            </div>
-          )}
+        <div className="space-y-3">
+          <FormLabel className="text-white">Currículo (Opcional)</FormLabel>
+          <div className="flex items-center gap-4">
+            <Button
+              type="button"
+              variant="outline"
+              className="bg-transparent border-white/10 text-white hover:bg-white/5"
+              onClick={() => document.getElementById('cv-upload')?.click()}
+            >
+              <Upload className="w-4 h-4 mr-2" />
+              {file ? 'Trocar arquivo' : 'Anexar CV'}
+            </Button>
+            {file && (
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <span className="truncate max-w-[200px]">{file.name}</span>
+                <button
+                  type="button"
+                  onClick={() => setFile(null)}
+                  className="hover:text-white transition-colors"
+                  aria-label="Remover arquivo"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+            )}
+            <input
+              id="cv-upload"
+              type="file"
+              accept=".pdf,.doc,.docx"
+              className="hidden"
+              onChange={(e) => setFile(e.target.files?.[0] || null)}
+            />
+          </div>
+        </div>
+
+        <div className="space-y-3 p-4 border border-white/10 bg-black/20 rounded-md">
+          <FormLabel className="text-white">Verificação de Segurança</FormLabel>
+          <div className="flex items-center gap-4">
+            <span className="text-white font-mono text-lg">
+              Quanto é {num1} + {num2}?
+            </span>
+            <Input
+              type="number"
+              value={captchaAnswer}
+              onChange={(e) => setCaptchaAnswer(e.target.value)}
+              className="bg-transparent border-white/10 text-white w-24"
+              placeholder="Soma"
+            />
+          </div>
         </div>
 
         <Button
           type="submit"
-          className="w-full bg-accent text-white hover:bg-accent/90 py-6 font-display font-bold text-base"
-          disabled={isSubmitting}
+          disabled={isSubmitting || !isCaptchaValid}
+          className="w-full bg-accent text-white hover:bg-accent/90 disabled:opacity-50"
         >
-          {isSubmitting ? 'Enviando candidatura...' : 'Enviar Candidatura'}
+          {isSubmitting ? 'Enviando...' : 'Enviar Candidatura'}
         </Button>
       </form>
     </Form>
