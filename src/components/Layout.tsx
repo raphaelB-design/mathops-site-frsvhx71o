@@ -95,12 +95,15 @@ export function Layout() {
           >
             Área do Cliente
           </a>
-          <button
-            onClick={() => scrollTo('contact')}
+          <a
+            href="https://wa.me/5511991553336?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista%20sobre%20meu%20projeto"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackClick('whatsapp_click', 'navbar')}
             className="bg-white text-black px-5 py-2.5 font-display font-semibold text-sm hover:bg-accent hover:text-white transition-colors flex items-center gap-2"
           >
             Falar com Especialista <ArrowUpRight className="w-4 h-4" />
-          </button>
+          </a>
         </div>
 
         {/* Mobile Toggle */}
@@ -165,12 +168,18 @@ export function Layout() {
             >
               Área do Cliente
             </a>
-            <button
-              onClick={() => scrollTo('contact')}
+            <a
+              href="https://wa.me/5511991553336?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista%20sobre%20meu%20projeto"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                setIsMobileMenuOpen(false)
+                trackClick('whatsapp_click', 'mobile_menu')
+              }}
               className="mt-4 bg-white text-black px-8 py-4 font-bold text-lg w-full max-w-xs hover:bg-accent hover:text-white transition-colors flex items-center justify-center gap-2"
             >
               Falar com Especialista <ArrowUpRight className="w-5 h-5" />
-            </button>
+            </a>
           </nav>
         </div>
       )}
