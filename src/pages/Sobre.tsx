@@ -27,8 +27,7 @@ export default function Sobre() {
               <SlideUpMask delay={100}>Sobre a MathOps</SlideUpMask>
             </h1>
             <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground font-serif italic">
-              Defendendo o patrimônio e a liberdade com excelência, discrição e precisão estratégica
-              incomparáveis.
+              Construímos a ponte entre o que sua operação sente e o que ela pode provar.
             </p>
           </FadeIn>
         </div>
@@ -49,14 +48,15 @@ export default function Sobre() {
 
             <div className="space-y-8 text-xl md:text-2xl font-serif leading-relaxed text-muted-foreground">
               <p>
-                A MathOps nasceu da convicção de que a advocacia criminal de alto nível exige mais
-                do que conhecimento técnico; exige uma compreensão profunda das dinâmicas de poder,
-                dos mercados financeiros e da preservação de reputações.
+                A MathOps nasceu da convicção de que a excelência operacional não é um privilégio de
+                grandes corporações. Empresas de qualquer porte enfrentam decisões complexas que
+                exigem mais do que intuição — exigem evidência estruturada, modelagem rigorosa e
+                rastreabilidade total.
               </p>
               <p>
-                Atuamos no limiar das decisões mais críticas que um indivíduo ou corporação pode
-                enfrentar, garantindo que nossos clientes naveguem por crises complexas com
-                segurança e estratégia.
+                Atuamos no limiar das decisões mais críticas que uma operação pode enfrentar:
+                precificação, planejamento de capacidade, governança de dados e automação de
+                processos. Não substituímos o julgamento do gestor; blindamos ele com matemática.
               </p>
             </div>
           </FadeIn>
@@ -74,8 +74,9 @@ export default function Sobre() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="font-serif text-muted-foreground">
-                Prover defesa criminal artesanal e estratégica, blindando o patrimônio, a liberdade
-                e a reputação de nossos clientes com máximo rigor técnico e discrição absoluta.
+                Entregar inteligência analítica aplicada que transforma dados brutos em vantagem
+                competitiva sustentável — com rigor metodológico, rastreabilidade total e foco em
+                resultado mensurável.
               </CardContent>
             </Card>
 
@@ -86,9 +87,9 @@ export default function Sobre() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="font-serif text-muted-foreground">
-                Ser o escritório de referência na América Latina para resoluções de crises penais
-                complexas e crimes do colarinho branco, ditando os padrões de excelência na
-                advocacia boutique.
+                Ser a referência em consultoria analítica boutique no Brasil, reconhecida pela
+                qualidade Six Sigma dos nossos modelos e pela capacidade de tornar decisões
+                complexas simples de executar.
               </CardContent>
             </Card>
 
@@ -102,19 +103,19 @@ export default function Sobre() {
                 <ul className="space-y-2">
                   <li className="flex items-start gap-2">
                     <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                    <span>Sigilo Inquebrantável</span>
+                    <span>Rigor antes de velocidade</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                    <span>Rigor Analítico</span>
+                    <span>Rastreabilidade total (memória de cálculo auditável)</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                    <span>Lealdade Absoluta</span>
+                    <span>Resultado como compromisso, não promessa</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                    <span>Combate Estratégico</span>
+                    <span>Discrição e sigilo como padrão operacional</span>
                   </li>
                 </ul>
               </CardContent>
