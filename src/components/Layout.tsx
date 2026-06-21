@@ -3,6 +3,7 @@ import { Menu, X, ArrowUpRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useState, useEffect } from 'react'
 import { trackClick } from '@/services/analytics'
+import { FloatingWhatsApp } from '@/components/FloatingWhatsApp'
 
 export function Layout() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -96,7 +97,7 @@ export function Layout() {
             Área do Cliente
           </a>
           <a
-            href="https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20falar%20com%20um%20especialista%20da%20MathOps."
+            href="https://wa.me/5511991553336?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista%20MathOps"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackClick('whatsapp_click', 'navbar')}
@@ -169,7 +170,7 @@ export function Layout() {
               Área do Cliente
             </a>
             <a
-              href="https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20falar%20com%20um%20especialista%20da%20MathOps."
+              href="https://wa.me/5511991553336?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista%20MathOps"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => {
@@ -188,6 +189,8 @@ export function Layout() {
       <main className="flex-1 w-full mt-[72px]">
         <Outlet />
       </main>
+
+      <FloatingWhatsApp />
     </div>
   )
 }
