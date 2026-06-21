@@ -1,39 +1,13 @@
 import { useRef, useEffect } from 'react'
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
-import { cn } from '@/lib/utils'
 
 const marqueeItems = [
-  {
-    term: 'Data Science',
-    description:
-      'Transforme dados brutos em inteligência competitiva para reduzir custos operacionais.',
-  },
-  {
-    term: 'Pesquisa Operacional',
-    description:
-      'Otimize a alocação de recursos e processos complexos com modelos matemáticos avançados.',
-  },
-  {
-    term: 'Inteligência Artificial',
-    description: 'Automação inteligente e modelos preditivos para antecipar tendências de mercado.',
-  },
-  {
-    term: 'Simulação de Cenários',
-    description:
-      'Teste decisões estratégicas em ambiente virtual seguro antes da implementação real.',
-  },
-  {
-    term: 'Otimização Logística',
-    description: 'Reduza quilometragem e tempo de entrega com roteirização inteligente.',
-  },
-  {
-    term: 'Manutenção Preditiva',
-    description: 'Evite paradas não planejadas identificando falhas antes que elas ocorram.',
-  },
-  {
-    term: 'Gestão de Estoques',
-    description: 'Equilibre oferta e demanda minimizando capital imobilizado.',
-  },
+  { term: 'Data Science' },
+  { term: 'Pesquisa Operacional' },
+  { term: 'Inteligência Artificial' },
+  { term: 'Simulação de Cenários' },
+  { term: 'Otimização Logística' },
+  { term: 'Manutenção Preditiva' },
+  { term: 'Gestão de Estoques' },
 ]
 
 export function Marquee() {
@@ -141,19 +115,9 @@ export function Marquee() {
         <div className="flex w-max shrink-0 items-center">
           {marqueeItems.map((item, idx) => (
             <span key={`first-${idx}`} className="flex items-center">
-              <Tooltip delayDuration={200}>
-                <TooltipTrigger asChild>
-                  <span className="font-display text-2xl md:text-3xl font-bold uppercase text-white/40 hover:text-accent transition-colors px-8 cursor-help">
-                    {item.term}
-                  </span>
-                </TooltipTrigger>
-                <TooltipContent
-                  side="top"
-                  className="max-w-xs text-center border-accent/20 bg-background/95 backdrop-blur-sm z-50"
-                >
-                  <p className="text-sm text-white/80">{item.description}</p>
-                </TooltipContent>
-              </Tooltip>
+              <span className="font-display text-2xl md:text-3xl font-bold uppercase text-white/40 hover:text-accent transition-colors px-8">
+                {item.term}
+              </span>
               <span className="text-accent/50 text-xl">•</span>
             </span>
           ))}
@@ -161,19 +125,9 @@ export function Marquee() {
         <div className="flex w-max shrink-0 items-center">
           {marqueeItems.map((item, idx) => (
             <span key={`second-${idx}`} className="flex items-center">
-              <Tooltip delayDuration={200}>
-                <TooltipTrigger asChild>
-                  <span className="font-display text-2xl md:text-3xl font-bold uppercase text-white/40 hover:text-accent transition-colors px-8 cursor-help">
-                    {item.term}
-                  </span>
-                </TooltipTrigger>
-                <TooltipContent
-                  side="top"
-                  className="max-w-xs text-center border-accent/20 bg-background/95 backdrop-blur-sm z-50"
-                >
-                  <p className="text-sm text-white/80">{item.description}</p>
-                </TooltipContent>
-              </Tooltip>
+              <span className="font-display text-2xl md:text-3xl font-bold uppercase text-white/40 hover:text-accent transition-colors px-8">
+                {item.term}
+              </span>
               <span className="text-accent/50 text-xl">•</span>
             </span>
           ))}
