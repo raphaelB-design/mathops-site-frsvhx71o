@@ -37,7 +37,7 @@ export function Industries() {
                     <div className="absolute inset-0 z-0 overflow-hidden">
                       <img
                         src={ind.thumbnail}
-                        alt={ind.name}
+                        alt={ind.imageAlt}
                         className="w-full h-full object-cover opacity-50 group-hover:opacity-90 grayscale group-hover:grayscale-0 scale-100 group-hover:scale-110 transition-all duration-700 ease-in-out"
                       />
                       {/* Gradient Overlay for Readability */}
