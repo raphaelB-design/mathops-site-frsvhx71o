@@ -88,8 +88,8 @@ export const industriesData = {
     desc: 'Previsão de safra e otimização logística no campo.',
     details:
       'Modelos preditivos que cruzam dados meteorológicos, topográficos e históricos para estimativa precisa de safra e detecção de anomalias fenológicas. Além disso, formulamos algoritmos complexos para otimizar rotas de maquinário autônomo no campo (Path Planning) e a logística de escoamento para silos e portos, sincronizando a colheita com a capacidade de secagem e transporte rodoviário/ferroviário.',
-    image: 'https://img.usecurling.com/p/1200/800?q=agriculture&color=black',
-    thumbnail: 'https://img.usecurling.com/p/600/400?q=agriculture&color=black',
+    image: 'https://img.usecurling.com/p/1200/800?q=smart%20farming&color=black',
+    thumbnail: 'https://img.usecurling.com/p/600/400?q=smart%20farming&color=black',
   },
   energia: {
     slug: 'energia',
