@@ -38,12 +38,12 @@ export function Industries() {
                       <img
                         src={ind.thumbnail}
                         alt={ind.imageAlt}
-                        className="w-full h-full object-cover opacity-50 group-hover:opacity-90 grayscale group-hover:grayscale-0 scale-100 group-hover:scale-110 transition-all duration-700 ease-in-out"
+                        className="w-full h-full object-cover opacity-50 group-hover:opacity-90 grayscale group-hover:grayscale-0 scale-100 group-hover:scale-110 transition-all duration-500 ease-in-out"
                       />
                       {/* Gradient Overlay for Readability */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent transition-opacity duration-500 group-hover:opacity-80" />
                       {/* Radial Glow on Hover */}
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_0%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_0%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                     </div>
 
                     <div className="relative z-10 w-12 h-12 flex items-center justify-center bg-black/60 border border-white/20 text-white group-hover:text-accent group-hover:scale-110 group-hover:border-accent/50 transition-all duration-500 backdrop-blur-md shadow-xl">
