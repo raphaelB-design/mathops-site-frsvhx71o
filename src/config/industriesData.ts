@@ -48,7 +48,7 @@ export const industriesData = {
     slug: 'logistica',
     icon: Truck,
     name: 'Logística',
-    desc: 'Roteirização inteligente e malha otimizada.',
+    desc: 'Algoritmos de alta performance para redes complexas: roteirização dinâmica e simulação estocástica para redução drástica de custos operacionais.',
     details:
       'Da primeira à última milha, a matemática resolve o clássico problema do caixeiro viajante em escala colossal. Implementamos heurísticas avançadas de Roteirização Dinâmica com Janelas de Tempo (VRPTW), consolidação de cargas 3D (Bin Packing) e otimização de malha de distribuição (Facility Location Problem). Nossos modelos respondem a variáveis reais de trânsito e capacidades, reduzindo o custo de frete e emissões de carbono em dois dígitos.',
     image: 'https://img.usecurling.com/p/1200/800?q=logistics',
@@ -59,7 +59,7 @@ export const industriesData = {
     slug: 'financas',
     icon: Landmark,
     name: 'Finanças',
-    desc: 'Modelos de crédito e análise de risco.',
+    desc: 'Matemática financeira de ponta para gestão de ativos: algoritmos de trade, análise de risco sistêmico e motores de antifraude inteligentes.',
     details:
       'O mercado financeiro respira dados. A MathOps desenvolve modelos avançados de credit scoring não-linear, detecção de fraudes em tempo real utilizando grafos e otimização de portfólios baseada em fronteira eficiente de Markowitz e estatística bayesiana profunda. Substituímos matrizes de risco baseadas em intuição por rigor quantitativo, garantindo maior rentabilidade ajustada ao risco e adequação regulatória estrita.',
     image: 'https://img.usecurling.com/p/1200/800?q=finance',
@@ -70,7 +70,7 @@ export const industriesData = {
     slug: 'varejo',
     icon: ShoppingCart,
     name: 'Varejo',
-    desc: 'Precificação dinâmica e controle de estoque.',
+    desc: 'Data Science no coração do consumo: hiper-personalização em tempo real e motores de recomendação baseados em comportamento profundo do cliente.',
     details:
       'Maximize as margens com algoritmos de precificação dinâmica que respondem de maneira ótima à elasticidade da demanda, sazonalidade e aos movimentos da concorrência (Game Theory). Otimizamos a alocação de estoque multi-escalão (Multi-Echelon Inventory Optimization) entre centros de distribuição e centenas de lojas físicas, garantindo o balanceamento perfeito para minimizar rupturas de gôndola e markdown excessivo de produtos.',
     image: 'https://img.usecurling.com/p/1200/800?q=retail',
@@ -92,7 +92,7 @@ export const industriesData = {
     slug: 'agronegocio',
     icon: Sprout,
     name: 'Agronegócio',
-    desc: 'Previsão de safra e otimização logística no campo.',
+    desc: 'Inteligência Artificial aplicada à precisão do campo: modelos preditivos de safra e visão computacional para otimização de colheita e produtividade.',
     details:
       'Modelos preditivos que cruzam dados meteorológicos, topográficos e históricos para estimativa precisa de safra e detecção de anomalias fenológicas. Além disso, formulamos algoritmos complexos para otimizar rotas de maquinário autônomo no campo (Path Planning) e a logística de escoamento para silos e portos, sincronizando a colheita com a capacidade de secagem e transporte rodoviário/ferroviário.',
     image: 'https://img.usecurling.com/p/1200/800?q=harvester%20field',
@@ -103,7 +103,7 @@ export const industriesData = {
     slug: 'energia',
     icon: Zap,
     name: 'Energia & Utilities',
-    desc: 'Focado em previsão de demanda, smart grids e eficiência de recursos.',
+    desc: 'Modelagem avançada para redes inteligentes: previsão de carga, otimização de despacho e monitoramento preditivo para infraestrutura crítica.',
     details:
       'A transição energética exige precisão e resiliência. Implementamos modelos matemáticos para previsão estocástica de demanda e de geração intermitente (eólica/solar), otimização não-linear do despacho hidrotérmico e algoritmos para balanceamento de smart grids em tempo real. Nossa matemática garante a confiabilidade do sistema elétrico minimizando o acionamento de usinas termelétricas custosas e a perda de energia na transmissão.',
     image: 'https://img.usecurling.com/p/1200/800?q=energy',
