@@ -15,19 +15,6 @@ export function Footer() {
     <footer className="pt-20 pb-10 px-6 md:px-12 bg-black border-t border-white/10 w-full flex flex-col">
       <div className="max-w-7xl mx-auto w-full">
         {/* Pre-footer CTA */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 py-8 border-b border-white/10 mb-16">
-          <div>
-            <p className="font-display font-bold text-lg mb-1">
-              Pronto para transformar dados em estratégia?
-            </p>
-          </div>
-          <a
-            href="mailto:strategy@mathops.com.br"
-            className="shrink-0 flex items-center gap-2 bg-white text-black px-6 py-3 font-display font-semibold text-sm hover:bg-accent hover:text-white transition-colors"
-          >
-            Falar com um Especialista <ArrowUpRight className="w-4 h-4" />
-          </a>
-        </div>
 
         {/* Main footer grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
