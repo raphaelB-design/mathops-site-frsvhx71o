@@ -50,7 +50,7 @@ export default function Sobre() {
               <p>
                 A MathOps nasceu da convicção de que a excelência operacional não é um privilégio de
                 grandes corporações. Empresas de qualquer porte enfrentam decisões complexas que
-                exigem mais do que intuição — exigem evidência estruturada, modelagem rigorosa e
+                exigem mais do que intuição, mas sim evidência estruturada, modelagem rigorosa e
                 rastreabilidade total.
               </p>
               <p>
