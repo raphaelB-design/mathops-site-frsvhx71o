@@ -1,109 +1,150 @@
-export const serviceLayers = {
+export interface ServiceDetail {
+  id: string
+  name: string
+  image: string
+  headline: string
+  dor?: string
+  entregaveis?: string
+  tecnicos?: string
+  fit?: string
+  prazo?: string
+  metodologia?: string
+}
+
+export interface ServiceLayer {
+  title: string
+  headline: string
+  description: string
+  services: ServiceDetail[]
+}
+
+export const serviceLayers: Record<string, ServiceLayer> = {
   'diagnostico-e-visibilidade': {
     title: 'Diagnóstico e Visibilidade',
-    headline: 'Elimine gargalos invisíveis e enxergue a realidade dos seus dados.',
+    headline:
+      'A arquitetura da verdade absoluta. Elimine zonas de sombra e extraia o DNA operacional da sua empresa.',
     description:
-      'Mapeamento profundo e painéis interativos que substituem a percepção pela evidência.',
+      'Mapeamento profundo e inteligência de painéis que substituem o achismo empírico por evidências irrefutáveis.',
     services: [
       {
         id: 'mapeamento-processos',
-        name: 'Mapeamento de Processos AS IS / TO BE',
-        headline: 'Elimine gargalos invisíveis e desenhe a operação eficiente do futuro.',
-        dor: 'Sentimento de que a operação bate cabeça, falta de padronização, retrabalho constante e dependência excessiva de pessoas específicas.',
-        entregaveis: 'Imersão, Documentação AS IS, Redesenho TO BE.',
-        tecnicos: 'Fluxogramas BPMN, Relatório de gargalos, Plano de ação.',
-        fit: 'Empresas crescendo rápido com operação "pesada".',
+        name: 'Mapeamento Estrutural AS IS / TO BE',
+        image: 'https://img.usecurling.com/p/800/600?q=blueprint%20architecture&color=gray&dpr=2',
+        headline:
+          'Engenharia reversa da sua operação. Identificamos gargalos invisíveis e projetamos a eficiência em seu estado da arte.',
+        dor: 'Sintomas de entropia operacional: despadronização endêmica, retrabalho sistêmico e dependência crítica de capital humano centralizado.',
+        entregaveis: 'Imersão de Diagnóstico, Topologia AS IS, Arquitetura TO BE.',
+        tecnicos: 'Modelagem BPMN 2.0, Matriz de Gargalos, Roadmap de Implementação Executiva.',
+        fit: 'Corporações em fase de tração escalonável sofrendo de "débito operacional".',
         prazo: '2 a 6 semanas.',
       },
       {
         id: 'dashboard-diagnostico',
-        name: 'Dashboard Diagnóstico',
+        name: 'Observatório de Dados Estratégicos',
+        image: 'https://img.usecurling.com/p/800/600?q=dashboard%20screen&color=gray&dpr=2',
         headline:
-          'Enxergue a realidade dos seus dados em poucos dias, sem mexer na sua estrutura atual.',
-        dor: 'Gestores que tomam decisões baseadas no "feeling", relatórios manuais desatualizados.',
-        entregaveis: 'Conexão Power BI, Centralização de KPIs, Painel interativo.',
-        fit: 'Empresas que precisam de respostas rápidas com baixo orçamento inicial.',
+          'Visibilidade executiva em tempo real. Uma camada de observabilidade instaurada em semanas, sem disrupção da infraestrutura atual.',
+        dor: 'Governança baseada em latência de informações. Relatórios manuais obsoletos que induzem decisões executivas ao erro.',
+        entregaveis:
+          'Integração Power BI, Centralização de KPIs C-Level, Painel Analítico de Alta Fidelidade.',
+        fit: 'Operações que demandam governança imediata com otimização de capital investido inicial.',
         prazo: '3 a 8 semanas.',
       },
     ],
   },
   'analise-e-modelagem': {
     title: 'Análise e Modelagem',
-    headline: 'Modelagem estatística e análise estruturada para prever cenários.',
+    headline:
+      'Previsibilidade projetada. Algoritmos e modelos estatísticos para dominar o futuro de mercado.',
     description:
-      'Transforme dados brutos em previsões precisas e identifique perdas financeiras ocultas.',
+      'Transforme dados inertes em ativos preditivos e estanque perdas financeiras submersas em sua cadeia de valor.',
     services: [
       {
         id: 'modelagem',
-        name: 'Modelagem Matemática e Estatística',
-        headline: 'Preveja cenários reais e tome decisões baseadas em dados.',
-        dor: 'Incerteza ao planejar estoque, compras, precificação ou expansão.',
-        entregaveis: 'Modelos preditivos, Análise de variabilidade, Simulações "What-if".',
+        name: 'Modelagem Preditiva & Estatística Aplicada',
+        image: 'https://img.usecurling.com/p/800/600?q=complex%20mathematics&color=gray&dpr=2',
+        headline:
+          'A matemática da antecipação. Projete cenários críticos e ancore suas decisões em probabilidade avançada.',
+        dor: 'Navegação às cegas: incerteza crônica no provisionamento de estoque, precificação dinâmica e projeções de M&A.',
+        entregaveis:
+          'Algoritmos Preditivos, Análise de Variância (ANOVA), Simulações Estocásticas (What-if).',
         prazo: '4 a 12 semanas.',
       },
       {
         id: 'memorias',
-        name: 'Memórias de Cálculo Formalizadas',
+        name: 'Engenharia de Memórias de Cálculo',
+        image: 'https://img.usecurling.com/p/800/600?q=legal%20documents&color=gray&dpr=2',
         headline:
-          'Proteja a governança da sua empresa blindando a forma como suas métricas são calculadas.',
-        dor: 'Departamentos calculando a mesma métrica de jeitos diferentes.',
+          'Auditoria e blindagem matemática. Imunize a governança corporativa contra assimetria de cálculos internos.',
+        dor: 'Silos departamentais divergindo estruturalmente no cálculo de métricas vitais de balanço.',
         prazo: '1 a 3 semanas.',
       },
       {
         id: 'analise',
-        name: 'Análise de Melhoria de Processos',
-        headline: 'Identifique e elimine as perdas financeiras ocultas na sua operação.',
-        dor: 'Perdas de tempo/matéria-prima sem prova estatística de onde está falhando.',
-        metodologia: 'A3 ou DMAIC simplificado.',
+        name: 'Auditoria Analítica de Processos',
+        image: 'https://img.usecurling.com/p/800/600?q=industrial%20engineering&color=gray&dpr=2',
+        headline:
+          'Exposição cirúrgica de perdas financeiras. Isolamos e neutralizamos ineficiências com rigor estatístico.',
+        dor: 'Drenagem crônica de capital/matéria-prima sem lastro probatório da raiz do problema.',
+        metodologia: 'Aplicações híbridas de Six Sigma: Modelos A3 ou DMAIC adaptativos.',
       },
     ],
   },
   'solucao-e-recorrencia': {
     title: 'Solução e Recorrência',
-    headline: 'Estruturas definitivas e automatizadas para escala global.',
+    headline: 'Automação autônoma. Infraestruturas definitivas para escala operacional irrestrita.',
     description:
-      'Substitua tarefas manuais por inteligência e terceirize suas operações analíticas com um time de elite.',
+      'Erradique a dependência manual. Terceirize a carga cognitiva analítica para nossa inteligência sistêmica.',
     services: [
       {
         id: 'power-bi',
-        name: 'Power BI Corporativo Modelado',
-        headline: 'A estrutura definitiva de BI para transformar dados em ativos de escala global.',
-        dor: 'Lentidão nos painéis e visões fragmentadas.',
+        name: 'Arquitetura Corporativa de BI',
+        image: 'https://img.usecurling.com/p/800/600?q=data%20center%20server&color=gray&dpr=2',
+        headline:
+          'O sistema nervoso da sua empresa. Uma fundação de Business Intelligence modelada para suportar trilhões de linhas.',
+        dor: 'Colapso de performance: painéis lentos, arquiteturas fragmentadas e incapacidade de escala.',
       },
       {
         id: 'automacao',
-        name: 'Automação de Processos',
-        headline: 'Substitua tarefas manuais repetitivas por robôs e softwares inteligentes.',
-        entregaveis: 'RPA, scripts Python, Power Apps.',
+        name: 'Hiperautomação de Fluxos',
+        image: 'https://img.usecurling.com/p/800/600?q=robotic%20arm&color=gray&dpr=2',
+        headline:
+          'A força de trabalho invisível. Delegação de processos repetitivos para agentes de software de alta precisão.',
+        entregaveis: 'Arquitetura RPA, Agentes em Python, Ecossistema Power Apps.',
       },
       {
         id: 'torre',
-        name: 'Torre de Controle Analítico (Produto Âncora)',
+        name: 'Torre de Controle Analítico (TCA)',
+        image: 'https://img.usecurling.com/p/800/600?q=control%20room%20screens&color=gray&dpr=2',
         headline:
-          'Terceirize a inteligência de dados e processos da sua empresa com um time de elite.',
-        fit: 'C-Levels que querem estrutura de ponta sem gerenciar área técnica.',
+          'Seu núcleo de inteligência terceirizado. O produto âncora para operações que exigem elite analítica sem overhead de RH.',
+        fit: 'Board Executivo que necessita de excelência técnica imediata, sem o fardo de reter talentos raros de engenharia de dados.',
       },
     ],
   },
   'inteligencia-artificial': {
     title: 'Inteligência Artificial',
-    headline: 'Prontidão e governança para a era da IA na sua empresa.',
+    headline: 'Prontidão computacional. A fundação necessária para a nova era cognitiva.',
     description:
-      'Descubra se sua empresa está pronta para a IA e construa o alicerce de dados obrigatório para sustentá-la.',
+      'Não construa sobre areia. Validamos sua maturidade algorítmica e forjamos o alicerce de dados exigido por modelos de IA.',
     services: [
       {
         id: 'ai-readiness',
-        name: 'Diagnóstico de Prontidão para IA (AI Readiness)',
+        name: 'Auditoria de Prontidão IA (AI Readiness)',
+        image:
+          'https://img.usecurling.com/p/800/600?q=artificial%20intelligence%20brain&color=gray&dpr=2',
         headline:
-          'Descubra se sua empresa está realmente pronta para implementar IA ou se vai jogar dinheiro fora.',
-        entregaveis: 'Auditoria de Infra, Viabilidade de Negócio, Roadmap executivo.',
+          'Proteção contra hype. Avaliação contundente para garantir que seu investimento em IA gere ROI, não frustração.',
+        entregaveis:
+          'Stress-test de Infraestrutura, Matriz de Viabilidade de Negócio, Roadmap de Adoção C-Level.',
       },
       {
         id: 'governanca',
-        name: 'Governança de Dados e Indicadores',
+        name: 'Governança Estrita de Dados',
+        image: 'https://img.usecurling.com/p/800/600?q=cyber%20security%20lock&color=gray&dpr=2',
         headline:
-          'Construa o alicerce de dados obrigatório para sustentar qualquer projeto de Inteligência Artificial.',
-        dor: 'Dados duplicados e bases corrompidas ("Garbage in, garbage out").',
+          'Higiene algorítmica. A espinha dorsal inegociável para sustentar a implementação de Machine Learning.',
+        dor: 'O paradoxo "Garbage in, garbage out": lagos de dados poluídos gerando alucinações algorítmicas.',
       },
     ],
   },
