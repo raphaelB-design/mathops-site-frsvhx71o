@@ -2,7 +2,6 @@ import { FadeIn } from '@/components/fade-in'
 import { SlideUpMask } from '@/components/slide-up-mask'
 import { Separator } from '@/components/ui/separator'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Check } from 'lucide-react'
 import heroBg from '@/assets/imagem2026-06-18231310090-99a81.png'
 
 export default function Sobre() {
@@ -101,20 +100,16 @@ export default function Sobre() {
               </CardHeader>
               <CardContent className="space-y-4 font-serif text-muted-foreground">
                 <ul className="space-y-2">
-                  <li className="flex items-start gap-2">
-                    <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                  <li>
                     <span>Rigor antes de velocidade</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                  <li>
                     <span>Rastreabilidade total (memória de cálculo auditável)</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                  <li>
                     <span>Resultado como compromisso, não promessa</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                  <li>
                     <span>Discrição e sigilo como padrão operacional</span>
                   </li>
                 </ul>
