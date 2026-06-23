@@ -88,13 +88,14 @@ export function Layout() {
 
         <div className="hidden md:flex items-center gap-4">
           <a
-            href="https://www.goskip.dev/raphael-batista-743c8/builder/1094ba2d-765b-4854-b5f2-c331d8d10ef4"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackClick('crm_access_click', 'header_desktop')}
+            href="#"
+            onClick={(e) => {
+              e.preventDefault()
+              trackClick('crm_access_click', 'header_desktop')
+            }}
             className="font-mono text-xs font-bold uppercase tracking-[0.08em] text-white border border-white/20 px-5 py-2.5 hover:bg-white hover:text-black transition-colors"
           >
-            Área do Cliente
+            Em Breve
           </a>
           <a
             href="https://wa.me/5511991553336?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista%20MathOps"
@@ -158,16 +159,15 @@ export function Layout() {
               ),
             )}
             <a
-              href="https://www.goskip.dev/raphael-batista-743c8/builder/1094ba2d-765b-4854-b5f2-c331d8d10ef4"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => {
+              href="#"
+              onClick={(e) => {
+                e.preventDefault()
                 setIsMobileMenuOpen(false)
                 trackClick('crm_access_click', 'header_mobile')
               }}
               className="mt-8 font-mono text-sm font-bold uppercase tracking-[0.08em] text-white border border-white/20 px-8 py-4 w-full max-w-xs text-center hover:bg-white hover:text-black transition-colors"
             >
-              Área do Cliente
+              Em Breve
             </a>
             <a
               href="https://wa.me/5511991553336?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista%20MathOps"
