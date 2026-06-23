@@ -5,6 +5,7 @@ import { FadeIn } from '@/components/fade-in'
 import { WHATSAPP_URL } from '@/config/constants'
 import {
   ArrowLeft,
+  ArrowRight,
   Play,
   Info,
   AlertTriangle,
@@ -82,15 +83,13 @@ export default function ServiceLayer() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {layer.services.map((service, idx) => (
+            {layer.services.map((service) => (
               <div
                 key={service.id}
                 onClick={() => setSelectedService(service)}
                 className={cn(
                   'group relative cursor-pointer overflow-hidden rounded-sm transition-all duration-500 bg-zinc-950 border border-white/10 hover:border-white/30 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]',
-                  idx === 0 && layer.services.length % 2 !== 0
-                    ? 'md:col-span-2 lg:col-span-2 aspect-[16/9] md:aspect-[21/9]'
-                    : 'aspect-[4/3] lg:aspect-[16/11]',
+                  'aspect-[4/3]',
                 )}
               >
                 <img
@@ -99,11 +98,19 @@ export default function ServiceLayer() {
                   className="absolute inset-0 w-full h-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-105"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent flex flex-col justify-end p-6 md:p-10">
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/20 flex flex-col justify-end p-6 md:p-10">
                   <div className="space-y-4">
-                    <h3 className="text-white font-serif text-2xl md:text-3xl lg:text-4xl font-medium mb-2 drop-shadow-2xl">
-                      {service.name}
-                    </h3>
+                    <div>
+                      {service.prazo && (
+                        <div className="inline-flex items-center gap-1.5 bg-white/15 border border-white/20 backdrop-blur-sm px-3 py-1 rounded-sm text-[10px] font-mono uppercase tracking-widest text-white/80 mb-3">
+                          <Clock className="w-3.5 h-3.5" />
+                          <span>{service.prazo}</span>
+                        </div>
+                      )}
+                      <h3 className="text-white font-serif text-2xl md:text-3xl lg:text-4xl font-medium mb-2 drop-shadow-2xl">
+                        {service.name}
+                      </h3>
+                    </div>
 
                     <div className="space-y-4">
                       <p className="text-sm md:text-base text-zinc-300 font-light line-clamp-2 md:line-clamp-3">
@@ -111,15 +118,9 @@ export default function ServiceLayer() {
                       </p>
 
                       <div className="flex flex-wrap items-center gap-4 text-xs font-sans text-white uppercase tracking-widest pt-2">
-                        {service.prazo && (
-                          <div className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-sm backdrop-blur-sm">
-                            <Clock className="w-3.5 h-3.5" />
-                            <span>{service.prazo}</span>
-                          </div>
-                        )}
-                        <div className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-sm backdrop-blur-sm">
-                          <Info className="w-3.5 h-3.5" />
-                          <span>Especificações</span>
+                        <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-white/60 group-hover:text-white transition-colors">
+                          Ver detalhes completos
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </div>
                       </div>
                     </div>
