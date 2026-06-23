@@ -107,7 +107,7 @@ export default function Sobre() {
                     <span>Rastreabilidade&nbsp;</span>
                   </li>
                   <li>
-                    <span>Resultado como compromisso, não promessa</span>
+                    <span>Resultado como compromisso</span>
                   </li>
                   <li>
                     <span>Discrição e sigilo como padrão operacional</span>
