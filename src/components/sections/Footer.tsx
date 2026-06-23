@@ -111,13 +111,15 @@ export function Footer() {
             </div>
             <div className="mt-4 flex flex-col gap-3">
               <Link
-                to="#"
+                to="/termos-de-uso"
+                onClick={scrollToTop}
                 className="font-body text-sm text-muted-foreground hover:text-white transition-colors"
               >
                 Termos de Uso
               </Link>
               <Link
-                to="#"
+                to="/politica-de-privacidade"
+                onClick={scrollToTop}
                 className="font-body text-sm text-muted-foreground hover:text-white transition-colors"
               >
                 Política de Privacidade (LGPD)
