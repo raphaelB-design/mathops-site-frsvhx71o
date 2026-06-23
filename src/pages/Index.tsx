@@ -1,7 +1,6 @@
 import { Hero } from '@/components/sections/Hero'
 import { Marquee } from '@/components/sections/Marquee'
 import { ValueStatement } from '@/components/sections/ValueStatement'
-import { HowItWorks } from '@/components/sections/HowItWorks'
 import { Services } from '@/components/sections/Services'
 import { Metrics } from '@/components/sections/Metrics'
 import { Industries } from '@/components/sections/Industries'
@@ -19,7 +18,6 @@ export default function Index() {
       <Hero />
       <Marquee />
       <ValueStatement />
-      <HowItWorks />
       <Services />
       <Metrics />
       <Industries />
