@@ -103,8 +103,9 @@ export function QuoteCTA() {
           <FadeIn>
             <div className="mb-12 text-center md:text-left">
               <h2 className="font-display text-3xl md:text-4xl font-bold mb-4 text-white">
-                Decisões de peso merecem&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp; &nbsp; Fundamento de peso.&nbsp;&nbsp;
+                Decisões de peso merecem
+                <br />
+                Fundamento de peso.
               </h2>
               <p className="font-body text-white/60 text-lg">
                 Toda relação com a MathOps começa por entender o problema antes de propor a solução.
