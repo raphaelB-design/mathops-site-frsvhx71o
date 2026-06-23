@@ -84,7 +84,7 @@ export default function ServiceLayer() {
                 key={service.id}
                 onClick={() => setSelectedService(service)}
                 className={cn(
-                  'group relative cursor-pointer overflow-hidden rounded-sm transition-all duration-700 bg-zinc-950 border border-white/5 hover:border-white/15 hover:shadow-[0_8px_40px_rgba(255,255,255,0.06)]',
+                  'group relative cursor-pointer overflow-hidden rounded-sm transition-all duration-500 bg-zinc-950 border border-white/10 hover:border-white/30 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]',
                   idx === 0 && layer.services.length % 2 !== 0
                     ? 'md:col-span-2 lg:col-span-2 aspect-[16/9] md:aspect-[21/9]'
                     : 'aspect-[4/3] lg:aspect-[16/11]',
@@ -93,28 +93,28 @@ export default function ServiceLayer() {
                 <img
                   src={service.image}
                   alt={service.name}
-                  className="absolute inset-0 w-full h-full object-cover grayscale opacity-40 transition-all duration-1000 group-hover:grayscale-0 group-hover:opacity-70 group-hover:scale-105"
+                  className="absolute inset-0 w-full h-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-105"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent flex flex-col justify-end p-6 md:p-10 transition-opacity duration-700">
-                  <div className="transform translate-y-6 group-hover:translate-y-0 transition-transform duration-700 ease-out">
-                    <h3 className="text-white font-serif text-2xl md:text-3xl lg:text-4xl font-medium mb-4 drop-shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent flex flex-col justify-end p-6 md:p-10">
+                  <div className="space-y-4">
+                    <h3 className="text-white font-serif text-2xl md:text-3xl lg:text-4xl font-medium mb-2 drop-shadow-2xl">
                       {service.name}
                     </h3>
 
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100 space-y-4">
+                    <div className="space-y-4">
                       <p className="text-sm md:text-base text-zinc-300 font-light line-clamp-2 md:line-clamp-3">
                         {service.headline}
                       </p>
 
-                      <div className="flex flex-wrap items-center gap-5 text-xs font-sans text-zinc-400 uppercase tracking-widest pt-2">
+                      <div className="flex flex-wrap items-center gap-4 text-xs font-sans text-white uppercase tracking-widest pt-2">
                         {service.prazo && (
                           <div className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-sm backdrop-blur-sm">
                             <Clock className="w-3.5 h-3.5" />
                             <span>{service.prazo}</span>
                           </div>
                         )}
-                        <div className="flex items-center gap-2 text-white bg-white/5 hover:bg-white/20 transition-colors px-3 py-1.5 rounded-sm backdrop-blur-sm">
+                        <div className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-sm backdrop-blur-sm">
                           <Info className="w-3.5 h-3.5" />
                           <span>Especificações</span>
                         </div>
@@ -138,9 +138,9 @@ export default function ServiceLayer() {
                 <img
                   src={selectedService.image}
                   alt={selectedService.name}
-                  className="w-full h-full object-cover grayscale opacity-60 mix-blend-screen"
+                  className="w-full h-full object-cover opacity-70 mix-blend-screen"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent"></div>
 
                 <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full">
                   <SheetHeader>
