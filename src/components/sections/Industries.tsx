@@ -20,8 +20,9 @@ export function Industries() {
               </h2>
             </div>
             <p className="font-body text-lg text-muted-foreground max-w-sm">
-              A matemática não pergunta a que setor você pertence. Os mesmos princípios que otimizam
-              uma linha de produção otimizam a jornada de um paciente ou o caixa de um banco.
+              Os modelos matemáticos não perguntam a que setor você pertence. Os mesmos princípios
+              que otimizam uma linha de produção otimizam a jornada de um paciente ou o caixa de um
+              banco.
             </p>
           </div>
         </FadeIn>
