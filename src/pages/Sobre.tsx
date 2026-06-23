@@ -104,7 +104,7 @@ export default function Sobre() {
                     <span>Rigor antes de velocidade</span>
                   </li>
                   <li>
-                    <span>Rastreabilidade total (memória de cálculo auditável)</span>
+                    <span>Rastreabilidade&nbsp;</span>
                   </li>
                   <li>
                     <span>Resultado como compromisso, não promessa</span>
