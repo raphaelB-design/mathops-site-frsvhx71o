@@ -157,17 +157,27 @@ export function CandidateForm() {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value="Dados & Business Intelligence">
-                    Dados & Business Intelligence
+                  <SelectItem value="Modelagem Matemática & Pesquisa Operacional">
+                    Modelagem Matemática & Pesquisa Operacional
                   </SelectItem>
-                  <SelectItem value="Mapeamento e Automação de Processos">
-                    Mapeamento e Automação de Processos
+                  <SelectItem value="Estatística Aplicada & Econometria">
+                    Estatística Aplicada & Econometria
                   </SelectItem>
-                  <SelectItem value="Modelagem Matemática e Estatística">
-                    Modelagem Matemática e Estatística
+                  <SelectItem value="Ciência & Engenharia de Dados">
+                    Ciência & Engenharia de Dados
                   </SelectItem>
-                  <SelectItem value="Engenharia de Software">Engenharia de Software</SelectItem>
-                  <SelectItem value="Outros">Outros</SelectItem>
+                  <SelectItem value="Business Intelligence (BI) & Analytics">
+                    Business Intelligence (BI) & Analytics
+                  </SelectItem>
+                  <SelectItem value="Mapeamento & Automação de Processos (Lean Six Sigma)">
+                    Mapeamento & Automação de Processos (Lean Six Sigma)
+                  </SelectItem>
+                  <SelectItem value="Engenharia de Software & Algoritmos">
+                    Engenharia de Software & Algoritmos
+                  </SelectItem>
+                  <SelectItem value="Outros (Candidatura Geral)">
+                    Outros (Candidatura Geral)
+                  </SelectItem>
                 </SelectContent>
               </Select>
               <FormMessage />
