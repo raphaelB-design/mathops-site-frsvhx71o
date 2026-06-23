@@ -1,0 +1,3 @@
+ALTER TABLE public.leads 
+ADD COLUMN IF NOT EXISTS sector TEXT NOT NULL DEFAULT 'Não informado',
+ADD COLUMN IF NOT EXISTS company_size TEXT NOT NULL DEFAULT 'Não informado';

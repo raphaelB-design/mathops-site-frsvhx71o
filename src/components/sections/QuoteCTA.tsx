@@ -28,6 +28,8 @@ const contactSchema = z.object({
   name: z.string().min(2, 'Nome deve ter no mínimo 2 caracteres'),
   email: z.string().email('Email inválido'),
   company: z.string().min(2, 'Nome da empresa deve ter no mínimo 2 caracteres'),
+  sector: z.string().min(1, 'Selecione seu setor'),
+  company_size: z.string().min(1, 'Selecione o porte da empresa'),
   challenge: z.string().min(10, 'Descreva seu desafio com pelo menos 10 caracteres'),
   budget: z.string().min(1, 'Selecione uma faixa de orçamento'),
 })
@@ -44,6 +46,8 @@ export function QuoteCTA() {
       name: '',
       email: '',
       company: '',
+      sector: '',
+      company_size: '',
       challenge: '',
       budget: '',
     },
@@ -56,6 +60,8 @@ export function QuoteCTA() {
         contact_name: data.name,
         email: data.email,
         company_name: data.company,
+        sector: data.sector,
+        company_size: data.company_size,
         challenge: data.challenge,
         budget_range: data.budget,
       })
@@ -179,6 +185,84 @@ export function QuoteCTA() {
                   />
                   <FormField
                     control={form.control}
+                    name="sector"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                          Setor
+                        </FormLabel>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <FormControl>
+                            <SelectTrigger className="bg-white/5 border-white/10 text-white">
+                              <SelectValue
+                                placeholder="Selecione..."
+                                className="placeholder:text-white/20"
+                              />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="Manufatura / Indústria">
+                              Manufatura / Indústria
+                            </SelectItem>
+                            <SelectItem value="Construção Civil">Construção Civil</SelectItem>
+                            <SelectItem value="Logística e Transporte">
+                              Logística e Transporte
+                            </SelectItem>
+                            <SelectItem value="Saúde e Farmacêutico">
+                              Saúde e Farmacêutico
+                            </SelectItem>
+                            <SelectItem value="Financeiro e Seguros">
+                              Financeiro e Seguros
+                            </SelectItem>
+                            <SelectItem value="Varejo e E-commerce">Varejo e E-commerce</SelectItem>
+                            <SelectItem value="Agronegócio">Agronegócio</SelectItem>
+                            <SelectItem value="Tecnologia">Tecnologia</SelectItem>
+                            <SelectItem value="Outro">Outro</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <FormField
+                    control={form.control}
+                    name="company_size"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                          Porte da Empresa
+                        </FormLabel>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <FormControl>
+                            <SelectTrigger className="bg-white/5 border-white/10 text-white">
+                              <SelectValue
+                                placeholder="Selecione..."
+                                className="placeholder:text-white/20"
+                              />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="Até 50 funcionários">Até 50 funcionários</SelectItem>
+                            <SelectItem value="50 a 200 funcionários">
+                              50 a 200 funcionários
+                            </SelectItem>
+                            <SelectItem value="200 a 1.000 funcionários">
+                              200 a 1.000 funcionários
+                            </SelectItem>
+                            <SelectItem value="Acima de 1.000 funcionários">
+                              Acima de 1.000 funcionários
+                            </SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
                     name="budget"
                     render={({ field }) => (
                       <FormItem>
@@ -232,7 +316,7 @@ export function QuoteCTA() {
                   disabled={isSubmitting}
                   className="w-full bg-white text-black hover:bg-accent hover:text-white transition-colors duration-300 py-6 font-display font-bold text-lg"
                 >
-                  {isSubmitting ? 'Enviando...' : 'Enviar para Análise'}
+                  {isSubmitting ? 'Enviando...' : 'Quero meu Diagnóstico → Agendar Conversa'}
                 </Button>
               </form>
             </Form>
