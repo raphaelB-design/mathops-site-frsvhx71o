@@ -54,11 +54,7 @@ export function Footer() {
                 className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-white transition-colors"
               >
                 {s.label}
-                {s.isNew && (
-                  <span className="text-[10px] font-mono bg-accent/10 text-accent border border-accent/20 px-1.5 py-0.5">
-                    NEW
-                  </span>
-                )}
+                {s.isNew && null}
               </Link>
             ))}
           </div>
