@@ -74,12 +74,13 @@ export function Footer() {
             >
               Sobre a MathOps
             </Link>
-            <a
-              href="/#methodology"
+            <Link
+              to="/metodologia"
+              onClick={scrollToTop}
               className="font-body text-sm text-muted-foreground hover:text-white transition-colors"
             >
               Metodologia
-            </a>
+            </Link>
             <Link
               to="/carreiras"
               className="font-body text-sm text-muted-foreground hover:text-white transition-colors"

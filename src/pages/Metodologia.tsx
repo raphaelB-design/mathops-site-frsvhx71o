@@ -3,6 +3,7 @@ import { Footer } from '@/components/sections/Footer'
 import { FadeIn } from '@/components/fade-in'
 import { SlideUpMask } from '@/components/slide-up-mask'
 import { CrmCtaBanner } from '@/components/sections/CrmCtaBanner'
+import { HowItWorks } from '@/components/sections/HowItWorks'
 
 export default function Metodologia() {
   return (
@@ -15,31 +16,28 @@ export default function Metodologia() {
         <div className="relative z-10 max-w-4xl mx-auto w-full text-center mt-12 mb-12">
           <FadeIn delay={100}>
             <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-6 block">
-              Framework de Operação
+              O Caminho do Resultado
             </span>
           </FadeIn>
-          <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight mb-8 text-white flex flex-col items-center gap-y-2">
+          <h1 className="font-display font-bold text-4xl md:text-6xl leading-[0.95] tracking-tight mb-8 text-white flex flex-col items-center gap-y-2">
             <span className="flex flex-wrap justify-center gap-x-4">
-              <SlideUpMask delay={200}>Rigor</SlideUpMask>
+              <SlideUpMask delay={200}>Nossa</SlideUpMask>
               <SlideUpMask delay={300}>
-                <em className="text-accent not-italic">científico</em>
+                <em className="text-accent not-italic">Metodologia</em>
               </SlideUpMask>
             </span>
-            <span className="flex flex-wrap justify-center gap-x-4">
-              <SlideUpMask delay={400}>aplicado</SlideUpMask>
-              <SlideUpMask delay={500}>ao</SlideUpMask>
-              <SlideUpMask delay={600}>negócio</SlideUpMask>
-            </span>
           </h1>
-          <FadeIn delay={700}>
+          <FadeIn delay={400}>
             <p className="font-body text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              Nossa abordagem combina modelagem estocástica avançada, inferência estatística
-              rigorosa e a disciplina da metodologia DMAIC para garantir resultados determinísticos
-              em cenários de alta incerteza.
+              Transformamos complexidade analítica em clareza estratégica através de um processo
+              rigoroso e transparente.
             </p>
           </FadeIn>
         </div>
       </section>
+
+      {/* Process Section */}
+      <HowItWorks />
 
       {/* DMAIC Section */}
       <DMAIC />
