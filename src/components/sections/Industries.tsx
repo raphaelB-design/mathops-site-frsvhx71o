@@ -55,9 +55,6 @@ export function Industries() {
                       <h3 className="font-display text-2xl font-bold mb-3 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] transition-colors">
                         {ind.name}
                       </h3>
-                      <p className="font-body text-sm text-gray-200 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] leading-relaxed group-hover:text-white transition-colors font-medium">
-                        {ind.desc}
-                      </p>
                     </div>
                   </div>
                 </Link>
