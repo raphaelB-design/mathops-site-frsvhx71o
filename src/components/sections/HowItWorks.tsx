@@ -29,6 +29,24 @@ const steps = [
 ]
 
 export function HowItWorks() {
-  return
-  null
+  return (
+    <section className="py-24 bg-zinc-50">
+      <div className="container mx-auto px-6 max-w-7xl">
+        <div className="grid md:grid-cols-3 gap-12">
+          {steps.map((step, i) => (
+            <FadeIn key={step.num} delay={i * 0.2}>
+              <div className="flex flex-col border-l border-zinc-200 pl-8 h-full">
+                <step.icon className="w-8 h-8 mb-6 text-zinc-900" strokeWidth={1.5} />
+                <h3 className="text-xl font-serif font-medium text-zinc-900 mb-4">{step.title}</h3>
+                <p className="text-zinc-600 leading-relaxed mb-6 flex-grow">{step.description}</p>
+                <span className="text-sm font-medium text-zinc-900 uppercase tracking-wider">
+                  {step.detail}
+                </span>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
 }
