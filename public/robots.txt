@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bugatti-for-lawyers-clone-892a8.goskip.app/sitemap.xml
