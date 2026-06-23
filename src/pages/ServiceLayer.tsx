@@ -55,7 +55,7 @@ export default function ServiceLayer() {
             className="inline-flex items-center gap-3 text-xs font-sans tracking-[0.25em] text-zinc-400 hover:text-white transition-colors mb-16 uppercase"
           >
             <ArrowLeft className="w-4 h-4" />
-            Retornar ao Hub Central
+            Retornar&nbsp;
           </Link>
 
           <h1 className="font-serif text-5xl md:text-6xl lg:text-8xl font-medium mb-8 tracking-tight leading-[1.1] text-white drop-shadow-xl">
