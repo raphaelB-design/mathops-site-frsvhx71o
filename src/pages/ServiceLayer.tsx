@@ -39,8 +39,8 @@ export default function ServiceLayer() {
       <div className="relative pt-32 pb-24 md:pt-48 md:pb-32 px-6 md:px-12 flex flex-col items-center text-center overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 bg-zinc-950 -z-10"></div>
         <img
-          src="https://img.usecurling.com/p/1920/1080?q=technology%20architecture&color=black&dpr=2"
-          alt="Diagnosis and Visibility"
+          src={layer.heroImage}
+          alt={layer.title}
           className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay -z-10 grayscale"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black -z-10"></div>
