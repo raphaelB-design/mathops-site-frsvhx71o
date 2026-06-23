@@ -2,7 +2,6 @@ import { ArrowUp, Linkedin, Mail, MapPin, ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const serviceLinks = [
-  { label: 'Torre de Controle Analítico ★', path: '/torre-de-controle' },
   { label: 'Diagnóstico e Visibilidade', slug: 'diagnostico-e-visibilidade' },
   { label: 'Análise e Modelagem', slug: 'analise-e-modelagem' },
   { label: 'Solução e Recorrência', slug: 'solucao-e-recorrencia' },
