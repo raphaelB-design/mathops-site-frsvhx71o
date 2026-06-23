@@ -38,8 +38,12 @@ export default function ServiceLayer() {
       {/* Cinematic Hero */}
       <div className="relative pt-32 pb-24 md:pt-48 md:pb-32 px-6 md:px-12 flex flex-col items-center text-center overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 bg-zinc-950 -z-10"></div>
-        <div className="absolute inset-0 bg-[url('https://img.usecurling.com/p/1920/1080?q=minimalist%20architecture&color=black&dpr=2')] opacity-30 mix-blend-overlay -z-10 grayscale"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black -z-10"></div>
+        <img
+          src="https://img.usecurling.com/p/1920/1080?q=technology%20architecture&color=black&dpr=2"
+          alt="Diagnosis and Visibility"
+          className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay -z-10 grayscale"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black -z-10"></div>
 
         <FadeIn className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center">
           <Link
@@ -53,22 +57,9 @@ export default function ServiceLayer() {
           <h1 className="font-serif text-5xl md:text-6xl lg:text-8xl font-medium mb-8 tracking-tight leading-[1.1] text-white drop-shadow-xl">
             {layer.title}
           </h1>
-          <p className="text-lg md:text-2xl text-zinc-300 leading-relaxed max-w-3xl mx-auto mb-16 font-light">
+          <p className="text-lg md:text-2xl text-zinc-300 leading-relaxed max-w-3xl mx-auto font-light">
             {layer.headline}
           </p>
-
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative inline-flex items-center gap-3 bg-white text-black px-8 py-4 overflow-hidden rounded-sm transition-transform hover:scale-105 active:scale-95"
-          >
-            <div className="absolute inset-0 bg-zinc-200 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
-            <Play className="w-5 h-5 fill-current relative z-10" />
-            <span className="font-mono font-bold text-sm uppercase tracking-wider relative z-10">
-              Engajar Especialista
-            </span>
-          </a>
         </FadeIn>
       </div>
 
