@@ -63,49 +63,12 @@ export default function Carreiras() {
               estatisticos, especialistas em processos e autonomia técnica e impacto
               mensurável.&nbsp;
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button
-                onClick={() =>
-                  document.getElementById('candidatura')?.scrollIntoView({ behavior: 'smooth' })
-                }
-                className="bg-white text-black px-8 py-4 font-display font-semibold text-base hover:bg-accent hover:text-white transition-all duration-500 ease-smooth hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(45,95,168,0.3)] flex items-center gap-2 group w-fit"
-              >
-                Ver Vagas Abertas
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-500 ease-smooth" />
-              </button>
-              <a
-                href="mailto:talentos@mathops.com.br"
-                className="px-8 py-4 font-display font-semibold text-base border border-white/15 hover:border-white/30 hover:bg-white/5 transition-all duration-500 ease-smooth hover:-translate-y-1 flex items-center justify-center gap-2 w-fit"
-              >
-                Candidatura Espontânea
-              </a>
-            </div>
+            <div className="flex flex-col sm:flex-row gap-4"></div>
           </FadeIn>
         </div>
       </section>
 
       {/* ── Stats ── */}
-      <section className="py-12 px-6 md:px-12 bg-black border-b border-white/10">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-0 divide-x divide-y md:divide-y-0 divide-white/10">
-          {[
-            { val: '4', label: 'Vagas abertas agora' },
-            { val: '100%', label: 'Remoto ou híbrido' },
-            { val: 'PJ', label: 'Modelo de contratação' },
-            { val: 'SP', label: 'Sede em São Paulo' },
-          ].map((s, i) => (
-            <FadeIn key={i} delay={i * 80}>
-              <div className="px-6 py-6 first:pl-0 flex flex-col gap-1 group hover:bg-white/[0.02] transition-colors">
-                <span className="font-display text-3xl md:text-4xl font-bold text-white group-hover:text-accent transition-colors">
-                  {s.val}
-                </span>
-                <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-                  {s.label}
-                </span>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
-      </section>
 
       {/* ── Values ── */}
       <section className="py-24 px-6 md:px-12 border-b border-white/10">
@@ -138,65 +101,6 @@ export default function Carreiras() {
       </section>
 
       {/* ── Process ── */}
-      <section className="py-24 px-6 md:px-12 bg-white/[0.02] border-b border-white/10">
-        <div className="max-w-7xl mx-auto">
-          <FadeIn>
-            <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
-              Processo Seletivo
-            </span>
-            <div className="font-display text-3xl md:text-4xl font-bold mb-16">
-              <SlideUpMask>Simples, transparente e rápido.</SlideUpMask>
-            </div>
-          </FadeIn>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-0">
-            {[
-              {
-                step: '01',
-                title: 'Candidatura',
-                desc: 'Envie currículo e, se quiser, portfólio ou exemplos de trabalho. Lemos tudo.',
-                time: 'Dia 0',
-              },
-              {
-                step: '02',
-                title: 'Bate-papo inicial',
-                desc: 'Call de 30 min com alguém do time para entender seu histórico e o que você está buscando.',
-                time: 'Até 5 dias',
-              },
-              {
-                step: '03',
-                title: 'Desafio técnico',
-                desc: 'Problema real de consultoria para resolver no seu tempo. Sem prova cronometrada.',
-                time: '3–5 dias',
-              },
-              {
-                step: '04',
-                title: 'Entrevista final',
-                desc: 'Conversa técnica + cultural com os sócios. Feedback honesto em até 48h.',
-                time: 'Até 7 dias',
-              },
-            ].map((p, i) => (
-              <FadeIn key={i} delay={i * 80}>
-                <div className="relative p-8 border-r border-b md:border-b-0 border-white/10 last:border-r-0 group hover:bg-white/[0.04] hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(255,255,255,0.05)] transition-all duration-500 ease-smooth before:absolute before:inset-0 before:ring-1 before:ring-white/0 hover:before:ring-white/20 before:transition-all before:duration-500 before:ease-smooth before:z-10">
-                  <div className="flex items-start justify-between mb-6">
-                    <span className="font-mono text-4xl font-bold text-white/10 group-hover:text-accent/20 transition-colors">
-                      {p.step}
-                    </span>
-                    <span className="font-mono text-xs text-muted-foreground">{p.time}</span>
-                  </div>
-                  <h3 className="font-display text-lg font-bold mb-3 group-hover:text-accent transition-colors">
-                    {p.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
-                  {i < 3 && (
-                    <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10 w-4 h-4 border border-white/10 bg-background rotate-45" />
-                  )}
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── Spontaneous / Form ── */}
       <section id="candidatura" className="py-24 px-6 md:px-12 scroll-mt-20">
