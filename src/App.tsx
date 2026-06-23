@@ -29,6 +29,7 @@ const Sobre = retryLazy(() => import('@/pages/Sobre'))
 const Carreiras = retryLazy(() => import('@/pages/Carreiras'))
 const Metodologia = retryLazy(() => import('@/pages/Metodologia'))
 const IndustryLayer = retryLazy(() => import('@/pages/IndustryLayer'))
+const TorreDeControle = retryLazy(() => import('@/pages/TorreDeControle'))
 
 const PageLoader = () => (
   <div className="min-h-screen flex flex-col items-center justify-center w-full bg-background">
@@ -57,6 +58,7 @@ const App = () => (
             <Route path="/sobre" element={<Sobre />} />
             <Route path="/servicos/:slug" element={<ServiceLayer />} />
             <Route path="/industrias/:slug" element={<IndustryLayer />} />
+            <Route path="/torre-de-controle" element={<TorreDeControle />} />
             <Route path="/carreiras" element={<Carreiras />} />
             <Route path="/metodologia" element={<Metodologia />} />
             <Route path="/login" element={<Navigate to="/" replace />} />

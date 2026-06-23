@@ -32,6 +32,7 @@ const contactSchema = z.object({
   company_size: z.string().min(1, 'Selecione o porte da empresa'),
   challenge: z.string().min(10, 'Descreva seu desafio com pelo menos 10 caracteres'),
   budget: z.string().min(1, 'Selecione uma faixa de orçamento'),
+  operation_details: z.string().optional(),
 })
 
 type ContactFormValues = z.infer<typeof contactSchema>
@@ -50,6 +51,7 @@ export function QuoteCTA() {
       company_size: '',
       challenge: '',
       budget: '',
+      operation_details: '',
     },
   })
 
@@ -64,6 +66,7 @@ export function QuoteCTA() {
         company_size: data.company_size,
         challenge: data.challenge,
         budget_range: data.budget,
+        operation_details: data.operation_details,
       })
 
       if (error) throw error
@@ -291,25 +294,47 @@ export function QuoteCTA() {
                   />
                 </div>
 
-                <FormField
-                  control={form.control}
-                  name="challenge"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-                        Desafio Principal
-                      </FormLabel>
-                      <FormControl>
-                        <Textarea
-                          placeholder="Nos conte um pouco sobre a barreira analítica ou matemática que a operação enfrenta hoje..."
-                          className="bg-white/5 border-white/10 text-white placeholder:text-white/20 min-h-[120px] resize-none"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                <div className="grid grid-cols-1 gap-6">
+                  <FormField
+                    control={form.control}
+                    name="challenge"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                          Desafio Principal
+                        </FormLabel>
+                        <FormControl>
+                          <Textarea
+                            placeholder="Nos conte um pouco sobre a barreira analítica ou matemática que a operação enfrenta hoje..."
+                            className="bg-white/5 border-white/10 text-white placeholder:text-white/20 min-h-[120px] resize-none"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="operation_details"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                          Conte-nos sobre sua operação atual
+                        </FormLabel>
+                        <FormControl>
+                          <Textarea
+                            placeholder="Opcional. Volume de dados, ferramentas utilizadas, tamanho da equipe..."
+                            className="bg-white/5 border-white/10 text-white placeholder:text-white/20 min-h-[120px] resize-none"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
 
                 <Button
                   type="submit"

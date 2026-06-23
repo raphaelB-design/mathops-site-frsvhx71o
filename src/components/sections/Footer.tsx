@@ -2,6 +2,7 @@ import { ArrowUp, Linkedin, Mail, MapPin, ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const serviceLinks = [
+  { label: 'Torre de Controle Analítico ★', path: '/torre-de-controle' },
   { label: 'Diagnóstico e Visibilidade', slug: 'diagnostico-e-visibilidade' },
   { label: 'Análise e Modelagem', slug: 'analise-e-modelagem' },
   { label: 'Solução e Recorrência', slug: 'solucao-e-recorrencia' },
@@ -49,8 +50,8 @@ export function Footer() {
             </h4>
             {serviceLinks.map((s) => (
               <Link
-                key={s.slug}
-                to={`/servicos/${s.slug}`}
+                key={s.slug || s.path}
+                to={s.path || `/servicos/${s.slug}`}
                 className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-white transition-colors"
               >
                 {s.label}
