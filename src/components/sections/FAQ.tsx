@@ -5,6 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
+import { Helmet } from '@/components/Helmet'
 
 const faqs = [
   {
@@ -41,35 +42,55 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section className="w-full py-24 md:py-32 bg-white/[0.02] border-t border-white/10 px-6 md:px-12 text-white">
-      <div className="max-w-3xl mx-auto">
-        <FadeIn>
-          <div className="mb-16">
-            <h2 className="font-display text-3xl md:text-5xl font-bold mb-6">Dúvidas Frequentes</h2>
-            <p className="font-body text-white/60 text-lg">
-              Transparência metodológica é o nosso padrão. Entenda como operamos antes de firmar
-              compromissos.
-            </p>
-          </div>
+    <>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: faqs.map((faq) => ({
+              '@type': 'Question',
+              name: faq.question,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: faq.answer,
+              },
+            })),
+          })}
+        </script>
+      </Helmet>
+      <section className="w-full py-24 md:py-32 bg-white/[0.02] border-t border-white/10 px-6 md:px-12 text-white">
+        <div className="max-w-3xl mx-auto">
+          <FadeIn>
+            <div className="mb-16">
+              <h2 className="font-display text-3xl md:text-5xl font-bold mb-6">
+                Dúvidas Frequentes
+              </h2>
+              <p className="font-body text-white/60 text-lg">
+                Transparência metodológica é o nosso padrão. Entenda como operamos antes de firmar
+                compromissos.
+              </p>
+            </div>
 
-          <Accordion type="single" collapsible className="w-full space-y-4">
-            {faqs.map((faq, index) => (
-              <AccordionItem
-                key={index}
-                value={`item-${index}`}
-                className="border border-white/10 px-6 data-[state=open]:border-accent/30 bg-black/40 backdrop-blur-sm transition-colors"
-              >
-                <AccordionTrigger className="font-display text-lg text-left hover:text-accent py-6">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="font-body text-white/70 text-base leading-relaxed pb-6">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </FadeIn>
-      </div>
-    </section>
+            <Accordion type="single" collapsible className="w-full space-y-4">
+              {faqs.map((faq, index) => (
+                <AccordionItem
+                  key={index}
+                  value={`item-${index}`}
+                  className="border border-white/10 px-6 data-[state=open]:border-accent/30 bg-black/40 backdrop-blur-sm transition-colors"
+                >
+                  <AccordionTrigger className="font-display text-lg text-left hover:text-accent py-6">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="font-body text-white/70 text-base leading-relaxed pb-6">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </FadeIn>
+        </div>
+      </section>
+    </>
   )
 }
