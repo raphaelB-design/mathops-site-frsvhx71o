@@ -14,6 +14,5 @@ export function CrmCtaBanner() {
     }
   }
 
-  return
-  null
+  return null
 }

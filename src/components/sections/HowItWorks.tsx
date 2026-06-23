@@ -29,6 +29,5 @@ const steps = [
 ]
 
 export function HowItWorks() {
-  return
-  null
+  return null
 }
