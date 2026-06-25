@@ -2,9 +2,8 @@ import { useEffect } from 'react'
 
 export function SmoothScroll() {
   useEffect(() => {
-    // Check if user prefers reduced motion
+    // Respect reduced-motion: skip all scroll animation entirely.
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.documentElement.style.scrollBehavior = 'smooth'
       return
     }
 
