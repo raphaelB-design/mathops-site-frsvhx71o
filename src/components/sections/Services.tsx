@@ -1,7 +1,8 @@
 import { FadeIn } from '@/components/fade-in'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Check } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { serviceLayers } from '@/config/servicesData'
+import { serviceLayers, diagnosticoEstrategico } from '@/config/servicesData'
+import { WHATSAPP_URL } from '@/config/constants'
 import { cn } from '@/lib/utils'
 
 const layerColors = [
@@ -119,6 +120,82 @@ export function Services() {
             )
           })}
         </div>
+
+        {/* Diagnóstico Estratégico (Porta de Entrada) */}
+        <FadeIn delay={300}>
+          <div className="mt-16 pt-12 border-t border-white/10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 border border-white/10 bg-black/40 relative overflow-hidden">
+              {/* Left Column */}
+              <div className="p-8 md:p-12 flex flex-col justify-between">
+                <div>
+                  <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
+                    Porta de Entrada
+                  </span>
+                  <h3 className="font-display text-3xl md:text-4xl font-bold mb-6">
+                    {diagnosticoEstrategico.name}
+                  </h3>
+                  <p className="font-body text-lg text-muted-foreground leading-relaxed mb-8">
+                    {diagnosticoEstrategico.headline}
+                  </p>
+                </div>
+
+                <div className="border-l-2 border-white/20 pl-4 py-1 mt-4">
+                  <p className="font-body text-sm text-muted-foreground leading-relaxed">
+                    <span className="text-white font-medium">Público-alvo:</span>{' '}
+                    {diagnosticoEstrategico.forWhom}
+                  </p>
+                </div>
+              </div>
+
+              {/* Right Column */}
+              <div className="p-8 md:p-12 bg-white/[0.02] border-t lg:border-t-0 lg:border-l border-white/10 flex flex-col justify-between">
+                <div>
+                  <div className="flex flex-col md:flex-row md:items-baseline gap-4 mb-8">
+                    <span className="font-display text-5xl font-bold">
+                      {diagnosticoEstrategico.price}
+                    </span>
+                    <div className="flex flex-col">
+                      <span className="font-mono text-xs text-white/50 uppercase tracking-wider">
+                        {diagnosticoEstrategico.priceNote}
+                      </span>
+                      <span className="font-mono text-xs text-accent uppercase tracking-wider">
+                        Prazo: {diagnosticoEstrategico.deadline}
+                      </span>
+                    </div>
+                  </div>
+
+                  <ul className="space-y-4 mb-8">
+                    {diagnosticoEstrategico.deliverables.map((item, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                        <span className="font-body text-sm text-gray-300">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <p className="font-mono text-xs text-white/40 mb-8 leading-relaxed">
+                    * {diagnosticoEstrategico.note}
+                  </p>
+                </div>
+
+                <div className="mt-4">
+                  <a
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group w-full flex items-center justify-center gap-2 bg-white text-black font-mono font-bold uppercase tracking-wider text-sm py-4 px-8 hover:bg-accent hover:text-white transition-colors duration-300 mb-4"
+                  >
+                    Iniciar Diagnóstico
+                    <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </a>
+                  <p className="text-center font-mono text-[10px] text-white/50 uppercase tracking-wide px-4 leading-relaxed">
+                    {diagnosticoEstrategico.guarantee}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </FadeIn>
       </div>
     </section>
   )
