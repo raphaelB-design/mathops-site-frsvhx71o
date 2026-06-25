@@ -100,18 +100,80 @@ export default function ServiceLayer() {
           <p className="font-body text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto text-center">
             {layer.headline}
           </p>
-
-          {layer.metrics && layer.metrics.length > 0 && (
-            <div className="mt-10 pt-8 border-t border-white/10 flex items-center gap-6 justify-center">
-              <div className="font-display text-4xl font-bold text-white">
-                {layer.metrics[0].value}
-              </div>
-              <div className="font-mono text-xs uppercase tracking-widest text-white/40 max-w-[160px] leading-relaxed text-left">
-                {layer.metrics[0].label}
-              </div>
-            </div>
-          )}
         </FadeIn>
+      </div>
+
+      {/* Performance Metrics Strip */}
+      {layer.metrics && layer.metrics.length > 0 && (
+        <div className="w-full border-b border-white/10 bg-white/[0.02]">
+          <div className="max-w-[1600px] mx-auto px-6 md:px-12">
+            <div className="grid grid-cols-3 divide-x divide-white/10 border-x border-white/10">
+              {layer.metrics.map((metric, i) => (
+                <div
+                  key={i}
+                  className="py-8 md:py-12 px-4 md:px-8 flex flex-col items-center justify-center text-center"
+                >
+                  <div className="font-display text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-2 md:mb-4">
+                    {metric.value}
+                  </div>
+                  <div className="font-mono text-[9px] sm:text-[10px] md:text-xs uppercase tracking-widest text-white/40 max-w-[200px] leading-relaxed">
+                    {metric.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Service Fit & Investment Block */}
+      <div className="w-full border-b border-white/10 py-20 md:py-32">
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+            {/* Context (Left) */}
+            <FadeIn>
+              <div className="flex flex-col h-full justify-center items-start">
+                <div className="inline-block px-3 py-1.5 bg-white/5 border border-white/10 font-mono text-[10px] font-bold uppercase tracking-widest text-accent mb-8">
+                  Indicação de Fit
+                </div>
+                <h2 className="font-serif text-3xl md:text-4xl text-white font-medium leading-tight mb-8">
+                  {layer.problemStatement}
+                </h2>
+                <p className="font-sans text-lg md:text-xl text-zinc-400 leading-relaxed font-light">
+                  {layer.forWhom}
+                </p>
+              </div>
+            </FadeIn>
+
+            {/* Investment Card (Right) */}
+            <FadeIn delay={200}>
+              <div className="bg-zinc-900/50 border border-white/10 p-8 md:p-12 h-full flex flex-col justify-center">
+                <div className="font-mono text-xs uppercase tracking-widest text-zinc-500 mb-4">
+                  Investimento estimado
+                </div>
+                <div className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
+                  {layer.investmentFrom}
+                </div>
+                <p className="font-sans text-sm md:text-base text-zinc-400 leading-relaxed mb-10">
+                  Proposta detalhada após diagnóstico inicial. Projetos pontuais ou retainer
+                  conforme necessidade.
+                </p>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-between bg-white text-black px-6 py-4 font-mono font-bold text-sm uppercase tracking-wider hover:bg-zinc-200 transition-colors group mb-4"
+                >
+                  Agendar Assessment Estratégico
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+                <div className="text-center font-mono text-[10px] uppercase tracking-widest text-zinc-500">
+                  Confidencial · Sem compromisso
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
       </div>
 
       {/* Editorial Grid Area */}
