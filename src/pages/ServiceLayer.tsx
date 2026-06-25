@@ -22,6 +22,14 @@ import {
   SheetTitle,
   SheetDescription,
 } from '@/components/ui/sheet'
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb'
 import { cn } from '@/lib/utils'
 
 export default function ServiceLayer() {
@@ -50,13 +58,34 @@ export default function ServiceLayer() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black -z-10"></div>
 
         <FadeIn className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-3 text-xs font-sans tracking-[0.25em] text-zinc-400 hover:text-white transition-colors mb-16 uppercase"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Retornar&nbsp;
-          </Link>
+          <Breadcrumb className="mb-16 font-mono text-xs md:text-sm uppercase tracking-[0.2em]">
+            <BreadcrumbList className="flex flex-wrap justify-center gap-2 sm:gap-4">
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link to="/" className="text-white/60 hover:text-white transition-colors">
+                    Home
+                  </Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator className="text-white/40" />
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link
+                    to="/#services"
+                    className="text-white/60 hover:text-white transition-colors"
+                  >
+                    Serviços
+                  </Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator className="text-white/40" />
+              <BreadcrumbItem>
+                <BreadcrumbPage className="text-white font-bold drop-shadow-md">
+                  {layer.title}
+                </BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
 
           <h1 className="font-serif text-5xl md:text-6xl lg:text-8xl font-medium mb-8 tracking-tight leading-[1.1] text-white drop-shadow-xl">
             {layer.title}
