@@ -14,6 +14,7 @@ import {
   Crosshair,
   Clock,
   Network,
+  ChevronRight,
 } from 'lucide-react'
 import {
   Sheet,
@@ -45,7 +46,7 @@ export default function ServiceLayer() {
 
   useEffect(() => {
     setSelectedService(null)
-    window.scrollTo(0, 0)
+    window.scrollTo({ top: 0, behavior: 'instant' })
   }, [slug])
 
   if (!slug || !serviceLayers[slug]) {
@@ -87,25 +88,29 @@ export default function ServiceLayer() {
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
                   <Link to="/" className="text-muted-foreground hover:text-white transition-colors">
-                    [ HOME ]
+                    Home
                   </Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
-              <BreadcrumbSeparator className="text-white/20">/</BreadcrumbSeparator>
+              <BreadcrumbSeparator>
+                <ChevronRight className="w-3 h-3 text-white/40" />
+              </BreadcrumbSeparator>
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
                   <Link
                     to="/#services"
                     className="text-muted-foreground hover:text-white transition-colors"
                   >
-                    [ SERVIÇOS ]
+                    Serviços
                   </Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
-              <BreadcrumbSeparator className="text-white/20">/</BreadcrumbSeparator>
+              <BreadcrumbSeparator>
+                <ChevronRight className="w-3 h-3 text-white/40" />
+              </BreadcrumbSeparator>
               <BreadcrumbItem>
                 <BreadcrumbPage className="text-white font-bold drop-shadow-md">
-                  [ {layer.title} ]
+                  {layer.title}
                 </BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
@@ -528,22 +533,47 @@ export default function ServiceLayer() {
               </h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-              {Object.entries(serviceLayers)
-                .filter(([key]) => key !== slug)
-                .map(([key, otherLayer]) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+              {Object.entries(serviceLayers).map(([key, otherLayer]) => {
+                const isActive = key === slug
+                return isActive ? (
+                  <div
+                    key={key}
+                    className="group flex flex-col p-6 md:p-8 border border-white/20 bg-white/[0.03] opacity-80 cursor-default transition-all duration-300 relative overflow-hidden"
+                  >
+                    <div className="absolute top-0 left-0 w-full h-1 bg-white/20" />
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="font-mono text-[10px] uppercase tracking-widest text-white">
+                        Camada {otherLayer.layerNumber}
+                      </div>
+                      <div className="px-2 py-1 bg-white/10 text-white font-mono text-[9px] uppercase tracking-wider rounded-sm backdrop-blur-sm">
+                        Você está aqui
+                      </div>
+                    </div>
+                    <h4 className="font-serif text-xl md:text-2xl text-white font-medium mb-4">
+                      {otherLayer.title}
+                    </h4>
+                    <p className="font-sans text-sm text-zinc-400 font-light leading-relaxed line-clamp-2 mb-8 flex-1">
+                      {otherLayer.problemStatement}
+                    </p>
+
+                    <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-zinc-500 mt-auto">
+                      Camada Atual
+                    </div>
+                  </div>
+                ) : (
                   <Link
                     key={key}
                     to={`/servicos/${key}`}
-                    className="group flex flex-col p-8 border border-white/10 bg-zinc-950 hover:bg-white/[0.02] hover:border-white/30 transition-all duration-300"
+                    className="group flex flex-col p-6 md:p-8 border border-white/10 bg-zinc-950 hover:bg-white/[0.02] hover:border-white/30 transition-all duration-300"
                   >
                     <div className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 mb-6 group-hover:text-white/70 transition-colors">
                       Camada {otherLayer.layerNumber}
                     </div>
-                    <h4 className="font-serif text-2xl md:text-3xl text-white font-medium mb-4 group-hover:text-accent transition-colors">
+                    <h4 className="font-serif text-xl md:text-2xl text-white font-medium mb-4 group-hover:text-white/90 transition-colors">
                       {otherLayer.title}
                     </h4>
-                    <p className="font-sans text-sm md:text-base text-zinc-400 font-light leading-relaxed line-clamp-2 mb-8 flex-1">
+                    <p className="font-sans text-sm text-zinc-400 font-light leading-relaxed line-clamp-2 mb-8 flex-1">
                       {otherLayer.problemStatement}
                     </p>
 
@@ -552,7 +582,8 @@ export default function ServiceLayer() {
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </Link>
-                ))}
+                )
+              })}
             </div>
           </FadeIn>
         </div>
