@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { serviceLayers, ServiceDetail } from '@/config/servicesData'
 import { FadeIn } from '@/components/fade-in'
+import { AnimatedCounter } from '@/components/animated-counter'
 import { WHATSAPP_URL } from '@/config/constants'
 import {
   ArrowLeft,
@@ -38,6 +39,54 @@ const layerOverlayColors: Record<string, string> = {
   'analise-e-modelagem': 'rgba(45, 27, 105, 0.50)',
   'solucao-e-recorrencia': 'rgba(92, 58, 0, 0.50)',
   'inteligencia-artificial': 'rgba(45, 95, 168, 0.50)',
+}
+
+const cleanText = (text: string | undefined) => {
+  if (!text) return ''
+  return text.replace(/: onde a matemática muda o resultado da sua operação\?/g, '.')
+}
+
+function MetricAnimator({ value }: { value: string }) {
+  const parts: React.ReactNode[] = []
+  let currentText = ''
+
+  for (let i = 0; i < value.length; i++) {
+    const char = value[i]
+    const isDigit = /[0-9]/.test(char)
+    const isMinus = char === '-' || char === '−'
+
+    // Check if minus is a negative sign: must be followed by a digit, and NOT preceded by a digit
+    const isNegativeSign =
+      isMinus &&
+      i + 1 < value.length &&
+      /[0-9]/.test(value[i + 1]) &&
+      (i === 0 || !/[0-9]/.test(value[i - 1]))
+
+    if (isDigit || isNegativeSign) {
+      if (currentText) {
+        parts.push(<span key={parts.length}>{currentText}</span>)
+        currentText = ''
+      }
+
+      let numStr = char === '−' ? '-' : char
+      while (i + 1 < value.length && /[0-9]/.test(value[i + 1])) {
+        numStr += value[i + 1]
+        i++
+      }
+
+      parts.push(
+        <AnimatedCounter key={parts.length} value={parseInt(numStr, 10)} duration={2000} />,
+      )
+    } else {
+      currentText += char
+    }
+  }
+
+  if (currentText) {
+    parts.push(<span key={parts.length}>{currentText}</span>)
+  }
+
+  return <>{parts}</>
 }
 
 export default function ServiceLayer() {
@@ -120,7 +169,7 @@ export default function ServiceLayer() {
             {layer.title}
           </h1>
           <p className="font-body text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto text-center">
-            {layer.headline}
+            {cleanText(layer.headline)}
           </p>
         </FadeIn>
       </div>
@@ -136,7 +185,7 @@ export default function ServiceLayer() {
                   className="py-8 md:py-12 px-4 md:px-8 flex flex-col items-center justify-center text-center"
                 >
                   <div className="font-display text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-2 md:mb-4">
-                    {metric.value}
+                    <MetricAnimator value={metric.value} />
                   </div>
                   <div className="font-mono text-[9px] sm:text-[10px] md:text-xs uppercase tracking-widest text-white/40 max-w-[200px] leading-relaxed">
                     {metric.label}
@@ -159,10 +208,10 @@ export default function ServiceLayer() {
                   Indicação de Fit
                 </div>
                 <h2 className="font-serif text-3xl md:text-4xl text-white font-medium leading-tight mb-8">
-                  {layer.problemStatement}
+                  {cleanText(layer.problemStatement)}
                 </h2>
                 <p className="font-sans text-lg md:text-xl text-zinc-400 leading-relaxed font-light">
-                  {layer.forWhom}
+                  {cleanText(layer.forWhom)}
                 </p>
               </div>
             </FadeIn>
@@ -254,7 +303,7 @@ export default function ServiceLayer() {
 
                     <div className="space-y-4">
                       <p className="text-sm md:text-base text-zinc-300 font-light line-clamp-2 md:line-clamp-3">
-                        {service.headline}
+                        {cleanText(service.headline)}
                       </p>
 
                       <div className="flex flex-wrap items-center gap-4 text-xs font-sans text-white uppercase tracking-widest pt-2">
@@ -288,7 +337,7 @@ export default function ServiceLayer() {
                   </h2>
 
                   <p className="text-xl md:text-2xl text-zinc-300 leading-relaxed font-light mb-10 border-l-2 border-white/20 pl-6 italic">
-                    "{anchorService.headline}"
+                    "{cleanText(anchorService.headline)}"
                   </p>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
@@ -383,7 +432,7 @@ export default function ServiceLayer() {
               {/* Content Body */}
               <div className="px-8 md:px-12 py-10 flex-1 bg-zinc-950">
                 <SheetDescription className="text-lg md:text-xl text-zinc-300 leading-relaxed font-light mb-8 border-l-2 border-white/20 pl-6 italic">
-                  "{selectedService.headline}"
+                  "{cleanText(selectedService.headline)}"
                 </SheetDescription>
 
                 <a
@@ -403,7 +452,7 @@ export default function ServiceLayer() {
                       title="O Ponto de Falha"
                       color="text-zinc-400"
                     >
-                      {selectedService.dor}
+                      {cleanText(selectedService.dor)}
                     </DetailSection>
                   )}
 
@@ -554,7 +603,7 @@ export default function ServiceLayer() {
                       {otherLayer.title}
                     </h4>
                     <p className="font-sans text-sm text-zinc-400 font-light leading-relaxed line-clamp-2 mb-8 flex-1">
-                      {otherLayer.problemStatement}
+                      {cleanText(otherLayer.problemStatement)}
                     </p>
 
                     <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-zinc-500 mt-auto">
@@ -574,7 +623,7 @@ export default function ServiceLayer() {
                       {otherLayer.title}
                     </h4>
                     <p className="font-sans text-sm text-zinc-400 font-light leading-relaxed line-clamp-2 mb-8 flex-1">
-                      {otherLayer.problemStatement}
+                      {cleanText(otherLayer.problemStatement)}
                     </p>
 
                     <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-white mt-auto">
