@@ -5,6 +5,7 @@ import { Toaster as Sonner } from '@/components/ui/sonner'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import { Layout } from '@/components/Layout'
 import { IndexSkeleton } from '@/components/skeletons/IndexSkeleton'
+import { SmoothScroll } from '@/components/SmoothScroll'
 
 const retryLazy = (componentImport: () => Promise<any>) =>
   lazy(async () => {
@@ -43,6 +44,7 @@ const PageLoader = () => (
 
 const App = () => (
   <BrowserRouter future={{ v7_startTransition: false, v7_relativeSplatPath: false }}>
+    <SmoothScroll />
     <TooltipProvider>
       <Toaster />
       <Sonner />

@@ -5,13 +5,20 @@ interface SlideUpMaskProps {
   children: React.ReactNode
   className?: string
   delay?: number
+  whileInView?: boolean
 }
 
-export function SlideUpMask({ children, className, delay = 0 }: SlideUpMaskProps) {
-  const [isVisible, setIsVisible] = useState(false)
+export function SlideUpMask({
+  children,
+  className,
+  delay = 0,
+  whileInView = true,
+}: SlideUpMaskProps) {
+  const [isVisible, setIsVisible] = useState(!whileInView)
   const ref = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
+    if (!whileInView) return
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -27,7 +34,7 @@ export function SlideUpMask({ children, className, delay = 0 }: SlideUpMaskProps
     }
 
     return () => observer.disconnect()
-  }, [delay])
+  }, [delay, whileInView])
 
   return (
     <span
@@ -39,8 +46,8 @@ export function SlideUpMask({ children, className, delay = 0 }: SlideUpMaskProps
     >
       <span
         className={cn(
-          'transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)]',
-          isVisible ? 'translate-y-0' : 'translate-y-[120%]',
+          'transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform block',
+          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[100%] opacity-0',
         )}
       >
         {children}
