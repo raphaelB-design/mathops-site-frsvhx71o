@@ -435,6 +435,91 @@ export default function ServiceLayer() {
           )}
         </SheetContent>
       </Sheet>
+
+      {/* Final Conversion CTA Section */}
+      <div className="w-full relative overflow-hidden bg-accent text-white py-24 md:py-32">
+        {/* Technical Grid Pattern Overlay */}
+        <div
+          className="absolute inset-0 opacity-20 pointer-events-none"
+          style={{
+            backgroundImage: `linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)`,
+            backgroundSize: '2rem 2rem',
+          }}
+        ></div>
+
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center text-center">
+          <FadeIn>
+            <div className="inline-block px-3 py-1.5 bg-black/20 border border-white/20 font-mono text-[10px] font-bold uppercase tracking-widest text-white mb-8 rounded-sm backdrop-blur-sm">
+              Próximo passo
+            </div>
+
+            <h2 className="font-serif text-4xl md:text-5xl font-medium leading-tight mb-6 max-w-3xl mx-auto drop-shadow-lg">
+              O diagnóstico não custa nada.
+              <br className="hidden sm:block" /> A ausência dele, sim.
+            </h2>
+
+            <p className="font-sans text-lg md:text-xl text-white/80 leading-relaxed mb-10 max-w-2xl mx-auto font-light">
+              Agende uma conversa técnica de 30 minutos com nossos arquitetos de soluções.
+              Entenderemos seu cenário operacional e avaliaremos o fit estratégico sem compromisso.
+            </p>
+
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-3 bg-white text-accent px-8 py-5 font-mono font-bold text-sm uppercase tracking-wider hover:bg-black hover:text-white transition-colors duration-300 group rounded-sm shadow-xl"
+            >
+              Agendar Conversa Estratégica
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+
+            <div className="mt-8 font-mono text-[10px] uppercase tracking-widest text-white/60">
+              NDA disponível · Reunião de 30 min · Sem compromisso
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+
+      {/* Cross-layer Navigation Grid */}
+      <div className="w-full bg-black border-t border-white/10 py-20 md:py-32">
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12">
+          <FadeIn>
+            <div className="flex items-center gap-4 mb-12 md:mb-16">
+              <div className="h-px w-12 bg-white/60"></div>
+              <h3 className="font-mono text-xs md:text-sm uppercase tracking-widest text-white">
+                Outras Camadas Estratégicas
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+              {Object.entries(serviceLayers)
+                .filter(([key]) => key !== slug)
+                .map(([key, otherLayer]) => (
+                  <Link
+                    key={key}
+                    to={`/servicos/${key}`}
+                    className="group flex flex-col p-8 border border-white/10 bg-zinc-950 hover:bg-white/[0.02] hover:border-white/30 transition-all duration-300"
+                  >
+                    <div className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 mb-6 group-hover:text-white/70 transition-colors">
+                      Camada {otherLayer.layerNumber}
+                    </div>
+                    <h4 className="font-serif text-2xl md:text-3xl text-white font-medium mb-4 group-hover:text-accent transition-colors">
+                      {otherLayer.title}
+                    </h4>
+                    <p className="font-sans text-sm md:text-base text-zinc-400 font-light leading-relaxed line-clamp-2 mb-8 flex-1">
+                      {otherLayer.problemStatement}
+                    </p>
+
+                    <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-white mt-auto">
+                      Explorar
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </Link>
+                ))}
+            </div>
+          </FadeIn>
+        </div>
+      </div>
     </div>
   )
 }
