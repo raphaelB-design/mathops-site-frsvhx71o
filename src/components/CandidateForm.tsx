@@ -5,6 +5,7 @@ import { z } from 'zod'
 import { Upload, X, CheckCircle2 } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast'
 import { submitCandidate, uploadCV } from '@/services/crm'
+import { TurnstileWidget } from '@/components/TurnstileWidget'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -38,22 +39,8 @@ export function CandidateForm() {
   const [file, setFile] = useState<File | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
-
-  const [num1, setNum1] = useState(0)
-  const [num2, setNum2] = useState(0)
-  const [captchaAnswer, setCaptchaAnswer] = useState('')
-
-  useEffect(() => {
-    generateCaptcha()
-  }, [])
-
-  const generateCaptcha = () => {
-    setNum1(Math.floor(Math.random() * 10) + 1)
-    setNum2(Math.floor(Math.random() * 10) + 1)
-    setCaptchaAnswer('')
-  }
-
-  const isCaptchaValid = parseInt(captchaAnswer) === num1 + num2
+  const [turnstileToken, setTurnstileToken] = useState('')
+  const [formKey, setFormKey] = useState(0)
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -70,6 +57,16 @@ export function CandidateForm() {
         })
         return
       }
+
+      if (!turnstileToken) {
+        toast({
+          title: 'Verificação necessária',
+          description: 'Por favor, complete a verificação de segurança.',
+          variant: 'destructive',
+        })
+        return
+      }
+
       setIsSubmitting(true)
       let cv_url = null
       if (file) {
@@ -82,16 +79,18 @@ export function CandidateForm() {
         await uploadCV(file, path)
         cv_url = path
       }
-      await submitCandidate({ ...values, cv_url })
+      await submitCandidate({ ...values, cv_url }, turnstileToken)
       setIsSuccess(true)
-      generateCaptcha()
-    } catch (error) {
+      setTurnstileToken('')
+      setFormKey((prev) => prev + 1)
+    } catch (error: any) {
       toast({
         title: 'Erro ao enviar',
-        description: 'Ocorreu um erro ao enviar sua candidatura. Tente novamente.',
+        description: error.message || 'Ocorreu um erro ao enviar sua candidatura. Tente novamente.',
         variant: 'destructive',
       })
-      generateCaptcha()
+      setTurnstileToken('')
+      setFormKey((prev) => prev + 1)
     } finally {
       setIsSubmitting(false)
     }
@@ -246,25 +245,14 @@ export function CandidateForm() {
           </div>
         </div>
 
-        <div className="space-y-3 p-4 border border-white/10 bg-black/20 rounded-md">
+        <div className="space-y-3">
           <FormLabel className="text-white">Verificação de Segurança</FormLabel>
-          <div className="flex items-center gap-4">
-            <span className="text-white font-mono text-lg">
-              Quanto é {num1} + {num2}?
-            </span>
-            <Input
-              type="number"
-              value={captchaAnswer}
-              onChange={(e) => setCaptchaAnswer(e.target.value)}
-              className="bg-transparent border-white/10 text-white w-24"
-              placeholder="Soma"
-            />
-          </div>
+          <TurnstileWidget key={formKey} onVerify={setTurnstileToken} />
         </div>
 
         <Button
           type="submit"
-          disabled={isSubmitting || !isCaptchaValid}
+          disabled={isSubmitting || !turnstileToken}
           className="w-full bg-accent text-white hover:bg-accent/90 disabled:opacity-50"
         >
           {isSubmitting ? 'Enviando...' : 'Enviar Candidatura'}

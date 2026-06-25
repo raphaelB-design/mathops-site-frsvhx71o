@@ -23,6 +23,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Button } from '@/components/ui/button'
+import { TurnstileWidget } from '@/components/TurnstileWidget'
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Nome deve ter no mínimo 2 caracteres'),
@@ -40,6 +41,8 @@ type ContactFormValues = z.infer<typeof contactSchema>
 export function QuoteCTA() {
   const { toast } = useToast()
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [turnstileToken, setTurnstileToken] = useState('')
+  const [formKey, setFormKey] = useState(0)
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
@@ -56,17 +59,29 @@ export function QuoteCTA() {
   })
 
   async function onSubmit(data: ContactFormValues) {
+    if (!turnstileToken) {
+      toast({
+        title: 'Verificação necessária',
+        description: 'Por favor, complete a verificação de segurança.',
+        variant: 'destructive',
+      })
+      return
+    }
+
     setIsSubmitting(true)
     try {
-      const { error } = await supabase.from('leads').insert({
-        contact_name: data.name,
-        email: data.email,
-        company_name: data.company,
-        sector: data.sector,
-        company_size: data.company_size,
-        challenge: data.challenge,
-        budget_range: data.budget,
-        operation_details: data.operation_details,
+      const { error } = await supabase.functions.invoke('submit-lead', {
+        body: {
+          contact_name: data.name,
+          email: data.email,
+          company_name: data.company,
+          sector: data.sector,
+          company_size: data.company_size,
+          challenge: data.challenge,
+          budget_range: data.budget,
+          operation_details: data.operation_details,
+          token: turnstileToken,
+        },
       })
 
       if (error) throw error
@@ -76,12 +91,17 @@ export function QuoteCTA() {
         description: 'Nossa equipe entrará em contato em breve.',
       })
       form.reset()
-    } catch (error) {
+      setTurnstileToken('')
+      setFormKey((prev) => prev + 1)
+    } catch (error: any) {
       toast({
         title: 'Erro ao enviar',
-        description: 'Não foi possível enviar sua solicitação. Tente novamente mais tarde.',
+        description:
+          error.message || 'Não foi possível enviar sua solicitação. Tente novamente mais tarde.',
         variant: 'destructive',
       })
+      setTurnstileToken('')
+      setFormKey((prev) => prev + 1)
     } finally {
       setIsSubmitting(false)
     }
@@ -336,9 +356,13 @@ export function QuoteCTA() {
                   />
                 </div>
 
+                <div className="flex justify-center md:justify-start">
+                  <TurnstileWidget key={formKey} onVerify={setTurnstileToken} />
+                </div>
+
                 <Button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !turnstileToken}
                   className="w-full bg-white text-black hover:bg-accent hover:text-white transition-colors duration-300 py-6 font-display font-bold text-lg"
                 >
                   {isSubmitting ? 'Enviando...' : 'Quero meu Diagnóstico → Agendar Conversa'}

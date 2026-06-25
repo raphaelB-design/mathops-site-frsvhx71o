@@ -8,16 +8,18 @@ export type CandidateInput = {
   cv_url?: string | null
 }
 
-export const submitCandidate = async (candidate: CandidateInput) => {
-  const { data, error } = await supabase.from('candidates' as any).insert([candidate])
+export const submitCandidate = async (data: CandidateInput, token: string) => {
+  const { data: responseData, error } = await supabase.functions.invoke('submit-candidate', {
+    body: { ...data, token },
+  })
   if (error) throw error
-  return data
+  return responseData
 }
 
 export const uploadCV = async (file: File, path: string) => {
-  const { data, error } = await supabase.storage.from('curriculos').upload(path, file)
+  const { error } = await supabase.storage.from('curriculos').upload(path, file)
   if (error) throw error
-  return data
+  return path
 }
 
 export const getSignedCvUrl = async (path: string) => {
@@ -25,5 +27,5 @@ export const getSignedCvUrl = async (path: string) => {
     body: { path },
   })
   if (error) throw error
-  return data?.signedUrl
+  return data.signedUrl
 }
