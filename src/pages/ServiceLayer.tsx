@@ -45,7 +45,7 @@ export default function ServiceLayer() {
   return (
     <div className="w-full flex flex-col min-h-screen bg-black text-white">
       {/* Cinematic Hero */}
-      <div className="relative pt-24 pb-16 md:pt-32 md:pb-24 px-6 md:px-12 flex flex-col items-center text-center overflow-hidden border-b border-white/5">
+      <div className="relative pt-40 pb-32 md:pt-56 md:pb-40 px-6 md:px-12 flex flex-col items-center text-center overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 bg-zinc-950 -z-10"></div>
         <img
           src={
@@ -58,6 +58,13 @@ export default function ServiceLayer() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black -z-10"></div>
 
         <FadeIn className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center">
+          <FadeIn>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-white/15 bg-white/5 rounded-full font-mono text-[10px] uppercase tracking-widest text-white/50 mb-8">
+              <span className="w-2 h-2 rounded-full bg-accent" />
+              Camada {layer.layerNumber} de 4
+            </div>
+          </FadeIn>
+
           <Breadcrumb className="mb-10 md:mb-12 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-muted-foreground">
             <BreadcrumbList className="flex flex-wrap justify-center gap-2 sm:gap-4 items-center">
               <BreadcrumbItem>
@@ -93,6 +100,17 @@ export default function ServiceLayer() {
           <p className="font-body text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto text-center">
             {layer.headline}
           </p>
+
+          {layer.metrics && layer.metrics.length > 0 && (
+            <div className="mt-10 pt-8 border-t border-white/10 flex items-center gap-6 justify-center">
+              <div className="font-display text-4xl font-bold text-white">
+                {layer.metrics[0].value}
+              </div>
+              <div className="font-mono text-xs uppercase tracking-widest text-white/40 max-w-[160px] leading-relaxed text-left">
+                {layer.metrics[0].label}
+              </div>
+            </div>
+          )}
         </FadeIn>
       </div>
 
