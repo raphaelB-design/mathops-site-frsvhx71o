@@ -32,6 +32,13 @@ import {
 } from '@/components/ui/breadcrumb'
 import { cn } from '@/lib/utils'
 
+const layerOverlayColors: Record<string, string> = {
+  'diagnostico-e-visibilidade': 'rgba(30, 58, 95, 0.50)',
+  'analise-e-modelagem': 'rgba(45, 27, 105, 0.50)',
+  'solucao-e-recorrencia': 'rgba(92, 58, 0, 0.50)',
+  'inteligencia-artificial': 'rgba(45, 95, 168, 0.50)',
+}
+
 export default function ServiceLayer() {
   const { slug } = useParams()
   const [selectedService, setSelectedService] = useState<ServiceDetail | null>(null)
@@ -210,6 +217,15 @@ export default function ServiceLayer() {
                   src={service.image}
                   alt={service.name}
                   className="absolute inset-0 w-full h-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-105"
+                />
+
+                <div
+                  className="absolute inset-0 transition-opacity duration-700 group-hover:opacity-0"
+                  style={{
+                    backgroundColor: slug
+                      ? layerOverlayColors[slug] || 'transparent'
+                      : 'transparent',
+                  }}
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/20 flex flex-col justify-end p-6 md:p-10">
