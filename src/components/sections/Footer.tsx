@@ -34,7 +34,7 @@ export function Footer() {
               <a
                 href="https://linkedin.com"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-white transition-colors"
                 aria-label="LinkedIn"
               >
