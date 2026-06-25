@@ -150,20 +150,6 @@ export function Services() {
               {/* Right Column */}
               <div className="p-8 md:p-12 bg-white/[0.02] border-t lg:border-t-0 lg:border-l border-white/10 flex flex-col justify-between">
                 <div>
-                  <div className="flex flex-col md:flex-row md:items-baseline gap-4 mb-8">
-                    <span className="font-display text-5xl font-bold">
-                      {diagnosticoEstrategico.price}
-                    </span>
-                    <div className="flex flex-col">
-                      <span className="font-mono text-xs text-white/50 uppercase tracking-wider">
-                        {diagnosticoEstrategico.priceNote}
-                      </span>
-                      <span className="font-mono text-xs text-accent uppercase tracking-wider">
-                        Prazo: {diagnosticoEstrategico.deadline}
-                      </span>
-                    </div>
-                  </div>
-
                   <ul className="space-y-4 mb-8">
                     {diagnosticoEstrategico.deliverables.map((item, i) => (
                       <li key={i} className="flex items-start gap-3">
@@ -188,9 +174,6 @@ export function Services() {
                     Iniciar Diagnóstico
                     <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </a>
-                  <p className="text-center font-mono text-[10px] text-white/50 uppercase tracking-wide px-4 leading-relaxed">
-                    {diagnosticoEstrategico.guarantee}
-                  </p>
                 </div>
               </div>
             </div>
