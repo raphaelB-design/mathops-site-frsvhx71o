@@ -25,8 +25,6 @@ BEGIN
     WHERE NOT EXISTS (SELECT 1 FROM storage.buckets WHERE id = 'curriculos');
 END $DO_BLOCK$;
 
-ALTER TABLE storage.objects ENABLE ROW LEVEL SECURITY;
-
 DROP POLICY IF EXISTS "allow_public_upload_curriculos" ON storage.objects;
 DROP POLICY IF EXISTS "allow_anon_insert_curriculos" ON storage.objects;
 
