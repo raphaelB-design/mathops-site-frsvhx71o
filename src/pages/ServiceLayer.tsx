@@ -351,7 +351,7 @@ export default function ServiceLayer() {
                 <img
                   src={selectedService.image}
                   alt={selectedService.name}
-                  className="w-full h-full object-cover opacity-70 mix-blend-screen"
+                  className="w-full h-full object-cover opacity-50 mix-blend-overlay"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent"></div>
 
@@ -360,15 +360,31 @@ export default function ServiceLayer() {
                     <SheetTitle className="text-4xl md:text-5xl font-serif text-white font-medium leading-[1.1] mb-2 drop-shadow-xl">
                       {selectedService.name}
                     </SheetTitle>
+                    {selectedService.prazo && (
+                      <div className="inline-flex items-center gap-1.5 border border-white/15 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-white/50 mt-3">
+                        <Clock className="w-3.5 h-3.5" />
+                        <span>{selectedService.prazo}</span>
+                      </div>
+                    )}
                   </SheetHeader>
                 </div>
               </div>
 
               {/* Content Body */}
               <div className="px-8 md:px-12 py-10 flex-1 bg-zinc-950">
-                <SheetDescription className="text-lg md:text-xl text-zinc-300 leading-relaxed font-light mb-14 border-l-2 border-white/20 pl-6 italic">
+                <SheetDescription className="text-lg md:text-xl text-zinc-300 leading-relaxed font-light mb-8 border-l-2 border-white/20 pl-6 italic">
                   "{selectedService.headline}"
                 </SheetDescription>
+
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 border border-white/20 text-white px-6 py-3 font-mono font-bold text-xs uppercase tracking-wider hover:bg-white hover:text-black transition-colors mb-12"
+                >
+                  <Play className="w-4 h-4 fill-current" />
+                  Solicitar Assessment
+                </a>
 
                 <div className="space-y-10">
                   {selectedService.dor && (
