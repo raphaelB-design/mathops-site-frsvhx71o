@@ -3,7 +3,7 @@
 # headers in the host's config / a reverse proxy.
 
 /*
-  Content-Security-Policy: default-src 'self'; img-src 'self' https://img.usecurling.com data:; connect-src 'self' https://qzdsxtqskwrslsxodexc.supabase.co https://www.google-analytics.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://goskip.dev; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+  Content-Security-Policy: default-src 'self'; img-src 'self' https://img.usecurling.com data:; connect-src 'self' https://qzdsxtqskwrslsxodexc.supabase.co https://www.google-analytics.com https://challenges.cloudflare.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://goskip.dev https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src https://challenges.cloudflare.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
