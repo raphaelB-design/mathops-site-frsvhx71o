@@ -356,9 +356,7 @@ export function QuoteCTA() {
                   />
                 </div>
 
-                <div className="flex justify-center md:justify-start">
-                  <TurnstileWidget key={formKey} onVerify={setTurnstileToken} />
-                </div>
+                <TurnstileWidget key={formKey} onVerify={setTurnstileToken} />
 
                 <Button
                   type="submit"

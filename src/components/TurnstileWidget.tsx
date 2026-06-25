@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { motion } from 'framer-motion'
 
 interface TurnstileWidgetProps {
   onVerify: (token: string) => void
@@ -45,5 +46,20 @@ export function TurnstileWidget({ onVerify }: TurnstileWidgetProps) {
     }
   }, [onVerify])
 
-  return <div ref={containerRef} className="my-4 min-h-[65px]" />
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+      className="w-full flex flex-col space-y-3"
+    >
+      <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground font-semibold">
+        [ Sistema de Segurança ]
+      </div>
+      <div className="w-full bg-white/5 border border-white/10 rounded-lg p-4 backdrop-blur-sm min-h-[97px] flex items-center justify-center sm:justify-start overflow-hidden transition-colors duration-300 hover:bg-white/10">
+        <div ref={containerRef} className="flex justify-center sm:justify-start w-full" />
+      </div>
+    </motion.div>
+  )
 }

@@ -245,10 +245,7 @@ export function CandidateForm() {
           </div>
         </div>
 
-        <div className="space-y-3">
-          <FormLabel className="text-white">Verificação de Segurança</FormLabel>
-          <TurnstileWidget key={formKey} onVerify={setTurnstileToken} />
-        </div>
+        <TurnstileWidget key={formKey} onVerify={setTurnstileToken} />
 
         <Button
           type="submit"
