@@ -42,6 +42,11 @@ export default function ServiceLayer() {
 
   const layer = serviceLayers[slug]
 
+  const anchorService =
+    layer.anchor && layer.anchorProductId
+      ? layer.services.find((s) => s.id === layer.anchorProductId)
+      : null
+
   return (
     <div className="w-full flex flex-col min-h-screen bg-black text-white">
       {/* Cinematic Hero */}
@@ -240,6 +245,85 @@ export default function ServiceLayer() {
           </div>
         </FadeIn>
       </div>
+
+      {/* Anchor Product Section */}
+      {anchorService && (
+        <div className="w-full bg-white/[0.03] border-t border-white/10 py-20 md:py-32">
+          <div className="max-w-[1600px] mx-auto px-6 md:px-12">
+            <FadeIn>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                <div className="order-2 lg:order-1">
+                  <div className="inline-block px-3 py-1.5 bg-white/5 border border-white/10 font-mono text-[10px] font-bold uppercase tracking-widest text-accent mb-8">
+                    Produto Âncora
+                  </div>
+
+                  <h2 className="font-serif text-4xl md:text-5xl text-white font-medium leading-tight mb-8">
+                    {anchorService.name}
+                  </h2>
+
+                  <p className="text-xl md:text-2xl text-zinc-300 leading-relaxed font-light mb-10 border-l-2 border-white/20 pl-6 italic">
+                    "{anchorService.headline}"
+                  </p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
+                    <div>
+                      <h4 className="font-mono text-xs uppercase tracking-widest text-zinc-500 mb-4">
+                        Entregáveis
+                      </h4>
+                      <ul className="space-y-3">
+                        {anchorService.entregaveis?.split(',').map((item, i) => (
+                          <li key={i} className="flex items-start gap-3 text-zinc-300">
+                            <div className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
+                            <span className="leading-relaxed text-sm">{item.trim()}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h4 className="font-mono text-xs uppercase tracking-widest text-zinc-500 mb-4">
+                        Perfil de Fit
+                      </h4>
+                      <p className="text-zinc-300 leading-relaxed text-sm">{anchorService.fit}</p>
+
+                      {anchorService.prazo && (
+                        <div className="mt-8">
+                          <h4 className="font-mono text-xs uppercase tracking-widest text-zinc-500 mb-4">
+                            Timeframe
+                          </h4>
+                          <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 text-sm text-white">
+                            <Clock className="w-4 h-4 text-zinc-400" />
+                            <span>{anchorService.prazo}</span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => setSelectedService(anchorService)}
+                    className="flex items-center gap-2 text-white font-mono text-xs uppercase tracking-widest hover:text-accent transition-colors group"
+                  >
+                    Ver especificações técnicas completas
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </div>
+
+                <div className="order-1 lg:order-2">
+                  <div className="aspect-[3/4] w-full max-w-md mx-auto lg:max-w-none relative border border-white/10">
+                    <img
+                      src={anchorService.image}
+                      alt={anchorService.name}
+                      className="absolute inset-0 w-full h-full object-cover grayscale opacity-70"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      )}
 
       {/* Details Sheet / Drawer */}
       <Sheet open={!!selectedService} onOpenChange={(open) => !open && setSelectedService(null)}>
