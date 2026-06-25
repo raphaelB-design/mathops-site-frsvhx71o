@@ -45,7 +45,7 @@ export default function ServiceLayer() {
   return (
     <div className="w-full flex flex-col min-h-screen bg-black text-white">
       {/* Cinematic Hero */}
-      <div className="relative pt-32 pb-24 md:pt-48 md:pb-32 px-6 md:px-12 flex flex-col items-center text-center overflow-hidden border-b border-white/5">
+      <div className="relative pt-24 pb-16 md:pt-32 md:pb-24 px-6 md:px-12 flex flex-col items-center text-center overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 bg-zinc-950 -z-10"></div>
         <img
           src={
@@ -58,39 +58,39 @@ export default function ServiceLayer() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black -z-10"></div>
 
         <FadeIn className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center">
-          <Breadcrumb className="mb-16 font-mono text-xs md:text-sm uppercase tracking-[0.2em]">
-            <BreadcrumbList className="flex flex-wrap justify-center gap-2 sm:gap-4">
+          <Breadcrumb className="mb-10 md:mb-12 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-muted-foreground">
+            <BreadcrumbList className="flex flex-wrap justify-center gap-2 sm:gap-4 items-center">
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
-                  <Link to="/" className="text-white/60 hover:text-white transition-colors">
-                    Home
+                  <Link to="/" className="text-muted-foreground hover:text-white transition-colors">
+                    [ HOME ]
                   </Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
-              <BreadcrumbSeparator className="text-white/40" />
+              <BreadcrumbSeparator className="text-white/20">/</BreadcrumbSeparator>
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
                   <Link
                     to="/#services"
-                    className="text-white/60 hover:text-white transition-colors"
+                    className="text-muted-foreground hover:text-white transition-colors"
                   >
-                    Serviços
+                    [ SERVIÇOS ]
                   </Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
-              <BreadcrumbSeparator className="text-white/40" />
+              <BreadcrumbSeparator className="text-white/20">/</BreadcrumbSeparator>
               <BreadcrumbItem>
                 <BreadcrumbPage className="text-white font-bold drop-shadow-md">
-                  {layer.title}
+                  [ {layer.title} ]
                 </BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
 
-          <h1 className="font-serif text-5xl md:text-6xl lg:text-8xl font-medium mb-8 tracking-tight leading-[1.1] text-white drop-shadow-xl">
+          <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight tracking-tight mb-6 text-white drop-shadow-xl text-center">
             {layer.title}
           </h1>
-          <p className="text-lg md:text-2xl text-zinc-300 leading-relaxed max-w-3xl mx-auto font-light">
+          <p className="font-body text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto text-center">
             {layer.headline}
           </p>
         </FadeIn>
