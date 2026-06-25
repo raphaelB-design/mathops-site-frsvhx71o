@@ -4,7 +4,6 @@ import { cn } from '@/lib/utils'
 import { useState, useEffect } from 'react'
 import { trackClick } from '@/services/analytics'
 import { FloatingWhatsApp } from '@/components/FloatingWhatsApp'
-import { MagneticButton } from '@/components/MagneticButton'
 
 export function Layout() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -16,7 +15,7 @@ export function Layout() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 60)
     }
-    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -47,11 +46,19 @@ export function Layout() {
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
+      {/* Skip link for keyboard / screen-reader users (WCAG 2.4.1) */}
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:font-mono focus:text-sm focus:text-black"
+      >
+        Pular para o conteúdo
+      </a>
+      {/* Navbar */}
       <header
         className={cn(
-          'fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 transition-all duration-500 ease-out border-b will-change-transform',
+          'fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 transition-all duration-300 border-b',
           isScrolled
-            ? 'bg-background/60 backdrop-blur-md border-white/10 shadow-sm'
+            ? 'bg-black/90 backdrop-blur-xl border-white/10'
             : 'bg-transparent border-transparent',
         )}
       >
@@ -63,13 +70,14 @@ export function Layout() {
           MathOps<span className="text-accent">.</span>
         </Link>
 
+        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8 font-mono text-sm tracking-wider text-muted-foreground">
           {navLinks.map((link) =>
             link.path ? (
               <Link
                 key={link.path}
                 to={link.path}
-                className="hover:text-foreground transition-colors duration-300"
+                className="hover:text-foreground transition-colors"
               >
                 {link.label}
               </Link>
@@ -77,7 +85,7 @@ export function Layout() {
               <button
                 key={link.id}
                 onClick={() => scrollTo(link.id!)}
-                className="hover:text-foreground transition-colors duration-300"
+                className="hover:text-foreground transition-colors"
               >
                 {link.label}
               </button>
@@ -92,24 +100,22 @@ export function Layout() {
               e.preventDefault()
               trackClick('crm_access_click', 'header_desktop')
             }}
-            className="font-mono text-xs font-bold uppercase tracking-[0.08em] text-white border border-white/20 px-5 py-2.5 hover:bg-white hover:text-black transition-colors duration-300"
+            className="font-mono text-xs font-bold uppercase tracking-[0.08em] text-white border border-white/20 px-5 py-2.5 hover:bg-white hover:text-black transition-colors"
           >
             Em Breve
           </a>
-          <MagneticButton
-            onClick={() => {
-              trackClick('whatsapp_click', 'navbar')
-              window.open(
-                'https://wa.me/5511991553336?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista%20MathOps',
-                '_blank',
-              )
-            }}
-            className="bg-white text-black px-5 py-2.5 font-display font-semibold text-sm hover:bg-accent hover:text-white transition-all duration-300 flex items-center gap-2"
+          <a
+            href="https://wa.me/5511991553336?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista%20MathOps"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackClick('whatsapp_click', 'navbar')}
+            className="bg-white text-black px-5 py-2.5 font-display font-semibold text-sm hover:bg-accent hover:text-white transition-colors flex items-center gap-2"
           >
             Falar com Especialista <ArrowUpRight className="w-4 h-4" />
-          </MagneticButton>
+          </a>
         </div>
 
+        {/* Mobile Toggle */}
         <button
           className="md:hidden text-foreground p-2"
           onClick={() => setIsMobileMenuOpen(true)}
@@ -119,6 +125,7 @@ export function Layout() {
         </button>
       </header>
 
+      {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-[60] bg-background/95 backdrop-blur-xl flex flex-col">
           <div className="flex justify-between items-center p-6 border-b border-white/10">
@@ -144,7 +151,7 @@ export function Layout() {
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="hover:text-accent transition-colors duration-300"
+                  className="hover:text-accent transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -152,7 +159,7 @@ export function Layout() {
                 <button
                   key={link.id}
                   onClick={() => scrollTo(link.id!)}
-                  className="hover:text-accent transition-colors duration-300"
+                  className="hover:text-accent transition-colors"
                 >
                   {link.label}
                 </button>
@@ -165,28 +172,28 @@ export function Layout() {
                 setIsMobileMenuOpen(false)
                 trackClick('crm_access_click', 'header_mobile')
               }}
-              className="mt-8 font-mono text-sm font-bold uppercase tracking-[0.08em] text-white border border-white/20 px-8 py-4 w-full max-w-xs text-center hover:bg-white hover:text-black transition-colors duration-300"
+              className="mt-8 font-mono text-sm font-bold uppercase tracking-[0.08em] text-white border border-white/20 px-8 py-4 w-full max-w-xs text-center hover:bg-white hover:text-black transition-colors"
             >
               Em Breve
             </a>
-            <MagneticButton
+            <a
+              href="https://wa.me/5511991553336?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista%20MathOps"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => {
                 setIsMobileMenuOpen(false)
                 trackClick('whatsapp_click', 'mobile_menu')
-                window.open(
-                  'https://wa.me/5511991553336?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista%20MathOps',
-                  '_blank',
-                )
               }}
-              className="mt-4 bg-white text-black px-8 py-4 font-bold text-lg w-full max-w-xs hover:bg-accent hover:text-white transition-all duration-300 flex items-center justify-center gap-2"
+              className="mt-4 bg-white text-black px-8 py-4 font-bold text-lg w-full max-w-xs hover:bg-accent hover:text-white transition-colors flex items-center justify-center gap-2"
             >
               Falar com Especialista <ArrowUpRight className="w-5 h-5" />
-            </MagneticButton>
+            </a>
           </nav>
         </div>
       )}
 
-      <main className="flex-1 w-full mt-[72px]">
+      {/* Main Content */}
+      <main id="main" className="flex-1 w-full mt-[72px]">
         <Outlet />
       </main>
 
