@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { serviceLayers, ServiceDetail } from '@/config/servicesData'
 import { FadeIn } from '@/components/fade-in'
@@ -42,6 +42,11 @@ const layerOverlayColors: Record<string, string> = {
 export default function ServiceLayer() {
   const { slug } = useParams()
   const [selectedService, setSelectedService] = useState<ServiceDetail | null>(null)
+
+  useEffect(() => {
+    setSelectedService(null)
+    window.scrollTo(0, 0)
+  }, [slug])
 
   if (!slug || !serviceLayers[slug]) {
     return <Navigate to="/" replace />
