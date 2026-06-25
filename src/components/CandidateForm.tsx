@@ -62,6 +62,14 @@ export function CandidateForm() {
 
   const onSubmit = async (values: FormValues) => {
     try {
+      if (file && file.size > 5 * 1024 * 1024) {
+        toast({
+          title: 'Arquivo muito grande',
+          description: 'O currículo deve ter no máximo 5MB.',
+          variant: 'destructive',
+        })
+        return
+      }
       setIsSubmitting(true)
       let cv_url = null
       if (file) {

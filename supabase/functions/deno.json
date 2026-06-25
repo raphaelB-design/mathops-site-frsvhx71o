@@ -1,5 +1,6 @@
 {
   "_versions": {
-    "storage-upload": 1
+    "storage-upload": 1,
+    "get-cv-signed-url": 1
   }
 }

@@ -19,3 +19,11 @@ export const uploadCV = async (file: File, path: string) => {
   if (error) throw error
   return data
 }
+
+export const getSignedCvUrl = async (path: string) => {
+  const { data, error } = await supabase.functions.invoke('get-cv-signed-url', {
+    body: { path },
+  })
+  if (error) throw error
+  return data?.signedUrl
+}
