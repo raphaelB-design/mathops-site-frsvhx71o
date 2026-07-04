@@ -217,32 +217,7 @@ export default function ServiceLayer() {
             </FadeIn>
 
             {/* Investment Card (Right) */}
-            <FadeIn delay={200}>
-              <div className="bg-zinc-900/50 border border-white/10 p-8 md:p-12 h-full flex flex-col justify-center">
-                <div className="font-mono text-xs uppercase tracking-widest text-zinc-500 mb-4">
-                  Investimento estimado
-                </div>
-                <div className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
-                  {layer.investmentFrom}
-                </div>
-                <p className="font-sans text-sm md:text-base text-zinc-400 leading-relaxed mb-10">
-                  Proposta detalhada após diagnóstico inicial. Projetos pontuais ou retainer
-                  conforme necessidade.
-                </p>
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center justify-between bg-white text-black px-6 py-4 font-mono font-bold text-sm uppercase tracking-wider hover:bg-zinc-200 transition-colors group mb-4"
-                >
-                  Agendar Assessment Estratégico
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </a>
-                <div className="text-center font-mono text-[10px] uppercase tracking-widest text-zinc-500">
-                  Confidencial · Sem compromisso
-                </div>
-              </div>
-            </FadeIn>
+            <FadeIn delay={200}></FadeIn>
           </div>
         </div>
       </div>
@@ -551,7 +526,7 @@ export default function ServiceLayer() {
 
             <p className="font-sans text-lg md:text-xl text-white/80 leading-relaxed mb-10 max-w-2xl mx-auto font-light">
               Agende uma conversa técnica de 30 minutos com nossos arquitetos de soluções.
-              Entenderemos seu cenário operacional e avaliaremos o fit estratégico sem compromisso.
+              Entenderemos seu cenário operacional e avaliaremos o fit estratégico.
             </p>
 
             <a
