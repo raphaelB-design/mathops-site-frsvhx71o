@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
-import { industriesData, industriesList } from '@/config/industriesData'
+import { industriesData, industriesList, allIndustriesList } from '@/config/industriesData'
 import { FadeIn } from '@/components/fade-in'
 import { ArrowLeft } from 'lucide-react'
 import {
@@ -25,7 +25,12 @@ export default function IndustryLayer() {
   }
 
   const layer = industriesData[slug as keyof typeof industriesData]
-  const otherIndustries = industriesList.filter((ind) => ind.slug !== slug)
+  const otherIndustries = allIndustriesList
+    .filter((ind) => ind.slug !== slug)
+    .sort((a, b) => {
+      if (a.featured === b.featured) return 0
+      return a.featured ? -1 : 1
+    })
 
   const Icon = layer.icon
 

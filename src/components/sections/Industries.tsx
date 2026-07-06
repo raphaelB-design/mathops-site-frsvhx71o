@@ -1,6 +1,8 @@
 import { FadeIn } from '@/components/fade-in'
-import { industriesList } from '@/config/industriesData'
+import { industriesList, nonFeaturedIndustries } from '@/config/industriesData'
 import { Link } from 'react-router-dom'
+import { WHATSAPP_URL } from '@/config/constants'
+import { ArrowUpRight } from 'lucide-react'
 
 export function Industries() {
   return (
@@ -62,6 +64,30 @@ export function Industries() {
             )
           })}
         </div>
+
+        {nonFeaturedIndustries.length > 0 && (
+          <FadeIn delay={200}>
+            <div className="mt-20 pt-12 border-t border-white/5">
+              <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground/60 font-bold mb-6 block">
+                Outros setores sob consulta
+              </span>
+              <div className="flex flex-wrap gap-x-8 gap-y-4">
+                {nonFeaturedIndustries.map((ind) => (
+                  <a
+                    key={ind.slug}
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors duration-300"
+                  >
+                    <span className="font-body text-base">{ind.name}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </FadeIn>
+        )}
       </div>
     </section>
   )

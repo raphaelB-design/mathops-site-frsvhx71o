@@ -21,6 +21,7 @@ export const industriesData = {
     image: 'https://img.usecurling.com/p/1200/800?q=construction',
     thumbnail: 'https://img.usecurling.com/p/600/400?q=construction',
     imageAlt: 'Canteiro de obras de construção civil',
+    featured: true,
   },
   manufatura: {
     slug: 'manufatura',
@@ -32,6 +33,7 @@ export const industriesData = {
     image: 'https://img.usecurling.com/p/1200/800?q=factory',
     thumbnail: 'https://img.usecurling.com/p/600/400?q=factory',
     imageAlt: 'Linha de produção em uma fábrica de manufatura',
+    featured: true,
   },
   saude: {
     slug: 'saude',
@@ -43,6 +45,7 @@ export const industriesData = {
     image: 'https://img.usecurling.com/p/1200/800?q=hospital',
     thumbnail: 'https://img.usecurling.com/p/600/400?q=hospital',
     imageAlt: 'Profissionais de saúde em ambiente hospitalar',
+    featured: false,
   },
   logistica: {
     slug: 'logistica',
@@ -54,6 +57,7 @@ export const industriesData = {
     image: 'https://img.usecurling.com/p/1200/800?q=logistics',
     thumbnail: 'https://img.usecurling.com/p/600/400?q=logistics',
     imageAlt: 'Frota de caminhões de logística',
+    featured: false,
   },
   financas: {
     slug: 'financas',
@@ -65,6 +69,7 @@ export const industriesData = {
     image: 'https://img.usecurling.com/p/1200/800?q=finance',
     thumbnail: 'https://img.usecurling.com/p/600/400?q=finance',
     imageAlt: 'Ambiente corporativo de finanças e gráficos',
+    featured: false,
   },
   varejo: {
     slug: 'varejo',
@@ -76,6 +81,7 @@ export const industriesData = {
     image: 'https://img.usecurling.com/p/1200/800?q=retail',
     thumbnail: 'https://img.usecurling.com/p/600/400?q=retail',
     imageAlt: 'Corredores de um supermercado de varejo',
+    featured: true,
   },
   aviacao: {
     slug: 'aviacao',
@@ -87,6 +93,7 @@ export const industriesData = {
     image: 'https://img.usecurling.com/p/1200/800?q=aviation',
     thumbnail: 'https://img.usecurling.com/p/600/400?q=aviation',
     imageAlt: 'Aviões comerciais em operação',
+    featured: false,
   },
   agronegocio: {
     slug: 'agronegocio',
@@ -98,6 +105,7 @@ export const industriesData = {
     image: 'https://img.usecurling.com/p/1200/800?q=harvester%20field',
     thumbnail: 'https://img.usecurling.com/p/600/400?q=harvester%20field',
     imageAlt: 'Colheitadeira moderna operando em campo de agronegócio',
+    featured: true,
   },
   energia: {
     slug: 'energia',
@@ -109,7 +117,12 @@ export const industriesData = {
     image: 'https://img.usecurling.com/p/1200/800?q=energy',
     thumbnail: 'https://img.usecurling.com/p/600/400?q=energy',
     imageAlt: 'Instalações de energia renovável',
+    featured: false,
   },
 } as const
 
-export const industriesList = Object.values(industriesData)
+export const industriesList = Object.values(industriesData).filter((ind) => ind.featured)
+
+export const nonFeaturedIndustries = Object.values(industriesData).filter((ind) => !ind.featured)
+
+export const allIndustriesList = Object.values(industriesData)
