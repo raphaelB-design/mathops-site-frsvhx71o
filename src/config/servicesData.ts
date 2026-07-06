@@ -1,3 +1,5 @@
+// NOTA: métricas numéricas de resultado (ROI, uptime, redução %) só devem ser reintroduzidas quando lastreadas por um case público documentado. Até lá, usar métricas de método/processo.
+
 export interface ServiceDetail {
   id: string
   name: string
@@ -42,7 +44,7 @@ export const serviceLayers: Record<string, ServiceLayer> = {
     metrics: [
       { value: '2–6sem', label: 'Da imersão ao painel ao vivo' },
       { value: '100%', label: 'Rastreabilidade de KPIs entregues' },
-      { value: '-67%', label: 'Tempo de identificação de gargalos' },
+      { value: 'BPMN 2.0', label: 'Padrão de modelagem aplicado' },
     ],
     anchor: false,
     forWhom:
@@ -88,9 +90,9 @@ export const serviceLayers: Record<string, ServiceLayer> = {
     layerNumber: 2,
     investmentFrom: 'a partir de R$ 25.000',
     metrics: [
-      { value: '±4.2%', label: 'Margem de erro nos modelos preditivos' },
-      { value: '4.8σ', label: 'Nível de qualidade metodológica' },
-      { value: '-38%', label: 'Variância decisória pós-implementação' },
+      { value: 'ARIMA', label: 'Metodologia de séries temporais aplicada' },
+      { value: 'Six Sigma', label: 'Padrão de qualidade metodológica' },
+      { value: 'Monte Carlo', label: 'Simulação de cenários críticos' },
     ],
     anchor: false,
     forWhom:
@@ -150,9 +152,9 @@ export const serviceLayers: Record<string, ServiceLayer> = {
     layerNumber: 3,
     investmentFrom: 'a partir de R$ 35.000 ou retainer mensal',
     metrics: [
-      { value: '99.7%', label: 'Uptime médio dos sistemas entregues' },
-      { value: '10x', label: 'ROI médio em hiperautomação' },
       { value: 'SLA', label: 'Contrato de nível de serviço contínuo' },
+      { value: 'DevOps', label: 'Sustentação técnica contínua' },
+      { value: 'Sob demanda', label: 'Evolução arquitetural contínua' },
     ],
     anchor: true,
     anchorProductId: 'torre',
@@ -214,7 +216,7 @@ export const serviceLayers: Record<string, ServiceLayer> = {
     investmentFrom: 'a partir de R$ 22.000',
     metrics: [
       { value: '3–6sem', label: 'Para diagnóstico completo de prontidão' },
-      { value: '100%', label: 'Projetos com roadmap validado antes de investir' },
+      { value: 'Sempre', label: 'Roadmap validado antes de investir' },
       { value: 'Zero', label: 'Projetos de IA iniciados sem fundação sólida' },
     ],
     anchor: true,
