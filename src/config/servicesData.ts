@@ -23,6 +23,7 @@ export interface ServiceLayer {
   anchorProductId?: string
   forWhom: string
   problemStatement: string
+  prerequisiteNote?: string
   services: ServiceDetail[]
 }
 
@@ -45,6 +46,8 @@ export const serviceLayers: Record<string, ServiceLayer> = {
     forWhom:
       'Para operações que cresceram mais rápido do que sua capacidade de enxergar. Empresas com dados existentes mas sem governança, relatórios manuais desatualizados e gestores tomando decisões sem visibilidade em tempo real.',
     problemStatement: 'Você tem dados. Falta a estrutura para enxergá-los.',
+    prerequisiteNote:
+      'Este pacote é uma possível saída do Diagnóstico Estratégico, não um substituto dele.',
     services: [
       {
         id: 'mapeamento-processos',
@@ -257,6 +260,7 @@ export const diagnosticoEstrategico = {
   tagline: 'O primeiro passo de qualquer engajamento MathOps.',
   price: 'R$ 4.500',
   priceNote: 'Valor fixo. Sem variação de escopo.',
+  sequencePosition: 'Ponto zero — sempre o primeiro passo, independente da camada de destino.',
   deadline: '2 semanas',
   headline:
     'Antes de propor uma solução, precisamos entender o problema com precisão cirúrgica. O Diagnóstico Estratégico é a única forma de garantir que o engajamento subsequente seja desenhado para o seu cenário real — não para um template.',

@@ -200,7 +200,12 @@ export default function ServiceLayer() {
       {/* Service Fit & Investment Block */}
       <div className="w-full border-b border-white/10 py-20 md:py-32">
         <div className="max-w-[1600px] mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+          <div
+            className={cn(
+              'grid grid-cols-1 gap-16 lg:gap-24',
+              layer.prerequisiteNote && 'lg:grid-cols-2',
+            )}
+          >
             {/* Context (Left) */}
             <FadeIn>
               <div className="flex flex-col h-full justify-center items-start">
@@ -216,8 +221,19 @@ export default function ServiceLayer() {
               </div>
             </FadeIn>
 
-            {/* Investment Card (Right) */}
-            <FadeIn delay={200}></FadeIn>
+            {/* Prerequisite Note (Right) */}
+            {layer.prerequisiteNote && (
+              <FadeIn delay={200}>
+                <div className="flex flex-col h-full justify-center items-start border-l border-white/10 pl-8 lg:pl-12">
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent/10 border border-accent/30 font-mono text-[10px] font-bold uppercase tracking-widest text-accent mb-6 rounded-sm">
+                    Pré-requisito
+                  </div>
+                  <p className="font-serif text-2xl md:text-3xl text-white/90 font-light leading-snug italic">
+                    {layer.prerequisiteNote}
+                  </p>
+                </div>
+              </FadeIn>
+            )}
           </div>
         </div>
       </div>

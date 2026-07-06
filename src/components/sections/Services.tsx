@@ -37,6 +37,7 @@ export function Services() {
     id: slug,
     title: layer.title,
     desc: layer.description,
+    prerequisiteNote: layer.prerequisiteNote,
   }))
 
   return (
@@ -110,6 +111,17 @@ export function Services() {
                       {layer.desc}
                     </p>
 
+                    {layer.prerequisiteNote && (
+                      <div className="mb-6 p-4 border-l-2 border-accent/40 bg-accent/5">
+                        <p className="font-mono text-[10px] uppercase tracking-widest text-accent/80 mb-2">
+                          Pré-requisito
+                        </p>
+                        <p className="font-body text-xs text-zinc-400 leading-relaxed italic">
+                          {layer.prerequisiteNote}
+                        </p>
+                      </div>
+                    )}
+
                     <div className="flex items-center gap-2 text-sm font-mono font-bold uppercase tracking-wider text-white/50 group-hover:text-white transition-colors mt-auto">
                       Explorar Camada
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -128,9 +140,22 @@ export function Services() {
               {/* Left Column */}
               <div className="p-8 md:p-12 flex flex-col justify-between">
                 <div>
-                  <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
-                    Porta de Entrada
-                  </span>
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent/15 border border-accent/40 rounded-sm mb-5">
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-accent font-bold">
+                      Porta de Entrada
+                    </span>
+                  </div>
+                  <div className="mb-6 p-5 border border-accent/30 bg-accent/[0.03] relative">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                      <span className="font-mono text-[10px] uppercase tracking-widest text-accent font-bold">
+                        Ponto Zero
+                      </span>
+                    </div>
+                    <p className="font-serif text-base md:text-lg text-white/90 italic leading-relaxed">
+                      {diagnosticoEstrategico.sequencePosition}
+                    </p>
+                  </div>
                   <h3 className="font-display text-3xl md:text-4xl font-bold mb-6">
                     {diagnosticoEstrategico.name}
                   </h3>
