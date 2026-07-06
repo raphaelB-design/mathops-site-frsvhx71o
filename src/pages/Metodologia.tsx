@@ -57,8 +57,8 @@ export default function Metodologia() {
               </div>
               <div className="md:w-2/3 flex flex-col gap-6 font-body text-muted-foreground text-lg leading-relaxed">
                 <p>
-                  A incerteza não é o fim da linha; é apenas um parâmetro que não foi adequadamente
-                  modelado. Utilizamos técnicas avançadas de Pesquisa Operacional e otimização
+                  A incerteza pode ser tratada como parâmetro modelável, não como limite fixo do
+                  planejamento. Utilizamos técnicas avançadas de Pesquisa Operacional e otimização
                   não-linear para traduzir desafios operacionais complexos em equações
                   determinísticas.
                 </p>

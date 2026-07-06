@@ -33,7 +33,7 @@ export const serviceLayers: Record<string, ServiceLayer> = {
   'diagnostico-e-visibilidade': {
     title: 'Diagnóstico e Visibilidade',
     headline:
-      'A arquitetura da verdade absoluta. Elimine zonas de sombra e extraia o DNA operacional da sua empresa.',
+      'A base factual que sua operação ainda não tem. Estruture zonas de sombra e extraia o diagnóstico real da sua empresa.',
     description:
       'Mapeamento profundo e inteligência de painéis que substituem o achismo empírico por evidências irrefutáveis.',
     heroImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=80',
@@ -143,9 +143,9 @@ export const serviceLayers: Record<string, ServiceLayer> = {
   },
   'solucao-e-recorrencia': {
     title: 'Solução e Recorrência',
-    headline: 'Automação autônoma. Infraestruturas definitivas para escala operacional irrestrita.',
+    headline: 'Automação estruturada. Infraestrutura sustentável para escala operacional contínua.',
     description:
-      'Erradique a dependência manual. Terceirize a carga cognitiva analítica para nossa inteligência sistêmica.',
+      'Reduza a dependência manual com um núcleo de dados que evolui continuamente ao lado do seu time.',
     heroImage: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1920&q=80',
     layerNumber: 3,
     investmentFrom: 'a partir de R$ 35.000 ou retainer mensal',
@@ -206,9 +206,9 @@ export const serviceLayers: Record<string, ServiceLayer> = {
   },
   'inteligencia-artificial': {
     title: 'Inteligência Artificial',
-    headline: 'Prontidão computacional. A fundação necessária para a nova era cognitiva.',
+    headline: 'Prontidão validada. A fundação de dados necessária antes de investir em IA.',
     description:
-      'Não construa sobre areia. Validamos sua maturidade algorítmica e forjamos o alicerce de dados exigido por modelos de IA.',
+      'Antes de investir em IA, valide se a fundação de dados aguenta o peso. Avaliamos sua maturidade algorítmica e estruturamos o alicerce exigido por modelos de IA.',
     heroImage: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1920&q=80',
     layerNumber: 4,
     investmentFrom: 'a partir de R$ 22.000',
@@ -229,7 +229,7 @@ export const serviceLayers: Record<string, ServiceLayer> = {
         name: 'Auditoria de Prontidão IA (AI Readiness)',
         image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80',
         headline:
-          'Proteção contra hype. Avaliação contundente para garantir que seu investimento em IA gere ROI, não frustração.',
+          'Avaliação rigorosa para garantir que seu investimento em IA gere ROI mensurável, não expectativa não cumprida.',
         dor: 'Pressão do board para adotar Inteligência Artificial sem infraestrutura de dados ou casos de uso validados.',
         entregaveis:
           'Stress-test de Infraestrutura, Matriz de Viabilidade de Negócio, Roadmap de Adoção C-Level.',
