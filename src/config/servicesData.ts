@@ -9,6 +9,8 @@ export interface ServiceDetail {
   fit: string
   prazo: string
   metodologia?: string
+  modules?: Array<{ name: string; entregaveis: string; prazo: string }>
+  implementationPhase?: ServiceDetail
 }
 
 export interface ServiceLayer {
@@ -50,29 +52,29 @@ export const serviceLayers: Record<string, ServiceLayer> = {
       'Este pacote é uma possível saída do Diagnóstico Estratégico, não um substituto dele.',
     services: [
       {
-        id: 'mapeamento-processos',
-        name: 'Mapeamento Estrutural AS IS / TO BE',
+        id: 'diagnostico-e-visibilidade-operacional',
+        name: 'Diagnóstico e Visibilidade Operacional',
         image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80',
         headline:
-          'Engenharia reversa da sua operação. Identificamos gargalos invisíveis e projetamos a eficiência em seu estado da arte.',
-        dor: 'Sintomas de entropia operacional: despadronização endêmica, retrabalho sistêmico e dependência crítica de capital humano centralizado.',
-        entregaveis: 'Imersão de Diagnóstico, Topologia AS IS, Arquitetura TO BE.',
-        tecnicos: 'Modelagem BPMN 2.0, Matriz de Gargalos, Roadmap de Implementação Executiva.',
-        fit: 'Corporações em fase de tração escalonável sofrendo de "débito operacional".',
-        prazo: '2 a 6 semanas.',
-      },
-      {
-        id: 'dashboard-diagnostico',
-        name: 'Observatório de Dados Estratégicos',
-        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
-        headline:
-          'Visibilidade executiva em tempo real. Uma camada de observabilidade instaurada em semanas, sem disrupção da infraestrutura atual.',
-        dor: 'Governança baseada em latência de informações. Relatórios manuais obsoletos que induzem decisões executivas ao erro.',
-        entregaveis:
-          'Integração Power BI, Centralização de KPIs C-Level, Painel Analítico de Alta Fidelidade.',
-        tecnicos: 'Modelagem de Dados Estrela/Floco de Neve, DAX Avançado, Conectores API Diretos.',
-        fit: 'Operações que demandam governança imediata com otimização de capital investido inicial.',
-        prazo: '3 a 8 semanas.',
+          'Engenharia reversa da sua operação, com visibilidade executiva em tempo real para sustentar a decisão.',
+        dor: 'Sintomas de entropia operacional — despadronização endêmica, retrabalho sistêmico e dependência crítica de capital humano centralizado — somados a uma governança baseada em latência de informações, com relatórios manuais obsoletos que induzem decisões executivas ao erro.',
+        entregaveis: 'Ver módulos.',
+        tecnicos: 'Ver módulos.',
+        fit: 'Corporações em fase de tração escalonável sofrendo de "débito operacional" que demandam governança imediata com otimização de capital investido inicial.',
+        prazo: '2 a 8 semanas (depende do módulo contratado).',
+        modules: [
+          {
+            name: 'Mapeamento AS IS/TO BE',
+            entregaveis: 'Imersão de Diagnóstico, Topologia AS IS, Arquitetura TO BE.',
+            prazo: '2 a 6 semanas',
+          },
+          {
+            name: 'Observatório de Dados (Painel Power BI)',
+            entregaveis:
+              'Integração Power BI, Centralização de KPIs C-Level, Painel Analítico de Alta Fidelidade.',
+            prazo: '3 a 8 semanas',
+          },
+        ],
       },
     ],
   },
@@ -160,20 +162,6 @@ export const serviceLayers: Record<string, ServiceLayer> = {
       'Sua operação já provou que dados importam. Agora precisa que eles funcionem sem depender de ninguém.',
     services: [
       {
-        id: 'power-bi',
-        name: 'Arquitetura Corporativa de BI',
-        image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80',
-        headline:
-          'O sistema nervoso da sua empresa. Uma fundação de Business Intelligence modelada para suportar trilhões de linhas.',
-        dor: 'Colapso de performance: painéis lentos, arquiteturas fragmentadas e incapacidade de escala.',
-        entregaveis:
-          'Data Warehouse Otimizado, Modelos Tabulares Escaláveis, Governança de Acessos.',
-        tecnicos:
-          'ETL em Nuvem (Azure/AWS), Modelagem Dimensional Avançada, Otimização de Performance DAX.',
-        fit: 'Organizações com volume massivo de dados sofrendo com lentidão e indisponibilidade de relatórios.',
-        prazo: '8 a 16 semanas.',
-      },
-      {
         id: 'automacao',
         name: 'Hiperautomação de Fluxos',
         image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80',
@@ -199,6 +187,20 @@ export const serviceLayers: Record<string, ServiceLayer> = {
           'SLA de Alta Disponibilidade, Monitoramento Proativo de Servidores, DevOps de Dados Contínuo.',
         fit: 'Board Executivo que necessita de excelência técnica imediata, sem o fardo de reter talentos raros de engenharia de dados.',
         prazo: 'Recorrente (SLA contínuo).',
+        implementationPhase: {
+          id: 'power-bi',
+          name: 'Arquitetura Corporativa de BI',
+          image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80',
+          headline:
+            'O sistema nervoso da sua empresa. Uma fundação de Business Intelligence modelada para suportar trilhões de linhas.',
+          dor: 'Colapso de performance: painéis lentos, arquiteturas fragmentadas e incapacidade de escala.',
+          entregaveis:
+            'Data Warehouse Otimizado, Modelos Tabulares Escaláveis, Governança de Acessos.',
+          tecnicos:
+            'ETL em Nuvem (Azure/AWS), Modelagem Dimensional Avançada, Otimização de Performance DAX.',
+          fit: 'Organizações com volume massivo de dados sofrendo com lentidão e indisponibilidade de relatórios.',
+          prazo: '8 a 16 semanas.',
+        },
       },
     ],
   },

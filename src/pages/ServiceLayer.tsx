@@ -297,6 +297,22 @@ export default function ServiceLayer() {
                         {cleanText(service.headline)}
                       </p>
 
+                      {service.modules && service.modules.length > 0 && (
+                        <div className="flex items-center gap-2">
+                          <span className="font-mono text-[10px] uppercase tracking-widest text-white/40">
+                            {service.modules.length} módulos
+                          </span>
+                        </div>
+                      )}
+
+                      {service.implementationPhase && (
+                        <div className="flex items-center gap-2">
+                          <span className="font-mono text-[10px] uppercase tracking-widest text-white/40">
+                            Projeto em 2 fases
+                          </span>
+                        </div>
+                      )}
+
                       <div className="flex flex-wrap items-center gap-4 text-xs font-sans text-white uppercase tracking-widest pt-2">
                         <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-white/60 group-hover:text-white transition-colors">
                           Ver detalhes completos
@@ -366,9 +382,40 @@ export default function ServiceLayer() {
                     </div>
                   </div>
 
+                  {anchorService.implementationPhase && (
+                    <div className="mt-10 p-6 border border-white/10 bg-white/[0.02] rounded-sm">
+                      <h4 className="font-mono text-xs uppercase tracking-widest text-zinc-500 mb-4">
+                        Jornada em Duas Fases
+                      </h4>
+                      <div className="flex items-center gap-4">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="w-6 h-6 rounded-full bg-accent/20 border border-accent/40 flex items-center justify-center font-mono text-[10px] font-bold text-accent">
+                              1
+                            </span>
+                            <span className="font-serif text-sm text-white">Implantação</span>
+                          </div>
+                          <p className="text-xs text-zinc-400 ml-8">
+                            {anchorService.implementationPhase.prazo}
+                          </p>
+                        </div>
+                        <ArrowRight className="w-4 h-4 text-white/30 shrink-0" />
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="w-6 h-6 rounded-full bg-accent/20 border border-accent/40 flex items-center justify-center font-mono text-[10px] font-bold text-accent">
+                              2
+                            </span>
+                            <span className="font-serif text-sm text-white">Operação Contínua</span>
+                          </div>
+                          <p className="text-xs text-zinc-400 ml-8">{anchorService.prazo}</p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                   <button
                     onClick={() => setSelectedService(anchorService)}
-                    className="flex items-center gap-2 text-white font-mono text-xs uppercase tracking-widest hover:text-accent transition-colors group"
+                    className="flex items-center gap-2 text-white font-mono text-xs uppercase tracking-widest hover:text-accent transition-colors group mt-6"
                   >
                     Ver especificações técnicas completas
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -447,32 +494,36 @@ export default function ServiceLayer() {
                     </DetailSection>
                   )}
 
-                  {selectedService.entregaveis && (
-                    <DetailSection
-                      icon={<Layers />}
-                      title="Artefatos Entregáveis"
-                      color="text-white"
-                    >
-                      <ul className="space-y-4">
-                        {selectedService.entregaveis.split(',').map((item, i) => (
-                          <li key={i} className="flex items-start gap-4 text-zinc-300">
-                            <div className="w-1 h-1 rounded-full bg-white/40 mt-2.5 shrink-0" />
-                            <span className="leading-relaxed">{item.trim()}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </DetailSection>
-                  )}
+                  {selectedService.entregaveis &&
+                    !selectedService.modules &&
+                    !selectedService.implementationPhase && (
+                      <DetailSection
+                        icon={<Layers />}
+                        title="Artefatos Entregáveis"
+                        color="text-white"
+                      >
+                        <ul className="space-y-4">
+                          {selectedService.entregaveis.split(',').map((item, i) => (
+                            <li key={i} className="flex items-start gap-4 text-zinc-300">
+                              <div className="w-1 h-1 rounded-full bg-white/40 mt-2.5 shrink-0" />
+                              <span className="leading-relaxed">{item.trim()}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </DetailSection>
+                    )}
 
-                  {selectedService.tecnicos && (
-                    <DetailSection
-                      icon={<Network />}
-                      title="Especificações Técnicas"
-                      color="text-zinc-300"
-                    >
-                      {selectedService.tecnicos}
-                    </DetailSection>
-                  )}
+                  {selectedService.tecnicos &&
+                    !selectedService.modules &&
+                    !selectedService.implementationPhase && (
+                      <DetailSection
+                        icon={<Network />}
+                        title="Especificações Técnicas"
+                        color="text-zinc-300"
+                      >
+                        {selectedService.tecnicos}
+                      </DetailSection>
+                    )}
 
                   {selectedService.metodologia && (
                     <DetailSection
@@ -500,6 +551,130 @@ export default function ServiceLayer() {
                     </DetailSection>
                   )}
                 </div>
+
+                {selectedService.modules && selectedService.modules.length > 0 && (
+                  <div className="mt-10">
+                    <h4 className="font-sans text-xs uppercase tracking-[0.2em] text-zinc-500 mb-6 flex items-center gap-4">
+                      <span className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center bg-white/5">
+                        <Layers className="w-4 h-4 text-zinc-400" />
+                      </span>
+                      Módulos Disponíveis
+                    </h4>
+                    <div className="space-y-4 pl-12">
+                      {selectedService.modules.map((mod, i) => (
+                        <div
+                          key={i}
+                          className="border border-white/10 bg-white/[0.02] p-6 rounded-sm"
+                        >
+                          <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
+                            <h5 className="font-serif text-lg text-white font-medium">
+                              {mod.name}
+                            </h5>
+                            <div className="inline-flex items-center gap-1.5 border border-white/15 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-white/50">
+                              <Clock className="w-3 h-3" />
+                              <span>{mod.prazo}</span>
+                            </div>
+                          </div>
+                          <p className="text-zinc-300 leading-relaxed font-light text-sm">
+                            {mod.entregaveis}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {selectedService.implementationPhase && (
+                  <div className="mt-10">
+                    <h4 className="font-sans text-xs uppercase tracking-[0.2em] text-zinc-500 mb-6 flex items-center gap-4">
+                      <span className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center bg-white/5">
+                        <Network className="w-4 h-4 text-zinc-400" />
+                      </span>
+                      Jornada de Implementação
+                    </h4>
+                    <div className="pl-12 space-y-6">
+                      <div className="border border-white/10 bg-white/[0.02] p-6 rounded-sm">
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="w-8 h-8 rounded-full bg-accent/20 border border-accent/40 flex items-center justify-center font-mono text-xs font-bold text-accent">
+                            1
+                          </div>
+                          <h5 className="font-serif text-lg text-white font-medium">
+                            Fase 1 — Implantação
+                          </h5>
+                        </div>
+                        <p className="text-zinc-300 leading-relaxed font-light text-sm mb-4 italic">
+                          {cleanText(selectedService.implementationPhase.headline)}
+                        </p>
+                        <div className="space-y-3">
+                          <div>
+                            <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 block mb-1">
+                              Entregáveis
+                            </span>
+                            <p className="text-zinc-300 text-sm leading-relaxed">
+                              {selectedService.implementationPhase.entregaveis}
+                            </p>
+                          </div>
+                          <div>
+                            <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 block mb-1">
+                              Especificações Técnicas
+                            </span>
+                            <p className="text-zinc-300 text-sm leading-relaxed">
+                              {selectedService.implementationPhase.tecnicos}
+                            </p>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">
+                              Timeframe:
+                            </span>
+                            <span className="text-zinc-300 text-sm">
+                              {selectedService.implementationPhase.prazo}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex justify-center">
+                        <div className="w-px h-8 bg-white/20"></div>
+                      </div>
+                      <div className="border border-accent/30 bg-accent/[0.03] p-6 rounded-sm">
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="w-8 h-8 rounded-full bg-accent/20 border border-accent/40 flex items-center justify-center font-mono text-xs font-bold text-accent">
+                            2
+                          </div>
+                          <h5 className="font-serif text-lg text-white font-medium">
+                            Fase 2 — Operação Contínua
+                          </h5>
+                        </div>
+                        <p className="text-zinc-300 leading-relaxed font-light text-sm mb-4 italic">
+                          {cleanText(selectedService.headline)}
+                        </p>
+                        <div className="space-y-3">
+                          <div>
+                            <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 block mb-1">
+                              Entregáveis
+                            </span>
+                            <p className="text-zinc-300 text-sm leading-relaxed">
+                              {selectedService.entregaveis}
+                            </p>
+                          </div>
+                          <div>
+                            <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 block mb-1">
+                              Especificações Técnicas
+                            </span>
+                            <p className="text-zinc-300 text-sm leading-relaxed">
+                              {selectedService.tecnicos}
+                            </p>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">
+                              Timeframe:
+                            </span>
+                            <span className="text-zinc-300 text-sm">{selectedService.prazo}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
 
                 <div className="mt-16 pt-8 border-t border-white/10">
                   <a
