@@ -475,16 +475,6 @@ export default function ServiceLayer() {
                   "{cleanText(selectedService.headline)}"
                 </SheetDescription>
 
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 border border-white/20 text-white px-6 py-3 font-mono font-bold text-xs uppercase tracking-wider hover:bg-white hover:text-black transition-colors mb-12"
-                >
-                  <Play className="w-4 h-4 fill-current" />
-                  Solicitar Assessment
-                </a>
-
                 <div className="space-y-10">
                   {selectedService.dor && (
                     <DetailSection
