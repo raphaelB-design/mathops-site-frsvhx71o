@@ -143,9 +143,6 @@ export function Services() {
                         Ponto Zero
                       </span>
                     </div>
-                    <p className="font-serif text-base md:text-lg text-white/90 italic leading-relaxed">
-                      {diagnosticoEstrategico.sequencePosition}
-                    </p>
                   </div>
                   <h3 className="font-display text-3xl md:text-4xl font-bold mb-6">
                     {diagnosticoEstrategico.name}
