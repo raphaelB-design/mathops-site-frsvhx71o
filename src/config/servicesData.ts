@@ -59,7 +59,7 @@ export const serviceLayers: Record<string, ServiceLayer> = {
         image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80',
         headline:
           'Engenharia reversa da sua operação, com visibilidade executiva em tempo real para sustentar a decisão.',
-        dor: 'Sintomas de entropia operacional — despadronização endêmica, retrabalho sistêmico e dependência crítica de capital humano centralizado — somados a uma governança baseada em latência de informações, com relatórios manuais obsoletos que induzem decisões executivas ao erro.',
+        dor: 'Sintomas de entropia operacional, caracterizados por despadronização endêmica, retrabalho sistêmico e dependência crítica de capital humano centralizado, somam-se a uma governança baseada em latência de informações, com relatórios manuais obsoletos que induzem decisões executivas ao erro.',
         entregaveis: 'Ver módulos.',
         tecnicos: 'Ver módulos.',
         fit: 'Corporações em fase de tração escalonável sofrendo de "débito operacional" que demandam governança imediata com otimização de capital investido inicial.',

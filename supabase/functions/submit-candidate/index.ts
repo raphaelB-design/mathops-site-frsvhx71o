@@ -12,7 +12,10 @@ Deno.serve(async (req: Request) => {
     const { token, full_name, email, area_interest, motivation, cv_url } = payload
 
     if (!token) {
-      return new Response(JSON.stringify({ error: 'Turnstile token is required' }), { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } })
+      return new Response(JSON.stringify({ error: 'Turnstile token is required' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      })
     }
 
     const turnstileSecret = Deno.env.get('TURNSTILE_SECRET')
@@ -24,14 +27,20 @@ Deno.serve(async (req: Request) => {
     formData.append('secret', turnstileSecret)
     formData.append('response', token)
 
-    const verifyResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-      method: 'POST',
-      body: formData,
-    })
+    const verifyResponse = await fetch(
+      'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+      {
+        method: 'POST',
+        body: formData,
+      },
+    )
     const verifyData = await verifyResponse.json()
 
     if (!verifyData.success) {
-      return new Response(JSON.stringify({ error: 'Invalid Turnstile token' }), { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } })
+      return new Response(JSON.stringify({ error: 'Invalid Turnstile token' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      })
     }
 
     const supabaseUrl = Deno.env.get('SUPABASE_URL') ?? ''
@@ -43,15 +52,21 @@ Deno.serve(async (req: Request) => {
       email,
       area_interest,
       motivation,
-      cv_url
+      cv_url,
     })
 
     if (error) {
       throw error
     }
 
-    return new Response(JSON.stringify({ success: true }), { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } })
+    return new Response(JSON.stringify({ success: true }), {
+      status: 200,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    })
   } catch (err: any) {
-    return new Response(JSON.stringify({ error: err.message }), { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } })
+    return new Response(JSON.stringify({ error: err.message }), {
+      status: 500,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    })
   }
 })
