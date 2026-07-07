@@ -97,7 +97,6 @@ export default function ServiceLayer() {
   const { slug } = useParams()
   const [selectedService, setSelectedService] = useState<ServiceDetail | null>(null)
   const [vocModalOpen, setVocModalOpen] = useState(false)
-  const [vocModalOpen, setVocModalOpen] = useState(false)
 
   useScrollLock(!!selectedService)
 
