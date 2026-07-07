@@ -281,11 +281,11 @@ export default function ServiceLayer() {
                   }}
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/85 to-black/40 flex flex-col justify-end p-4 sm:p-5 md:p-8">
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-black/50 flex flex-col justify-end p-4 sm:p-6 md:p-8">
                   <div className="space-y-1.5 sm:space-y-2 md:space-y-3">
                     <div>
                       {service.prazo && (
-                        <div className="inline-flex items-start gap-1.5 bg-white/20 border border-white/25 backdrop-blur-sm px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-sm text-[8px] sm:text-[9px] md:text-[10px] font-mono uppercase tracking-wider text-white mb-1.5 sm:mb-2 md:mb-3 max-w-full">
+                        <div className="inline-flex items-start gap-1.5 bg-white/20 border border-white/25 backdrop-blur-sm px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-sm text-[8px] sm:text-[9px] md:text-[10px] font-mono uppercase tracking-wider text-white mb-1.5 sm:mb-2 md:mb-3 max-w-full">
                           <Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3 shrink-0 mt-px" />
                           <span className="break-words leading-tight text-wrap">
                             {service.prazo}
@@ -298,13 +298,13 @@ export default function ServiceLayer() {
                     </div>
 
                     <div className="space-y-1.5 sm:space-y-2 md:space-y-3">
-                      <p className="text-[10px] sm:text-xs md:text-sm lg:text-base text-zinc-200 font-light leading-snug drop-shadow-sm">
+                      <p className="text-[10px] sm:text-xs md:text-sm lg:text-base text-zinc-200 font-light leading-snug break-words drop-shadow-sm">
                         {cleanText(service.headline)}
                       </p>
 
                       {service.modules && service.modules.length > 0 && (
                         <div className="flex items-center gap-2">
-                          <span className="font-mono text-[8px] sm:text-[9px] md:text-[10px] uppercase tracking-widest text-white/60 drop-shadow-sm">
+                          <span className="font-mono text-[8px] sm:text-[9px] md:text-[10px] uppercase tracking-widest text-white/70 drop-shadow-sm">
                             {service.modules.length} módulos
                           </span>
                         </div>
@@ -312,13 +312,13 @@ export default function ServiceLayer() {
 
                       {service.implementationPhase && (
                         <div className="flex items-center gap-2">
-                          <span className="font-mono text-[8px] sm:text-[9px] md:text-[10px] uppercase tracking-widest text-white/60 drop-shadow-sm">
+                          <span className="font-mono text-[8px] sm:text-[9px] md:text-[10px] uppercase tracking-widest text-white/70 drop-shadow-sm">
                             Projeto em 2 fases
                           </span>
                         </div>
                       )}
 
-                      <div className="flex flex-wrap items-center gap-2 md:gap-4 text-xs font-sans text-white uppercase tracking-widest pt-1 md:pt-2">
+                      <div className="flex flex-wrap items-center gap-2 md:gap-4 text-xs font-sans text-white uppercase tracking-widest pt-2 md:pt-4">
                         <div className="flex items-center gap-2 text-[9px] md:text-xs font-mono uppercase tracking-widest text-white/80 group-hover:text-white transition-colors drop-shadow-sm">
                           Ver detalhes
                           <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover:translate-x-1 transition-transform" />
