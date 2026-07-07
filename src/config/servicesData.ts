@@ -267,7 +267,7 @@ export const diagnosticoEstrategico = {
   sequencePosition: 'Ponto zero — sempre o primeiro passo, independente da camada de destino.',
   deadline: '2 semanas',
   headline:
-    'Antes de propor uma solução, precisamos entender o problema com precisão cirúrgica. O Diagnóstico Estratégico é a única forma de garantir que o engajamento subsequente seja desenhado para o seu cenário real — não para um template.',
+    'Antes de propor uma solução, precisamos entender o problema com precisão cirúrgica. O Diagnóstico Estratégico é a única forma de garantir que o engajamento subsequente seja desenhado para o seu cenário real, não para um template.',
   deliverables: [
     'Relatório de Diagnóstico Analítico (documento auditável)',
     'Mapa de Gargalos e Oportunidades Prioritárias',
