@@ -128,7 +128,7 @@ export const serviceLayers: Record<string, ServiceLayer> = {
       },
       {
         id: 'analise',
-        name: 'Auditoria Analítica de Processos',
+        name: 'Avaliação Analítica de Processos',
         image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80',
         headline:
           'Exposição cirúrgica de perdas financeiras. Isolamos e neutralizamos ineficiências com rigor estatístico.',
