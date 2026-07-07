@@ -83,7 +83,7 @@ export default function IndustryLayer() {
         <div className="max-w-4xl mx-auto">
           <FadeIn>
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-8 text-white">
-              A Matemática na {layer.name}
+              A MathOps na {layer.name}
             </h2>
             <div className="text-xl leading-relaxed text-white/80 font-body space-y-6">
               <p>{layer.details}</p>
