@@ -278,28 +278,28 @@ export default function ServiceLayer() {
                   }}
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/20 flex flex-col justify-end p-6 md:p-10">
-                  <div className="space-y-4">
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/20 flex flex-col justify-end overflow-hidden p-4 md:p-10">
+                  <div className="space-y-2 md:space-y-4">
                     <div>
                       {service.prazo && (
-                        <div className="inline-flex items-center gap-1.5 bg-white/15 border border-white/20 backdrop-blur-sm px-3 py-1 rounded-sm text-[10px] font-mono uppercase tracking-widest text-white/80 mb-3">
-                          <Clock className="w-3.5 h-3.5" />
-                          <span>{service.prazo}</span>
+                        <div className="inline-flex flex-wrap items-center gap-1.5 bg-white/15 border border-white/20 backdrop-blur-sm px-2.5 py-1 rounded-sm text-[9px] md:text-[10px] font-mono uppercase tracking-wider text-white/80 mb-2 md:mb-3 max-w-full">
+                          <Clock className="w-3 h-3 shrink-0" />
+                          <span className="break-words leading-tight">{service.prazo}</span>
                         </div>
                       )}
-                      <h3 className="text-white font-serif text-2xl md:text-3xl lg:text-4xl font-medium mb-2 drop-shadow-2xl">
+                      <h3 className="text-white font-serif text-lg md:text-3xl lg:text-4xl font-medium mb-1 md:mb-2 drop-shadow-2xl break-words leading-tight">
                         {service.name}
                       </h3>
                     </div>
 
-                    <div className="space-y-4">
-                      <p className="text-sm md:text-base text-zinc-300 font-light line-clamp-2 md:line-clamp-3">
+                    <div className="space-y-2 md:space-y-4">
+                      <p className="text-xs md:text-base text-zinc-300 font-light line-clamp-2 md:line-clamp-3 leading-snug">
                         {cleanText(service.headline)}
                       </p>
 
                       {service.modules && service.modules.length > 0 && (
                         <div className="flex items-center gap-2">
-                          <span className="font-mono text-[10px] uppercase tracking-widest text-white/40">
+                          <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-widest text-white/40">
                             {service.modules.length} módulos
                           </span>
                         </div>
@@ -307,16 +307,16 @@ export default function ServiceLayer() {
 
                       {service.implementationPhase && (
                         <div className="flex items-center gap-2">
-                          <span className="font-mono text-[10px] uppercase tracking-widest text-white/40">
+                          <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-widest text-white/40">
                             Projeto em 2 fases
                           </span>
                         </div>
                       )}
 
-                      <div className="flex flex-wrap items-center gap-4 text-xs font-sans text-white uppercase tracking-widest pt-2">
-                        <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-white/60 group-hover:text-white transition-colors">
-                          Ver detalhes completos
-                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      <div className="flex flex-wrap items-center gap-2 md:gap-4 text-xs font-sans text-white uppercase tracking-widest pt-1 md:pt-2">
+                        <div className="flex items-center gap-2 text-[9px] md:text-xs font-mono uppercase tracking-widest text-white/60 group-hover:text-white transition-colors">
+                          Ver detalhes
+                          <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover:translate-x-1 transition-transform" />
                         </div>
                       </div>
                     </div>
