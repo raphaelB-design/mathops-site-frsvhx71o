@@ -1,7 +1,16 @@
 import { FadeIn } from '@/components/fade-in'
 import { useState } from 'react'
-import { Check, ChevronLeft, ChevronRight, Quote, RefreshCw, X } from 'lucide-react'
+import { Check, ChevronLeft, ChevronRight, PartyPopper, Quote, RefreshCw, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from '@/components/ui/dialog'
+import { Button } from '@/components/ui/button'
+import { Confetti } from '@/components/confetti'
 
 interface DmaicPhase {
   id: string
@@ -107,6 +116,7 @@ export function Methodology() {
   const [activePhase, setActivePhase] = useState(0)
   const [progress, setProgress] = useState(20)
   const [pulse, setPulse] = useState(false)
+  const [showCelebration, setShowCelebration] = useState(false)
 
   const phase = phases[activePhase]
   const isLast = activePhase === phases.length - 1
@@ -124,18 +134,24 @@ export function Methodology() {
 
   const nextPhase = () => {
     if (isLast) {
-      setProgress(0)
-      setActivePhase(0)
-      setTimeout(() => {
-        setProgress(phaseProgress(0))
-        triggerPulse()
-      }, 350)
+      setShowCelebration(true)
+      triggerPulse()
     } else {
       const next = activePhase + 1
       setActivePhase(next)
       setProgress(phaseProgress(next))
       triggerPulse()
     }
+  }
+
+  const resetCycle = () => {
+    setShowCelebration(false)
+    setProgress(0)
+    setActivePhase(0)
+    setTimeout(() => {
+      setProgress(phaseProgress(0))
+      triggerPulse()
+    }, 350)
   }
 
   const prevPhase = () => {
@@ -358,7 +374,7 @@ export function Methodology() {
               </div>
 
               <button
-                onClick={nextPhase}
+                onClick={isLast ? resetCycle : nextPhase}
                 className="flex items-center gap-2 px-6 py-2.5 rounded-md bg-accent hover:bg-accent/90 text-white transition-colors text-sm font-mono uppercase tracking-wider font-bold shadow-lg shadow-accent/20"
               >
                 {isLast ? (
@@ -375,6 +391,45 @@ export function Methodology() {
           </FadeIn>
         </div>
       </div>
+
+      <Confetti active={showCelebration} />
+      <Dialog open={showCelebration} onOpenChange={setShowCelebration}>
+        <DialogContent className="max-w-md w-[90vw] border-accent/50 bg-card rounded-xl">
+          <DialogHeader>
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
+                <PartyPopper className="w-5 h-5 text-accent" />
+              </div>
+              <DialogTitle className="font-display text-2xl md:text-3xl font-bold text-foreground">
+                Ciclo DMAIC Concluído!
+              </DialogTitle>
+            </div>
+            <DialogDescription className="text-base text-muted-foreground leading-relaxed">
+              Parabéns! Você percorreu todas as etapas da jornada de maturidade MathOps e validou
+              todos os gateways de decisão.
+            </DialogDescription>
+          </DialogHeader>
+
+          <FadeIn delay={200} whileInView={true} className="mt-4">
+            <div className="p-4 rounded-lg bg-accent/5 border border-accent/20">
+              <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground block mb-1">
+                Progresso final
+              </span>
+              <span className="font-mono text-3xl font-bold text-accent">100%</span>
+            </div>
+          </FadeIn>
+
+          <div className="flex justify-end mt-6">
+            <Button
+              onClick={resetCycle}
+              className="bg-accent hover:bg-accent/90 text-white font-mono uppercase tracking-wider text-sm"
+            >
+              <RefreshCw className="w-4 h-4 mr-2" />
+              Iniciar Novo Ciclo
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   )
 }
