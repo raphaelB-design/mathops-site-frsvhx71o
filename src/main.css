@@ -98,4 +98,83 @@
   .scrollbar-dark::-webkit-scrollbar-thumb:hover {
     background-color: hsl(0 0% 30%);
   }
+
+  .glass-panel {
+    background: hsl(0 0% 5% / 0.55);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border: 1px solid hsl(var(--accent) / 0.12);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  }
+
+  .glass-badge {
+    background: hsl(var(--accent) / 0.06);
+    border: 1px solid hsl(var(--accent) / 0.15);
+    transition: all 250ms ease;
+  }
+
+  .glass-badge:hover {
+    background: hsl(var(--accent) / 0.12);
+    border-color: hsl(var(--accent) / 0.3);
+    transform: translateY(-1px);
+  }
+
+  .glass-btn-emerald {
+    background: hsl(160 84% 39% / 0.08);
+    border: 1px solid hsl(160 84% 39% / 0.3);
+    transition: all 250ms ease;
+  }
+
+  .glass-btn-emerald:hover {
+    background: hsl(160 84% 39% / 0.18);
+    border-color: hsl(160 84% 39% / 0.5);
+    box-shadow: 0 0 16px hsl(160 84% 39% / 0.2);
+  }
+
+  .glass-btn-amber {
+    background: hsl(38 92% 50% / 0.08);
+    border: 1px solid hsl(38 92% 50% / 0.3);
+    transition: all 250ms ease;
+  }
+
+  .glass-btn-amber:hover {
+    background: hsl(38 92% 50% / 0.18);
+    border-color: hsl(38 92% 50% / 0.5);
+    box-shadow: 0 0 16px hsl(38 92% 50% / 0.2);
+  }
+
+  .stepper-glow {
+    box-shadow:
+      0 0 20px hsl(var(--accent) / 0.45),
+      0 0 40px hsl(var(--accent) / 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+
+  @keyframes gate-rotate {
+    from {
+      transform: rotate(45deg);
+    }
+    to {
+      transform: rotate(405deg);
+    }
+  }
+
+  .gate-active {
+    animation: gate-rotate 4s linear infinite;
+  }
+
+  .progress-glow {
+    box-shadow:
+      0 0 12px hsl(var(--accent) / 0.6),
+      0 0 4px hsl(var(--accent) / 0.8);
+  }
+
+  .quote-container {
+    background: hsl(0 0% 5% / 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-left: 2px solid hsl(var(--accent) / 0.6);
+  }
 }
