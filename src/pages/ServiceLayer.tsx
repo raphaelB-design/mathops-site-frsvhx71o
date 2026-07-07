@@ -442,7 +442,7 @@ export default function ServiceLayer() {
 
       {/* Details Sheet / Drawer */}
       <Sheet open={!!selectedService} onOpenChange={(open) => !open && setSelectedService(null)}>
-        <SheetContent className="bg-zinc-950 border-l border-white/10 text-white sm:max-w-xl md:max-w-2xl overflow-y-auto p-0 shadow-2xl flex flex-col">
+        <SheetContent className="bg-zinc-950 border-l border-white/10 text-white sm:max-w-xl md:max-w-2xl overflow-y-auto p-0 shadow-2xl h-screen max-h-screen scrollbar-dark">
           {selectedService && (
             <div className="flex flex-col">
               {/* Header Image */}
@@ -452,7 +452,7 @@ export default function ServiceLayer() {
                   alt={selectedService.name}
                   className="w-full h-full object-cover opacity-50 mix-blend-overlay"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent pointer-events-none"></div>
 
                 <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full">
                   <SheetHeader>
