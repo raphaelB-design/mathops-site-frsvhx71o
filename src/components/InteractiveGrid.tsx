@@ -11,14 +11,22 @@ export function InteractiveGrid({ className }: { className?: string }) {
 
     if (mediaQuery.matches) return
 
+    let rafId: number | null = null
     const handleMouseMove = (e: MouseEvent) => {
-      setMouse({
-        x: (e.clientX / window.innerWidth - 0.5) * 20,
-        y: (e.clientY / window.innerHeight - 0.5) * 20,
+      if (rafId !== null) return
+      rafId = requestAnimationFrame(() => {
+        setMouse({
+          x: (e.clientX / window.innerWidth - 0.5) * 20,
+          y: (e.clientY / window.innerHeight - 0.5) * 20,
+        })
+        rafId = null
       })
     }
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
+    window.addEventListener('mousemove', handleMouseMove, { passive: true })
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+      if (rafId !== null) cancelAnimationFrame(rafId)
+    }
   }, [])
 
   if (isReducedMotion) {

@@ -3,7 +3,7 @@ import { SlideUpMask } from '@/components/slide-up-mask'
 import { ArrowUpRight, ChevronDown } from 'lucide-react'
 import { AnimatedCounter } from '@/components/animated-counter'
 import { useNavigate } from 'react-router-dom'
-import { WHATSAPP_URL } from '@/config/constants'
+import { useCallback } from 'react'
 
 const stats = [
   {
@@ -31,8 +31,10 @@ const stats = [
 
 export function Hero() {
   const navigate = useNavigate()
-  const scrollToServices = () =>
-    document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })
+  const scrollToServices = useCallback(
+    () => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }),
+    [],
+  )
 
   return (
     <section
@@ -79,7 +81,7 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row flex-wrap gap-4">
               <button
                 onClick={() => {
-                  window.scrollTo(0, 0)
+                  window.scrollTo({ top: 0, behavior: 'smooth' })
                   navigate('/metodologia')
                 }}
                 className="px-8 py-4 font-display font-semibold text-base border border-white/15 hover:border-white/30 hover:bg-white/5 transition-all duration-500 ease-smooth hover:-translate-y-1 flex items-center justify-center gap-2 group"

@@ -1,5 +1,5 @@
 import { FadeIn } from '@/components/fade-in'
-import { useState } from 'react'
+import { useState, useCallback, memo } from 'react'
 import {
   Check,
   ChevronLeft,
@@ -121,7 +121,7 @@ const phases: DmaicPhase[] = [
 
 const phaseProgress = (index: number) => (index + 1) * 20
 
-export function Methodology() {
+function MethodologyComponent() {
   const [activePhase, setActivePhase] = useState(0)
   const [progress, setProgress] = useState(20)
   const [pulse, setPulse] = useState(false)
@@ -130,18 +130,21 @@ export function Methodology() {
   const phase = phases[activePhase]
   const isLast = activePhase === phases.length - 1
 
-  const triggerPulse = () => {
+  const triggerPulse = useCallback(() => {
     setPulse(true)
     setTimeout(() => setPulse(false), 600)
-  }
+  }, [])
 
-  const goToPhase = (index: number) => {
-    setActivePhase(index)
-    setProgress(phaseProgress(index))
-    triggerPulse()
-  }
+  const goToPhase = useCallback(
+    (index: number) => {
+      setActivePhase(index)
+      setProgress(phaseProgress(index))
+      triggerPulse()
+    },
+    [triggerPulse],
+  )
 
-  const nextPhase = () => {
+  const nextPhase = useCallback(() => {
     if (isLast) {
       setShowCelebration(true)
       triggerPulse()
@@ -151,9 +154,9 @@ export function Methodology() {
       setProgress(phaseProgress(next))
       triggerPulse()
     }
-  }
+  }, [isLast, activePhase, triggerPulse])
 
-  const resetCycle = () => {
+  const resetCycle = useCallback(() => {
     setShowCelebration(false)
     setProgress(0)
     setActivePhase(0)
@@ -161,24 +164,24 @@ export function Methodology() {
       setProgress(phaseProgress(0))
       triggerPulse()
     }, 350)
-  }
+  }, [triggerPulse])
 
-  const prevPhase = () => {
+  const prevPhase = useCallback(() => {
     if (activePhase > 0) {
       const prev = activePhase - 1
       setActivePhase(prev)
       setProgress(phaseProgress(prev))
       triggerPulse()
     }
-  }
+  }, [activePhase, triggerPulse])
 
-  const handleGateNo = () => {
+  const handleGateNo = useCallback(() => {
     if (phase.gate.naoTipo === 'etapa-anterior') {
       setActivePhase(2)
       setProgress(phaseProgress(2))
       triggerPulse()
     }
-  }
+  }, [phase, triggerPulse])
 
   return (
     <section
@@ -475,3 +478,5 @@ export function Methodology() {
     </section>
   )
 }
+
+export const Methodology = memo(MethodologyComponent)
