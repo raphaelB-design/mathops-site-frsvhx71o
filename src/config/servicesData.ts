@@ -228,7 +228,7 @@ export const serviceLayers: Record<string, ServiceLayer> = {
     services: [
       {
         id: 'ai-readiness',
-        name: 'Auditoria de Prontidão IA (AI Readiness)',
+        name: 'Certificação de Prontidão IA (AI Readiness)',
         image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80',
         headline:
           'Avaliação rigorosa para garantir que seu investimento em IA gere ROI mensurável, não expectativa não cumprida.',
