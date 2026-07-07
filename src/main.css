@@ -77,6 +77,8 @@
   .scrollbar-dark {
     scrollbar-width: thin;
     scrollbar-color: hsl(0 0% 20%) transparent;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
 
   .scrollbar-dark::-webkit-scrollbar {

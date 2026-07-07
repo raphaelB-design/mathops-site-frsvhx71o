@@ -13,8 +13,13 @@ export function SmoothScroll() {
     let isScrolling = false
     let rafId: number
 
+    const isSheetOpen = () => {
+      return document.body.style.overflow === 'hidden'
+    }
+
     const onWheel = (e: WheelEvent) => {
       if (e.ctrlKey) return // Don't interfere with zooming
+      if (isSheetOpen()) return // Don't interfere when a sheet/panel is open
 
       e.preventDefault()
 
