@@ -284,14 +284,7 @@ export default function ServiceLayer() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-black/50 flex flex-col justify-end p-4 sm:p-6 md:p-8">
                   <div className="space-y-1.5 sm:space-y-2 md:space-y-3">
                     <div>
-                      {service.prazo && (
-                        <div className="inline-flex items-start gap-1.5 bg-white/20 border border-white/25 backdrop-blur-sm px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-sm text-[8px] sm:text-[9px] md:text-[10px] font-mono uppercase tracking-wider text-white mb-1.5 sm:mb-2 md:mb-3 max-w-full">
-                          <Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3 shrink-0 mt-px" />
-                          <span className="break-words leading-tight text-wrap">
-                            {service.prazo}
-                          </span>
-                        </div>
-                      )}
+                      {service.prazo && null}
                       <h3 className="text-white font-serif text-sm sm:text-lg md:text-xl lg:text-2xl font-medium mb-1 md:mb-2 drop-shadow-2xl break-words leading-snug">
                         {service.name}
                       </h3>
