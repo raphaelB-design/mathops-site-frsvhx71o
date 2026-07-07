@@ -278,28 +278,30 @@ export default function ServiceLayer() {
                   }}
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/20 flex flex-col justify-end overflow-hidden p-4 md:p-10">
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/30 flex flex-col justify-end p-5 sm:p-6 md:p-10">
                   <div className="space-y-2 md:space-y-4">
                     <div>
                       {service.prazo && (
-                        <div className="inline-flex flex-wrap items-center gap-1.5 bg-white/15 border border-white/20 backdrop-blur-sm px-2.5 py-1 rounded-sm text-[9px] md:text-[10px] font-mono uppercase tracking-wider text-white/80 mb-2 md:mb-3 max-w-full">
-                          <Clock className="w-3 h-3 shrink-0" />
-                          <span className="break-words leading-tight">{service.prazo}</span>
+                        <div className="inline-flex items-start gap-1.5 bg-white/15 border border-white/20 backdrop-blur-sm px-2.5 py-1.5 rounded-sm text-[8px] sm:text-[9px] md:text-[10px] font-mono uppercase tracking-wider text-white/80 mb-2 md:mb-3 max-w-full">
+                          <Clock className="w-3 h-3 shrink-0 mt-px" />
+                          <span className="break-words leading-tight text-wrap">
+                            {service.prazo}
+                          </span>
                         </div>
                       )}
-                      <h3 className="text-white font-serif text-lg md:text-3xl lg:text-4xl font-medium mb-1 md:mb-2 drop-shadow-2xl break-words leading-tight">
+                      <h3 className="text-white font-serif text-base sm:text-lg md:text-2xl lg:text-3xl font-medium mb-1 md:mb-2 drop-shadow-2xl break-words leading-tight">
                         {service.name}
                       </h3>
                     </div>
 
                     <div className="space-y-2 md:space-y-4">
-                      <p className="text-xs md:text-base text-zinc-300 font-light line-clamp-2 md:line-clamp-3 leading-snug">
+                      <p className="text-[11px] sm:text-xs md:text-sm lg:text-base text-zinc-300 font-light line-clamp-2 md:line-clamp-3 leading-snug">
                         {cleanText(service.headline)}
                       </p>
 
                       {service.modules && service.modules.length > 0 && (
                         <div className="flex items-center gap-2">
-                          <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-widest text-white/40">
+                          <span className="font-mono text-[8px] sm:text-[9px] md:text-[10px] uppercase tracking-widest text-white/40">
                             {service.modules.length} módulos
                           </span>
                         </div>
@@ -307,7 +309,7 @@ export default function ServiceLayer() {
 
                       {service.implementationPhase && (
                         <div className="flex items-center gap-2">
-                          <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-widest text-white/40">
+                          <span className="font-mono text-[8px] sm:text-[9px] md:text-[10px] uppercase tracking-widest text-white/40">
                             Projeto em 2 fases
                           </span>
                         </div>
