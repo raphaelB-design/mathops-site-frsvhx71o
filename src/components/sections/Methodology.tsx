@@ -101,25 +101,59 @@ const phases: DmaicPhase[] = [
   },
 ]
 
+const phaseProgress = (index: number) => (index + 1) * 20
+
 export function Methodology() {
   const [activePhase, setActivePhase] = useState(0)
+  const [progress, setProgress] = useState(20)
+  const [pulse, setPulse] = useState(false)
+
+  const phase = phases[activePhase]
+  const isLast = activePhase === phases.length - 1
+
+  const triggerPulse = () => {
+    setPulse(true)
+    setTimeout(() => setPulse(false), 600)
+  }
+
+  const goToPhase = (index: number) => {
+    setActivePhase(index)
+    setProgress(phaseProgress(index))
+    triggerPulse()
+  }
 
   const nextPhase = () => {
-    if (activePhase === phases.length - 1) {
+    if (isLast) {
+      setProgress(0)
       setActivePhase(0)
+      setTimeout(() => {
+        setProgress(phaseProgress(0))
+        triggerPulse()
+      }, 350)
     } else {
-      setActivePhase((prev) => prev + 1)
+      const next = activePhase + 1
+      setActivePhase(next)
+      setProgress(phaseProgress(next))
+      triggerPulse()
     }
   }
 
   const prevPhase = () => {
     if (activePhase > 0) {
-      setActivePhase((prev) => prev - 1)
+      const prev = activePhase - 1
+      setActivePhase(prev)
+      setProgress(phaseProgress(prev))
+      triggerPulse()
     }
   }
 
-  const phase = phases[activePhase]
-  const isLast = activePhase === phases.length - 1
+  const handleGateNo = () => {
+    if (phase.gate.naoTipo === 'etapa-anterior') {
+      setActivePhase(2)
+      setProgress(phaseProgress(2))
+      triggerPulse()
+    }
+  }
 
   return (
     <section
@@ -143,13 +177,13 @@ export function Methodology() {
         </FadeIn>
 
         {/* Stepper Rail */}
-        <div className="flex flex-col items-center mb-12">
+        <div className="flex flex-col items-center mb-3">
           <div className="w-full overflow-x-auto scrollbar-dark pb-4">
             <div className="flex items-center justify-between min-w-[360px] max-w-2xl mx-auto relative px-2">
               {phases.map((p, i) => (
                 <div key={p.id} className="flex items-center flex-1 last:flex-none">
                   <button
-                    onClick={() => setActivePhase(i)}
+                    onClick={() => goToPhase(i)}
                     className={cn(
                       'w-12 h-12 rounded-full flex items-center justify-center font-display font-bold text-lg transition-all duration-300 z-10 relative flex-shrink-0',
                       activePhase === i
@@ -173,9 +207,35 @@ export function Methodology() {
               ))}
             </div>
           </div>
-          <div className="flex items-center gap-2 mt-4 font-mono text-[11px] text-muted-foreground opacity-70">
+          <div className="flex items-center gap-2 mt-3 font-mono text-[11px] text-muted-foreground opacity-70">
             <RefreshCw className="w-3 h-3" />
             <span>control encerra o ciclo e reabre define — kaizen contínuo</span>
+          </div>
+        </div>
+
+        {/* Progress Indicator */}
+        <div className="w-full max-w-2xl mx-auto mb-12">
+          <div className="flex items-center justify-between mb-2">
+            <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+              Progresso do ciclo
+            </span>
+            <span
+              className={cn(
+                'font-mono text-xs font-bold text-accent transition-transform duration-300',
+                pulse && 'scale-125',
+              )}
+            >
+              Progresso: {progress}%
+            </span>
+          </div>
+          <div className="h-2 rounded-full bg-muted overflow-hidden">
+            <div
+              className={cn(
+                'h-full rounded-full bg-accent transition-all duration-500 ease-out',
+                pulse && 'shadow-[0_0_12px_rgba(45,95,168,0.6)]',
+              )}
+              style={{ width: `${progress}%` }}
+            />
           </div>
         </div>
 
@@ -252,18 +312,24 @@ export function Methodology() {
                   {phase.gate.pergunta}
                 </span>
               </div>
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 font-mono text-sm">
-                <div className="flex items-center gap-2 text-emerald-400/90">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 font-mono text-sm">
+                <button
+                  onClick={nextPhase}
+                  className="flex items-center gap-2 text-emerald-400/90 hover:text-emerald-400 hover:bg-emerald-400/10 px-3 py-1.5 rounded-md transition-all duration-200 cursor-pointer"
+                >
                   <Check className="w-4 h-4" />
                   <span>sim → avança</span>
-                </div>
-                <div className="flex items-center gap-2 text-amber-400/90">
+                </button>
+                <button
+                  onClick={handleGateNo}
+                  className="flex items-center gap-2 text-amber-400/90 hover:text-amber-400 hover:bg-amber-400/10 px-3 py-1.5 rounded-md transition-all duration-200 cursor-pointer"
+                >
                   <X className="w-4 h-4" />
                   <span>
                     não → {phase.gate.naoLabel}{' '}
                     <span className="opacity-60">({phase.gate.naoTipo})</span>
                   </span>
-                </div>
+                </button>
               </div>
             </div>
 
@@ -281,7 +347,7 @@ export function Methodology() {
                 {phases.map((_, i) => (
                   <button
                     key={i}
-                    onClick={() => setActivePhase(i)}
+                    onClick={() => goToPhase(i)}
                     className={cn(
                       'w-2.5 h-2.5 rounded-full transition-all duration-300',
                       activePhase === i ? 'bg-accent w-6' : 'bg-white/20 hover:bg-white/40',
