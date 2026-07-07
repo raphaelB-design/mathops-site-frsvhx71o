@@ -34,6 +34,9 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
 import { cn } from '@/lib/utils'
+import { VoCDiagnosticModal } from '@/components/VoCDiagnosticModal'
+import { VocDiagnosticModal } from '@/components/VocDiagnosticModal'
+import { Button } from '@/components/ui/button'
 
 const layerOverlayColors: Record<string, string> = {
   'diagnostico-e-visibilidade': 'rgba(30, 58, 95, 0.50)',
@@ -93,6 +96,8 @@ function MetricAnimator({ value }: { value: string }) {
 export default function ServiceLayer() {
   const { slug } = useParams()
   const [selectedService, setSelectedService] = useState<ServiceDetail | null>(null)
+  const [vocModalOpen, setVocModalOpen] = useState(false)
+  const [vocModalOpen, setVocModalOpen] = useState(false)
 
   useScrollLock(!!selectedService)
 
@@ -174,6 +179,13 @@ export default function ServiceLayer() {
           <p className="font-body text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto text-center">
             {cleanText(layer.headline)}
           </p>
+
+          <Button
+            onClick={() => setVocModalOpen(true)}
+            className="mt-10 bg-accent text-white hover:bg-accent/90 font-mono text-xs uppercase tracking-widest px-8 py-6"
+          >
+            Iniciar Diagnóstico
+          </Button>
         </FadeIn>
       </div>
 
@@ -675,6 +687,8 @@ export default function ServiceLayer() {
         </SheetContent>
       </Sheet>
 
+      <VocDiagnosticModal open={vocModalOpen} onOpenChange={setVocModalOpen} />
+
       {/* Final Conversion CTA Section */}
       <div className="w-full relative overflow-hidden bg-accent text-white py-24 md:py-32">
         {/* Technical Grid Pattern Overlay */}
@@ -701,6 +715,13 @@ export default function ServiceLayer() {
               Agende uma conversa técnica de 30 minutos com nossos arquitetos de soluções.
               Entenderemos seu cenário operacional e avaliaremos o fit estratégico.
             </p>
+
+            <Button
+              onClick={() => setVocModalOpen(true)}
+              className="bg-black/30 border border-white/30 text-white hover:bg-black/40 font-mono text-xs uppercase tracking-widest px-10 py-6 backdrop-blur-sm"
+            >
+              Iniciar Diagnóstico
+            </Button>
 
             <div className="mt-8 font-mono text-[10px] uppercase tracking-widest text-white/60">
               NDA disponível · Reunião de 30 min · Sem compromisso
@@ -775,6 +796,8 @@ export default function ServiceLayer() {
           </FadeIn>
         </div>
       </div>
+
+      <VoCDiagnosticModal open={vocModalOpen} onOpenChange={setVocModalOpen} />
     </div>
   )
 }

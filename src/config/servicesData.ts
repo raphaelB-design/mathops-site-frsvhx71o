@@ -33,7 +33,7 @@ export interface ServiceLayer {
 
 export const serviceLayers: Record<string, ServiceLayer> = {
   'diagnostico-e-visibilidade': {
-    title: 'Diagnóstico e Visibilidade',
+    title: 'Visibilidade Operacional',
     headline:
       'A base factual que sua operação ainda não tem. Estruture zonas de sombra e extraia o diagnóstico real da sua empresa.',
     description:

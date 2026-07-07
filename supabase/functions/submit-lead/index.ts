@@ -19,6 +19,8 @@ Deno.serve(async (req: Request) => {
       challenge,
       budget_range,
       operation_details,
+      maturity_level,
+      strategic_goals,
     } = payload
 
     if (!token) {
@@ -61,17 +63,28 @@ Deno.serve(async (req: Request) => {
       contact_name,
       email,
       company_name,
-      sector,
-      company_size,
+      sector: sector || 'Não informado',
+      company_size: company_size || 'Não informado',
       challenge,
-      budget_range,
-      operation_details,
+      budget_range: budget_range || 'Não informado',
+      operation_details: operation_details || null,
+      maturity_level: maturity_level || null,
+      strategic_goals: strategic_goals || null,
       source: 'site',
     })
 
     if (error) {
       throw error
     }
+
+    console.log('VoC diagnostic submission received:', {
+      contact_name,
+      email,
+      company_name,
+      sector,
+      maturity_level,
+      has_strategic_goals: !!strategic_goals,
+    })
 
     return new Response(JSON.stringify({ success: true }), {
       status: 200,

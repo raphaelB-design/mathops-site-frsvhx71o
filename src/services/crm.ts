@@ -29,3 +29,22 @@ export const getSignedCvUrl = async (path: string) => {
   if (error) throw error
   return data.signedUrl
 }
+
+export type VoCLeadInput = {
+  company_name: string
+  sector: string
+  challenge: string
+  maturity_level: string
+  strategic_goals: string
+  contact_name: string
+  email: string
+  token: string
+}
+
+export const submitVoCLead = async (data: VoCLeadInput) => {
+  const { data: responseData, error } = await supabase.functions.invoke('submit-lead', {
+    body: data,
+  })
+  if (error) throw error
+  return responseData
+}
