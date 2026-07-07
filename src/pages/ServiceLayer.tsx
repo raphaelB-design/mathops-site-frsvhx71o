@@ -709,16 +709,6 @@ export default function ServiceLayer() {
               Entenderemos seu cenário operacional e avaliaremos o fit estratégico.
             </p>
 
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 bg-white text-accent px-8 py-5 font-mono font-bold text-sm uppercase tracking-wider hover:bg-black hover:text-white transition-colors duration-300 group rounded-sm shadow-xl"
-            >
-              Agendar Conversa Estratégica
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
-
             <div className="mt-8 font-mono text-[10px] uppercase tracking-widest text-white/60">
               NDA disponível · Reunião de 30 min · Sem compromisso
             </div>
