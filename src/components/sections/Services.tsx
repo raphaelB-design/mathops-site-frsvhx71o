@@ -136,14 +136,7 @@ export function Services() {
                       Porta de Entrada
                     </span>
                   </div>
-                  <div className="mb-6 p-5 border border-accent/30 bg-accent/[0.03] relative">
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                      <span className="font-mono text-[10px] uppercase tracking-widest text-accent font-bold">
-                        Ponto Zero
-                      </span>
-                    </div>
-                  </div>
+
                   <h3 className="font-display text-3xl md:text-4xl font-bold mb-6">
                     {diagnosticoEstrategico.name}
                   </h3>
