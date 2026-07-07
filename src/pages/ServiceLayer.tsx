@@ -668,17 +668,7 @@ export default function ServiceLayer() {
                   </div>
                 )}
 
-                <div className="mt-16 pt-8 border-t border-white/10">
-                  <a
-                    href={WHATSAPP_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center gap-2 bg-white text-black px-8 py-5 font-mono font-bold text-sm uppercase tracking-wider hover:bg-zinc-200 transition-colors rounded-sm"
-                  >
-                    <Play className="w-4 h-4 fill-current" />
-                    Solicitar Assessment
-                  </a>
-                </div>
+                <div className="mt-16 pt-8 border-t border-white/10"></div>
               </div>
             </div>
           )}
