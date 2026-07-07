@@ -117,7 +117,7 @@ export const serviceLayers: Record<string, ServiceLayer> = {
         name: 'Engenharia de Memórias de Cálculo',
         image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80',
         headline:
-          'Auditoria e blindagem matemática. Imunize a governança corporativa contra assimetria de cálculos internos.',
+          'Perícia e blindagem matemática. Imunize a governança corporativa contra assimetria de cálculos internos.',
         dor: 'Silos departamentais divergindo estruturalmente no cálculo de métricas vitais de balanço.',
         entregaveis:
           'Documentação de Fórmulas Matemáticas, Validação de Cálculos Críticos, Relatório de Discrepâncias.',
