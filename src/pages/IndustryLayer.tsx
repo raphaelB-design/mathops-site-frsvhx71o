@@ -37,18 +37,18 @@ export default function IndustryLayer() {
   return (
     <div className="w-full flex flex-col min-h-screen bg-background relative">
       {/* Spotlight Hero Section */}
-      <section className="relative w-full min-h-[60vh] flex items-center bg-black overflow-hidden border-b border-white/10 pt-16 md:pt-0">
+      <section className="relative w-full min-h-[70vh] md:min-h-[75vh] lg:min-h-[80vh] flex items-center bg-black overflow-hidden border-b border-white/10 pt-20 md:pt-0">
         <div className="absolute inset-0 z-0">
           <img
             src={layer.image}
             alt={layer.name}
-            className="w-full h-full object-cover opacity-40 grayscale"
+            className="w-full h-full object-cover object-center opacity-40 grayscale"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 md:via-background/70 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
         </div>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-24">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 pt-24 pb-20 md:pt-32 md:pb-28 lg:pt-40 lg:pb-32">
           <FadeIn>
             <Link
               to="/"
