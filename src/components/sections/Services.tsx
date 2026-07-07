@@ -111,16 +111,7 @@ export function Services() {
                       {layer.desc}
                     </p>
 
-                    {layer.prerequisiteNote && (
-                      <div className="mb-6 p-4 border-l-2 border-accent/40 bg-accent/5">
-                        <p className="font-mono text-[10px] uppercase tracking-widest text-accent/80 mb-2">
-                          Pré-requisito
-                        </p>
-                        <p className="font-body text-xs text-zinc-400 leading-relaxed italic">
-                          {layer.prerequisiteNote}
-                        </p>
-                      </div>
-                    )}
+                    {layer.prerequisiteNote && null}
 
                     <div className="flex items-center gap-2 text-sm font-mono font-bold uppercase tracking-wider text-white/50 group-hover:text-white transition-colors mt-auto">
                       Explorar Camada
