@@ -96,7 +96,7 @@ export const serviceLayers: Record<string, ServiceLayer> = {
     ],
     anchor: false,
     forWhom:
-      'Para equipes de gestão que já têm visibilidade dos dados, mas ainda dependem de estimativas ou planilhas para planejar estoque, precificação e expansão. O problema não é falta de dados — é falta de modelo que os transforme em decisão.',
+      'Para equipes de gestão que já têm visibilidade dos dados, mas ainda dependem de estimativas ou planilhas para planejar estoque, precificação e expansão. O problema não é falta de dados, é falta de modelo que os transforme em decisão.',
     problemStatement: 'Seus dados existem. O modelo que os transforma em previsão, ainda não.',
     services: [
       {
