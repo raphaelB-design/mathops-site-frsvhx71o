@@ -264,7 +264,7 @@ export const diagnosticoEstrategico = {
   tagline: 'O primeiro passo de qualquer engajamento MathOps.',
   price: 'R$ 4.500',
   priceNote: 'Valor fixo. Sem variação de escopo.',
-  sequencePosition: 'Ponto zero — sempre o primeiro passo, independente da camada de destino.',
+  sequencePosition: 'Ponto zero',
   deadline: '2 semanas',
   headline:
     'Antes de propor uma solução, precisamos entender o problema com precisão cirúrgica. O Diagnóstico Estratégico é a única forma de garantir que o engajamento subsequente seja desenhado para o seu cenário real, não para um template.',
