@@ -715,13 +715,6 @@ export default function ServiceLayer() {
               Entenderemos seu cenário operacional e avaliaremos o fit estratégico.
             </p>
 
-            <Button
-              onClick={() => setVocModalOpen(true)}
-              className="bg-black/30 border border-white/30 text-white hover:bg-black/40 font-mono text-xs uppercase tracking-widest px-10 py-6 backdrop-blur-sm"
-            >
-              Iniciar Diagnóstico
-            </Button>
-
             <div className="mt-8 font-mono text-[10px] uppercase tracking-widest text-white/60">
               NDA disponível · Reunião de 30 min · Sem compromisso
             </div>
