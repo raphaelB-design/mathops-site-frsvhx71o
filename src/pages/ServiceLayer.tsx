@@ -444,7 +444,7 @@ export default function ServiceLayer() {
       <Sheet open={!!selectedService} onOpenChange={(open) => !open && setSelectedService(null)}>
         <SheetContent className="bg-zinc-950 border-l border-white/10 text-white sm:max-w-xl md:max-w-2xl overflow-y-auto p-0 shadow-2xl flex flex-col">
           {selectedService && (
-            <div className="flex flex-col min-h-full">
+            <div className="flex flex-col">
               {/* Header Image */}
               <div className="relative h-[35vh] min-h-[350px] w-full shrink-0">
                 <img
@@ -470,7 +470,7 @@ export default function ServiceLayer() {
               </div>
 
               {/* Content Body */}
-              <div className="px-8 md:px-12 py-10 flex-1 bg-zinc-950">
+              <div className="px-8 md:px-12 py-10 bg-zinc-950">
                 <SheetDescription className="text-lg md:text-xl text-zinc-300 leading-relaxed font-light mb-8 border-l-2 border-white/20 pl-6 italic">
                   "{cleanText(selectedService.headline)}"
                 </SheetDescription>
