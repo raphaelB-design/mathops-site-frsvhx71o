@@ -178,13 +178,6 @@ export default function ServiceLayer() {
           <p className="font-body text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto text-center">
             {cleanText(layer.headline)}
           </p>
-
-          <Button
-            onClick={() => setVocModalOpen(true)}
-            className="mt-10 bg-accent text-white hover:bg-accent/90 font-mono text-xs uppercase tracking-widest px-8 py-6"
-          >
-            Iniciar Diagnóstico
-          </Button>
         </FadeIn>
       </div>
 
