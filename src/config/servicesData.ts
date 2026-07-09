@@ -107,8 +107,9 @@ export const serviceLayers: Record<string, ServiceLayer> = {
           'A matemática da antecipação. Projete cenários críticos e ancore suas decisões em probabilidade, não em estimativa.',
         dor: 'Navegação às cegas: incerteza crônica no provisionamento de estoque, precificação dinâmica e projeções de M&A.',
         entregaveis:
-          'Algoritmos Preditivos, Análise de Variância (ANOVA), Simulações Estocásticas (Monte Carlo / What-if).',
-        tecnicos: 'Regressão Múltipla, Séries Temporais (ARIMA), Testes de Hipótese Rigorosos.',
+          'Modelo preditivo aplicado ao seu histórico, Relatório de análise de variância entre cenários, Simulação de cenários críticos (Monte Carlo / What-if).',
+        tecnicos:
+          'Regressão Múltipla, Séries Temporais (ARIMA), Análise de Variância (ANOVA), Testes de Hipótese.',
         fit: 'Empresas lidando com alta volatilidade de demanda e necessidade de planejamento estratégico preciso.',
         prazo: '4 a 12 semanas.',
       },
@@ -222,7 +223,7 @@ export const serviceLayers: Record<string, ServiceLayer> = {
     anchor: true,
     anchorProductId: 'ai-readiness',
     forWhom:
-      'Para C-levels sob pressão de adotar IA sem ter certeza se a infraestrutura de dados suporta isso. O diagnóstico de prontidão é a checagem que antes do aporte, não a promessa que vem depois dele.',
+      'Para C-levels sob pressão de adotar IA sem ter certeza se a infraestrutura de dados suporta isso. O diagnóstico de prontidão é a checagem que antecede o aporte, não a promessa que vem depois dele.',
     problemStatement:
       'Antes de investir em IA, descubra se sua empresa está pronta para recebê-la.',
     services: [
