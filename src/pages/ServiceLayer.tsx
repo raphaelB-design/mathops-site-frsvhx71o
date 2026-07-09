@@ -373,7 +373,7 @@ export default function ServiceLayer() {
                       {anchorService.prazo && (
                         <div className="mt-8">
                           <h4 className="font-mono text-xs uppercase tracking-widest text-zinc-500 mb-4">
-                            Timeframe
+                            Prazo
                           </h4>
                           <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 text-sm text-white">
                             <Clock className="w-4 h-4 text-zinc-400" />
@@ -505,24 +505,6 @@ export default function ServiceLayer() {
                       </DetailSection>
                     )}
 
-                  {selectedService.tecnicos &&
-                    !selectedService.modules &&
-                    !selectedService.implementationPhase && (
-                      <DetailSection
-                        icon={<Network />}
-                        title="Especificações Técnicas"
-                        color="text-zinc-300"
-                      >
-                        {selectedService.tecnicos}
-                      </DetailSection>
-                    )}
-
-                  {selectedService.metodologia && (
-                    <DetailSection icon={<Zap />} title="Como fazemos" color="text-zinc-400">
-                      {selectedService.metodologia}
-                    </DetailSection>
-                  )}
-
                   {selectedService.fit && (
                     <DetailSection icon={<Crosshair />} title="Para quem é" color="text-zinc-300">
                       {selectedService.fit}
@@ -534,6 +516,24 @@ export default function ServiceLayer() {
                       {selectedService.prazo}
                     </DetailSection>
                   )}
+
+                  {selectedService.metodologia && (
+                    <DetailSection icon={<Zap />} title="Como fazemos" color="text-zinc-400">
+                      {selectedService.metodologia}
+                    </DetailSection>
+                  )}
+
+                  {selectedService.tecnicos &&
+                    !selectedService.modules &&
+                    !selectedService.implementationPhase && (
+                      <DetailSection
+                        icon={<Network />}
+                        title="Especificações Técnicas"
+                        color="text-zinc-300"
+                      >
+                        {selectedService.tecnicos}
+                      </DetailSection>
+                    )}
                 </div>
 
                 {selectedService.modules && selectedService.modules.length > 0 && (
@@ -650,7 +650,7 @@ export default function ServiceLayer() {
                           </div>
                           <div className="flex items-center gap-2">
                             <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">
-                              Timeframe:
+                              Prazo:
                             </span>
                             <span className="text-zinc-300 text-sm">{selectedService.prazo}</span>
                           </div>
