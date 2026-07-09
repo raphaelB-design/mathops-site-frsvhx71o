@@ -35,15 +35,15 @@ export const serviceLayers: Record<string, ServiceLayer> = {
   'diagnostico-e-visibilidade': {
     title: 'Visibilidade Operacional',
     headline:
-      'A base factual que sua operação ainda não tem. Estruture zonas de sombra e extraia o diagnóstico real da sua empresa.',
+      'A base factual que sua operação ainda não tem. Elimine zonas de sombra e obtenha o diagnóstico real da sua empresa.',
     description:
-      'Mapeamento profundo e inteligência de painéis que substituem o achismo empírico por evidências irrefutáveis.',
+      'Mapeamento de processos e painéis executivos que substituem estimativa por medição.',
     heroImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=80',
     layerNumber: 1,
     investmentFrom: 'a partir de R$ 18.000',
     metrics: [
       { value: '2–6sem', label: 'Da imersão ao painel ao vivo' },
-      { value: '100%', label: 'Rastreabilidade de KPIs entregues' },
+      { value: 'Power BI', label: 'Plataforma dos painéis entregues' },
       { value: 'BPMN 2.0', label: 'Padrão de modelagem aplicado' },
     ],
     anchor: false,
@@ -59,10 +59,10 @@ export const serviceLayers: Record<string, ServiceLayer> = {
         image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80',
         headline:
           'Engenharia reversa da sua operação, com visibilidade executiva em tempo real para sustentar a decisão.',
-        dor: 'Sintomas de entropia operacional, caracterizados por despadronização endêmica, retrabalho sistêmico e dependência crítica de capital humano centralizado, somam-se a uma governança baseada em latência de informações, com relatórios manuais obsoletos que induzem decisões executivas ao erro.',
+        dor: 'Processos sem padrão, retrabalho constante e dependência de poucas pessoas-chave. A decisão executiva é tomada sobre relatórios manuais já desatualizados no momento em que chegam à mesa.',
         entregaveis: 'Ver módulos.',
         tecnicos: 'Ver módulos.',
-        fit: 'Corporações em fase de tração escalonável sofrendo de "débito operacional" que demandam governança imediata com otimização de capital investido inicial.',
+        fit: 'Empresas que cresceram mais rápido do que sua capacidade de enxergar a própria operação, e precisam de governança sem um investimento inicial pesado.',
         prazo: '2 a 8 semanas (depende do módulo contratado).',
         modules: [
           {
@@ -83,9 +83,9 @@ export const serviceLayers: Record<string, ServiceLayer> = {
   'analise-e-modelagem': {
     title: 'Análise e Modelagem',
     headline:
-      'Previsibilidade projetada. Algoritmos e modelos estatísticos para dominar o futuro de mercado.',
+      'Previsibilidade projetada. Algoritmos e modelos estatísticos para antecipar cenários de mercado.',
     description:
-      'Transforme dados inertes em ativos preditivos e estanque perdas financeiras submersas em sua cadeia de valor.',
+      'Transforme dados em modelos preditivos e identifique perdas que hoje não aparecem no relatório.',
     heroImage: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?w=1920&q=80',
     layerNumber: 2,
     investmentFrom: 'a partir de R$ 25.000',
@@ -104,7 +104,7 @@ export const serviceLayers: Record<string, ServiceLayer> = {
         name: 'Modelagem Preditiva & Estatística Aplicada',
         image: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&q=80',
         headline:
-          'A matemática da antecipação. Projete cenários críticos e ancore suas decisões em probabilidade avançada.',
+          'A matemática da antecipação. Projete cenários críticos e ancore suas decisões em probabilidade, não em estimativa.',
         dor: 'Navegação às cegas: incerteza crônica no provisionamento de estoque, precificação dinâmica e projeções de M&A.',
         entregaveis:
           'Algoritmos Preditivos, Análise de Variância (ANOVA), Simulações Estocásticas (Monte Carlo / What-if).',
@@ -114,11 +114,11 @@ export const serviceLayers: Record<string, ServiceLayer> = {
       },
       {
         id: 'memorias',
-        name: 'Engenharia de Memórias de Cálculo',
+        name: 'Auditoria de Memórias de Cálculo',
         image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80',
         headline:
-          'Perícia e blindagem matemática. Imunize a governança corporativa contra assimetria de cálculos internos.',
-        dor: 'Silos departamentais divergindo estruturalmente no cálculo de métricas vitais de balanço.',
+          'Auditoria dos cálculos que sustentam seus indicadores. Elimine a divergência de números entre áreas.',
+        dor: 'Áreas diferentes calculam a mesma métrica de formas diferentes, e o balanço herda a divergência.',
         entregaveis:
           'Documentação de Fórmulas Matemáticas, Validação de Cálculos Críticos, Relatório de Discrepâncias.',
         tecnicos:
@@ -131,8 +131,8 @@ export const serviceLayers: Record<string, ServiceLayer> = {
         name: 'Avaliação Analítica de Processos',
         image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80',
         headline:
-          'Exposição cirúrgica de perdas financeiras. Isolamos e neutralizamos ineficiências com rigor estatístico.',
-        dor: 'Drenagem crônica de capital/matéria-prima sem lastro probatório da raiz do problema.',
+          'Isolamento estatístico das causas de perda. Identificamos onde a margem se desfaz, e por quê.',
+        dor: 'Perda recorrente de capital e matéria-prima sem causa identificada.',
         entregaveis:
           'Mapeamento de Desperdícios, Análise de Causa Raiz, Matriz de Priorização de Melhorias.',
         tecnicos:
@@ -144,7 +144,7 @@ export const serviceLayers: Record<string, ServiceLayer> = {
     ],
   },
   'solucao-e-recorrencia': {
-    title: 'Solução e Recorrência',
+    title: 'Solução e Automação',
     headline: 'Automação estruturada. Infraestrutura sustentável para escala operacional contínua.',
     description:
       'Reduza a dependência manual com um núcleo de dados que evolui continuamente ao lado do seu time.',
@@ -194,7 +194,7 @@ export const serviceLayers: Record<string, ServiceLayer> = {
           name: 'Arquitetura Corporativa de BI',
           image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80',
           headline:
-            'O sistema nervoso da sua empresa. Uma fundação de Business Intelligence modelada para suportar trilhões de linhas.',
+            'O sistema nervoso da sua empresa. Uma fundação de Business Intelligence modelada para escalar sem degradação de performance.',
           dor: 'Colapso de performance: painéis lentos, arquiteturas fragmentadas e incapacidade de escala.',
           entregaveis:
             'Data Warehouse Otimizado, Modelos Tabulares Escaláveis, Governança de Acessos.',
@@ -207,31 +207,31 @@ export const serviceLayers: Record<string, ServiceLayer> = {
     ],
   },
   'inteligencia-artificial': {
-    title: 'Inteligência Artificial',
+    title: 'Preparação para IA',
     headline: 'Prontidão validada. A fundação de dados necessária antes de investir em IA.',
     description:
-      'Antes de investir em IA, valide se a fundação de dados aguenta o peso. Avaliamos sua maturidade algorítmica e estruturamos o alicerce exigido por modelos de IA.',
+      'Antes de vender IA para você, verificamos se ela vai funcionar. A maior parte dos projetos falha porque a base de dados não sustentava o modelo.',
     heroImage: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1920&q=80',
     layerNumber: 4,
     investmentFrom: 'a partir de R$ 22.000',
     metrics: [
       { value: '3–6sem', label: 'Para diagnóstico completo de prontidão' },
-      { value: 'Sempre', label: 'Roadmap validado antes de investir' },
-      { value: 'Zero', label: 'Projetos de IA iniciados sem fundação sólida' },
+      { value: 'Data Quality', label: 'Assessment aplicado à base existente' },
+      { value: 'Roadmap', label: 'Plano de adoção antes de qualquer aporte' },
     ],
     anchor: true,
     anchorProductId: 'ai-readiness',
     forWhom:
-      'Para C-levels sob pressão de adotar IA sem ter certeza se a infraestrutura de dados suporta isso. Nossa auditoria de prontidão é o antídoto contra investimentos de alto risco em tecnologia que não entregam ROI.',
+      'Para C-levels sob pressão de adotar IA sem ter certeza se a infraestrutura de dados suporta isso. O diagnóstico de prontidão é a checagem que antes do aporte, não a promessa que vem depois dele.',
     problemStatement:
       'Antes de investir em IA, descubra se sua empresa está pronta para recebê-la.',
     services: [
       {
         id: 'ai-readiness',
-        name: 'Certificação de Prontidão IA (AI Readiness)',
+        name: 'Diagnóstico de Prontidão para IA',
         image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80',
         headline:
-          'Avaliação rigorosa para garantir que seu investimento em IA gere ROI mensurável, não expectativa não cumprida.',
+          'Avaliação rigorosa antes do aporte. Se a base não sustenta o modelo, dizemos com todas as letras, e mostramos o que falta.',
         dor: 'Pressão do board para adotar Inteligência Artificial sem infraestrutura de dados ou casos de uso validados.',
         entregaveis:
           'Stress-test de Infraestrutura, Matriz de Viabilidade de Negócio, Roadmap de Adoção C-Level.',
@@ -242,11 +242,10 @@ export const serviceLayers: Record<string, ServiceLayer> = {
       },
       {
         id: 'governanca',
-        name: 'Governança Estrita de Dados',
+        name: 'Governança de Dados',
         image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80',
-        headline:
-          'Higiene algorítmica. A espinha dorsal inegociável para sustentar a implementação de Machine Learning.',
-        dor: 'O paradoxo "Garbage in, garbage out": lagos de dados poluídos gerando alucinações algorítmicas.',
+        headline: 'A base que sustenta qualquer modelo. Sem dado confiável, não há IA confiável.',
+        dor: 'Dado ruim entra, decisão ruim sai. Bases desorganizadas produzem modelos que não se pode confiar.',
         entregaveis:
           'Dicionário de Dados Corporativo, Políticas de Acesso Restrito, Padrões de Higiene e Qualidade.',
         tecnicos:
@@ -267,7 +266,7 @@ export const diagnosticoEstrategico = {
   sequencePosition: 'Ponto zero',
   deadline: '2 semanas',
   headline:
-    'Antes de propor uma solução, precisamos entender o problema com precisão cirúrgica. O Diagnóstico Estratégico é a única forma de garantir que o engajamento subsequente seja desenhado para o seu cenário real, não para um template.',
+    'Antes de propor uma solução, precisamos entender o problema com precisão. O Diagnóstico Estratégico é a única forma de garantir que o engajamento subsequente seja desenhado para o seu cenário real, não para um template.',
   deliverables: [
     'Relatório de Diagnóstico Analítico (documento auditável)',
     'Mapa de Gargalos e Oportunidades Prioritárias',
