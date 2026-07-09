@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 const serviceLinks = [
   { label: 'Diagnóstico e Visibilidade', slug: 'diagnostico-e-visibilidade' },
   { label: 'Análise e Modelagem', slug: 'analise-e-modelagem' },
-  { label: 'Solução e Recorrência', slug: 'solucao-e-recorrencia' },
-  { label: 'Inteligência Artificial', slug: 'inteligencia-artificial', isNew: true },
+  { label: 'Solução e Automação', slug: 'solucao-e-recorrencia' },
+  { label: 'Preparação para IA', slug: 'inteligencia-artificial', isNew: true },
 ]
 
 export function Footer() {

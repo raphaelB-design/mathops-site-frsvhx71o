@@ -114,7 +114,7 @@ export function Services() {
                     {layer.prerequisiteNote && null}
 
                     <div className="flex items-center gap-2 text-sm font-mono font-bold uppercase tracking-wider text-white/50 group-hover:text-white transition-colors mt-auto">
-                      Explorar Camada
+                      Ver serviços desta camada
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>

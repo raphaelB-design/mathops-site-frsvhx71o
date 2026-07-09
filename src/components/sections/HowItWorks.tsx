@@ -15,7 +15,7 @@ const steps = [
   },
   {
     number: '03',
-    title: 'Execução Cirúrgica',
+    title: 'Execução Precisa',
     description:
       'Implementação da estratégia com precisão impecável. Cada movimento é calculado e executado no momento exato para maximizar a assertividade e garantir o resultado.',
   },
