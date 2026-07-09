@@ -483,7 +483,7 @@ export default function ServiceLayer() {
                   {selectedService.dor && (
                     <DetailSection
                       icon={<AlertTriangle />}
-                      title="O Ponto de Falha"
+                      title="O problema"
                       color="text-zinc-400"
                     >
                       {cleanText(selectedService.dor)}
@@ -493,11 +493,7 @@ export default function ServiceLayer() {
                   {selectedService.entregaveis &&
                     !selectedService.modules &&
                     !selectedService.implementationPhase && (
-                      <DetailSection
-                        icon={<Layers />}
-                        title="Artefatos Entregáveis"
-                        color="text-white"
-                      >
+                      <DetailSection icon={<Layers />} title="O que você recebe" color="text-white">
                         <ul className="space-y-4">
                           {selectedService.entregaveis.split(',').map((item, i) => (
                             <li key={i} className="flex items-start gap-4 text-zinc-300">
@@ -522,27 +518,19 @@ export default function ServiceLayer() {
                     )}
 
                   {selectedService.metodologia && (
-                    <DetailSection
-                      icon={<Zap />}
-                      title="Metodologia Aplicada"
-                      color="text-zinc-400"
-                    >
+                    <DetailSection icon={<Zap />} title="Como fazemos" color="text-zinc-400">
                       {selectedService.metodologia}
                     </DetailSection>
                   )}
 
                   {selectedService.fit && (
-                    <DetailSection
-                      icon={<Crosshair />}
-                      title="Perfil de Fit Ideal"
-                      color="text-zinc-300"
-                    >
+                    <DetailSection icon={<Crosshair />} title="Para quem é" color="text-zinc-300">
                       {selectedService.fit}
                     </DetailSection>
                   )}
 
                   {selectedService.prazo && (
-                    <DetailSection icon={<Clock />} title="Timeframe Estimado" color="text-white">
+                    <DetailSection icon={<Clock />} title="Prazo" color="text-white">
                       {selectedService.prazo}
                     </DetailSection>
                   )}
@@ -586,7 +574,7 @@ export default function ServiceLayer() {
                       <span className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center bg-white/5">
                         <Network className="w-4 h-4 text-zinc-400" />
                       </span>
-                      Jornada de Implementação
+                      Como começamos
                     </h4>
                     <div className="pl-12 space-y-6">
                       <div className="border border-white/10 bg-white/[0.02] p-6 rounded-sm">
@@ -620,7 +608,7 @@ export default function ServiceLayer() {
                           </div>
                           <div className="flex items-center gap-2">
                             <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">
-                              Timeframe:
+                              Prazo:
                             </span>
                             <span className="text-zinc-300 text-sm">
                               {selectedService.implementationPhase.prazo}
