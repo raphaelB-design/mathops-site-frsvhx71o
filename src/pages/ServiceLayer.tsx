@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
+import { useDiagnosticModal } from '@/context/DiagnosticModalContext'
+import { trackClick } from '@/services/analytics'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { serviceLayers, ServiceDetail } from '@/config/servicesData'
 import { FadeIn } from '@/components/fade-in'
 import { AnimatedCounter } from '@/components/animated-counter'
-import { WHATSAPP_URL } from '@/config/constants'
 import { useScrollLock } from '@/hooks/use-scroll-lock'
 import {
   ArrowLeft,
@@ -34,9 +35,6 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
 import { cn } from '@/lib/utils'
-import { VoCDiagnosticModal } from '@/components/VoCDiagnosticModal'
-import { VocDiagnosticModal } from '@/components/VocDiagnosticModal'
-import { Button } from '@/components/ui/button'
 
 const layerOverlayColors: Record<string, string> = {
   'diagnostico-e-visibilidade': 'rgba(30, 58, 95, 0.50)',
@@ -95,8 +93,8 @@ function MetricAnimator({ value }: { value: string }) {
 
 export default function ServiceLayer() {
   const { slug } = useParams()
+  const { openDiagnostic } = useDiagnosticModal()
   const [selectedService, setSelectedService] = useState<ServiceDetail | null>(null)
-  const [vocModalOpen, setVocModalOpen] = useState(false)
 
   useScrollLock(!!selectedService)
 
@@ -667,8 +665,6 @@ export default function ServiceLayer() {
         </SheetContent>
       </Sheet>
 
-      <VocDiagnosticModal open={vocModalOpen} onOpenChange={setVocModalOpen} />
-
       {/* Final Conversion CTA Section */}
       <div className="w-full relative overflow-hidden bg-accent text-white py-24 md:py-32">
         {/* Technical Grid Pattern Overlay */}
@@ -695,6 +691,17 @@ export default function ServiceLayer() {
               Agende uma conversa técnica de 30 minutos com nossos arquitetos de soluções.
               Entenderemos seu cenário operacional e avaliaremos o fit estratégico.
             </p>
+
+            <button
+              onClick={() => {
+                trackClick('diagnostic_open', 'service_layer')
+                openDiagnostic()
+              }}
+              className="group inline-flex items-center gap-2 bg-white text-black font-mono font-bold uppercase tracking-wider text-sm py-4 px-8 hover:bg-black hover:text-white transition-colors duration-300"
+            >
+              Solicitar Diagnóstico Estratégico
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </button>
 
             <div className="mt-8 font-mono text-[10px] uppercase tracking-widest text-white/60">
               NDA disponível · Reunião de 30 min · Sem compromisso
@@ -769,8 +776,6 @@ export default function ServiceLayer() {
           </FadeIn>
         </div>
       </div>
-
-      <VoCDiagnosticModal open={vocModalOpen} onOpenChange={setVocModalOpen} />
     </div>
   )
 }
