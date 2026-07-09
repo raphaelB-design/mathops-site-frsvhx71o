@@ -1,150 +1,115 @@
 import { useEffect } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
-import { industriesData, industriesList, allIndustriesList } from '@/config/industriesData'
-import { FadeIn } from '@/components/fade-in'
-import { ArrowLeft } from 'lucide-react'
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel'
+import { industries } from '@/config/industriesData'
+import { ArrowLeft, ArrowRight, Check } from 'lucide-react'
+import { trackClick } from '@/services/analytics'
+import { useDiagnosticModal } from '@/context/DiagnosticModalContext'
 import { FloatingContactWidget } from '@/components/FloatingContactWidget'
 
 export default function IndustryLayer() {
   const { slug } = useParams()
+  const { openDiagnostic } = useDiagnosticModal()
 
-  // Auto-scroll to top when slug changes
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' })
   }, [slug])
 
-  if (!slug || !(slug in industriesData)) {
+  const industry = industries.find((i) => i.slug === slug)
+
+  const handleDiagnostic = (origin: string) => {
+    trackClick('diagnostic_open', origin)
+    openDiagnostic()
+  }
+
+  if (!slug || !industry) {
     return <Navigate to="/" replace />
   }
 
-  const layer = industriesData[slug as keyof typeof industriesData]
-  const otherIndustries = allIndustriesList
-    .filter((ind) => ind.slug !== slug)
-    .sort((a, b) => {
-      if (a.featured === b.featured) return 0
-      return a.featured ? -1 : 1
-    })
-
-  const Icon = layer.icon
+  const otherIndustries = industries.filter((i) => i.slug !== slug)
 
   return (
-    <div className="w-full flex flex-col min-h-screen bg-background relative">
-      {/* Spotlight Hero Section */}
-      <section className="relative w-full min-h-[70vh] md:min-h-[75vh] lg:min-h-[80vh] flex items-center bg-black overflow-hidden border-b border-white/10 pt-20 md:pt-0">
-        <div className="absolute inset-0 z-0">
-          <img
-            src={layer.image}
-            alt={layer.name}
-            className="w-full h-full object-cover object-center opacity-40 grayscale"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 md:via-background/70 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-        </div>
-
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 pt-24 pb-20 md:pt-32 md:pb-28 lg:pt-40 lg:pb-32">
-          <FadeIn>
-            <Link
-              to="/"
-              className="inline-flex items-center gap-2 text-sm font-mono font-bold uppercase tracking-wider text-muted-foreground hover:text-white transition-colors mb-8"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Voltar para Início
-            </Link>
-
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-accent/10 border border-accent/20 flex items-center justify-center text-accent backdrop-blur-sm shadow-xl">
-                <Icon className="w-8 h-8" />
-              </div>
-              <span className="font-mono text-sm uppercase tracking-widest text-accent font-bold">
-                Especialidade Setorial
-              </span>
-            </div>
-
-            <h1 className="font-display text-5xl md:text-7xl font-bold mb-6 max-w-4xl drop-shadow-2xl text-white">
-              {layer.name}
-            </h1>
-
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mb-6 leading-relaxed font-body drop-shadow-md">
-              {layer.desc}
-            </p>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Deep Dive Details Section */}
-      <section className="py-24 px-6 md:px-12 bg-background border-b border-white/10">
+    <div className="bg-black min-h-screen pt-20">
+      <section className="py-24 lg:py-32 px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <FadeIn>
-            <h2 className="font-display text-3xl md:text-4xl font-bold mb-8 text-white">
-              A MathOps na {layer.name}
-            </h2>
-            <div className="text-xl leading-relaxed text-white/80 font-body space-y-6">
-              <p>{layer.details}</p>
-            </div>
-          </FadeIn>
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 text-zinc-500 hover:text-white transition-colors duration-300 mb-12 text-sm"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Voltar para Início
+          </Link>
+          <p className="text-zinc-500 text-sm tracking-widest uppercase mb-4">
+            Especialidade Setorial
+          </p>
+          <h1 className="font-serif text-4xl lg:text-6xl text-white tracking-tight mb-8">
+            {industry.title}
+          </h1>
+          <p className="text-zinc-400 text-lg lg:text-xl leading-relaxed mb-12 max-w-2xl">
+            {industry.description}
+          </p>
+          <button
+            onClick={() => handleDiagnostic('industry_layer_hero')}
+            className="group inline-flex items-center gap-2 bg-white text-black px-8 py-4 text-sm font-medium tracking-wide hover:bg-zinc-200 transition-all duration-300 mb-16"
+          >
+            Solicitar Diagnóstico Estratégico
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </button>
         </div>
       </section>
 
-      {/* Netflix-style Carousel */}
-      <section className="py-24 px-6 md:px-12 bg-black border-t border-white/5 overflow-hidden">
-        <div className="max-w-7xl mx-auto">
-          <FadeIn>
-            <h2 className="font-display text-3xl font-bold mb-10 text-white">
-              Explore Outras Indústrias
-            </h2>
-          </FadeIn>
+      <section className="py-24 border-t border-white/10 px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-serif text-2xl text-white mb-12">Principais Desafios</h2>
+          <div className="space-y-6">
+            {industry.challenges.map((challenge, idx) => (
+              <div key={idx} className="flex items-start gap-4">
+                <Check className="w-5 h-5 text-white mt-0.5 flex-shrink-0" />
+                <p className="text-zinc-300 text-base lg:text-lg">{challenge}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-          <Carousel
-            opts={{
-              align: 'start',
-              dragFree: true,
-            }}
-            className="w-full relative"
-          >
-            <CarouselContent className="-ml-4">
+      {otherIndustries.length > 0 && (
+        <section className="py-24 border-t border-white/10 px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="font-serif text-2xl text-white mb-12">Explore Outras Indústrias</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10">
               {otherIndustries.map((ind) => (
-                <CarouselItem
+                <Link
                   key={ind.slug}
-                  className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+                  to={`/industrias/${ind.slug}`}
+                  className="group bg-black p-8 hover:bg-zinc-900 transition-colors duration-300 flex flex-col"
                 >
-                  <Link
-                    to={`/industrias/${ind.slug}`}
-                    className="block relative group overflow-hidden aspect-[4/3] bg-background border border-white/10 rounded-sm"
-                  >
-                    <img
-                      src={ind.thumbnail}
-                      alt={ind.name}
-                      className="w-full h-full object-cover opacity-50 group-hover:opacity-90 transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 transition-opacity duration-500" />
-
-                    <div className="absolute bottom-0 left-0 p-5 z-10 w-full transform translate-y-0 transition-transform duration-500">
-                      <div className="flex items-center gap-3 mb-2 text-white">
-                        <ind.icon className="w-5 h-5 group-hover:text-accent transition-colors" />
-                        <h3 className="font-display font-bold text-lg md:text-xl drop-shadow-md">
-                          {ind.name}
-                        </h3>
-                      </div>
-                      <p className="text-sm text-white/60 line-clamp-2 transition-opacity duration-300 opacity-0 group-hover:opacity-100 hidden md:block">
-                        {ind.desc}
-                      </p>
-                    </div>
-                  </Link>
-                </CarouselItem>
+                  <h3 className="font-serif text-xl text-white mb-3">{ind.title}</h3>
+                  <p className="text-zinc-400 text-sm flex-1">{ind.shortDescription}</p>
+                  <span className="inline-flex items-center gap-2 text-zinc-500 text-xs mt-4 group-hover:text-white transition-colors duration-300">
+                    Explorar
+                    <ArrowRight className="w-3 h-3" />
+                  </span>
+                </Link>
               ))}
-            </CarouselContent>
-            <div className="hidden lg:block">
-              <CarouselPrevious className="-left-12 bg-black/80 hover:bg-black border-white/20 text-white w-12 h-12" />
-              <CarouselNext className="-right-12 bg-black/80 hover:bg-black border-white/20 text-white w-12 h-12" />
             </div>
-          </Carousel>
+          </div>
+        </section>
+      )}
+
+      <section className="py-24 border-t border-white/10 px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="font-serif text-3xl lg:text-4xl text-white tracking-tight mb-6">
+            Pronto para conversar?
+          </h2>
+          <p className="text-zinc-400 mb-8 max-w-xl mx-auto">
+            Solicite um diagnóstico estratégico e entenda como podemos ajudar.
+          </p>
+          <button
+            onClick={() => handleDiagnostic('industry_layer_cta')}
+            className="group inline-flex items-center gap-2 bg-white text-black px-8 py-4 text-sm font-medium tracking-wide hover:bg-zinc-200 transition-all duration-300"
+          >
+            Solicitar Diagnóstico Estratégico
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </button>
         </div>
       </section>
 

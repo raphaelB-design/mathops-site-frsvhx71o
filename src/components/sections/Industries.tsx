@@ -1,93 +1,51 @@
-import { FadeIn } from '@/components/fade-in'
-import { industriesList, nonFeaturedIndustries } from '@/config/industriesData'
 import { Link } from 'react-router-dom'
-import { WHATSAPP_URL } from '@/config/constants'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
+import { industries } from '@/config/industriesData'
+import { trackClick } from '@/services/analytics'
+import { useDiagnosticModal } from '@/context/DiagnosticModalContext'
 
 export function Industries() {
+  const { openDiagnostic } = useDiagnosticModal()
+
+  const handleDiagnostic = () => {
+    trackClick('diagnostic_open', 'industries')
+    openDiagnostic()
+  }
+
   return (
-    <section
-      id="industries"
-      className="py-24 md:py-32 px-6 md:px-12 w-full border-t border-white/10 relative overflow-hidden"
-    >
-      <div className="max-w-7xl mx-auto w-full relative z-10">
-        <FadeIn>
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-            <div>
-              <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
-                Aplicações Setoriais
-              </span>
-              <h2 className="font-display text-4xl md:text-5xl font-bold">
-                Experiência Cross-Industry
-              </h2>
-            </div>
-            <p className="font-body text-lg text-muted-foreground max-w-sm">
-              Os modelos matemáticos não perguntam a que setor você pertence. Os mesmos princípios
-              que otimizam uma linha de produção otimizam a jornada de um paciente ou o caixa de um
-              banco.
-            </p>
-          </div>
-        </FadeIn>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          {industriesList.map((ind, idx) => {
-            const Icon = ind.icon
-            return (
-              <FadeIn key={ind.name} delay={100 + idx * 100}>
-                <Link to={`/industrias/${ind.slug}`} className="block h-full">
-                  <div className="relative overflow-hidden p-8 border border-white/10 bg-black flex flex-col gap-6 cursor-pointer group h-full min-h-[320px] transition-all duration-700 hover:border-accent/50 hover:bg-white/5">
-                    {/* Background Image Layer with Gradient Overlay */}
-                    <div className="absolute inset-0 z-0 overflow-hidden">
-                      <img
-                        src={ind.thumbnail}
-                        alt={ind.imageAlt}
-                        className="w-full h-full object-cover opacity-50 group-hover:opacity-90 grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700 ease-in-out"
-                      />
-                      {/* Gradient Overlay for Readability */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent transition-opacity duration-700 group-hover:opacity-80" />
-                      {/* Radial Glow on Hover */}
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_0%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                    </div>
-
-                    <div className="relative z-10 w-12 h-12 flex items-center justify-center bg-black/60 border border-white/20 text-white group-hover:text-accent group-hover:scale-110 group-hover:border-accent/50 transition-all duration-700 backdrop-blur-md shadow-xl">
-                      <Icon className="w-6 h-6 transition-transform duration-700 group-hover:scale-110" />
-                    </div>
-
-                    <div className="relative z-10 mt-auto pt-8 transition-transform duration-700 group-hover:translate-x-2">
-                      <h3 className="font-display text-2xl font-bold mb-3 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] transition-colors">
-                        {ind.name}
-                      </h3>
-                    </div>
-                  </div>
-                </Link>
-              </FadeIn>
-            )
-          })}
+    <section className="bg-zinc-950 py-24 lg:py-32 px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-16 lg:mb-24">
+          <p className="text-zinc-500 text-sm tracking-widest uppercase mb-4">Indústrias</p>
+          <h2 className="font-serif text-4xl lg:text-6xl text-white tracking-tight">
+            Setores que dominamos
+          </h2>
         </div>
-
-        {nonFeaturedIndustries.length > 0 && (
-          <FadeIn delay={200}>
-            <div className="mt-20 pt-12 border-t border-white/5">
-              <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground/60 font-bold mb-6 block">
-                Outros setores sob consulta
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10">
+          {industries.map((industry) => (
+            <Link
+              key={industry.slug}
+              to={`/industrias/${industry.slug}`}
+              className="group bg-zinc-950 p-8 hover:bg-black transition-colors duration-300 flex flex-col"
+            >
+              <h3 className="font-serif text-xl text-white mb-3">{industry.title}</h3>
+              <p className="text-zinc-400 text-sm flex-1">{industry.shortDescription}</p>
+              <span className="inline-flex items-center gap-2 text-zinc-500 text-xs mt-4 group-hover:text-white transition-colors duration-300">
+                Explorar
+                <ArrowRight className="w-3 h-3" />
               </span>
-              <div className="flex flex-wrap gap-x-8 gap-y-4">
-                {nonFeaturedIndustries.map((ind) => (
-                  <a
-                    key={ind.slug}
-                    href={WHATSAPP_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors duration-300"
-                  >
-                    <span className="font-body text-base">{ind.name}</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </a>
-                ))}
-              </div>
-            </div>
-          </FadeIn>
-        )}
+            </Link>
+          ))}
+        </div>
+        <div className="mt-16 text-center">
+          <button
+            onClick={handleDiagnostic}
+            className="group inline-flex items-center gap-2 bg-white text-black px-8 py-4 text-sm font-medium tracking-wide hover:bg-zinc-200 transition-all duration-300"
+          >
+            Solicitar Diagnóstico Estratégico
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </button>
+        </div>
       </div>
     </section>
   )

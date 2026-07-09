@@ -1,211 +1,124 @@
-import { Outlet, useNavigate, useLocation, Link } from 'react-router-dom'
-import { Menu, X, ArrowUpRight } from 'lucide-react'
-import { cn } from '@/lib/utils'
 import { useState, useEffect } from 'react'
+import { Link, Outlet, useLocation } from 'react-router-dom'
+import { Menu, Scale, ArrowRight } from 'lucide-react'
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 import { trackClick } from '@/services/analytics'
+import { useDiagnosticModal } from '@/context/DiagnosticModalContext'
 import { FloatingWhatsApp } from '@/components/FloatingWhatsApp'
+import { Footer } from '@/components/sections/Footer'
+import { cn } from '@/lib/utils'
+
+const NAV_LINKS = [
+  { label: 'Início', href: '/' },
+  { label: 'Sobre', href: '/sobre' },
+  { label: 'Metodologia', href: '/metodologia' },
+  { label: 'Carreiras', href: '/carreiras' },
+]
 
 export function Layout() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const navigate = useNavigate()
+  const { openDiagnostic } = useDiagnosticModal()
   const location = useLocation()
 
   useEffect(() => {
-    let ticking = false
-    const handleScroll = () => {
-      if (ticking) return
-      ticking = true
-      requestAnimationFrame(() => {
-        setIsScrolled(window.scrollY > 60)
-        ticking = false
-      })
-    }
-    window.addEventListener('scroll', handleScroll, { passive: true })
+    const handleScroll = () => setIsScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const scrollTo = (id: string) => {
-    setIsMobileMenuOpen(false)
-    if (location.pathname !== '/') {
-      navigate('/')
-      setTimeout(() => {
-        const element = document.getElementById(id)
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' })
-        }
-      }, 100)
-    } else {
-      const element = document.getElementById(id)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-      }
-    }
+  useEffect(() => {
+    setIsMenuOpen(false)
+  }, [location.pathname])
+
+  const handleNavDiagnostic = () => {
+    trackClick('diagnostic_open', 'navbar')
+    openDiagnostic()
   }
 
-  const navLinks = [
-    { label: 'Sobre a MathOps', path: '/sobre' },
-    { label: 'Serviços', id: 'services' },
-    { label: 'Metodologia', path: '/metodologia' },
-    { label: 'Setores', id: 'industries' },
-  ]
+  const handleMobileDiagnostic = () => {
+    setIsMenuOpen(false)
+    trackClick('diagnostic_open', 'mobile_menu')
+    openDiagnostic()
+  }
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col">
-      {/* Skip link for keyboard / screen-reader users (WCAG 2.4.1) */}
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:font-mono focus:text-sm focus:text-black"
-      >
-        Pular para o conteúdo
-      </a>
-      {/* Navbar */}
+    <div className="min-h-screen bg-black">
       <header
         className={cn(
-          'fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 transition-all duration-300 border-b',
-          isScrolled
-            ? 'bg-black/90 backdrop-blur-xl border-white/10'
-            : 'bg-transparent border-transparent',
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
+          isScrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/10' : 'bg-transparent',
         )}
       >
-        <Link
-          to="/"
-          className="font-display font-bold text-xl tracking-tight cursor-pointer"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        >
-          MathOps<span className="text-accent">.</span>
-        </Link>
-
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8 font-mono text-sm tracking-wider text-muted-foreground">
-          {navLinks.map((link) =>
-            link.path ? (
+        <nav className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-20">
+          <Link to="/" className="flex items-center gap-2">
+            <Scale className="w-6 h-6 text-white" />
+            <span className="font-serif text-xl text-white tracking-tight">MathOps</span>
+          </Link>
+          <div className="hidden lg:flex items-center gap-8">
+            {NAV_LINKS.map((link) => (
               <Link
-                key={link.path}
-                to={link.path}
-                className="hover:text-foreground transition-colors"
+                key={link.href}
+                to={link.href}
+                className={cn(
+                  'text-sm tracking-wide transition-colors duration-300',
+                  location.pathname === link.href ? 'text-white' : 'text-zinc-400 hover:text-white',
+                )}
               >
                 {link.label}
               </Link>
-            ) : (
-              <button
-                key={link.id}
-                onClick={() => scrollTo(link.id!)}
-                className="hover:text-foreground transition-colors"
+            ))}
+          </div>
+          <button
+            onClick={handleNavDiagnostic}
+            className="hidden lg:inline-flex items-center gap-2 bg-white text-black px-5 py-2.5 text-sm font-medium tracking-wide hover:bg-zinc-200 transition-all duration-300"
+          >
+            Solicitar Diagnóstico Estratégico
+            <ArrowRight className="w-4 h-4" />
+          </button>
+          <button
+            className="lg:hidden text-white p-2"
+            onClick={() => setIsMenuOpen(true)}
+            aria-label="Abrir menu"
+          >
+            <Menu className="w-6 h-6" />
+          </button>
+        </nav>
+      </header>
+      <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+        <SheetContent side="right" className="bg-black border-white/10 w-full sm:w-96">
+          <SheetHeader>
+            <SheetTitle className="text-white font-serif text-2xl">MathOps</SheetTitle>
+          </SheetHeader>
+          <div className="flex flex-col gap-6 mt-12 px-6">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className={cn(
+                  'text-lg font-serif transition-colors duration-300',
+                  location.pathname === link.href ? 'text-white' : 'text-zinc-400 hover:text-white',
+                )}
+                onClick={() => setIsMenuOpen(false)}
               >
                 {link.label}
-              </button>
-            ),
-          )}
-        </nav>
-
-        <div className="hidden md:flex items-center gap-4">
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault()
-              trackClick('crm_access_click', 'header_desktop')
-            }}
-            className="font-mono text-xs font-bold uppercase tracking-[0.08em] text-white border border-white/20 px-5 py-2.5 hover:bg-white hover:text-black transition-colors"
-          >
-            Em Breve
-          </a>
-          <a
-            href="https://wa.me/5511991553336?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista%20MathOps"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackClick('whatsapp_click', 'navbar')}
-            className="bg-white text-black px-5 py-2.5 font-display font-semibold text-sm hover:bg-accent hover:text-white transition-colors flex items-center gap-2"
-          >
-            Falar com Especialista <ArrowUpRight className="w-4 h-4" />
-          </a>
-        </div>
-
-        {/* Mobile Toggle */}
-        <button
-          className="md:hidden text-foreground p-2"
-          onClick={() => setIsMobileMenuOpen(true)}
-          aria-label="Abrir menu"
-        >
-          <Menu className="w-6 h-6" />
-        </button>
-      </header>
-
-      {/* Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-[60] bg-background/95 backdrop-blur-xl flex flex-col">
-          <div className="flex justify-between items-center p-6 border-b border-white/10">
-            <Link
-              to="/"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="font-display font-bold text-xl"
-            >
-              MathOps<span className="text-accent">.</span>
-            </Link>
+              </Link>
+            ))}
             <button
-              onClick={() => setIsMobileMenuOpen(false)}
-              aria-label="Fechar menu"
-              className="p-2"
+              onClick={handleMobileDiagnostic}
+              className="inline-flex items-center justify-center gap-2 bg-white text-black px-5 py-3 text-sm font-medium tracking-wide hover:bg-zinc-200 transition-all duration-300 mt-4"
             >
-              <X className="w-6 h-6" />
+              Solicitar Diagnóstico Estratégico
+              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
-          <nav className="flex flex-col items-center justify-center flex-1 gap-8 font-display text-2xl tracking-wider">
-            {navLinks.map((link) =>
-              link.path ? (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="hover:text-accent transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ) : (
-                <button
-                  key={link.id}
-                  onClick={() => scrollTo(link.id!)}
-                  className="hover:text-accent transition-colors"
-                >
-                  {link.label}
-                </button>
-              ),
-            )}
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault()
-                setIsMobileMenuOpen(false)
-                trackClick('crm_access_click', 'header_mobile')
-              }}
-              className="mt-8 font-mono text-sm font-bold uppercase tracking-[0.08em] text-white border border-white/20 px-8 py-4 w-full max-w-xs text-center hover:bg-white hover:text-black transition-colors"
-            >
-              Em Breve
-            </a>
-            <a
-              href="https://wa.me/5511991553336?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista%20MathOps"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => {
-                setIsMobileMenuOpen(false)
-                trackClick('whatsapp_click', 'mobile_menu')
-              }}
-              className="mt-4 bg-white text-black px-8 py-4 font-bold text-lg w-full max-w-xs hover:bg-accent hover:text-white transition-colors flex items-center justify-center gap-2"
-            >
-              Falar com Especialista <ArrowUpRight className="w-5 h-5" />
-            </a>
-          </nav>
-        </div>
-      )}
-
-      {/* Main Content */}
-      <main id="main" className="flex-1 w-full mt-[72px]">
+        </SheetContent>
+      </Sheet>
+      <main>
         <Outlet />
       </main>
-
+      <Footer />
       <FloatingWhatsApp />
     </div>
   )
 }
-
-export default Layout
