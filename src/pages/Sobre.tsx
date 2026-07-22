@@ -2,11 +2,19 @@ import { FadeIn } from '@/components/fade-in'
 import { SlideUpMask } from '@/components/slide-up-mask'
 import { Separator } from '@/components/ui/separator'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Helmet } from '@/components/Helmet'
 import heroBg from '@/assets/imagem2026-06-18231310090-99a81.png'
 
 export default function Sobre() {
   return (
     <div className="flex flex-col w-full bg-background min-h-screen text-foreground pb-24">
+      <Helmet>
+        <title>Sobre a MathOps Strategy | Consultoria Analítica Boutique — São Paulo</title>
+        <meta
+          name="description"
+          content="A MathOps Strategy é uma consultoria boutique que transforma dados em decisões auditáveis. Conheça nossa missão, visão e valores. Diagnóstico Estratégico como porta de entrada."
+        />
+      </Helmet>
       {/* Hero Section */}
       <section className="relative w-full h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 bg-black">

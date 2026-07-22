@@ -35,6 +35,7 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
 import { cn } from '@/lib/utils'
+import { Helmet } from '@/components/Helmet'
 
 const cleanText = (text: string | undefined) => {
   if (!text) return ''
@@ -109,6 +110,10 @@ export default function ServiceLayer() {
 
   return (
     <div className="w-full flex flex-col min-h-screen bg-black text-white">
+      <Helmet>
+        <title>{layer.title} | MathOps Strategy</title>
+        <meta name="description" content={layer.description} />
+      </Helmet>
       {/* Cinematic Hero */}
       <div className="relative pt-40 pb-32 md:pt-56 md:pb-40 px-6 md:px-12 flex flex-col items-center text-center overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 bg-zinc-950 -z-10"></div>

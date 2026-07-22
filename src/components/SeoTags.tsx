@@ -5,10 +5,10 @@ export function SeoTags() {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
     name: 'MathOps Strategy',
-    url: 'https://mathopsstrategy.com.br',
-    logo: 'https://mathopsstrategy.com.br/logo.png',
+    url: 'https://www.mathops.com.br',
+    logo: 'https://www.mathops.com.br/og-image.png',
     description:
-      'Consultoria boutique especializada em modelagem matemática, automação de processos e inteligência analítica para PMEs e grandes empresas.',
+      'Consultoria boutique especializada em Diagnóstico Estratégico e Visibilidade Operacional. Modelagem matemática, automação de processos e inteligência analítica para PMEs e grandes empresas.',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'São Paulo',
@@ -26,6 +26,13 @@ export function SeoTags() {
 
   return (
     <Helmet>
+      <title>
+        MathOps Strategy | Diagnóstico Estratégico e Visibilidade Operacional — São Paulo
+      </title>
+      <meta
+        name="description"
+        content="Diagnóstico Estratégico a partir de R$ 4.500 e Visibilidade Operacional com painéis executivos em tempo real. Consultoria boutique em modelagem matemática e inteligência analítica. São Paulo, Brasil."
+      />
       <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
     </Helmet>
   )

@@ -42,11 +42,6 @@ export function Services() {
                     <span className="font-mono text-xs font-bold px-2.5 py-1 border border-white/10 bg-white/5 text-white/70 rounded-sm uppercase tracking-wider">
                       Camada {index + 1}
                     </span>
-                    {layer.id === 'inteligencia-artificial' && (
-                      <span className="font-mono text-[10px] font-bold px-2 py-1 bg-white text-black rounded-sm uppercase tracking-wider">
-                        Novo
-                      </span>
-                    )}
                   </div>
 
                   <h3 className="font-display text-2xl font-bold text-white mb-4">{layer.title}</h3>
