@@ -6,7 +6,6 @@ import { Metrics } from '@/components/sections/Metrics'
 import { Industries } from '@/components/sections/Industries'
 import { Differentials } from '@/components/sections/Differentials'
 import { FAQ } from '@/components/sections/FAQ'
-import { CrmCtaBanner } from '@/components/sections/CrmCtaBanner'
 import { QuoteCTA } from '@/components/sections/QuoteCTA'
 import { SeoTags } from '@/components/SeoTags'
 
@@ -22,7 +21,6 @@ export default function Index() {
       <Industries />
       <Differentials />
       <FAQ />
-      <CrmCtaBanner />
       <QuoteCTA />
     </div>
   )

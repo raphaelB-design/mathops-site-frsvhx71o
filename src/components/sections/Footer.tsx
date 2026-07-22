@@ -5,15 +5,12 @@ import { BrandLogo } from '@/components/BrandLogo'
 const serviceLinks = [
   { label: 'Diagnóstico e Visibilidade', slug: 'diagnostico-e-visibilidade' },
   { label: 'Análise e Modelagem', slug: 'analise-e-modelagem' },
-  { label: 'Solução e Automação', slug: 'solucao-e-recorrencia' },
-  { label: 'Preparação para IA', slug: 'inteligencia-artificial', isNew: true },
 ]
 
 const navLinks = [
   { label: 'Início', href: '/' },
   { label: 'Sobre', href: '/sobre' },
   { label: 'Metodologia', href: '/metodologia' },
-  { label: 'Carreiras', href: '/carreiras' },
 ]
 
 export function Footer() {
@@ -72,11 +69,6 @@ export function Footer() {
                 className="text-sm text-zinc-400 hover:text-white transition-colors duration-300 inline-flex items-center gap-2"
               >
                 {link.label}
-                {link.isNew && (
-                  <span className="text-[10px] uppercase tracking-wider bg-white/10 text-white px-1.5 py-0.5">
-                    Novo
-                  </span>
-                )}
               </Link>
             ))}
           </div>

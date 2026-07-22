@@ -13,7 +13,6 @@ const NAV_LINKS = [
   { label: 'Início', href: '/' },
   { label: 'Sobre', href: '/sobre' },
   { label: 'Metodologia', href: '/metodologia' },
-  { label: 'Carreiras', href: '/carreiras' },
 ]
 
 export function Layout() {

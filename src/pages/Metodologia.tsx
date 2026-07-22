@@ -1,7 +1,6 @@
 import { Methodology as DMAIC } from '@/components/sections/Methodology'
 import { FadeIn } from '@/components/fade-in'
 import { SlideUpMask } from '@/components/slide-up-mask'
-import { CrmCtaBanner } from '@/components/sections/CrmCtaBanner'
 import { HowItWorks } from '@/components/sections/HowItWorks'
 
 export default function Metodologia() {
@@ -102,8 +101,6 @@ export default function Metodologia() {
           </FadeIn>
         </div>
       </section>
-
-      <CrmCtaBanner />
     </div>
   )
 }

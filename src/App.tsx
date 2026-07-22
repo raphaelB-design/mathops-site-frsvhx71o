@@ -28,10 +28,8 @@ const Index = retryLazy(() => import('@/pages/Index'))
 const NotFound = retryLazy(() => import('@/pages/NotFound'))
 const ServiceLayer = retryLazy(() => import('@/pages/ServiceLayer'))
 const Sobre = retryLazy(() => import('@/pages/Sobre'))
-const Carreiras = retryLazy(() => import('@/pages/Carreiras'))
 const Metodologia = retryLazy(() => import('@/pages/Metodologia'))
 const IndustryLayer = retryLazy(() => import('@/pages/IndustryLayer'))
-const TorreDeControle = retryLazy(() => import('@/pages/TorreDeControle'))
 const TermosDeUso = retryLazy(() => import('@/pages/TermosDeUso'))
 const PoliticaDePrivacidade = retryLazy(() => import('@/pages/PoliticaDePrivacidade'))
 
@@ -64,8 +62,6 @@ const App = () => (
               <Route path="/sobre" element={<Sobre />} />
               <Route path="/servicos/:slug" element={<ServiceLayer />} />
               <Route path="/industrias/:slug" element={<IndustryLayer />} />
-              <Route path="/torre-de-controle" element={<TorreDeControle />} />
-              <Route path="/carreiras" element={<Carreiras />} />
               <Route path="/metodologia" element={<Metodologia />} />
               <Route path="/termos-de-uso" element={<TermosDeUso />} />
               <Route path="/politica-de-privacidade" element={<PoliticaDePrivacidade />} />
