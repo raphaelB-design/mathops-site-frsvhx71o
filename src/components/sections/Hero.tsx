@@ -14,11 +14,11 @@ const stats = [
     sub: 'Nível Six Sigma sustentado',
   },
   {
-    value: -38,
+    value: 100,
     suffix: '%',
     decimals: 0,
-    label: 'Tempo de Decisão',
-    sub: 'Redução média no tempo de decisão de nossos clientes',
+    label: 'Método Documentado',
+    sub: 'Todo modelo entregue com memória de cálculo',
   },
   {
     value: 100,
