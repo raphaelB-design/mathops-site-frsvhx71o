@@ -57,8 +57,11 @@ export function TurnstileWidget({ onVerify }: TurnstileWidgetProps) {
       <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground font-semibold">
         [ Sistema de Segurança ]
       </div>
-      <div className="w-full bg-white/5 border border-white/10 rounded-lg p-4 backdrop-blur-sm min-h-[97px] flex items-center justify-center sm:justify-start overflow-hidden transition-colors duration-300 hover:bg-white/10">
-        <div ref={containerRef} className="flex justify-center sm:justify-start w-full" />
+      <div className="w-full max-w-full bg-white/5 border border-white/10 rounded-lg p-3 sm:p-4 backdrop-blur-sm min-h-[97px] flex items-center justify-center sm:justify-start overflow-hidden transition-colors duration-300 hover:bg-white/10">
+        <div
+          ref={containerRef}
+          className="flex justify-center sm:justify-start w-full max-w-full overflow-hidden"
+        />
       </div>
     </motion.div>
   )

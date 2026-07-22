@@ -43,6 +43,8 @@ export function Industries() {
                       <img
                         src={ind.thumbnail}
                         alt={ind.imageAlt}
+                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, 50vw"
                         className="w-full h-full object-cover opacity-50 group-hover:opacity-70 grayscale mix-blend-luminosity scale-100 group-hover:scale-105 transition-all duration-700 ease-in-out"
                       />
                       {/* Gradient Overlay for Readability */}

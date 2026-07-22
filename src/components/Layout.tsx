@@ -6,6 +6,7 @@ import { BrandLogo } from '@/components/BrandLogo'
 import { trackClick } from '@/services/analytics'
 import { useDiagnosticModal } from '@/context/DiagnosticModalContext'
 import { FloatingWhatsApp } from '@/components/FloatingWhatsApp'
+import { FloatingContactWidget } from '@/components/FloatingContactWidget'
 import { Footer } from '@/components/sections/Footer'
 import { cn } from '@/lib/utils'
 
@@ -60,7 +61,7 @@ export function Layout() {
                 key={link.href}
                 to={link.href}
                 className={cn(
-                  'text-sm tracking-wide transition-colors duration-300',
+                  'inline-flex items-center text-sm tracking-wide transition-colors duration-300 min-h-[44px] px-2',
                   location.pathname === link.href ? 'text-white' : 'text-zinc-400 hover:text-white',
                 )}
               >
@@ -70,13 +71,13 @@ export function Layout() {
           </div>
           <button
             onClick={handleNavDiagnostic}
-            className="hidden lg:inline-flex items-center gap-2 bg-white text-black px-5 py-2.5 text-sm font-medium tracking-wide hover:bg-zinc-200 transition-all duration-300"
+            className="hidden lg:inline-flex items-center gap-2 bg-white text-black px-5 py-3 text-sm font-medium tracking-wide hover:bg-zinc-200 transition-all duration-300 min-h-[44px]"
           >
             Solicitar Diagnóstico Estratégico
             <ArrowRight className="w-4 h-4" />
           </button>
           <button
-            className="lg:hidden text-white p-2"
+            className="lg:hidden text-white p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center"
             onClick={() => setIsMenuOpen(true)}
             aria-label="Abrir menu"
           >
@@ -97,7 +98,7 @@ export function Layout() {
                 key={link.href}
                 to={link.href}
                 className={cn(
-                  'text-lg font-serif transition-colors duration-300',
+                  'text-lg font-serif transition-colors duration-300 min-h-[44px] py-3 flex items-center',
                   location.pathname === link.href ? 'text-white' : 'text-zinc-400 hover:text-white',
                 )}
                 onClick={() => setIsMenuOpen(false)}
@@ -107,7 +108,7 @@ export function Layout() {
             ))}
             <button
               onClick={handleMobileDiagnostic}
-              className="inline-flex items-center justify-center gap-2 bg-white text-black px-5 py-3 text-sm font-medium tracking-wide hover:bg-zinc-200 transition-all duration-300 mt-4"
+              className="inline-flex items-center justify-center gap-2 bg-white text-black px-5 py-3.5 text-sm font-medium tracking-wide hover:bg-zinc-200 transition-all duration-300 mt-4 min-h-[44px]"
             >
               Solicitar Diagnóstico Estratégico
               <ArrowRight className="w-4 h-4" />
@@ -120,6 +121,7 @@ export function Layout() {
       </main>
       <Footer />
       <FloatingWhatsApp />
+      <FloatingContactWidget />
     </div>
   )
 }

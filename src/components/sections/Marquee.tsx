@@ -107,7 +107,7 @@ export function Marquee() {
     >
       <div
         ref={scrollRef}
-        className="flex whitespace-nowrap overflow-x-hidden w-full cursor-grab active:cursor-grabbing touch-pan-y [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        className="flex whitespace-nowrap overflow-x-hidden w-full cursor-grab active:cursor-grabbing touch-pan-y overscroll-y-contain [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseMove={handleMouseMove}

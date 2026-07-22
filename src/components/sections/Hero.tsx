@@ -59,9 +59,9 @@ export function Hero() {
       {/* Main content */}
       <div className="relative z-10 flex-1 flex flex-col lg:flex-row gap-16 items-center justify-center my-8 max-w-7xl mx-auto w-full">
         <div className="flex-1 flex flex-col items-start text-left">
-          <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight tracking-tight mb-8 text-white max-w-5xl break-words">
+          <h1 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight tracking-tight mb-8 text-white max-w-5xl break-words">
             <span className="inline-flex flex-wrap gap-x-3 md:gap-x-4 lg:gap-x-5 gap-y-2 md:gap-y-4 items-center">
-              <span className="inline-flex whitespace-nowrap gap-x-3 md:gap-x-4 lg:gap-x-5">
+              <span className="inline-flex flex-wrap gap-x-3 md:gap-x-4 lg:gap-x-5">
                 <SlideUpMask delay={200}>Rigor</SlideUpMask>
                 <SlideUpMask delay={300}>
                   <em className="text-accent not-italic">matemático</em>
@@ -87,7 +87,7 @@ export function Hero() {
                   trackClick('diagnostic_open', 'hero')
                   openDiagnostic()
                 }}
-                className="px-8 py-4 font-display font-semibold text-base bg-white text-black hover:bg-zinc-200 transition-all duration-500 ease-smooth hover:-translate-y-1 flex items-center justify-center gap-2 group"
+                className="px-8 py-4 font-display font-semibold text-base bg-white text-black hover:bg-zinc-200 transition-all duration-500 ease-smooth hover:-translate-y-1 flex items-center justify-center gap-2 group min-h-[44px]"
               >
                 Solicitar Diagnóstico Estratégico — R$ 4.500
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-500 ease-smooth" />
@@ -97,7 +97,7 @@ export function Hero() {
                   window.scrollTo({ top: 0, behavior: 'smooth' })
                   navigate('/metodologia')
                 }}
-                className="px-8 py-4 font-display font-semibold text-base border border-white/15 hover:border-white/30 hover:bg-white/5 transition-all duration-500 ease-smooth hover:-translate-y-1 flex items-center justify-center gap-2 group"
+                className="px-8 py-4 font-display font-semibold text-base border border-white/15 hover:border-white/30 hover:bg-white/5 transition-all duration-500 ease-smooth hover:-translate-y-1 flex items-center justify-center gap-2 group min-h-[44px]"
               >
                 Conhecer Nossa Metodologia
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-500 ease-smooth" />
@@ -147,7 +147,7 @@ export function Hero() {
       <FadeIn delay={1200}>
         <button
           onClick={scrollToServices}
-          className="relative z-10 flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-white transition-colors mx-auto"
+          className="relative z-10 flex items-center justify-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-white transition-colors mx-auto min-h-[44px] min-w-[44px] px-3"
         >
           <ChevronDown className="w-4 h-4 animate-bounce" />
           Explorar

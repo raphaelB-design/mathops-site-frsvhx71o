@@ -32,17 +32,17 @@ export function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 flex items-center justify-center border border-white/10 text-zinc-400 hover:text-white hover:border-white/30 transition-colors duration-300"
+                className="w-11 h-11 flex items-center justify-center border border-white/10 text-zinc-400 hover:text-white hover:border-white/30 transition-colors duration-300"
                 aria-label="LinkedIn"
               >
-                <Linkedin className="w-4 h-4" />
+                <Linkedin className="w-5 h-5" />
               </a>
               <a
                 href="mailto:contato@mathops.com.br"
-                className="w-9 h-9 flex items-center justify-center border border-white/10 text-zinc-400 hover:text-white hover:border-white/30 transition-colors duration-300"
+                className="w-11 h-11 flex items-center justify-center border border-white/10 text-zinc-400 hover:text-white hover:border-white/30 transition-colors duration-300"
                 aria-label="E-mail"
               >
-                <Mail className="w-4 h-4" />
+                <Mail className="w-5 h-5" />
               </a>
             </div>
           </div>
@@ -53,7 +53,7 @@ export function Footer() {
               <Link
                 key={link.href}
                 to={link.href}
-                className="text-sm text-zinc-400 hover:text-white transition-colors duration-300"
+                className="text-sm text-zinc-400 hover:text-white transition-colors duration-300 min-h-[44px] flex items-center"
               >
                 {link.label}
               </Link>
@@ -66,7 +66,7 @@ export function Footer() {
               <Link
                 key={link.slug}
                 to={`/servicos/${link.slug}`}
-                className="text-sm text-zinc-400 hover:text-white transition-colors duration-300 inline-flex items-center gap-2"
+                className="text-sm text-zinc-400 hover:text-white transition-colors duration-300 inline-flex items-center gap-2 min-h-[44px]"
               >
                 {link.label}
               </Link>
@@ -87,7 +87,7 @@ export function Footer() {
             </a>
             <button
               onClick={scrollToTop}
-              className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors duration-300 mt-2"
+              className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors duration-300 mt-2 min-h-[44px] py-2"
             >
               Voltar ao topo
               <ArrowUp className="w-4 h-4" />
