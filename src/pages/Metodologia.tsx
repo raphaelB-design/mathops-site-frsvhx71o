@@ -1,5 +1,4 @@
 import { Methodology as DMAIC } from '@/components/sections/Methodology'
-import { Footer } from '@/components/sections/Footer'
 import { FadeIn } from '@/components/fade-in'
 import { SlideUpMask } from '@/components/slide-up-mask'
 import { CrmCtaBanner } from '@/components/sections/CrmCtaBanner'
@@ -105,7 +104,6 @@ export default function Metodologia() {
       </section>
 
       <CrmCtaBanner />
-      <Footer />
     </div>
   )
 }

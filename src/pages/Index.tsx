@@ -8,7 +8,6 @@ import { Differentials } from '@/components/sections/Differentials'
 import { FAQ } from '@/components/sections/FAQ'
 import { CrmCtaBanner } from '@/components/sections/CrmCtaBanner'
 import { QuoteCTA } from '@/components/sections/QuoteCTA'
-import { Footer } from '@/components/sections/Footer'
 import { SeoTags } from '@/components/SeoTags'
 
 export default function Index() {
@@ -25,7 +24,6 @@ export default function Index() {
       <FAQ />
       <CrmCtaBanner />
       <QuoteCTA />
-      <Footer />
     </div>
   )
 }
