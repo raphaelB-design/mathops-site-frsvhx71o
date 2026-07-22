@@ -4,6 +4,8 @@ import { ArrowUpRight, ChevronDown } from 'lucide-react'
 import { AnimatedCounter } from '@/components/animated-counter'
 import { useNavigate } from 'react-router-dom'
 import { useCallback } from 'react'
+import { useDiagnosticModal } from '@/context/DiagnosticModalContext'
+import { trackClick } from '@/services/analytics'
 
 const stats = [
   {
@@ -31,8 +33,9 @@ const stats = [
 
 export function Hero() {
   const navigate = useNavigate()
+  const { openDiagnostic } = useDiagnosticModal()
   const scrollToServices = useCallback(
-    () => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }),
+    () => document.getElementById('como-funciona')?.scrollIntoView({ behavior: 'smooth' }),
     [],
   )
 
@@ -79,6 +82,16 @@ export function Hero() {
               automação e dados, não para substituir seu julgamento, mas para blindá-lo.
             </p>
             <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+              <button
+                onClick={() => {
+                  trackClick('diagnostic_open', 'hero')
+                  openDiagnostic()
+                }}
+                className="px-8 py-4 font-display font-semibold text-base bg-white text-black hover:bg-zinc-200 transition-all duration-500 ease-smooth hover:-translate-y-1 flex items-center justify-center gap-2 group"
+              >
+                Solicitar Diagnóstico Estratégico — R$ 4.500
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-500 ease-smooth" />
+              </button>
               <button
                 onClick={() => {
                   window.scrollTo({ top: 0, behavior: 'smooth' })

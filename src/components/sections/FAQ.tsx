@@ -9,6 +9,11 @@ import { Helmet } from '@/components/Helmet'
 
 const faqs = [
   {
+    question: 'Vocês têm cases de sucesso publicados?',
+    answer:
+      'Ainda não publicamos cases porque só divulgamos números lastreados em resultados auditáveis e autorizados pelo cliente. Por isso oferecemos a garantia de devolução integral no Diagnóstico Estratégico: o risco da primeira etapa é nosso, não seu.',
+  },
+  {
     question: 'Qual a duração típica de um projeto?',
     answer:
       'Os projetos variam de acordo com a maturidade atual dos seus dados, mas tipicamente entregamos ciclos de valor contínuos entre 2 e 6 meses, focando em entregas rápidas para validação antecipada.',

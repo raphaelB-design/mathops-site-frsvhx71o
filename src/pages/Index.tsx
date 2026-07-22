@@ -1,9 +1,8 @@
 import { Hero } from '@/components/sections/Hero'
-import { Marquee } from '@/components/sections/Marquee'
 import { ValueStatement } from '@/components/sections/ValueStatement'
-import { Services } from '@/components/sections/Services'
+import { Oferta } from '@/components/sections/Oferta'
+import { ComoFunciona } from '@/components/sections/ComoFunciona'
 import { Metrics } from '@/components/sections/Metrics'
-import { Industries } from '@/components/sections/Industries'
 import { Differentials } from '@/components/sections/Differentials'
 import { FAQ } from '@/components/sections/FAQ'
 import { QuoteCTA } from '@/components/sections/QuoteCTA'
@@ -14,11 +13,10 @@ export default function Index() {
     <div className="w-full flex flex-col">
       <SeoTags />
       <Hero />
-      <Marquee />
       <ValueStatement />
-      <Services />
+      <Oferta />
+      <ComoFunciona />
       <Metrics />
-      <Industries />
       <Differentials />
       <FAQ />
       <QuoteCTA />
