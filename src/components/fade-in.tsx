@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
+import { useReducedMotion } from '@/hooks/use-reduced-motion'
 
 interface FadeInProps {
   children: React.ReactNode
@@ -18,10 +19,15 @@ export function FadeIn({
   whileInView = true,
   staggerChildren,
 }: FadeInProps) {
-  const [isVisible, setIsVisible] = useState(!whileInView)
+  const prefersReducedMotion = useReducedMotion()
+  const [isVisible, setIsVisible] = useState(!whileInView || prefersReducedMotion)
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    if (prefersReducedMotion) {
+      setIsVisible(true)
+      return
+    }
     if (!whileInView) return
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -38,7 +44,7 @@ export function FadeIn({
     }
 
     return () => observer.disconnect()
-  }, [delay, whileInView])
+  }, [delay, whileInView, prefersReducedMotion])
 
   const transformClass =
     direction === 'up' ? 'translate-y-12' : direction === 'down' ? '-translate-y-12' : ''

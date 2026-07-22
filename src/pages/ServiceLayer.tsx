@@ -36,13 +36,6 @@ import {
 } from '@/components/ui/breadcrumb'
 import { cn } from '@/lib/utils'
 
-const layerOverlayColors: Record<string, string> = {
-  'diagnostico-e-visibilidade': 'rgba(30, 58, 95, 0.50)',
-  'analise-e-modelagem': 'rgba(45, 27, 105, 0.50)',
-  'solucao-e-recorrencia': 'rgba(92, 58, 0, 0.50)',
-  'inteligencia-artificial': 'rgba(45, 95, 168, 0.50)',
-}
-
 const cleanText = (text: string | undefined) => {
   if (!text) return ''
   return text.replace(/: onde a matemática muda o resultado da sua operação\?/g, '.')
@@ -125,7 +118,7 @@ export default function ServiceLayer() {
             'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&q=80'
           }
           alt={layer.title}
-          className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay -z-10 grayscale"
+          className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-luminosity -z-10 grayscale"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black -z-10"></div>
 
@@ -271,17 +264,10 @@ export default function ServiceLayer() {
                 <img
                   src={service.image}
                   alt={service.name}
-                  className="absolute inset-0 w-full h-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-105"
+                  className="absolute inset-0 w-full h-full object-cover opacity-60 grayscale mix-blend-luminosity transition-transform duration-1000 group-hover:scale-105"
                 />
 
-                <div
-                  className="absolute inset-0 transition-opacity duration-700 group-hover:opacity-0"
-                  style={{
-                    backgroundColor: slug
-                      ? layerOverlayColors[slug] || 'transparent'
-                      : 'transparent',
-                  }}
-                />
+                <div className="absolute inset-0 bg-black/40 transition-opacity duration-700 group-hover:opacity-0" />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-black/50 flex flex-col justify-end p-4 sm:p-6 md:p-8">
                   <div className="space-y-1.5 sm:space-y-2 md:space-y-3">
@@ -427,7 +413,7 @@ export default function ServiceLayer() {
                     <img
                       src={anchorService.image}
                       alt={anchorService.name}
-                      className="absolute inset-0 w-full h-full object-cover grayscale opacity-70"
+                      className="absolute inset-0 w-full h-full object-cover grayscale mix-blend-luminosity opacity-70"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
                   </div>
@@ -451,7 +437,7 @@ export default function ServiceLayer() {
                 <img
                   src={selectedService.image}
                   alt={selectedService.name}
-                  className="w-full h-full object-cover opacity-50 mix-blend-overlay"
+                  className="w-full h-full object-cover opacity-50 grayscale mix-blend-luminosity"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent pointer-events-none"></div>
                 <div className="absolute inset-0 pointer-events-none" aria-hidden="true"></div>

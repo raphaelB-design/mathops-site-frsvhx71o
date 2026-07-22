@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react'
+import { useReducedMotion } from '@/hooks/use-reduced-motion'
 
 const marqueeItems = [
   { term: 'Data Science' },
@@ -16,8 +17,10 @@ export function Marquee() {
   const isHovered = useRef(false)
   const startX = useRef(0)
   const scrollLeft = useRef(0)
+  const prefersReducedMotion = useReducedMotion()
 
   useEffect(() => {
+    if (prefersReducedMotion) return
     let animationId: number
     const el = scrollRef.current
     if (!el) return
@@ -34,7 +37,7 @@ export function Marquee() {
 
     animationId = requestAnimationFrame(scroll)
     return () => cancelAnimationFrame(animationId)
-  }, [])
+  }, [prefersReducedMotion])
 
   const handleMouseDown = (e: React.MouseEvent) => {
     isDragging.current = true

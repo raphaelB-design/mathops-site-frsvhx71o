@@ -43,7 +43,7 @@ export function Industries() {
                       <img
                         src={ind.thumbnail}
                         alt={ind.imageAlt}
-                        className="w-full h-full object-cover opacity-50 group-hover:opacity-90 grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700 ease-in-out"
+                        className="w-full h-full object-cover opacity-50 group-hover:opacity-70 grayscale mix-blend-luminosity scale-100 group-hover:scale-105 transition-all duration-700 ease-in-out"
                       />
                       {/* Gradient Overlay for Readability */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent transition-opacity duration-700 group-hover:opacity-80" />

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useReducedMotion } from '@/hooks/use-reduced-motion'
 
 interface AnimatedCounterProps {
   value: number
@@ -15,11 +16,16 @@ export function AnimatedCounter({
   prefix = '',
   suffix = '',
 }: AnimatedCounterProps) {
-  const [count, setCount] = useState(0)
+  const prefersReducedMotion = useReducedMotion()
+  const [count, setCount] = useState(prefersReducedMotion ? value : 0)
   const elementRef = useRef<HTMLSpanElement>(null)
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
+    if (prefersReducedMotion) {
+      setCount(value)
+      return
+    }
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
@@ -35,9 +41,13 @@ export function AnimatedCounter({
     }
 
     return () => observer.disconnect()
-  }, [])
+  }, [prefersReducedMotion])
 
   useEffect(() => {
+    if (prefersReducedMotion) {
+      setCount(value)
+      return
+    }
     if (!isVisible) return
 
     let startTimestamp: number | null = null
@@ -47,7 +57,6 @@ export function AnimatedCounter({
       if (!startTimestamp) startTimestamp = timestamp
       const progress = Math.min((timestamp - startTimestamp) / duration, 1)
 
-      // easeOutExpo for a smooth deceleration
       const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress)
 
       setCount(easeProgress * value)
@@ -62,10 +71,9 @@ export function AnimatedCounter({
     animationFrameId = window.requestAnimationFrame(step)
 
     return () => window.cancelAnimationFrame(animationFrameId)
-  }, [value, duration, isVisible])
+  }, [value, duration, isVisible, prefersReducedMotion])
 
   const displayValue = count.toFixed(decimals)
-  // Ensure we don't display "-0" or "-0.0" when starting the animation for negative targets
   const finalDisplay =
     displayValue === '-0' || displayValue === '-0.0' ? (0).toFixed(decimals) : displayValue
 

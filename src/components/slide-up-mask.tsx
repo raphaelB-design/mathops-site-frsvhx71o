@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
+import { useReducedMotion } from '@/hooks/use-reduced-motion'
 
 interface SlideUpMaskProps {
   children: React.ReactNode
@@ -14,10 +15,15 @@ export function SlideUpMask({
   delay = 0,
   whileInView = true,
 }: SlideUpMaskProps) {
-  const [isVisible, setIsVisible] = useState(!whileInView)
+  const prefersReducedMotion = useReducedMotion()
+  const [isVisible, setIsVisible] = useState(!whileInView || prefersReducedMotion)
   const ref = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
+    if (prefersReducedMotion) {
+      setIsVisible(true)
+      return
+    }
     if (!whileInView) return
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -34,7 +40,7 @@ export function SlideUpMask({
     }
 
     return () => observer.disconnect()
-  }, [delay, whileInView])
+  }, [delay, whileInView, prefersReducedMotion])
 
   return (
     <span

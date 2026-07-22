@@ -42,8 +42,8 @@ export default function IndustryLayer() {
           <img
             src={layer.image}
             alt={layer.name}
-            className="w-full h-full object-cover object-center opacity-40 grayscale"
-          />
+            className="w-full h-full object-cover opacity-40 grayscale mix-blend-luminosity"
+          />{' '}
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 md:via-background/70 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
         </div>
@@ -121,7 +121,7 @@ export default function IndustryLayer() {
                     <img
                       src={ind.thumbnail}
                       alt={ind.name}
-                      className="w-full h-full object-cover opacity-50 group-hover:opacity-90 transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
+                      className="w-full h-full object-cover opacity-50 group-hover:opacity-70 grayscale mix-blend-luminosity transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 transition-opacity duration-500" />
 
