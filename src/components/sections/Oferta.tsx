@@ -32,7 +32,7 @@ export function Oferta() {
             <div className="flex items-center justify-center gap-3 px-6 py-4 bg-accent/10 border border-accent/30 rounded-lg">
               <ShieldCheck className="w-6 h-6 text-accent shrink-0" />
               <p className="font-display text-lg md:text-xl font-bold text-white text-center">
-                Sem fit estratégico? Devolvemos 100% do valor. Sem exceções.
+                Sem fit estratégico?&nbsp;
               </p>
             </div>
           </div>
