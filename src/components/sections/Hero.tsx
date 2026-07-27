@@ -84,16 +84,6 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row flex-wrap gap-4">
               <button
                 onClick={() => {
-                  trackClick('diagnostic_open', 'hero')
-                  openDiagnostic()
-                }}
-                className="px-8 py-4 font-display font-semibold text-base bg-white text-black hover:bg-zinc-200 transition-all duration-500 ease-smooth hover:-translate-y-1 flex items-center justify-center gap-2 group min-h-[44px]"
-              >
-                Solicitar Diagnóstico Estratégico — R$ 4.500
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-500 ease-smooth" />
-              </button>
-              <button
-                onClick={() => {
                   window.scrollTo({ top: 0, behavior: 'smooth' })
                   navigate('/metodologia')
                 }}
