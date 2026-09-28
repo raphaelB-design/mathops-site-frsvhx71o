@@ -56,18 +56,7 @@ export function Oferta() {
           </FadeIn>
 
           <FadeIn delay={400}>
-            <div className="p-8 border border-white/10 bg-black/40 flex flex-col justify-between">
-              <button
-                onClick={() => {
-                  trackClick('diagnostic_open', 'oferta')
-                  openDiagnostic()
-                }}
-                className="group w-full flex items-center justify-center gap-2 bg-white text-black font-mono font-bold uppercase tracking-wider text-sm py-4 px-8 hover:bg-accent hover:text-white transition-colors duration-300 mt-6"
-              >
-                Solicitar Diagnóstico Estratégico
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </button>
-            </div>
+            <div className="p-8 border border-white/10 bg-black/40 flex flex-col justify-between"></div>
           </FadeIn>
         </div>
       </div>
