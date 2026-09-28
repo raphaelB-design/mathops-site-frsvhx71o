@@ -65,9 +65,7 @@ export function ComoFunciona() {
                   <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-2">
                     {step.title}
                   </h3>
-                  <p className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4">
-                    {step.subtitle}
-                  </p>
+
                   <p className="font-body text-base text-muted-foreground leading-relaxed max-w-2xl">
                     {step.description}
                   </p>

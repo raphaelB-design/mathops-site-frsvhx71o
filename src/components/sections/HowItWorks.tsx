@@ -5,19 +5,19 @@ const steps = [
     number: '01',
     title: 'Diagnóstico Analítico',
     description:
-      'Mapeamento rigoroso e exaustivo das variáveis. Coletamos e estruturamos os dados que compõem o cenário, isolando fatos de ruídos e identificando os pontos críticos.',
+      'Mapeamento rigoroso e exaustivo das variáveis de processos e dados. Coletamos e estruturamos as bases da operação, isolando fatos de ruídos e identificando gargalos e pontos críticos.',
   },
   {
     number: '02',
-    title: 'Modelagem Estratégica',
+    title: 'Modelagem Estatística',
     description:
-      'Desenvolvimento de teses baseadas em premissas sólidas e lógica inquestionável. Estruturamos os argumentos de forma sistemática para prever cenários e desenhar defesas.',
+      'Construção de modelos quantitativos a partir de dados verificados, com memória de cálculo documentada e premissas explícitas para prever cenários e sustentar decisões.',
   },
   {
     number: '03',
-    title: 'Execução Precisa',
+    title: 'Implementação e Controle',
     description:
-      'Implementação da estratégia com precisão impecável. Cada movimento é calculado e executado no momento exato para maximizar a assertividade e garantir o resultado.',
+      'Entrega em produção com indicadores acordados e monitoramento contínuo, garantindo que os ganhos operacionais sejam sustentados com rastreabilidade total.',
   },
 ]
 

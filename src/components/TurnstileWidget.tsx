@@ -47,13 +47,7 @@ export function TurnstileWidget({ onVerify }: TurnstileWidgetProps) {
   }, [onVerify])
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
-      className="w-full flex flex-col space-y-3"
-    >
+    <div className="w-full flex flex-col space-y-3">
       <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground font-semibold">
         [ Sistema de Segurança ]
       </div>
