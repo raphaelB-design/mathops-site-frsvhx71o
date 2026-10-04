@@ -84,16 +84,7 @@ export function FloatingContactWidget() {
   return (
     <div className="hidden lg:block fixed bottom-24 right-6 z-50">
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogTrigger asChild>
-          <Button
-            size="lg"
-            className="rounded-full shadow-2xl shadow-accent/20 bg-accent text-white hover:bg-accent/90 h-14 px-6 font-display font-bold tracking-wide flex items-center gap-2 group transition-all duration-300 hover:scale-105"
-          >
-            <MessageSquarePlus className="w-5 h-5 group-hover:animate-pulse" />
-            <span className="hidden sm:inline">Não encontrou seu setor? Fale conosco</span>
-            <span className="sm:hidden">Fale conosco</span>
-          </Button>
-        </DialogTrigger>
+        <DialogTrigger asChild></DialogTrigger>
         <DialogContent className="sm:max-w-[500px] bg-background border-white/10 text-white shadow-2xl">
           <DialogHeader>
             <DialogTitle className="font-display text-2xl font-bold">
