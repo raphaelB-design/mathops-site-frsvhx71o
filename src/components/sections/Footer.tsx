@@ -9,7 +9,7 @@ const serviceLinks = [
 
 const navLinks = [
   { label: 'Início', href: '/' },
-  { label: 'Serviços', href: '/servicos/diagnostico-e-visibilidade' },
+  { label: 'Serviços', href: '/#servicos' },
   { label: 'Sobre', href: '/sobre' },
   { label: 'Metodologia', href: '/metodologia' },
 ]
