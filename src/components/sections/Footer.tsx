@@ -9,6 +9,7 @@ const serviceLinks = [
 
 const navLinks = [
   { label: 'Início', href: '/' },
+  { label: 'Serviços', href: '/servicos/diagnostico-e-visibilidade' },
   { label: 'Sobre', href: '/sobre' },
   { label: 'Metodologia', href: '/metodologia' },
 ]
@@ -49,15 +50,35 @@ export function Footer() {
 
           <div className="flex flex-col gap-3">
             <h4 className="text-xs uppercase tracking-widest text-zinc-600 mb-1">Navegação</h4>
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                to={link.href}
-                className="text-sm text-zinc-400 hover:text-white transition-colors duration-300 min-h-[44px] flex items-center"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              if (link.href.startsWith('/#')) {
+                const targetId = link.href.replace('/#', '')
+                return (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    onClick={(e) => {
+                      if (window.location.pathname === '/') {
+                        e.preventDefault()
+                        document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' })
+                      }
+                    }}
+                    className="text-sm text-zinc-400 hover:text-white transition-colors duration-300 min-h-[44px] flex items-center"
+                  >
+                    {link.label}
+                  </Link>
+                )
+              }
+              return (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="text-sm text-zinc-400 hover:text-white transition-colors duration-300 min-h-[44px] flex items-center"
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
           </div>
 
           <div className="flex flex-col gap-3">

@@ -12,7 +12,7 @@ export function Services() {
   }))
 
   return (
-    <section id="services" className="py-24 md:py-32 px-6 md:px-12 w-full bg-white/5">
+    <section id="servicos" className="py-24 md:py-32 px-6 md:px-12 w-full bg-white/5">
       <div className="max-w-7xl mx-auto w-full">
         <FadeIn>
           <div className="mb-16">

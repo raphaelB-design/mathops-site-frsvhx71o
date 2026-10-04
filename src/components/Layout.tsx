@@ -12,6 +12,7 @@ import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
   { label: 'Início', href: '/' },
+  { label: 'Serviços', href: '/servicos/diagnostico-e-visibilidade' },
   { label: 'Sobre', href: '/sobre' },
   { label: 'Metodologia', href: '/metodologia' },
 ]
@@ -62,7 +63,10 @@ export function Layout() {
                 to={link.href}
                 className={cn(
                   'inline-flex items-center text-sm tracking-wide transition-colors duration-300 min-h-[44px] px-2',
-                  location.pathname === link.href ? 'text-white' : 'text-zinc-400 hover:text-white',
+                  location.pathname === link.href ||
+                    (link.href.startsWith('/servicos') && location.pathname.startsWith('/servicos'))
+                    ? 'text-white'
+                    : 'text-zinc-400 hover:text-white',
                 )}
               >
                 {link.label}
@@ -99,7 +103,10 @@ export function Layout() {
                 to={link.href}
                 className={cn(
                   'text-lg font-serif transition-colors duration-300 min-h-[44px] py-3 flex items-center',
-                  location.pathname === link.href ? 'text-white' : 'text-zinc-400 hover:text-white',
+                  location.pathname === link.href ||
+                    (link.href.startsWith('/servicos') && location.pathname.startsWith('/servicos'))
+                    ? 'text-white'
+                    : 'text-zinc-400 hover:text-white',
                 )}
                 onClick={() => setIsMenuOpen(false)}
               >

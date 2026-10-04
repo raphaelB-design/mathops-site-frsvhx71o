@@ -60,6 +60,10 @@ const App = () => (
                 }
               />
               <Route path="/sobre" element={<Sobre />} />
+              <Route
+                path="/servicos"
+                element={<Navigate to="/servicos/diagnostico-e-visibilidade" replace />}
+              />
               <Route path="/servicos/:slug" element={<ServiceLayer />} />
               <Route path="/industrias/:slug" element={<IndustryLayer />} />
               <Route path="/metodologia" element={<Metodologia />} />
