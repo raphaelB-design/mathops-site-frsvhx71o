@@ -31,7 +31,7 @@ export function SeoTags() {
       </title>
       <meta
         name="description"
-        content="Diagnóstico Estratégico a partir de R$ 4.500 e Visibilidade Operacional com painéis executivos em tempo real. Consultoria boutique em modelagem matemática e inteligência analítica. São Paulo, Brasil."
+        content="Diagnóstico Estratégico e Visibilidade Operacional com painéis executivos em tempo real. Consultoria boutique em modelagem matemática e inteligência analítica. São Paulo, Brasil."
       />
       <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
     </Helmet>

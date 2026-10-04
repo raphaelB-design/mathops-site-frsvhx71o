@@ -57,6 +57,6 @@ export function TurnstileWidget({ onVerify }: TurnstileWidgetProps) {
           className="flex justify-center sm:justify-start w-full max-w-full overflow-hidden"
         />
       </div>
-    </motion.div>
+    </div>
   )
 }

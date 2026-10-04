@@ -6,7 +6,7 @@ const steps = [
   {
     number: '01',
     title: 'Diagnóstico Estratégico',
-    subtitle: '2 semanas · R$ 4.500',
+    subtitle: '2 semanas',
     description:
       'Mergulho profundo na sua operação. Identificamos gargalos, mapeamos oportunidades e entregamos um roadmap claro com KPIs definidos. O risco é todo nosso: se não houver fit, devolvemos 100% do valor.',
     link: null as string | null,
