@@ -23,7 +23,7 @@ export function FinalCallout() {
             Comece pelo Diagnóstico Estratégico
           </h2>
           <p className="font-body text-base sm:text-lg md:text-xl text-[#94A3B8] max-w-2xl mx-auto mb-8 leading-relaxed">
-            Roadmap com escopo e KPIs. Garantia de devolução.
+            Roadmap com escopo e KPIs. Tudo acordado antes de começar.
           </p>
           <Link
             to="/diagnostico"

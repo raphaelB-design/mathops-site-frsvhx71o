@@ -11,7 +11,7 @@ const faqs = [
   {
     question: 'Como começamos a trabalhar juntos?',
     answer:
-      'Pelo Diagnóstico Estratégico: mapeamos seus processos e indicadores e entregamos um roadmap com escopo e KPIs definidos. Se não houver fit, devolvemos 100% do valor.',
+      'Pelo Diagnóstico Estratégico: mapeamos seus processos e indicadores e entregamos um roadmap com escopo e KPIs definidos.',
   },
   {
     question: 'Não temos dados perfeitamente estruturados. Vocês podem ajudar?',

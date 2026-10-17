@@ -20,8 +20,8 @@ const commitments = [
   },
   {
     icon: ShieldCheck,
-    title: 'Garantia de devolução',
-    description: 'de 100% no Diagnóstico se não houver fit',
+    title: 'Garantia de escopo',
+    description: 'KPIs e entregáveis acordados antes de começar',
   },
 ]
 

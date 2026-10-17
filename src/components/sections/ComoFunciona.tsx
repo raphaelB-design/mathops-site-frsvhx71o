@@ -9,7 +9,7 @@ const steps = [
     title: 'Diagnóstico Estratégico',
     subtitle: 'Roadmap e KPIs',
     description:
-      'Mapeamos processos e indicadores e entregamos um roadmap com escopo e KPIs definidos. Se não houver fit, devolvemos 100% do valor.',
+      'Mapeamos processos e indicadores e entregamos um roadmap com escopo e KPIs definidos.',
     link: '/diagnostico',
     linkLabel: 'Conhecer Diagnóstico',
   },

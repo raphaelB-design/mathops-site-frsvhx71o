@@ -221,7 +221,6 @@ export const diagnosticoEstrategico = {
   ],
   forWhom:
     'Para líderes que precisam de clareza antes de avançar para novos projetos. O diagnóstico responde uma pergunta: onde a matemática muda o resultado da sua operação?',
-  guarantee:
-    'Se ao final do diagnóstico concluirmos que não há fit estratégico, devolvemos 100% do valor. Sem exceções.',
+  guarantee: 'Garantia de escopo: KPIs e entregáveis acordados antes de começar o trabalho.',
   note: 'O valor do Diagnóstico Estratégico é integralmente abatido do investimento no engajamento completo.',
 }
