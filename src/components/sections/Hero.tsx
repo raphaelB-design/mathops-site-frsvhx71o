@@ -84,18 +84,7 @@ export function Hero() {
               BI com cada cálculo documentado e auditável. Para gestores que precisam decidir com
               fatos.
             </p>
-            <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-              <button
-                onClick={() => {
-                  window.scrollTo({ top: 0, behavior: 'smooth' })
-                  navigate('/metodologia')
-                }}
-                className="px-8 py-4 font-display font-semibold text-base border border-white/15 hover:border-white/30 hover:bg-white/5 transition-all duration-500 ease-smooth hover:-translate-y-1 flex items-center justify-center gap-2 group min-h-[44px]"
-              >
-                Conhecer Nossa Metodologia
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-500 ease-smooth" />
-              </button>
-            </div>
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4"></div>
           </FadeIn>
         </div>
 
