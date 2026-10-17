@@ -1,12 +1,9 @@
 import { Hero } from '@/components/sections/Hero'
 import { ValueStatement } from '@/components/sections/ValueStatement'
-import { Oferta } from '@/components/sections/Oferta'
 import { Services } from '@/components/sections/Services'
 import { ComoFunciona } from '@/components/sections/ComoFunciona'
 import { Metrics } from '@/components/sections/Metrics'
-import { Differentials } from '@/components/sections/Differentials'
-import { FAQ } from '@/components/sections/FAQ'
-import { QuoteCTA } from '@/components/sections/QuoteCTA'
+import { FinalCallout } from '@/components/sections/FinalCallout'
 import { SeoTags } from '@/components/SeoTags'
 
 export default function Index() {
@@ -15,13 +12,10 @@ export default function Index() {
       <SeoTags />
       <Hero />
       <ValueStatement />
-      <Oferta />
       <Services />
       <ComoFunciona />
       <Metrics />
-      <Differentials />
-      <FAQ />
-      <QuoteCTA />
+      <FinalCallout />
     </div>
   )
 }

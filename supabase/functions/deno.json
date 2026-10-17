@@ -1,8 +1,8 @@
 {
   "_versions": {
     "storage-upload": 1,
-    "get-cv-signed-url": 21,
-    "submit-lead": 21,
-    "submit-candidate": 21
+    "get-cv-signed-url": 22,
+    "submit-lead": 22,
+    "submit-candidate": 22
   }
 }

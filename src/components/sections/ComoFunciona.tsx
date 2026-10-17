@@ -9,8 +9,8 @@ const steps = [
     subtitle: '2 semanas',
     description:
       'Em 2 semanas mapeamos processos e indicadores e entregamos um roadmap com escopo e KPIs definidos. Se não houver fit, devolvemos 100% do valor.',
-    link: null as string | null,
-    linkLabel: null as string | null,
+    link: '/diagnostico',
+    linkLabel: 'Conhecer Diagnóstico',
   },
   {
     number: '02',
@@ -34,14 +34,17 @@ const steps = [
 
 export function ComoFunciona() {
   return (
-    <section id="como-funciona" className="py-24 md:py-32 px-6 md:px-12 w-full bg-white/5">
-      <div className="max-w-5xl mx-auto w-full">
+    <section
+      id="como-funciona"
+      className="py-24 md:py-32 px-6 md:px-12 w-full bg-white/[0.02] border-t border-white/10"
+    >
+      <div className="max-w-7xl mx-auto w-full">
         <FadeIn>
           <div className="mb-16 text-center">
             <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
               Como Funciona
             </span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 text-white">
               Do diagnóstico à visibilidade
             </h2>
             <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
@@ -51,34 +54,35 @@ export function ComoFunciona() {
           </div>
         </FadeIn>
 
-        <div className="flex flex-col gap-0">
+        {/* 3 passos lado a lado (horizontal no desktop, vertical no celular) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {steps.map((step, index) => (
             <FadeIn key={step.number} delay={index * 150}>
-              <div className="flex flex-col md:flex-row gap-6 md:gap-10 group">
-                <div className="flex md:flex-col items-center md:items-start gap-4 md:gap-2 shrink-0">
-                  <span className="font-display text-6xl md:text-7xl font-bold text-white/10 group-hover:text-accent/30 transition-colors duration-500">
+              <div className="flex flex-col h-full p-8 bg-black/40 border border-white/10 rounded-sm relative group hover:border-white/20 transition-all duration-300">
+                <div className="flex items-center justify-between mb-6">
+                  <span className="font-display text-5xl lg:text-6xl font-bold text-white/10 group-hover:text-accent/40 transition-colors duration-500">
                     {step.number}
+                  </span>
+                  <span className="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 bg-white/5 border border-white/10 rounded-sm text-muted-foreground">
+                    {step.subtitle}
                   </span>
                 </div>
 
-                <div className="flex-1 pb-12 border-b border-white/10 last:border-b-0">
-                  <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-2">
-                    {step.title}
-                  </h3>
+                <h3 className="font-display text-2xl font-bold text-white mb-3">{step.title}</h3>
 
-                  <p className="font-body text-base text-muted-foreground leading-relaxed max-w-2xl">
-                    {step.description}
-                  </p>
-                  {step.link && step.linkLabel && (
-                    <Link
-                      to={step.link}
-                      className="inline-flex items-center gap-2 mt-4 font-mono text-xs uppercase tracking-widest text-white/50 hover:text-accent transition-colors group/link"
-                    >
-                      {step.linkLabel}
-                      <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                    </Link>
-                  )}
-                </div>
+                <p className="font-body text-sm text-muted-foreground leading-relaxed flex-1 mb-6">
+                  {step.description}
+                </p>
+
+                {step.link && step.linkLabel && (
+                  <Link
+                    to={step.link}
+                    className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-white/60 hover:text-white transition-colors group/link mt-auto pt-4 border-t border-white/5"
+                  >
+                    {step.linkLabel}
+                    <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
+                  </Link>
+                )}
               </div>
             </FadeIn>
           ))}
