@@ -103,16 +103,15 @@ export const serviceLayers: Record<string, ServiceLayer> = {
   },
   'analise-e-modelagem': {
     title: 'Análise e Modelagem',
-    headline:
-      'Previsibilidade projetada. Algoritmos e modelos estatísticos para antecipar cenários de mercado.',
+    headline: 'Modelos estatísticos e auditoria de cálculo para decisões que se sustentam.',
     description:
       'Transforme dados em modelos preditivos e identifique perdas que hoje não aparecem no relatório.',
     heroImage: 'https://img.usecurling.com/p/1920/600?q=abstract',
     layerNumber: 2,
     metrics: [
-      { value: 'ARIMA', label: 'Metodologia de séries temporais aplicada' },
-      { value: 'Six Sigma', label: 'Padrão de qualidade metodológica' },
-      { value: 'Monte Carlo', label: 'Simulação de cenários críticos' },
+      { value: 'DMAIC', label: 'Metodologia Lean Six Sigma aplicada' },
+      { value: 'Regressão', label: 'Modelagem estatística de custos' },
+      { value: 'Auditoria', label: 'Validação de memórias de cálculo' },
     ],
     anchor: false,
     forWhom:

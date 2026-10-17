@@ -1,11 +1,12 @@
 import { FadeIn } from '@/components/fade-in'
 
 const pills = [
-  'DMAIC Framework',
-  'Estatística Descritiva',
-  'Simulações de Monte Carlo',
-  'Arquitetura Data Lake',
-  'Machine Learning',
+  'DMAIC · Lean Six Sigma',
+  'Power BI',
+  'Controle Estatístico de Processo',
+  'Mapeamento BPMN',
+  'Earned Value (EVM)',
+  'Auditoria de Indicadores',
 ]
 
 export function ValueStatement() {
@@ -24,8 +25,8 @@ export function ValueStatement() {
             <p className="font-body text-lg md:text-xl text-muted-foreground leading-relaxed">
               <strong className="text-white font-medium">MathOps Strategy</strong>&nbsp;nasce do
               encontro entre rigor matemático e operação real. Onde antes havia opinião, instalamos
-              evidência: auditável, replicável, escalável em qualquer escala que sua empresa decida
-              crescer.
+              evidência: auditável, replicável e pronta para acompanhar o crescimento da sua
+              empresa.
             </p>
           </FadeIn>
           <FadeIn delay={400}>

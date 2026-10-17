@@ -94,7 +94,7 @@ const phases: DmaicPhase[] = [
     subtitle: 'Solução em produção, não em teoria',
     vozDoCliente: 'Quero ver a solução funcionando, não uma teoria.',
     metodologia: ['Desenho de solução', 'Piloto controlado', 'Validação A/B'],
-    ferramentas: ['Python', 'Power Automate', 'Monte Carlo'],
+    ferramentas: ['Python', 'Power Automate'],
     entregavel: 'Solução implantada e validada',
     gate: {
       pergunta: 'Piloto atinge a meta definida em Define?',
