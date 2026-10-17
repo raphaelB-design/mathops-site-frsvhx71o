@@ -87,14 +87,18 @@ export function Layout() {
           isScrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/10' : 'bg-transparent',
         )}
       >
-        <nav className="max-w-7xl mx-auto pl-4 pr-6 sm:pl-6 sm:pr-6 lg:pl-6 lg:pr-8 flex items-center justify-between h-20 md:h-22">
+        <nav className="max-w-7xl mx-auto pl-2 pr-4 sm:pl-4 sm:pr-6 lg:pl-4 lg:pr-8 flex items-center justify-between h-20 md:h-22">
           <Link
             to="/"
             onClick={handleLogoClick}
-            className="flex items-center -ml-1 sm:ml-0 p-1 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+            className="inline-flex items-center p-1 -ml-1 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 transition-opacity hover:opacity-90"
             aria-label="Ir para a Home"
           >
-            <BrandLogo className="h-12 w-12 md:h-14 md:w-14" />
+            <BrandLogo
+              height={48}
+              className="md:[&>img]:h-14 md:[&>img]:w-14 [&>img]:h-12 [&>img]:w-12"
+              textClassName="text-xl md:text-2xl"
+            />
           </Link>
           <div className="hidden lg:flex items-center gap-8">
             {NAV_LINKS.map((link) => (
@@ -138,7 +142,11 @@ export function Layout() {
                 aria-label="Ir para a Home"
                 className="inline-flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
               >
-                <BrandLogo className="h-12 w-12 sm:h-14 sm:w-14" />
+                <BrandLogo
+                  height={48}
+                  className="sm:[&>img]:h-14 sm:[&>img]:w-14 [&>img]:h-12 [&>img]:w-12"
+                  textClassName="text-xl sm:text-2xl"
+                />
               </Link>
             </SheetTitle>
           </SheetHeader>

@@ -55,16 +55,20 @@ export function Footer() {
 
   return (
     <footer className="bg-black border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+      <div className="max-w-7xl mx-auto pl-3 pr-6 sm:pl-4 sm:pr-6 lg:pl-4 lg:pr-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 items-start">
             <Link
               to="/"
               onClick={handleLogoClick}
               aria-label="Ir para a Home"
-              className="inline-flex items-center w-fit p-1 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+              className="inline-flex items-center w-fit p-1 -ml-1 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 transition-opacity hover:opacity-90"
             >
-              <BrandLogo className="h-12 w-12 md:h-14 md:w-14" />
+              <BrandLogo
+                height={48}
+                className="md:[&>img]:h-14 md:[&>img]:w-14 [&>img]:h-12 [&>img]:w-12"
+                textClassName="text-xl md:text-2xl"
+              />
             </Link>
             <p className="text-sm text-zinc-500 max-w-xs leading-relaxed">
               Consultoria em dados, processos e indicadores de gestão.

@@ -287,27 +287,26 @@
     border-left: 2px solid hsl(var(--accent) / 0.6);
   }
 
-  /* Pulsação de luz do logo: ciclo contínuo de glow/luminosidade no mesmo ritmo de pulso (2s cúbico), sem variação de escala e sem ritmo cardíaco lub-dub */
-  @keyframes logo-glow-pulse {
+  /* Efeito de respiração do símbolo M: escurecimento e retorno contínuo e suave (sem glow externo e sem variação de escala) */
+  @keyframes logo-m-breathe {
     0%,
     100% {
       opacity: 1;
-      filter: drop-shadow(0 0 0px rgba(59, 130, 246, 0)) brightness(1);
+      filter: brightness(1);
     }
     50% {
-      opacity: 0.7;
-      filter: drop-shadow(0 0 14px rgba(59, 130, 246, 0.75))
-        drop-shadow(0 0 24px rgba(34, 211, 238, 0.45)) brightness(1.15);
+      opacity: 0.45;
+      filter: brightness(0.65);
     }
   }
 
-  .animate-logo-pulse {
-    animation: logo-glow-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    will-change: filter, opacity;
+  .animate-logo-m {
+    animation: logo-m-breathe 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    will-change: opacity, filter;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .animate-logo-pulse {
+    .animate-logo-m {
       animation: none !important;
       filter: none !important;
       opacity: 1 !important;
