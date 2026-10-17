@@ -13,7 +13,7 @@ const stats = [
     suffix: 'σ',
     decimals: 1,
     label: 'Qualidade de Processo',
-    sub: 'Nível Six Sigma sustentado',
+    sub: 'Lean Six Sigma aplicado à operação',
   },
   {
     value: 100,
