@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="mathops-grad-cyan" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#00D2FF" />
+    </linearGradient>
+  </defs>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- Right leg: navy/deep blue -->
+    <line x1="80" y1="36" x2="80" y2="78" stroke="#1E40AF" stroke-width="12" stroke-linecap="round" />
+
+    <!-- Left leg: royal blue -->
+    <line x1="20" y1="36" x2="20" y2="78" stroke="#3B82F6" stroke-width="12" stroke-linecap="round" />
+
+    <!-- Left diagonal: royal blue -->
+    <line x1="20" y1="32" x2="50" y2="70" stroke="#3B82F6" stroke-width="12" />
+
+    <!-- Right diagonal: vibrant cyan -->
+    <line x1="50" y1="70" x2="80" y2="28" stroke="#00E5FF" stroke-width="12" />
+
+    <!-- Node 1 (top-left) -->
+    <circle cx="20" cy="30" r="11" fill="#3B82F6" />
+    <circle cx="20" cy="30" r="5" fill="#0A0F1D" />
+
+    <!-- Node 2 (bottom-middle) -->
+    <circle cx="50" cy="70" r="11" fill="#3B82F6" />
+    <circle cx="50" cy="70" r="5" fill="#0A0F1D" />
+
+    <!-- Node 3 (top-right) -->
+    <circle cx="80" cy="26" r="11" fill="#00E5FF" />
+  </g>
+</svg>

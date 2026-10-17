@@ -49,15 +49,15 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div className="flex flex-col gap-4">
-            <Link to="/">
-              <BrandLogo textClassName="text-white font-serif text-2xl" />
+            <Link to="/" aria-label="Ir para a Home">
+              <BrandLogo className="h-10" height={40} />
             </Link>
             <p className="text-sm text-zinc-500 max-w-xs leading-relaxed">
               Consultoria em dados, processos e indicadores de gestão.
             </p>
             <div className="flex items-center gap-3 mt-2">
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/mathops-strategy"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-11 h-11 flex items-center justify-center border border-white/10 text-zinc-400 hover:text-white hover:border-white/30 transition-colors duration-300"

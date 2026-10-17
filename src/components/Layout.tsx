@@ -74,8 +74,8 @@ export function Layout() {
         )}
       >
         <nav className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-20">
-          <Link to="/" className="flex items-center gap-2">
-            <BrandLogo />
+          <Link to="/" className="flex items-center gap-2" aria-label="Ir para a Home">
+            <BrandLogo className="h-8 md:h-9" height={36} />
           </Link>
           <div className="hidden lg:flex items-center gap-8">
             {NAV_LINKS.map((link) => (
@@ -112,8 +112,10 @@ export function Layout() {
       <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
         <SheetContent side="right" className="bg-black border-white/10 w-full sm:w-96">
           <SheetHeader>
-            <SheetTitle className="text-white font-serif text-2xl">
-              <BrandLogo textClassName="text-white font-serif text-2xl" />
+            <SheetTitle className="text-left">
+              <Link to="/" onClick={() => setIsMenuOpen(false)} aria-label="Ir para a Home">
+                <BrandLogo className="h-8" height={32} />
+              </Link>
             </SheetTitle>
           </SheetHeader>
           <div className="flex flex-col gap-6 mt-12 px-6">

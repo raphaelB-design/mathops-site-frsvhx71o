@@ -26,10 +26,28 @@ export function SeoTags() {
 
   return (
     <Helmet>
-      <title>MathOps Strategy | Consultoria em Dados, Processos e Indicadores de Gestão</title>
+      <title>
+        MathOps Strategy | Consultoria em Dados, Processos e Gestão de Riscos — São Paulo
+      </title>
       <meta
         name="description"
-        content="Decisões de gestão baseadas em dados. Painel executivo, 7 serviços em grade, metodologia clara, garantias e Diagnóstico Estratégico em São Paulo."
+        content="Indicadores confiáveis, painéis em Power BI, melhoria de processos com Lean Six Sigma e gestão de riscos com COSO. Comece pelo Diagnóstico Estratégico."
+      />
+      <meta
+        property="og:title"
+        content="MathOps Strategy | Consultoria em Dados, Processos e Gestão de Riscos — São Paulo"
+      />
+      <meta
+        property="og:description"
+        content="Indicadores confiáveis, painéis em Power BI, melhoria de processos com Lean Six Sigma e gestão de riscos com COSO. Comece pelo Diagnóstico Estratégico."
+      />
+      <meta
+        name="twitter:title"
+        content="MathOps Strategy | Consultoria em Dados, Processos e Gestão de Riscos — São Paulo"
+      />
+      <meta
+        name="twitter:description"
+        content="Indicadores confiáveis, painéis em Power BI, melhoria de processos com Lean Six Sigma e gestão de riscos com COSO. Comece pelo Diagnóstico Estratégico."
       />
       <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
     </Helmet>
