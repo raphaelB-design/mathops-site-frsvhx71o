@@ -19,8 +19,8 @@ const stats = [
     value: 100,
     suffix: '%',
     decimals: 0,
-    label: 'Método Documentado',
-    sub: 'Todo modelo entregue com memória de cálculo',
+    label: 'Visibilidade Operacional',
+    sub: 'Painéis executivos e modelagem de dados',
   },
   {
     value: 100,
