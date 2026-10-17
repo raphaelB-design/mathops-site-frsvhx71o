@@ -1,7 +1,7 @@
 import { FadeIn } from '@/components/fade-in'
 import { SlideUpMask } from '@/components/slide-up-mask'
 import { ArrowUpRight, ChevronDown } from 'lucide-react'
-import { AnimatedCounter } from '@/components/animated-counter'
+import { TickerCounter } from '@/components/ticker-counter'
 import { useNavigate } from 'react-router-dom'
 import { useCallback } from 'react'
 import { useDiagnosticModal } from '@/context/DiagnosticModalContext'
@@ -107,10 +107,11 @@ export function Hero() {
                 {stats[0].label}
               </span>
               <span className="font-display text-5xl md:text-6xl font-bold text-white block mb-2 group-hover:text-accent transition-colors duration-500">
-                <AnimatedCounter
+                <TickerCounter
                   value={stats[0].value}
                   suffix={stats[0].suffix}
                   decimals={stats[0].decimals}
+                  tickInterval={3200}
                 />
               </span>
               <span className="font-body text-sm text-muted-foreground">{stats[0].sub}</span>
@@ -125,7 +126,12 @@ export function Hero() {
                       {s.label}
                     </span>
                     <span className="font-display text-3xl md:text-4xl font-bold text-white block mb-2 group-hover:text-accent transition-colors duration-500">
-                      <AnimatedCounter value={s.value} suffix={s.suffix} decimals={s.decimals} />
+                      <TickerCounter
+                        value={s.value}
+                        suffix={s.suffix}
+                        decimals={s.decimals}
+                        tickInterval={2800 + i * 600}
+                      />
                     </span>
                   </div>
                   <span className="font-body text-xs text-muted-foreground mt-2">{s.sub}</span>
