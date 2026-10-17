@@ -1,8 +1,10 @@
 import { FadeIn } from '@/components/fade-in'
 import { SlideUpMask } from '@/components/slide-up-mask'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, ArrowRight } from 'lucide-react'
 import { AnimatedCounter } from '@/components/animated-counter'
 import { useCallback } from 'react'
+import { useDiagnosticModal } from '@/context/DiagnosticModalContext'
+import { trackClick } from '@/services/analytics'
 
 const stats = {
   main: {
@@ -25,10 +27,16 @@ const stats = {
 }
 
 export function Hero() {
-  const scrollToServices = useCallback(
-    () => document.getElementById('como-funciona')?.scrollIntoView({ behavior: 'smooth' }),
-    [],
-  )
+  const { openDiagnostic } = useDiagnosticModal()
+
+  const scrollToServices = useCallback(() => {
+    document.getElementById('servicos')?.scrollIntoView({ behavior: 'smooth' })
+  }, [])
+
+  const handleDiagnosticClick = () => {
+    trackClick('diagnostic_open', 'hero')
+    openDiagnostic()
+  }
 
   return (
     <section
@@ -43,7 +51,7 @@ export function Hero() {
       <FadeIn delay={50}>
         <div className="relative z-10 inline-flex items-center gap-2 px-3 py-1.5 border border-white/10 bg-white/5 rounded-full font-mono text-xs uppercase tracking-widest text-muted-foreground">
           <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse" />
-          Decision Intelligence · São Paulo, Brasil
+          Dados · Processos · Decisão · São Paulo
         </div>
       </FadeIn>
 
@@ -53,29 +61,48 @@ export function Hero() {
           <h1 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight tracking-tight mb-8 text-white max-w-5xl break-words">
             <span className="inline-flex flex-wrap gap-x-3 md:gap-x-4 lg:gap-x-5 gap-y-2 md:gap-y-4 items-center">
               <span className="inline-flex flex-wrap gap-x-3 md:gap-x-4 lg:gap-x-5">
-                <SlideUpMask delay={200}>Decisões</SlideUpMask>
-                <SlideUpMask delay={300}>de</SlideUpMask>
+                <SlideUpMask delay={0}>Decisões</SlideUpMask>
+                <SlideUpMask delay={50}>de</SlideUpMask>
               </span>
-              <SlideUpMask delay={400}>gestão</SlideUpMask>
-              <SlideUpMask delay={500}>baseadas</SlideUpMask>
-              <SlideUpMask delay={600}>em</SlideUpMask>
-              <SlideUpMask delay={700}>
+              <SlideUpMask delay={100}>gestão</SlideUpMask>
+              <SlideUpMask delay={150}>baseadas</SlideUpMask>
+              <SlideUpMask delay={200}>em</SlideUpMask>
+              <SlideUpMask delay={250}>
                 <em className="text-accent not-italic">dados</em>
               </SlideUpMask>
-              <SlideUpMask delay={800}>que</SlideUpMask>
-              <SlideUpMask delay={900}>você</SlideUpMask>
-              <SlideUpMask delay={1000}>pode</SlideUpMask>
-              <SlideUpMask delay={1100}>provar.</SlideUpMask>
+              <SlideUpMask delay={300}>que</SlideUpMask>
+              <SlideUpMask delay={350}>você</SlideUpMask>
+              <SlideUpMask delay={400}>pode</SlideUpMask>
+              <SlideUpMask delay={450}>provar.</SlideUpMask>
             </span>
           </h1>
 
-          <FadeIn delay={600}>
+          <FadeIn delay={300}>
             <p className="font-body text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed mb-10">
               Mapeamos seus processos, estruturamos seus indicadores e entregamos painéis em Power
               BI com cada cálculo documentado e auditável. Para gestores que precisam decidir com
               fatos.
             </p>
-            <div className="flex flex-col sm:flex-row flex-wrap gap-4"></div>
+            <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-4">
+              <button
+                type="button"
+                onClick={handleDiagnosticClick}
+                className="inline-flex items-center justify-center gap-2 bg-white text-black px-6 py-3.5 text-sm font-medium tracking-wide hover:bg-zinc-200 transition-all duration-300 min-h-[44px]"
+              >
+                Solicitar Diagnóstico Estratégico
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <a
+                href="#servicos"
+                onClick={(e) => {
+                  e.preventDefault()
+                  scrollToServices()
+                }}
+                className="inline-flex items-center justify-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors duration-300 min-h-[44px] px-4 font-mono uppercase tracking-wider"
+              >
+                Ver serviços
+              </a>
+            </div>
           </FadeIn>
         </div>
 

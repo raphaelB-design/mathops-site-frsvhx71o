@@ -57,7 +57,7 @@ export function Metrics() {
         </div>
         <FadeIn delay={600}>
           <p className="font-body text-sm text-muted-foreground max-w-2xl mx-auto text-center mt-12 leading-relaxed">
-            Não publicamos números que não podemos provar. É o mesmo padrão que aplicamos aos seus.
+            Cada entrega documentada para que sua equipe use, audite e evolua com autonomia.
           </p>
         </FadeIn>
       </div>

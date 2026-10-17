@@ -9,14 +9,14 @@ import { Helmet } from '@/components/Helmet'
 
 const faqs = [
   {
-    question: 'Vocês têm cases de sucesso publicados?',
+    question: 'Como começamos a trabalhar juntos?',
     answer:
-      'Ainda não publicamos cases porque só divulgamos números lastreados em resultados auditáveis e autorizados pelo cliente. Por isso oferecemos a garantia de devolução integral no Diagnóstico Estratégico: o risco da primeira etapa é nosso, não seu.',
+      'Pelo Diagnóstico Estratégico: em 2 semanas mapeamos seus processos e indicadores e entregamos um roadmap com escopo e KPIs definidos. Se não houver fit, devolvemos 100% do valor.',
   },
   {
     question: 'Qual a duração típica de um projeto?',
     answer:
-      'Os projetos variam de acordo com a maturidade atual dos seus dados, mas tipicamente entregamos ciclos de valor contínuos entre 2 e 6 meses, focando em entregas rápidas para validação antecipada.',
+      'O Diagnóstico leva 2 semanas. Os serviços variam de 1 a 12 semanas, conforme o escopo definido no roadmap.',
   },
   {
     question: 'Não temos dados perfeitamente estruturados. Vocês podem ajudar?',
@@ -26,12 +26,11 @@ const faqs = [
   {
     question: 'Como o modelo final é entregue?',
     answer:
-      'Isso depende de como a sua operação trabalha. Podemos entregar a solução final encapsulada em uma API escalável, através de um dashboard interativo ou totalmente on-premise no seu ambiente, sempre acompanhado da nossa documentação.',
+      'Em painel Power BI publicado no seu ambiente, acompanhado de documentação, memória de cálculo e dicionário de dados.',
   },
   {
     question: 'Existe um Acordo de Confidencialidade (NDA) envolvido?',
-    answer:
-      'Absolutamente. O rigor metodológico passa também pelo sigilo operacional. Assinamos NDAs rígidos e restritivos antes de termos qualquer nível de acesso superficial aos seus ecossistemas de dados.',
+    answer: 'Sim. Assinamos NDA antes de qualquer acesso aos seus dados.',
   },
   {
     question: 'Qual o tamanho mínimo de empresa para trabalhar com a MathOps?',
@@ -39,9 +38,9 @@ const faqs = [
       'Focamos em empresas com complexidade de dados inicial ou intermediária. O tamanho do faturamento não é um impeditivo, desde que o desafio analítico seja suficientemente complexo e o potencial impacto estratégico justifique a empreitada.',
   },
   {
-    question: 'Como medem o ROI de um modelo matemático entregue?',
+    question: 'Como medem o resultado do projeto?',
     answer:
-      'Definimos KPIs inequívocos (como diminuição percentual de perda, ganho em taxa de conversão ou economia operacional direta) no dia zero e aferimos a performance exaustivamente contra sua baseline histórica.',
+      'Definimos com você, no diagnóstico, os indicadores de sucesso e a linha de base. Ao final, medimos contra essa mesma base.',
   },
 ]
 

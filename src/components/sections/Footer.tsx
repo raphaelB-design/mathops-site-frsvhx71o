@@ -3,8 +3,31 @@ import { Link } from 'react-router-dom'
 import { BrandLogo } from '@/components/BrandLogo'
 
 const serviceLinks = [
-  { label: 'Diagnóstico e Visibilidade', slug: 'diagnostico-e-visibilidade' },
-  { label: 'Análise e Modelagem', slug: 'analise-e-modelagem' },
+  { label: 'Diagnóstico Estratégico', href: '/#oferta' },
+  {
+    label: 'Diagnóstico e Visibilidade Operacional',
+    href: '/servicos/diagnostico-e-visibilidade?service=diagnostico-e-visibilidade-operacional',
+  },
+  {
+    label: 'Controle de Projetos e Obras (EVM)',
+    href: '/servicos/diagnostico-e-visibilidade?service=controle-projetos-obra-evm',
+  },
+  {
+    label: 'Monitoramento Estatístico da Operação',
+    href: '/servicos/diagnostico-e-visibilidade?service=monitoramento-estatistico-operacao',
+  },
+  {
+    label: 'Auditoria de Memórias de Cálculo',
+    href: '/servicos/analise-e-modelagem?service=memorias',
+  },
+  {
+    label: 'Lean Six Sigma & Melhoria de Processos',
+    href: '/servicos/analise-e-modelagem?service=lean-six-sigma-processos',
+  },
+  {
+    label: 'Modelagem Estatística de Custos',
+    href: '/servicos/analise-e-modelagem?service=modelagem-estatistica-custos',
+  },
 ]
 
 const navLinks = [
@@ -26,7 +49,7 @@ export function Footer() {
               <BrandLogo textClassName="text-white font-serif text-2xl" />
             </Link>
             <p className="text-sm text-zinc-500 max-w-xs leading-relaxed">
-              Consultoria boutique em modelagem matemática, automação e inteligência analítica.
+              Consultoria em dados, processos e indicadores de gestão.
             </p>
             <div className="flex items-center gap-3 mt-2">
               <a
@@ -85,9 +108,18 @@ export function Footer() {
             <h4 className="text-xs uppercase tracking-widest text-zinc-600 mb-1">Serviços</h4>
             {serviceLinks.map((link) => (
               <Link
-                key={link.slug}
-                to={`/servicos/${link.slug}`}
-                className="text-sm text-zinc-400 hover:text-white transition-colors duration-300 inline-flex items-center gap-2 min-h-[44px]"
+                key={link.label}
+                to={link.href}
+                onClick={(e) => {
+                  if (link.href.startsWith('/#')) {
+                    const targetId = link.href.replace('/#', '')
+                    if (window.location.pathname === '/') {
+                      e.preventDefault()
+                      document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' })
+                    }
+                  }
+                }}
+                className="text-sm text-zinc-400 hover:text-white transition-colors duration-300 inline-flex items-center gap-2 min-h-[36px]"
               >
                 {link.label}
               </Link>

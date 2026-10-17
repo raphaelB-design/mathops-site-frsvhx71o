@@ -8,7 +8,7 @@ export function SeoTags() {
     url: 'https://www.mathops.com.br',
     logo: 'https://www.mathops.com.br/og-image.png',
     description:
-      'Consultoria boutique especializada em Diagnóstico Estratégico e Visibilidade Operacional. Modelagem matemática, automação de processos e inteligência analítica para PMEs e grandes empresas.',
+      'Consultoria especializada em Diagnóstico Estratégico e Visibilidade Operacional. Modelagem matemática, processos e inteligência analítica para PMEs e grandes empresas.',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'São Paulo',

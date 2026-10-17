@@ -24,8 +24,8 @@ export function Services() {
             </h2>
             <FadeIn delay={200}>
               <p className="font-body text-muted-foreground leading-relaxed flex-1 mb-8">
-                Substitua tarefas manuais por inteligência aplicada — e tenha um núcleo analítico
-                dedicado, sem o custo de montá-lo internamente.
+                Sete serviços em duas camadas: primeiro enxergar a operação, depois modelar
+                decisões.
               </p>
             </FadeIn>
           </div>

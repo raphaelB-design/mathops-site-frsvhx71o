@@ -25,28 +25,14 @@ import { Button } from '@/components/ui/button'
 import { TurnstileWidget } from '@/components/TurnstileWidget'
 import { ArrowUpRight } from 'lucide-react'
 
-const SECTORS = [
-  'Logística e Supply Chain',
-  'Indústria e Manufatura',
-  'Saúde',
-  'Serviços Financeiros',
-  'Varejo e E-commerce',
-  'Agronegócio',
-  'Energia',
-  'Outro',
-]
+const SECTORS = ['Construção Civil', 'Indústria', 'Serviços', 'Setor Público', 'Outro']
 const SIZES = [
   '1-50 funcionários',
   '51-200 funcionários',
   '201-500 funcionários',
   '500+ funcionários',
 ]
-const BUDGETS = [
-  'Até R$ 50.000',
-  'R$ 50.000 - R$ 150.000',
-  'R$ 150.000 - R$ 500.000',
-  'Acima de R$ 500.000',
-]
+const TIMELINES = ['Imediatamente', 'Nos próximos 3 meses', 'Ainda avaliando']
 
 const schema = z.object({
   name: z.string().min(2, 'Nome deve ter no mínimo 2 caracteres'),
@@ -54,8 +40,8 @@ const schema = z.object({
   company: z.string().min(2, 'Nome da empresa deve ter no mínimo 2 caracteres'),
   sector: z.string().min(1, 'Selecione seu setor'),
   company_size: z.string().min(1, 'Selecione o porte da empresa'),
+  start_timeline: z.string().min(1, 'Selecione quando pretende iniciar'),
   challenge: z.string().min(10, 'Descreva seu desafio com pelo menos 10 caracteres'),
-  budget: z.string().min(1, 'Selecione uma faixa de orçamento'),
   operation_details: z.string().optional(),
 })
 
@@ -120,8 +106,8 @@ export function QuoteCTAForm() {
       company: '',
       sector: '',
       company_size: '',
+      start_timeline: '',
       challenge: '',
-      budget: '',
       operation_details: '',
     },
   })
@@ -145,7 +131,7 @@ export function QuoteCTAForm() {
           sector: data.sector,
           company_size: data.company_size,
           challenge: data.challenge,
-          budget_range: data.budget,
+          start_timeline: data.start_timeline,
           operation_details: data.operation_details,
           token: turnstileToken,
         },
@@ -239,10 +225,10 @@ export function QuoteCTAForm() {
         </div>
         <SelectField
           control={form.control}
-          name="budget"
-          label="Faixa de orçamento"
-          placeholder="Selecione uma faixa"
-          options={BUDGETS}
+          name="start_timeline"
+          label="Quando pretende iniciar?"
+          placeholder="Selecione o prazo de início"
+          options={TIMELINES}
         />
         <FormField
           control={form.control}

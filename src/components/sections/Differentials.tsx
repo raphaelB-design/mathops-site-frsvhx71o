@@ -16,13 +16,13 @@ const diffs = [
   },
   {
     num: '03',
-    title: 'ROI Definido Antes de Começar',
-    desc: 'Todo projeto inicia com KPIs financeiros e operacionais acordados. Ao final, você mede exatamente o retorno — com os mesmos critérios matemáticos do início.',
+    title: 'Indicadores definidos antes de começar',
+    desc: 'Todo projeto inicia com KPIs acordados e termina medido pelos mesmos critérios.',
   },
   {
     num: '04',
-    title: 'Segurança by Design',
-    desc: 'LGPD e GDPR não são uma etapa final — são parte da arquitetura, desde o primeiro dia.',
+    title: 'Confidencialidade e LGPD',
+    desc: 'NDA assinado antes de qualquer acesso aos dados e tratamento conforme a LGPD.',
   },
 ]
 

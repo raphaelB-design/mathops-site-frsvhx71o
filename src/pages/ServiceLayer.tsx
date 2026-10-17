@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useDiagnosticModal } from '@/context/DiagnosticModalContext'
 import { trackClick } from '@/services/analytics'
-import { useParams, Link, Navigate } from 'react-router-dom'
+import { useParams, Link, Navigate, useSearchParams } from 'react-router-dom'
 import { serviceLayers, ServiceDetail } from '@/config/servicesData'
 import { FadeIn } from '@/components/fade-in'
 import { AnimatedCounter } from '@/components/animated-counter'
@@ -87,6 +87,7 @@ function MetricAnimator({ value }: { value: string }) {
 
 export default function ServiceLayer() {
   const { slug } = useParams()
+  const [searchParams] = useSearchParams()
   const { openDiagnostic } = useDiagnosticModal()
   const [selectedService, setSelectedService] = useState<ServiceDetail | null>(null)
 
@@ -108,6 +109,16 @@ export default function ServiceLayer() {
       ? layer.services.find((s) => s.id === layer.anchorProductId)
       : null
 
+  useEffect(() => {
+    const serviceParam = searchParams.get('service')
+    if (serviceParam && layer) {
+      const found = layer.services.find((s) => s.id === serviceParam)
+      if (found) {
+        setSelectedService(found)
+      }
+    }
+  }, [searchParams, layer])
+
   return (
     <div className="w-full flex flex-col min-h-screen bg-black text-white">
       <Helmet>
@@ -118,10 +129,7 @@ export default function ServiceLayer() {
       <div className="relative pt-40 pb-32 md:pt-56 md:pb-40 px-6 md:px-12 flex flex-col items-center text-center overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 bg-zinc-950 -z-10"></div>
         <img
-          src={
-            layer.heroImage ||
-            'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&q=80'
-          }
+          src={layer.heroImage || 'https://img.usecurling.com/p/1920/600?q=abstract'}
           alt={layer.title}
           className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-luminosity -z-10 grayscale"
         />

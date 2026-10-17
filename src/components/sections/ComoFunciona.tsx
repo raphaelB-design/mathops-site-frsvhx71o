@@ -8,27 +8,27 @@ const steps = [
     title: 'Diagnóstico Estratégico',
     subtitle: '2 semanas',
     description:
-      'Mergulho profundo na sua operação. Identificamos gargalos, mapeamos oportunidades e entregamos um roadmap claro com KPIs definidos. O risco é todo nosso: se não houver fit, devolvemos 100% do valor.',
+      'Em 2 semanas mapeamos processos e indicadores e entregamos um roadmap com escopo e KPIs definidos. Se não houver fit, devolvemos 100% do valor.',
     link: null as string | null,
     linkLabel: null as string | null,
   },
   {
     number: '02',
-    title: 'Roadmap com escopo e KPIs definidos',
-    subtitle: 'Saída do diagnóstico',
+    title: 'Implementação',
+    subtitle: 'Valor do diagnóstico abatido',
     description:
-      'Com base no diagnóstico, desenhamos o plano de engajamento completo. Cada etapa tem escopo, entregáveis e indicadores de sucesso acordados antes de qualquer implementação.',
-    link: null as string | null,
-    linkLabel: null as string | null,
+      'Executamos a camada de solução definida no roadmap: mapeamento de processos, painéis executivos ou modelos estatísticos. O valor do diagnóstico é abatido deste escopo.',
+    link: '/servicos/diagnostico-e-visibilidade',
+    linkLabel: 'Ver Visibilidade Operacional',
   },
   {
     number: '03',
-    title: 'Implementação da Visibilidade Operacional',
-    subtitle: 'Valor do diagnóstico 100% abatido',
+    title: 'Acompanhamento',
+    subtitle: 'Autonomia e medição',
     description:
-      'Executamos a primeira camada de solução: mapeamento de processos e painéis executivos que substituem estimativa por medição. O investimento do diagnóstico é integralmente creditado neste escopo.',
-    link: '/servicos/diagnostico-e-visibilidade',
-    linkLabel: 'Ver Visibilidade Operacional',
+      'Medimos os resultados contra os mesmos KPIs definidos no diagnóstico e entregamos toda a documentação para sua equipe operar com autonomia.',
+    link: null as string | null,
+    linkLabel: null as string | null,
   },
 ]
 

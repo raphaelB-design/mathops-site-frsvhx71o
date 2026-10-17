@@ -62,7 +62,7 @@ export default function Sobre() {
               </p>
               <p>
                 Atuamos no limiar das decisões mais críticas que uma operação pode enfrentar:
-                precificação, planejamento de capacidade, governança de dados e automação de
+                precificação, planejamento de capacidade, governança de dados e melhoria de
                 processos. Não substituímos o julgamento do gestor; blindamos ele com matemática.
               </p>
             </div>

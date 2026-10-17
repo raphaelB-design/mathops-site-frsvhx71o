@@ -104,8 +104,7 @@ export const serviceLayers: Record<string, ServiceLayer> = {
   'analise-e-modelagem': {
     title: 'Análise e Modelagem',
     headline: 'Modelos estatísticos e auditoria de cálculo para decisões que se sustentam.',
-    description:
-      'Transforme dados em modelos preditivos e identifique perdas que hoje não aparecem no relatório.',
+    description: 'Auditoria de cálculos, melhoria de processos e modelos estatísticos de custo.',
     heroImage: 'https://img.usecurling.com/p/1920/600?q=abstract',
     layerNumber: 2,
     metrics: [
@@ -164,7 +163,7 @@ export const diagnosticoEstrategico = {
   sequencePosition: 'Ponto zero',
   deadline: '2 semanas',
   headline:
-    'Diagnóstico de prazo fixo que mapeia onde a matemática e os dados mudam o resultado da operação antes de comprometer orçamento maior.',
+    'Diagnóstico de prazo fixo que mapeia onde a matemática e os dados mudam o resultado da operação antes de avançar para etapas maiores.',
   deliverables: [
     'Relatório de Diagnóstico Analítico (documento auditável)',
     'Mapa de Gargalos e Oportunidades Prioritárias',
@@ -172,7 +171,7 @@ export const diagnosticoEstrategico = {
     'Sessão de apresentação ao time de gestão (90 min)',
   ],
   forWhom:
-    'Para líderes que precisam de clareza antes de comprometer orçamento. O diagnóstico responde uma pergunta: onde a matemática muda o resultado da sua operação?',
+    'Para líderes que precisam de clareza antes de avançar para novos projetos. O diagnóstico responde uma pergunta: onde a matemática muda o resultado da sua operação?',
   guarantee:
     'Se ao final do diagnóstico concluirmos que não há fit estratégico, devolvemos 100% do valor. Sem exceções.',
   note: 'O valor do Diagnóstico Estratégico é integralmente abatido do investimento no engajamento completo.',
