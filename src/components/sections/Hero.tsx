@@ -111,7 +111,7 @@ export function Hero() {
                   value={stats[0].value}
                   suffix={stats[0].suffix}
                   decimals={stats[0].decimals}
-                  tickInterval={5200}
+                  tickInterval={9200}
                 />
               </span>
               <span className="font-body text-sm text-muted-foreground">{stats[0].sub}</span>
@@ -130,7 +130,7 @@ export function Hero() {
                         value={s.value}
                         suffix={s.suffix}
                         decimals={s.decimals}
-                        tickInterval={4600 + i * 900}
+                        tickInterval={8200 + i * 1600}
                       />
                     </span>
                   </div>

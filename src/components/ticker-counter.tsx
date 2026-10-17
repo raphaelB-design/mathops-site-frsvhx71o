@@ -6,16 +6,16 @@ interface TickerCounterProps {
   decimals?: number
   prefix?: string
   suffix?: string
-  /** Intervalo entre cada "tick" do ticker, em ms (padrão: 5s) */
+  /** Intervalo entre cada "tick" do ticker, em ms (padrão: 9s) */
   tickInterval?: number
   /** Duração da contagem inicial de entrada, em ms (padrão: 2s) */
   duration?: number
 }
 
 /** Duração da fase de embaralhamento de dígitos em cada tick, em ms */
-const SCRAMBLE_DURATION = 750
+const SCRAMBLE_DURATION = 900
 /** Frequência de troca dos dígitos durante o scramble, em ms */
-const SCRAMBLE_STEP = 90
+const SCRAMBLE_STEP = 100
 
 function formatValue(n: number, decimals: number) {
   const s = n.toFixed(decimals)
@@ -33,7 +33,7 @@ export function TickerCounter({
   decimals = 0,
   prefix = '',
   suffix = '',
-  tickInterval = 5000,
+  tickInterval = 9000,
   duration = 2000,
 }: TickerCounterProps) {
   const prefersReducedMotion = useReducedMotion()
