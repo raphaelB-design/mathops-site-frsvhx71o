@@ -80,7 +80,7 @@ const risksData: RiskItem[] = [
     probability: 4,
     impact: 2,
     status: 'Monitorado',
-    mitigation: 'Modelo preditivo de custos e hedge operacional',
+    mitigation: 'Revisão periódica de contratos e monitoramento de indicadores de custo',
   },
 ]
 

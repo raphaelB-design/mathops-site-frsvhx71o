@@ -5,9 +5,9 @@ export const industriesData = {
     slug: 'construcao-civil',
     icon: Building2,
     name: 'Construção Civil',
-    desc: 'Otimização de logística de canteiros, gestão de suprimentos e modelagem matemática para cronogramas de grandes obras.',
+    desc: 'Controle de custo e prazo de obras com Earned Value, curva S e indicadores executivos.',
     details:
-      'Na construção civil, a eficiência do canteiro de obras dita a margem de lucro. A MathOps aplica modelagem matemática (Programação Linear e Inteira Mista) para otimizar a alocação de recursos, sequenciamento de tarefas (PERT/CPM avançado) e gestão de suprimentos just-in-time. Ao invés de cronogramas estáticos, criamos modelos de simulação estocástica para mitigar o tempo ocioso de maquinário pesado e equipes, reduzindo drasticamente custos indiretos, atrasos sistêmicos e garantindo o fluxo contínuo de materiais críticos.',
+      'Na construção civil, a margem se perde entre o orçado e o realizado. A MathOps implanta controle orientado a dados: curva de avanço planejado vs. realizado, indicadores de custo e prazo (EVM), reconciliação entre orçamento, medições e ERP e painéis executivos para a gestão da obra. Cada desvio fica visível, explicado e documentado.',
     image: 'https://img.usecurling.com/p/1200/800?q=construction',
     thumbnail: 'https://img.usecurling.com/p/600/400?q=construction',
     imageAlt: 'Canteiro de obras de construção civil',

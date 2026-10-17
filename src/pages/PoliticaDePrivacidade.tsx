@@ -67,7 +67,7 @@ export default function PoliticaDePrivacidade() {
               </h2>
               <p>
                 Conforme estabelecido pela LGPD, você possui os seguintes direitos em relação aos
-                seus dados pessoais armazenados em nosso banco de dados:
+                seus dados pessoais armazenados em nossos sistemas:
               </p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>Confirmação da existência de tratamento.</li>

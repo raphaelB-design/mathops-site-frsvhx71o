@@ -202,7 +202,7 @@ export default function ServiceLayer() {
     slug === 'diagnostico-e-visibilidade'
       ? 'Mapeamento de processos, painéis executivos em Power BI, curvas S de avanço físico-financeiro (EVM) e cartas de controle estatístico (CEP) para decisões em tempo real.'
       : slug === 'analise-e-modelagem'
-        ? 'Auditoria de memórias de cálculo com reconciliação de discrepâncias entre áreas, metodologia Lean Six Sigma e modelagem estatística preditiva de custos.'
+        ? 'Auditoria de memórias de cálculo com reconciliação de discrepâncias entre áreas, metodologia Lean Six Sigma e modelagem estatística de custos.'
         : slug === 'governanca-e-riscos'
           ? 'Estruturação da gestão de riscos organizacionais, apetite a risco, modelo das três linhas e monitoramento da efetividade dos controles.'
           : layer.description

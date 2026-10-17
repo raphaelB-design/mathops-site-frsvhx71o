@@ -34,7 +34,7 @@ export default function Sobre() {
               <SlideUpMask delay={100}>Sobre a MathOps</SlideUpMask>
             </h1>
             <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground font-serif italic">
-              Construímos a ponte entre o que sua operação sente e o que ela pode provar.
+              Decisões de gestão baseadas em dados que você pode provar.
             </p>
           </FadeIn>
         </div>
@@ -61,9 +61,9 @@ export default function Sobre() {
                 rastreabilidade total.
               </p>
               <p>
-                Atuamos no limiar das decisões mais críticas que uma operação pode enfrentar:
-                precificação, planejamento de capacidade, governança de dados e melhoria de
-                processos. Não substituímos o julgamento do gestor; blindamos ele com matemática.
+                Atuamos onde a decisão precisa de evidência: indicadores de gestão, controle de
+                projetos, melhoria de processos e gestão de riscos. Não substituímos o julgamento do
+                gestor; damos a ele base factual.
               </p>
             </div>
           </FadeIn>
@@ -94,9 +94,9 @@ export default function Sobre() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="font-serif text-muted-foreground">
-                Ser a referência em consultoria analítica boutique no Brasil, reconhecida pela
-                qualidade Six Sigma dos nossos modelos e pela capacidade de tornar decisões
-                complexas simples de executar.
+                Ser referência em consultoria de dados e processos no Brasil, reconhecida pela
+                rastreabilidade das entregas e pela capacidade de tornar decisões complexas simples
+                de executar.
               </CardContent>
             </Card>
 

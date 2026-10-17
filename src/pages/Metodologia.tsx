@@ -12,7 +12,7 @@ export default function Metodologia() {
         <title>Metodologia & Diferenciais | MathOps Strategy — DMAIC, Modelagem e Processos</title>
         <meta
           name="description"
-          content="Conheça a metodologia da MathOps Strategy: framework DMAIC, modelagem matemática, estatística avançada e nossos diferenciais de independência, governança e conformidade com a LGPD."
+          content="Conheça a metodologia da MathOps Strategy: DMAIC, controle estatístico de processo, auditoria de cálculos e gestão de riscos, com confidencialidade e conformidade com a LGPD."
         />
       </Helmet>
       {/* Methodology Page Hero */}
@@ -64,15 +64,9 @@ export default function Metodologia() {
               </div>
               <div className="md:w-2/3 flex flex-col gap-6 font-body text-muted-foreground text-lg leading-relaxed">
                 <p>
-                  A incerteza pode ser tratada como parâmetro modelável, não como limite fixo do
-                  planejamento. Utilizamos técnicas avançadas de Pesquisa Operacional e otimização
-                  não-linear para traduzir desafios operacionais complexos em equações
-                  determinísticas.
-                </p>
-                <p>
-                  Criamos Digital Twins (Gêmeos Digitais) da sua cadeia de valor. Isso nos permite
-                  simular milhares de cenários hipotéticos de estresse, validando a robustez de cada
-                  decisão antes que um único real seja alocado.
+                  Cada decisão começa por um modelo explícito: premissas documentadas, fórmulas
+                  rastreáveis e cenários comparáveis. Antes de recomendar uma mudança, mostramos o
+                  cálculo que a sustenta.
                 </p>
               </div>
             </div>
@@ -100,10 +94,9 @@ export default function Metodologia() {
                   estatística garante que cada insight extraído tenha validade comprobatória.
                 </p>
                 <p>
-                  Aplicamos Controle Estatístico de Processo (CEP), inferência bayesiana e análise
-                  de séries temporais não-estacionárias para prever gargalos, dimensionar estoques
-                  de segurança e isolar variáveis de confusão que distorcem o ROI real de suas
-                  operações.
+                  Aplicamos Controle Estatístico de Processo (CEP), análise de variância e cartas de
+                  controle para separar variação normal de desvio real e identificar a causa raiz
+                  antes de agir.
                 </p>
               </div>
             </div>
