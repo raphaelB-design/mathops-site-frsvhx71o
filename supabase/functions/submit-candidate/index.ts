@@ -18,9 +18,18 @@ Deno.serve(async (req: Request) => {
       })
     }
 
-    const turnstileSecret = Deno.env.get('TURNSTILE_SECRET')
+    const turnstileSecret = Deno.env.get('TURNSTILE_SECRET_KEY') || Deno.env.get('TURNSTILE_SECRET')
     if (!turnstileSecret) {
-      throw new Error('TURNSTILE_SECRET is not configured')
+      console.error('[MathOps] TURNSTILE_SECRET_KEY não configurada no backend')
+      return new Response(
+        JSON.stringify({
+          error: 'Configuração de segurança pendente no servidor (TURNSTILE_SECRET_KEY)',
+        }),
+        {
+          status: 500,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        },
+      )
     }
 
     const formData = new FormData()

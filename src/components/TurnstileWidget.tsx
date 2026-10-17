@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
+import { AlertCircle } from 'lucide-react'
 
 interface TurnstileWidgetProps {
   onVerify: (token: string) => void
@@ -7,14 +7,21 @@ interface TurnstileWidgetProps {
 
 export function TurnstileWidget({ onVerify }: TurnstileWidgetProps) {
   const containerRef = useRef<HTMLDivElement>(null)
+  const siteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY
 
   useEffect(() => {
+    if (!siteKey) {
+      console.error('[MathOps] VITE_TURNSTILE_SITE_KEY não configurada — Turnstile desabilitado')
+      onVerify('')
+      return
+    }
+
     let widgetId: string | undefined
 
     const render = () => {
       if ((window as any).turnstile && containerRef.current) {
         widgetId = (window as any).turnstile.render(containerRef.current, {
-          sitekey: import.meta.env.VITE_TURNSTILE_SITE_KEY || '1x00000000000000000000AA',
+          sitekey: siteKey,
           theme: 'dark',
           callback: onVerify,
           'error-callback': () => onVerify(''),
@@ -31,7 +38,6 @@ export function TurnstileWidget({ onVerify }: TurnstileWidgetProps) {
       script.onload = render
       document.head.appendChild(script)
     } else {
-      // Small timeout to ensure DOM is ready if script was already loaded
       setTimeout(render, 100)
     }
 
@@ -44,19 +50,23 @@ export function TurnstileWidget({ onVerify }: TurnstileWidgetProps) {
         }
       }
     }
-  }, [onVerify])
+  }, [onVerify, siteKey])
+
+  if (!siteKey) {
+    return (
+      <div className="w-full flex items-center gap-3 p-3 rounded-lg border border-red-500/30 bg-red-500/10 text-red-200 text-xs font-mono">
+        <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
+        <span>Verificação de segurança indisponível no momento. Configuração pendente.</span>
+      </div>
+    )
+  }
 
   return (
-    <div className="w-full flex flex-col space-y-3">
-      <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground font-semibold">
-        [ Sistema de Segurança ]
-      </div>
-      <div className="w-full max-w-full bg-white/5 border border-white/10 rounded-lg p-3 sm:p-4 backdrop-blur-sm min-h-[97px] flex items-center justify-center sm:justify-start overflow-hidden transition-colors duration-300 hover:bg-white/10">
-        <div
-          ref={containerRef}
-          className="flex justify-center sm:justify-start w-full max-w-full overflow-hidden"
-        />
-      </div>
+    <div className="w-full max-w-full bg-white/5 border border-white/10 rounded-lg p-3 sm:p-4 backdrop-blur-sm min-h-[97px] flex items-center justify-center sm:justify-start overflow-hidden transition-colors duration-300 hover:bg-white/10">
+      <div
+        ref={containerRef}
+        className="flex justify-center sm:justify-start w-full max-w-full overflow-hidden"
+      />
     </div>
   )
 }

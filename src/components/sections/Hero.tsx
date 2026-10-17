@@ -1,39 +1,30 @@
 import { FadeIn } from '@/components/fade-in'
 import { SlideUpMask } from '@/components/slide-up-mask'
-import { ArrowUpRight, ChevronDown } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import { AnimatedCounter } from '@/components/animated-counter'
-import { useNavigate } from 'react-router-dom'
 import { useCallback } from 'react'
-import { useDiagnosticModal } from '@/context/DiagnosticModalContext'
-import { trackClick } from '@/services/analytics'
 
-const stats = [
-  {
-    value: 4.8,
-    suffix: 'σ',
-    decimals: 1,
-    label: 'Qualidade de Processo',
-    sub: 'Lean Six Sigma aplicado à operação',
+const stats = {
+  main: {
+    label: 'LEAN SIX SIGMA',
+    value: 'Black Belt',
+    sub: 'Metodologia aplicada à operação',
   },
-  {
-    value: 100,
-    suffix: '%',
-    decimals: 0,
-    label: 'Visibilidade Operacional',
+  sub1: {
+    label: 'PLATAFORMA',
+    value: 'Power BI',
     sub: 'Painéis executivos e modelagem de dados',
   },
-  {
-    value: 100,
+  sub2: {
+    label: 'RASTREABILIDADE',
+    numericValue: 100,
     suffix: '%',
     decimals: 0,
-    label: 'Rastreabilidade',
-    sub: 'Memória de cálculo auditável',
+    sub: 'Cálculos entregues com memória auditável',
   },
-]
+}
 
 export function Hero() {
-  const navigate = useNavigate()
-  const { openDiagnostic } = useDiagnosticModal()
   const scrollToServices = useCallback(
     () => document.getElementById('como-funciona')?.scrollIntoView({ behavior: 'smooth' }),
     [],
@@ -93,40 +84,50 @@ export function Hero() {
           <FadeIn delay={800}>
             <div className="p-8 border border-white/10 bg-black/40 backdrop-blur-xl hover:bg-black/60 hover:border-accent/50 hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(45,95,168,0.2)] transition-all duration-500 ease-smooth group rounded-xl w-full">
               <span className="font-mono text-xs text-muted-foreground uppercase tracking-widest block mb-3">
-                {stats[0].label}
+                {stats.main.label}
               </span>
               <span className="font-display text-5xl md:text-6xl font-bold text-white block mb-2 group-hover:text-accent transition-colors duration-500">
-                <AnimatedCounter
-                  value={stats[0].value}
-                  suffix={stats[0].suffix}
-                  decimals={stats[0].decimals}
-                  duration={2000}
-                />
+                {stats.main.value}
               </span>
-              <span className="font-body text-sm text-muted-foreground">{stats[0].sub}</span>
+              <span className="font-body text-sm text-muted-foreground">{stats.main.sub}</span>
             </div>
           </FadeIn>
           <div className="grid grid-cols-2 gap-4">
-            {stats.slice(1).map((s, i) => (
-              <FadeIn key={i} delay={900 + i * 100}>
-                <div className="p-6 border border-white/10 bg-black/40 backdrop-blur-xl hover:bg-black/60 hover:border-accent/50 hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(45,95,168,0.2)] transition-all duration-500 ease-smooth group rounded-xl h-full flex flex-col justify-between">
-                  <div>
-                    <span className="font-mono text-[10px] md:text-xs text-muted-foreground uppercase tracking-widest block mb-2">
-                      {s.label}
-                    </span>
-                    <span className="font-display text-3xl md:text-4xl font-bold text-white block mb-2 group-hover:text-accent transition-colors duration-500">
-                      <AnimatedCounter
-                        value={s.value}
-                        suffix={s.suffix}
-                        decimals={s.decimals}
-                        duration={2000}
-                      />
-                    </span>
-                  </div>
-                  <span className="font-body text-xs text-muted-foreground mt-2">{s.sub}</span>
+            <FadeIn delay={900}>
+              <div className="p-6 border border-white/10 bg-black/40 backdrop-blur-xl hover:bg-black/60 hover:border-accent/50 hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(45,95,168,0.2)] transition-all duration-500 ease-smooth group rounded-xl h-full flex flex-col justify-between">
+                <div>
+                  <span className="font-mono text-[10px] md:text-xs text-muted-foreground uppercase tracking-widest block mb-2">
+                    {stats.sub1.label}
+                  </span>
+                  <span className="font-display text-3xl md:text-4xl font-bold text-white block mb-2 group-hover:text-accent transition-colors duration-500">
+                    {stats.sub1.value}
+                  </span>
                 </div>
-              </FadeIn>
-            ))}
+                <span className="font-body text-xs text-muted-foreground mt-2">
+                  {stats.sub1.sub}
+                </span>
+              </div>
+            </FadeIn>
+            <FadeIn delay={1000}>
+              <div className="p-6 border border-white/10 bg-black/40 backdrop-blur-xl hover:bg-black/60 hover:border-accent/50 hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(45,95,168,0.2)] transition-all duration-500 ease-smooth group rounded-xl h-full flex flex-col justify-between">
+                <div>
+                  <span className="font-mono text-[10px] md:text-xs text-muted-foreground uppercase tracking-widest block mb-2">
+                    {stats.sub2.label}
+                  </span>
+                  <span className="font-display text-3xl md:text-4xl font-bold text-white block mb-2 group-hover:text-accent transition-colors duration-500">
+                    <AnimatedCounter
+                      value={stats.sub2.numericValue}
+                      suffix={stats.sub2.suffix}
+                      decimals={stats.sub2.decimals}
+                      duration={2000}
+                    />
+                  </span>
+                </div>
+                <span className="font-body text-xs text-muted-foreground mt-2">
+                  {stats.sub2.sub}
+                </span>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </div>

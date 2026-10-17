@@ -32,7 +32,7 @@ export function Oferta() {
             <div className="flex items-center justify-center gap-3 px-6 py-4 bg-accent/10 border border-accent/30 rounded-lg">
               <ShieldCheck className="w-6 h-6 text-accent shrink-0" />
               <p className="font-display text-lg md:text-xl font-bold text-white text-center">
-                Sem fit estratégico?&nbsp;
+                Sem fit estratégico? Devolvemos 100% do valor.
               </p>
             </div>
           </div>
@@ -40,7 +40,7 @@ export function Oferta() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
           <FadeIn delay={300}>
-            <div className="p-8 border border-white/10 bg-black/40">
+            <div className="p-8 border border-white/10 bg-black/40 h-full flex flex-col">
               <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-6 block">
                 O que você recebe
               </span>
@@ -56,7 +56,48 @@ export function Oferta() {
           </FadeIn>
 
           <FadeIn delay={400}>
-            <div className="p-8 border border-white/10 bg-black/40 flex flex-col justify-between"></div>
+            <div className="p-8 border border-white/10 bg-black/40 flex flex-col justify-between h-full">
+              <div className="space-y-6">
+                <div>
+                  <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground block mb-2">
+                    Prazo
+                  </span>
+                  <p className="font-display text-2xl font-bold text-white">2 semanas</p>
+                </div>
+
+                <div className="pt-4 border-t border-white/10">
+                  <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground block mb-2">
+                    Condição
+                  </span>
+                  <p className="font-body text-sm text-gray-300 leading-relaxed">
+                    Valor integralmente abatido do engajamento completo
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-white/10">
+                  <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground block mb-2">
+                    Público-alvo
+                  </span>
+                  <p className="font-body text-sm text-gray-300 leading-relaxed">
+                    {diagnosticoEstrategico.forWhom}
+                  </p>
+                </div>
+              </div>
+
+              <div className="pt-8">
+                <button
+                  type="button"
+                  onClick={() => {
+                    trackClick('diagnostic_open', 'oferta')
+                    openDiagnostic()
+                  }}
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-white text-black font-display font-bold text-base hover:bg-accent hover:text-white transition-colors duration-300 rounded-sm group min-h-[44px]"
+                >
+                  Solicitar Diagnóstico Estratégico
+                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </button>
+              </div>
+            </div>
           </FadeIn>
         </div>
       </div>
