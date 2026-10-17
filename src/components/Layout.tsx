@@ -91,10 +91,10 @@ export function Layout() {
           <Link
             to="/"
             onClick={handleLogoClick}
-            className="flex items-center -ml-1 sm:ml-0"
+            className="flex items-center -ml-1 sm:ml-0 p-1 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
             aria-label="Ir para a Home"
           >
-            <BrandLogo className="h-12 md:h-14" />
+            <BrandLogo className="h-12 w-12 md:h-14 md:w-14" />
           </Link>
           <div className="hidden lg:flex items-center gap-8">
             {NAV_LINKS.map((link) => (
@@ -132,8 +132,13 @@ export function Layout() {
         <SheetContent side="right" className="bg-black border-white/10 w-full sm:w-96">
           <SheetHeader>
             <SheetTitle className="text-left">
-              <Link to="/" onClick={handleLogoClick} aria-label="Ir para a Home">
-                <BrandLogo className="h-12" />
+              <Link
+                to="/"
+                onClick={handleLogoClick}
+                aria-label="Ir para a Home"
+                className="inline-flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+              >
+                <BrandLogo className="h-12 w-12 sm:h-14 sm:w-14" />
               </Link>
             </SheetTitle>
           </SheetHeader>

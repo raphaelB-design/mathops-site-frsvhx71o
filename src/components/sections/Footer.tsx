@@ -58,8 +58,13 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div className="flex flex-col gap-4">
-            <Link to="/" onClick={handleLogoClick} aria-label="Ir para a Home">
-              <BrandLogo className="h-12 md:h-14" />
+            <Link
+              to="/"
+              onClick={handleLogoClick}
+              aria-label="Ir para a Home"
+              className="inline-flex items-center w-fit p-1 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+            >
+              <BrandLogo className="h-12 w-12 md:h-14 md:w-14" />
             </Link>
             <p className="text-sm text-zinc-500 max-w-xs leading-relaxed">
               Consultoria em dados, processos e indicadores de gestão.

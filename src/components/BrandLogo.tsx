@@ -11,11 +11,11 @@ interface BrandLogoProps {
 export function BrandLogo({
   className,
   theme = 'dark',
-  alt = 'MathOps Strategy',
+  alt = 'MathOps',
   height,
   pulse = true,
 }: BrandLogoProps) {
-  const src = theme === 'light' ? '/mathops-logo-fundo-claro.svg' : '/mathops-logo-fundo-escuro.svg'
+  const src = theme === 'light' ? '/mathops-marca-clara.svg' : '/mathops-marca.svg'
 
   return (
     <img
@@ -23,8 +23,8 @@ export function BrandLogo({
       alt={alt}
       style={height ? { height: typeof height === 'number' ? `${height}px` : height } : undefined}
       className={cn(
-        'w-auto block object-contain select-none',
-        pulse && 'animate-tiger-heartbeat',
+        'w-auto block object-contain select-none aspect-square',
+        pulse && 'animate-logo-pulse',
         className,
       )}
       loading="eager"
