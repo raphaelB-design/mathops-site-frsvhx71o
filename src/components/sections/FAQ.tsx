@@ -11,12 +11,7 @@ const faqs = [
   {
     question: 'Como começamos a trabalhar juntos?',
     answer:
-      'Pelo Diagnóstico Estratégico: em 2 semanas mapeamos seus processos e indicadores e entregamos um roadmap com escopo e KPIs definidos. Se não houver fit, devolvemos 100% do valor.',
-  },
-  {
-    question: 'Qual a duração típica de um projeto?',
-    answer:
-      'O Diagnóstico leva 2 semanas. Os serviços variam de 1 a 12 semanas, conforme o escopo definido no roadmap.',
+      'Pelo Diagnóstico Estratégico: mapeamos seus processos e indicadores e entregamos um roadmap com escopo e KPIs definidos. Se não houver fit, devolvemos 100% do valor.',
   },
   {
     question: 'Não temos dados perfeitamente estruturados. Vocês podem ajudar?',

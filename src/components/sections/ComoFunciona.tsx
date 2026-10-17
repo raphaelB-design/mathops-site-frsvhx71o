@@ -6,9 +6,9 @@ const steps = [
   {
     number: '01',
     title: 'Diagnóstico Estratégico',
-    subtitle: '2 semanas',
+    subtitle: 'Roadmap e KPIs',
     description:
-      'Em 2 semanas mapeamos processos e indicadores e entregamos um roadmap com escopo e KPIs definidos. Se não houver fit, devolvemos 100% do valor.',
+      'Mapeamos processos e indicadores e entregamos um roadmap com escopo e KPIs definidos. Se não houver fit, devolvemos 100% do valor.',
     link: '/diagnostico',
     linkLabel: 'Conhecer Diagnóstico',
   },

@@ -66,13 +66,6 @@ export function Oferta() {
               <div className="space-y-6">
                 <div>
                   <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground block mb-2">
-                    Prazo
-                  </span>
-                  <p className="font-display text-2xl font-bold text-white">2 semanas</p>
-                </div>
-
-                <div className="pt-4 border-t border-white/10">
-                  <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground block mb-2">
                     Condição
                   </span>
                   <p className="font-body text-sm text-gray-300 leading-relaxed">

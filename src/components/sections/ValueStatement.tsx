@@ -7,6 +7,7 @@ const pills = [
   'Mapeamento BPMN',
   'Earned Value (EVM)',
   'Auditoria de Indicadores',
+  'Gestão de Riscos · COSO',
 ]
 
 export function ValueStatement() {

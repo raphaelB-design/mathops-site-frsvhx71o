@@ -11,7 +11,7 @@ export default function Diagnostico() {
         <title>Diagnóstico Estratégico | MathOps Strategy — Oferta, Formulário e FAQ</title>
         <meta
           name="description"
-          content="Solicite o Diagnóstico Estratégico: 2 semanas de imersão analítica, roadmap com KPIs e escopo, garantia integral de devolução, formulário de contato e respostas a dúvidas frequentes."
+          content="Solicite o Diagnóstico Estratégico: imersão analítica, roadmap com KPIs e escopo, garantia integral de devolução, formulário de contato e respostas a dúvidas frequentes."
         />
       </Helmet>
 

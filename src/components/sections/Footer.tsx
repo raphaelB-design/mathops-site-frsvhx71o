@@ -28,6 +28,10 @@ const serviceLinks = [
     label: 'Modelagem Estatística de Custos',
     href: '/servicos/analise-e-modelagem?service=modelagem-estatistica-custos',
   },
+  {
+    label: 'Gestão de Riscos Organizacionais',
+    href: '/servicos/governanca-e-riscos?service=gestao-riscos-organizacionais',
+  },
 ]
 
 const navLinks = [

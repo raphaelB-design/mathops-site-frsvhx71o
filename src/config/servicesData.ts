@@ -9,9 +9,9 @@ export interface ServiceDetail {
   entregaveis: string
   tecnicos: string
   fit: string
-  prazo: string
+  prazo?: string
   metodologia?: string
-  modules?: Array<{ name: string; entregaveis: string; prazo: string }>
+  modules?: Array<{ name: string; entregaveis: string; prazo?: string }>
   implementationPhase?: ServiceDetail
 }
 
@@ -40,7 +40,7 @@ export const serviceLayers: Record<string, ServiceLayer> = {
     heroImage: 'https://img.usecurling.com/p/1920/600?q=abstract',
     layerNumber: 1,
     metrics: [
-      { value: '2–6sem', label: 'Da imersão ao painel ao vivo' },
+      { value: 'KPIs', label: 'Indicadores executivos centralizados' },
       { value: 'Power BI', label: 'Plataforma dos painéis entregues' },
       { value: 'BPMN 2.0', label: 'Padrão de modelagem aplicado' },
     ],
@@ -60,18 +60,15 @@ export const serviceLayers: Record<string, ServiceLayer> = {
         entregaveis: 'Ver módulos.',
         tecnicos: 'Ver módulos.',
         fit: 'Empresas que cresceram mais rápido do que sua capacidade de enxergar a própria operação, e precisam de governança sem um investimento inicial pesado.',
-        prazo: '2 a 8 semanas (depende do módulo contratado).',
         modules: [
           {
             name: 'Mapeamento AS IS/TO BE',
             entregaveis: 'Imersão de Diagnóstico, Topologia AS IS, Arquitetura TO BE.',
-            prazo: '2 a 6 semanas',
           },
           {
             name: 'Observatório de Dados (Painel Power BI)',
             entregaveis:
               'Integração Power BI, Centralização de KPIs C-Level, Painel Analítico de Alta Fidelidade.',
-            prazo: '3 a 8 semanas',
           },
         ],
       },
@@ -85,7 +82,6 @@ export const serviceLayers: Record<string, ServiceLayer> = {
           'Curva planejado vs. realizado, indicadores de custo e prazo, análise de variações',
         tecnicos: 'Earned Value Management, curva S, análise de variâncias',
         fit: 'Obras e projetos de execução longa',
-        prazo: '4 a 8 semanas',
       },
       {
         id: 'monitoramento-estatistico-operacao',
@@ -97,7 +93,6 @@ export const serviceLayers: Record<string, ServiceLayer> = {
           'Rotina de monitoramento em produção, cartas de controle com limites de variação, relatório periódico de desvios',
         tecnicos: 'Controle Estatístico de Processo (CEP), cartas de controle',
         fit: 'Operações com risco de desvio virar falha sistêmica',
-        prazo: '3 a 6 semanas',
       },
     ],
   },
@@ -128,7 +123,6 @@ export const serviceLayers: Record<string, ServiceLayer> = {
         tecnicos:
           'Auditoria Matemática Estrutural, Reconciliação de Base de Dados, Normalização de Métricas.',
         fit: 'Estruturas corporativas com divergências em reports financeiros ou KPIs departamentais.',
-        prazo: '1 a 3 semanas.',
       },
       {
         id: 'lean-six-sigma-processos',
@@ -139,7 +133,6 @@ export const serviceLayers: Record<string, ServiceLayer> = {
         entregaveis: 'Mapa de processo, plano de ação priorizado, padrão documentado',
         tecnicos: 'DMAIC, mapeamento de fluxo de valor, controle estatístico de processo',
         fit: 'Operações com retrabalho recorrente',
-        prazo: '6 a 12 semanas',
       },
       {
         id: 'modelagem-estatistica-custos',
@@ -150,7 +143,64 @@ export const serviceLayers: Record<string, ServiceLayer> = {
         entregaveis: 'Modelo documentado, projeções por cenário, memória de cálculo do modelo',
         tecnicos: 'Regressão múltipla, ANOVA, simulação de cenários',
         fit: 'Empresas em reestruturação ou planejamento',
-        prazo: '4 a 8 semanas',
+      },
+    ],
+  },
+  'governanca-e-riscos': {
+    title: 'Governança e Riscos',
+    headline: 'Riscos identificados, medidos e controlados, com evidência para a alta gestão.',
+    description:
+      'Estruturação da gestão de riscos organizacionais, do apetite a risco ao monitoramento da efetividade dos controles.',
+    heroImage: 'https://img.usecurling.com/p/1920/600?q=risk%20management',
+    layerNumber: 3,
+    metrics: [
+      { value: 'COSO', label: 'Referencial de controles internos' },
+      { value: '3 Linhas', label: 'Modelo de governança aplicado' },
+      { value: 'MGR', label: 'Metodologia de Gestão de Riscos' },
+    ],
+    anchor: false,
+    forWhom:
+      'Para diretorias, conselhos e áreas de controladoria e compliance que precisam de uma gestão de riscos estruturada, documentada e auditável.',
+    problemStatement:
+      'Todo negócio corre riscos. O problema é não saber quais, quanto e se os controles funcionam.',
+    services: [
+      {
+        id: 'gestao-riscos-organizacionais',
+        name: 'Gestão de Riscos Organizacionais',
+        image: 'https://img.usecurling.com/p/800/600?q=risk%20compliance',
+        headline: 'Do apetite a risco à efetividade dos controles.',
+        dor: 'Riscos tratados de forma informal, sem critério de priorização, sem dono definido e sem evidência de que os controles existentes funcionam.',
+        entregaveis: 'Ver módulos.',
+        tecnicos:
+          'COSO, modelo das três linhas, matriz de probabilidade e impacto, indicadores-chave de risco.',
+        fit: 'Organizações que precisam estruturar ou amadurecer sua gestão de riscos para a alta gestão, auditoria ou órgãos de controle.',
+        modules: [
+          {
+            name: 'I. Níveis de apetite a riscos organizacionais',
+            entregaveis:
+              'Declaração de apetite a risco, limites de tolerância por categoria e critérios de aceitação aprovados pela alta gestão.',
+          },
+          {
+            name: 'II. Gerenciamento e monitoramento de riscos organizacionais',
+            entregaveis:
+              'Matriz de riscos, responsáveis definidos, indicadores-chave de risco e painel de monitoramento.',
+          },
+          {
+            name: 'III. Metodologia de Gestão de Riscos (MGR)',
+            entregaveis:
+              'Metodologia documentada: identificação, análise, avaliação, tratamento e comunicação de riscos, com papéis e fluxos.',
+          },
+          {
+            name: 'IV. Medidas de controle e mitigação de riscos',
+            entregaveis:
+              'Plano de tratamento com controles propostos, responsáveis e critérios de verificação.',
+          },
+          {
+            name: 'V. Evolução dos níveis de risco e efetividade dos controles',
+            entregaveis:
+              'Acompanhamento periódico do risco residual e avaliação da efetividade das medidas implementadas.',
+          },
+        ],
       },
     ],
   },
@@ -161,9 +211,8 @@ export const diagnosticoEstrategico = {
   name: 'Diagnóstico Estratégico',
   tagline: 'O primeiro passo antes de qualquer engajamento.',
   sequencePosition: 'Ponto zero',
-  deadline: '2 semanas',
   headline:
-    'Diagnóstico de prazo fixo que mapeia onde a matemática e os dados mudam o resultado da operação antes de avançar para etapas maiores.',
+    'Diagnóstico que mapeia onde a matemática e os dados mudam o resultado da operação antes de avançar para etapas maiores.',
   deliverables: [
     'Relatório de Diagnóstico Analítico (documento auditável)',
     'Mapa de Gargalos e Oportunidades Prioritárias',

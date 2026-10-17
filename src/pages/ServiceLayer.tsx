@@ -8,13 +8,13 @@ import { useScrollLock } from '@/hooks/use-scroll-lock'
 import { EvmSCurveChart } from '@/components/charts/EvmSCurveChart'
 import { CepControlChart } from '@/components/charts/CepControlChart'
 import { AuditReconciliationChart } from '@/components/charts/AuditReconciliationChart'
+import { RiskHeatMapChart } from '@/components/charts/RiskHeatMapChart'
 import {
   ArrowRight,
   AlertTriangle,
   Layers,
   Zap,
   Crosshair,
-  Clock,
   Network,
   ChevronRight,
 } from 'lucide-react'
@@ -138,6 +138,12 @@ export default function ServiceLayer() {
             <AuditReconciliationChart />
           </div>
         )
+      case 'gestao-riscos-organizacionais':
+        return (
+          <div className="w-full my-8">
+            <RiskHeatMapChart />
+          </div>
+        )
       default:
         return null
     }
@@ -171,21 +177,35 @@ export default function ServiceLayer() {
               component: <AuditReconciliationChart />,
             },
           ]
-        : []
+        : slug === 'governanca-e-riscos'
+          ? [
+              {
+                id: 'gestao-riscos-organizacionais',
+                title: 'Demonstração Prática — Gestão de Riscos Organizacionais',
+                subtitle:
+                  'Matriz de calor de probabilidade e impacto 5x5 com categorização e monitoramento de controles COSO.',
+                component: <RiskHeatMapChart />,
+              },
+            ]
+          : []
 
   const pageTitle =
     slug === 'diagnostico-e-visibilidade'
       ? `${layer.title} | MathOps Strategy — Gestão EVM e Controle Estatístico (CEP)`
       : slug === 'analise-e-modelagem'
         ? `${layer.title} | MathOps Strategy — Auditoria de Cálculos e Modelagem de Custos`
-        : `${layer.title} | MathOps Strategy`
+        : slug === 'governanca-e-riscos'
+          ? `${layer.title} | MathOps Strategy — Governança e Gestão de Riscos (COSO)`
+          : `${layer.title} | MathOps Strategy`
 
   const pageDescription =
     slug === 'diagnostico-e-visibilidade'
       ? 'Mapeamento de processos, painéis executivos em Power BI, curvas S de avanço físico-financeiro (EVM) e cartas de controle estatístico (CEP) para decisões em tempo real.'
       : slug === 'analise-e-modelagem'
         ? 'Auditoria de memórias de cálculo com reconciliação de discrepâncias entre áreas, metodologia Lean Six Sigma e modelagem estatística preditiva de custos.'
-        : layer.description
+        : slug === 'governanca-e-riscos'
+          ? 'Estruturação da gestão de riscos organizacionais, apetite a risco, modelo das três linhas e monitoramento da efetividade dos controles.'
+          : layer.description
 
   return (
     <div className="w-full flex flex-col min-h-screen bg-black text-white">
@@ -207,7 +227,7 @@ export default function ServiceLayer() {
           <FadeIn>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-white/15 bg-white/5 rounded-full font-mono text-[10px] uppercase tracking-widest text-white/50 mb-8">
               <span className="w-2 h-2 rounded-full bg-accent" />
-              Camada {layer.layerNumber} de 4
+              Camada {layer.layerNumber} de 3
             </div>
           </FadeIn>
 
@@ -353,7 +373,6 @@ export default function ServiceLayer() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-black/50 flex flex-col justify-end p-4 sm:p-6 md:p-8">
                   <div className="space-y-1.5 sm:space-y-2 md:space-y-3">
                     <div>
-                      {service.prazo && null}
                       <h3 className="text-white font-serif text-sm sm:text-lg md:text-xl lg:text-2xl font-medium mb-1 md:mb-2 drop-shadow-2xl break-words leading-snug">
                         {service.name}
                       </h3>
@@ -488,51 +507,8 @@ export default function ServiceLayer() {
                         Perfil de Fit
                       </h4>
                       <p className="text-zinc-300 leading-relaxed text-sm">{anchorService.fit}</p>
-
-                      {anchorService.prazo && (
-                        <div className="mt-8">
-                          <h4 className="font-mono text-xs uppercase tracking-widest text-zinc-500 mb-4">
-                            Prazo
-                          </h4>
-                          <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 text-sm text-white">
-                            <Clock className="w-4 h-4 text-zinc-400" />
-                            <span>{anchorService.prazo}</span>
-                          </div>
-                        </div>
-                      )}
                     </div>
                   </div>
-
-                  {anchorService.implementationPhase && (
-                    <div className="mt-10 p-6 border border-white/10 bg-white/[0.02] rounded-sm">
-                      <h4 className="font-mono text-xs uppercase tracking-widest text-zinc-500 mb-4">
-                        Jornada em Duas Fases
-                      </h4>
-                      <div className="flex items-center gap-4">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2 mb-1">
-                            <span className="w-6 h-6 rounded-full bg-accent/20 border border-accent/40 flex items-center justify-center font-mono text-[10px] font-bold text-accent">
-                              1
-                            </span>
-                            <span className="font-serif text-sm text-white">Implantação</span>
-                          </div>
-                          <p className="text-xs text-zinc-400 ml-8">
-                            {anchorService.implementationPhase.prazo}
-                          </p>
-                        </div>
-                        <ArrowRight className="w-4 h-4 text-white/30 shrink-0" />
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2 mb-1">
-                            <span className="w-6 h-6 rounded-full bg-accent/20 border border-accent/40 flex items-center justify-center font-mono text-[10px] font-bold text-accent">
-                              2
-                            </span>
-                            <span className="font-serif text-sm text-white">Operação Contínua</span>
-                          </div>
-                          <p className="text-xs text-zinc-400 ml-8">{anchorService.prazo}</p>
-                        </div>
-                      </div>
-                    </div>
-                  )}
 
                   <button
                     onClick={() => setSelectedService(anchorService)}
@@ -582,12 +558,6 @@ export default function ServiceLayer() {
                     <SheetTitle className="text-4xl md:text-5xl font-serif text-white font-medium leading-[1.1] mb-2 drop-shadow-xl">
                       {selectedService.name}
                     </SheetTitle>
-                    {selectedService.prazo && (
-                      <div className="inline-flex items-center gap-1.5 border border-white/15 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-white/50 mt-3">
-                        <Clock className="w-3.5 h-3.5" />
-                        <span>{selectedService.prazo}</span>
-                      </div>
-                    )}
                   </SheetHeader>
                 </div>
               </div>
@@ -643,12 +613,6 @@ export default function ServiceLayer() {
                     </DetailSection>
                   )}
 
-                  {selectedService.prazo && (
-                    <DetailSection icon={<Clock />} title="Prazo" color="text-white">
-                      {selectedService.prazo}
-                    </DetailSection>
-                  )}
-
                   {selectedService.metodologia && (
                     <DetailSection icon={<Zap />} title="Como fazemos" color="text-zinc-400">
                       {selectedService.metodologia}
@@ -680,19 +644,12 @@ export default function ServiceLayer() {
                       {selectedService.modules.map((mod, i) => (
                         <div
                           key={i}
-                          className="border border-white/10 bg-white/[0.02] p-6 rounded-sm"
+                          className="border border-white/10 bg-white/[0.02] p-6 rounded-sm space-y-2"
                         >
-                          <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
-                            <h5 className="font-serif text-lg text-white font-medium">
-                              {mod.name}
-                            </h5>
-                            <div className="inline-flex items-center gap-1.5 border border-white/15 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-white/50">
-                              <Clock className="w-3 h-3" />
-                              <span>{mod.prazo}</span>
-                            </div>
-                          </div>
+                          <h5 className="font-serif text-lg text-white font-medium">{mod.name}</h5>
                           <p className="text-zinc-300 leading-relaxed font-light text-sm">
-                            {mod.entregaveis}
+                            <strong className="text-white/80 font-normal">Entregáveis: </strong>
+                            {mod.entregaveis.replace(/^Entregáveis:\s*/i, '')}
                           </p>
                         </div>
                       ))}
@@ -738,14 +695,6 @@ export default function ServiceLayer() {
                               {selectedService.implementationPhase.tecnicos}
                             </p>
                           </div>
-                          <div className="flex items-center gap-2">
-                            <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">
-                              Prazo:
-                            </span>
-                            <span className="text-zinc-300 text-sm">
-                              {selectedService.implementationPhase.prazo}
-                            </span>
-                          </div>
                         </div>
                       </div>
                       <div className="flex justify-center">
@@ -779,12 +728,6 @@ export default function ServiceLayer() {
                             <p className="text-zinc-300 text-sm leading-relaxed">
                               {selectedService.tecnicos}
                             </p>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">
-                              Prazo:
-                            </span>
-                            <span className="text-zinc-300 text-sm">{selectedService.prazo}</span>
                           </div>
                         </div>
                       </div>

@@ -1,5 +1,5 @@
 import { FadeIn } from '@/components/fade-in'
-import { ArrowRight, Clock, Layers } from 'lucide-react'
+import { ArrowRight, Layers } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { serviceLayers, diagnosticoEstrategico } from '@/config/servicesData'
 
@@ -7,7 +7,6 @@ interface ServiceCardItem {
   id: string
   name: string
   headline: string
-  prazo: string
   entregaveis: string
   layerLabel: string
   layerSlug: string
@@ -15,14 +14,13 @@ interface ServiceCardItem {
 }
 
 export function Services() {
-  // Collect the 7 services across both layers + diagnostico
+  // Collect the 8 services across three layers + diagnostico
   const allServices: ServiceCardItem[] = [
     // Diagnostico Estrategico (Porta de entrada / Ponto zero)
     {
       id: diagnosticoEstrategico.id,
       name: diagnosticoEstrategico.name,
       headline: diagnosticoEstrategico.headline,
-      prazo: diagnosticoEstrategico.deadline,
       entregaveis: diagnosticoEstrategico.deliverables.slice(0, 3).join(', '),
       layerLabel: 'Ponto Zero',
       layerSlug: 'diagnostico-e-visibilidade',
@@ -33,7 +31,6 @@ export function Services() {
       id: s.id,
       name: s.name,
       headline: s.headline,
-      prazo: s.prazo,
       entregaveis: s.modules ? s.modules.map((m) => m.name).join(' · ') : s.entregaveis,
       layerLabel: 'Camada 1',
       layerSlug: 'diagnostico-e-visibilidade',
@@ -44,11 +41,20 @@ export function Services() {
       id: s.id,
       name: s.name,
       headline: s.headline,
-      prazo: s.prazo,
       entregaveis: s.entregaveis,
       layerLabel: 'Camada 2',
       layerSlug: 'analise-e-modelagem',
       link: `/servicos/analise-e-modelagem?service=${s.id}`,
+    })),
+    // Camada 3 services
+    ...serviceLayers['governanca-e-riscos'].services.map((s) => ({
+      id: s.id,
+      name: s.name,
+      headline: s.headline,
+      entregaveis: s.modules ? s.modules.map((m) => m.name).join(' · ') : s.entregaveis,
+      layerLabel: 'Camada 3',
+      layerSlug: 'governanca-e-riscos',
+      link: `/servicos/governanca-e-riscos?service=${s.id}`,
     })),
   ]
 
@@ -69,14 +75,14 @@ export function Services() {
                   Matriz de Serviços Estratégicos
                 </h2>
                 <p className="font-body text-muted-foreground leading-relaxed max-w-2xl">
-                  Sete serviços em duas camadas: primeiro enxergar a operação com medição em tempo
-                  real, depois modelar decisões com rigor estatístico.
+                  Oito serviços em três camadas: enxergar a operação, modelar decisões e governar
+                  riscos.
                 </p>
               </div>
               <div className="flex items-center gap-3 font-mono text-xs text-muted-foreground">
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white/5 border border-white/10 rounded-sm">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                  Passe o mouse para ver prazo e entregáveis
+                  Passe o mouse para ver entregáveis
                 </span>
               </div>
             </div>
@@ -99,10 +105,6 @@ export function Services() {
                   <span className="font-mono text-[10px] font-bold px-2 py-0.5 border border-white/10 bg-white/5 text-white/70 rounded-sm uppercase tracking-wider group-hover:border-accent/40 group-hover:text-accent transition-colors">
                     {service.layerLabel}
                   </span>
-                  <span className="font-mono text-[10px] text-muted-foreground flex items-center gap-1">
-                    <Clock className="w-3 h-3 text-muted-foreground" />
-                    {service.prazo.split('(')[0].trim()}
-                  </span>
                 </div>
 
                 {/* Service Name */}
@@ -115,7 +117,7 @@ export function Services() {
                   {service.headline}
                 </p>
 
-                {/* Hover reveal: Prazo e Principais Entregáveis */}
+                {/* Hover reveal: Principais Entregáveis */}
                 <div className="mt-auto pt-4 border-t border-white/10 space-y-2">
                   <div className="transition-all duration-300">
                     <span className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground block mb-1 flex items-center gap-1">
