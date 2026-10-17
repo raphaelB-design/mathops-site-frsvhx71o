@@ -6,6 +6,7 @@ import { useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { trackClick } from '@/services/analytics'
 import { HeroExecutiveChart } from '@/components/charts/HeroExecutiveChart'
+import { SectionBackdrop } from '@/components/SectionBackdrop'
 
 const statsCards = [
   {
@@ -38,11 +39,17 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex flex-col justify-between px-6 md:px-12 pt-16 pb-12 w-full overflow-hidden bg-background"
+      className="relative flex flex-col justify-between px-6 md:px-12 pt-16 pb-12 w-full overflow-hidden bg-[#0A0F1C]"
     >
-      {/* BG */}
-      <div className="absolute inset-0 z-0 opacity-[0.06] pointer-events-none bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-accent/15 blur-[140px] rounded-full z-0 pointer-events-none" />
+      {/* 2.3 Hero: "executive" ao fundo + 1.3 grade com opacidade levemente maior */}
+      <div className="absolute inset-0 z-0 opacity-[0.10] pointer-events-none bg-[linear-gradient(to_right,#3B82F6_1px,transparent_1px),linear-gradient(to_bottom,#3B82F6_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+
+      {/* 1.3 Brilhos radiais suaves (#3B82F6 e #22D3EE, 10-15% opacidade, blur alto) */}
+      <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#3B82F6]/15 blur-[150px] rounded-full z-0 pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 translate-x-1/3 w-[500px] h-[500px] bg-[#22D3EE]/12 blur-[140px] rounded-full z-0 pointer-events-none" />
+
+      {/* 2.3 Executive backdrop */}
+      <SectionBackdrop variant="executive" opacityClass="opacity-[0.16]" />
 
       {/* Top badge */}
       <FadeIn delay={50}>
@@ -80,7 +87,7 @@ export function Hero() {
               <Link
                 to="/diagnostico"
                 onClick={() => trackClick('diagnostic_open', 'hero')}
-                className="inline-flex items-center justify-center gap-2 bg-white text-black px-6 py-3.5 text-sm font-medium tracking-wide hover:bg-zinc-200 transition-all duration-300 min-h-[44px]"
+                className="btn-primary-gradient inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-medium tracking-wide rounded-sm min-h-[44px]"
               >
                 Solicitar Diagnóstico Estratégico
                 <ArrowRight className="w-4 h-4" />
@@ -91,7 +98,7 @@ export function Hero() {
                   e.preventDefault()
                   scrollToServices()
                 }}
-                className="inline-flex items-center justify-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors duration-300 min-h-[44px] px-4 font-mono uppercase tracking-wider"
+                className="btn-secondary-dark inline-flex items-center justify-center gap-2 text-sm min-h-[44px] px-4 font-mono uppercase tracking-wider rounded-sm"
               >
                 Ver serviços
               </a>
@@ -112,9 +119,9 @@ export function Hero() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {statsCards.map((stat, idx) => (
             <FadeIn key={stat.label} delay={500 + idx * 100}>
-              <div className="p-6 border border-white/10 bg-black/40 backdrop-blur-xl hover:bg-black/60 hover:border-accent/50 hover:-translate-y-1 hover:shadow-[0_10px_30px_-10px_rgba(45,95,168,0.2)] transition-all duration-300 group rounded-xl h-full flex flex-col justify-between">
+              <div className="premium-card p-6 rounded-xl h-full flex flex-col justify-between group">
                 <div>
-                  <span className="font-mono text-[10px] md:text-xs text-muted-foreground uppercase tracking-widest block mb-2">
+                  <span className="font-mono text-[10px] md:text-xs text-muted-foreground uppercase tracking-widest block mb-2 group-hover:text-accent2 transition-colors">
                     {stat.label}
                   </span>
                   <span className="font-display text-3xl md:text-4xl font-bold text-white block mb-2 group-hover:text-accent transition-colors duration-300">

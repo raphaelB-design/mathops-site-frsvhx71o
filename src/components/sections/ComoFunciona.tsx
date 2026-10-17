@@ -1,6 +1,7 @@
 import { FadeIn } from '@/components/fade-in'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
+import { SectionBackdrop } from '@/components/SectionBackdrop'
 
 const steps = [
   {
@@ -36,9 +37,12 @@ export function ComoFunciona() {
   return (
     <section
       id="como-funciona"
-      className="py-24 md:py-32 px-6 md:px-12 w-full bg-white/[0.02] border-t border-white/10"
+      className="relative py-24 md:py-32 px-6 md:px-12 w-full bg-[#0F1626] border-t border-[#1E293B] overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto w-full">
+      {/* 2.3 Como Funciona: "timeline" */}
+      <SectionBackdrop variant="timeline" opacityClass="opacity-[0.16]" />
+
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
         <FadeIn>
           <div className="mb-16 text-center">
             <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
@@ -58,12 +62,12 @@ export function ComoFunciona() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {steps.map((step, index) => (
             <FadeIn key={step.number} delay={index * 150}>
-              <div className="flex flex-col h-full p-8 bg-black/40 border border-white/10 rounded-sm relative group hover:border-white/20 transition-all duration-300">
+              <div className="premium-card flex flex-col h-full p-8 rounded-lg relative group">
                 <div className="flex items-center justify-between mb-6">
-                  <span className="font-display text-5xl lg:text-6xl font-bold text-white/10 group-hover:text-accent/40 transition-colors duration-500">
+                  <span className="font-display text-5xl lg:text-6xl font-bold text-[#94A3B8]/20 group-hover:text-accent/40 transition-colors duration-500">
                     {step.number}
                   </span>
-                  <span className="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 bg-white/5 border border-white/10 rounded-sm text-muted-foreground">
+                  <span className="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 bg-[#0A0F1C]/80 border border-[#1E293B] rounded-sm text-muted-foreground group-hover:text-accent2 transition-colors">
                     {step.subtitle}
                   </span>
                 </div>
@@ -77,10 +81,10 @@ export function ComoFunciona() {
                 {step.link && step.linkLabel && (
                   <Link
                     to={step.link}
-                    className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-white/60 hover:text-white transition-colors group/link mt-auto pt-4 border-t border-white/5"
+                    className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-accent2 transition-colors group/link mt-auto pt-4 border-t border-[#1E293B]"
                   >
                     {step.linkLabel}
-                    <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-3.5 h-3.5 text-accent group-hover/link:translate-x-1 transition-transform" />
                   </Link>
                 )}
               </div>

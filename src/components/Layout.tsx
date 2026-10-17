@@ -95,7 +95,7 @@ export function Layout() {
           <Link
             to="/diagnostico"
             onClick={handleNavDiagnostic}
-            className="hidden lg:inline-flex items-center gap-2 bg-white text-black px-5 py-3 text-sm font-medium tracking-wide hover:bg-zinc-200 transition-all duration-300 min-h-[44px]"
+            className="hidden lg:inline-flex items-center gap-2 btn-primary-gradient px-5 py-3 text-sm font-medium tracking-wide rounded-sm min-h-[44px]"
           >
             Solicitar Diagnóstico Estratégico
             <ArrowRight className="w-4 h-4" />
@@ -133,7 +133,7 @@ export function Layout() {
             <Link
               to="/diagnostico"
               onClick={handleMobileDiagnostic}
-              className="inline-flex items-center justify-center gap-2 bg-white text-black px-5 py-3.5 text-sm font-medium tracking-wide hover:bg-zinc-200 transition-all duration-300 mt-4 min-h-[44px]"
+              className="inline-flex items-center justify-center gap-2 btn-primary-gradient px-5 py-3.5 text-sm font-medium tracking-wide rounded-sm mt-4 min-h-[44px]"
             >
               Solicitar Diagnóstico Estratégico
               <ArrowRight className="w-4 h-4" />

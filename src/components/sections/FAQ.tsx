@@ -76,12 +76,12 @@ export function FAQ() {
                 <AccordionItem
                   key={index}
                   value={`item-${index}`}
-                  className="border border-white/10 px-6 data-[state=open]:border-accent/30 bg-black/40 backdrop-blur-sm transition-colors"
+                  className="premium-card px-6 data-[state=open]:border-accent/50 rounded-lg transition-colors overflow-hidden"
                 >
-                  <AccordionTrigger className="font-display text-lg text-left hover:text-accent py-6">
+                  <AccordionTrigger className="font-display text-lg text-left hover:text-accent2 py-6 text-[#F5F4F0]">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="font-body text-white/70 text-base leading-relaxed pb-6">
+                  <AccordionContent className="font-body text-[#94A3B8] text-base leading-relaxed pb-6">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>

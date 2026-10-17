@@ -1,7 +1,9 @@
 import { FadeIn } from '@/components/fade-in'
+import { useState } from 'react'
 import { ArrowRight, Layers } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { serviceLayers, diagnosticoEstrategico } from '@/config/servicesData'
+import { SectionBackdrop, SectionBackdropVariant } from '@/components/SectionBackdrop'
 
 interface ServiceCardItem {
   id: string
@@ -11,9 +13,11 @@ interface ServiceCardItem {
   layerLabel: string
   layerSlug: string
   link: string
+  backdropVariant?: SectionBackdropVariant
 }
 
 export function Services() {
+  const [hoveredCardId, setHoveredCardId] = useState<string | null>(null)
   // Collect the 8 services across three layers + diagnostico
   const allServices: ServiceCardItem[] = [
     // Diagnostico Estrategico (Porta de entrada / Ponto zero)
@@ -34,6 +38,7 @@ export function Services() {
       entregaveis: s.modules ? s.modules.map((m) => m.name).join(' · ') : s.entregaveis,
       layerLabel: 'Camada 1',
       layerSlug: 'diagnostico-e-visibilidade',
+      backdropVariant: 'process' as SectionBackdropVariant,
       link: `/servicos/diagnostico-e-visibilidade?service=${s.id}`,
     })),
     // Camada 2 services
@@ -44,6 +49,7 @@ export function Services() {
       entregaveis: s.entregaveis,
       layerLabel: 'Camada 2',
       layerSlug: 'analise-e-modelagem',
+      backdropVariant: 'control' as SectionBackdropVariant,
       link: `/servicos/analise-e-modelagem?service=${s.id}`,
     })),
     // Camada 3 services
@@ -54,6 +60,7 @@ export function Services() {
       entregaveis: s.modules ? s.modules.map((m) => m.name).join(' · ') : s.entregaveis,
       layerLabel: 'Camada 3',
       layerSlug: 'governanca-e-riscos',
+      backdropVariant: 'risk' as SectionBackdropVariant,
       link: `/servicos/governanca-e-riscos?service=${s.id}`,
     })),
   ]
@@ -61,9 +68,13 @@ export function Services() {
   return (
     <section
       id="servicos"
-      className="py-24 md:py-32 px-6 md:px-12 w-full bg-white/5 border-t border-white/10"
+      className="relative py-24 md:py-32 px-6 md:px-12 w-full bg-[#0A0F1C] border-t border-[#1E293B] overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto w-full">
+      {/* 1.3 Brilhos radiais suaves (#3B82F6 e #22D3EE, 10-15% de opacidade, blur alto) atrás da grade */}
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-[#3B82F6]/12 blur-[160px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] bg-[#22D3EE]/10 blur-[150px] rounded-full pointer-events-none" />
+
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
         <FadeIn>
           <div className="mb-14">
             <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
@@ -95,43 +106,56 @@ export function Services() {
             <FadeIn key={service.id} delay={60 + index * 40}>
               <Link
                 to={service.link}
-                className="group relative flex flex-col h-full bg-black/50 border border-white/10 p-6 hover:bg-black/80 hover:border-accent/50 hover:shadow-[0_10px_30px_-10px_rgba(45,95,168,0.25)] transition-all duration-300 rounded-sm overflow-hidden min-h-[300px]"
+                onMouseEnter={() => setHoveredCardId(service.id)}
+                onMouseLeave={() => setHoveredCardId(null)}
+                className="premium-card group relative flex flex-col h-full p-6 rounded-lg overflow-hidden min-h-[300px]"
               >
+                {/* 2.3 No hover de cada card, exibir dentro o modelo da sua camada em opacidade baixa */}
+                {service.backdropVariant && hoveredCardId === service.id && (
+                  <div className="absolute inset-0 pointer-events-none z-0">
+                    <SectionBackdrop
+                      variant={service.backdropVariant}
+                      isHovered={true}
+                      opacityClass="opacity-[0.22]"
+                    />
+                  </div>
+                )}
+
                 {/* Accent top bar */}
-                <div className="absolute top-0 left-0 w-full h-[2px] bg-accent/40 group-hover:bg-accent transition-colors duration-300" />
+                <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-accent to-accent2 opacity-50 group-hover:opacity-100 transition-opacity duration-300 z-10" />
 
                 {/* Layer Badge */}
-                <div className="flex items-center justify-between mb-4">
-                  <span className="font-mono text-[10px] font-bold px-2 py-0.5 border border-white/10 bg-white/5 text-white/70 rounded-sm uppercase tracking-wider group-hover:border-accent/40 group-hover:text-accent transition-colors">
+                <div className="relative z-10 flex items-center justify-between mb-4">
+                  <span className="font-mono text-[10px] font-bold px-2 py-0.5 border border-[#1E293B] bg-[#0A0F1C]/80 text-[#94A3B8] rounded-sm uppercase tracking-wider group-hover:border-accent/40 group-hover:text-accent2 transition-colors">
                     {service.layerLabel}
                   </span>
                 </div>
 
                 {/* Service Name */}
-                <h3 className="font-display text-lg font-bold text-white mb-2 group-hover:text-accent transition-colors leading-snug">
+                <h3 className="relative z-10 font-display text-lg font-bold text-white mb-2 group-hover:text-accent transition-colors leading-snug">
                   {service.name}
                 </h3>
 
                 {/* Headline */}
-                <p className="font-body text-xs text-muted-foreground leading-relaxed mb-4 line-clamp-3">
+                <p className="relative z-10 font-body text-xs text-muted-foreground leading-relaxed mb-4 line-clamp-3">
                   {service.headline}
                 </p>
 
                 {/* Hover reveal: Principais Entregáveis */}
-                <div className="mt-auto pt-4 border-t border-white/10 space-y-2">
+                <div className="relative z-10 mt-auto pt-4 border-t border-[#1E293B] space-y-2">
                   <div className="transition-all duration-300">
                     <span className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground block mb-1 flex items-center gap-1">
                       <Layers className="w-3 h-3 text-accent" />
                       Entregáveis principais:
                     </span>
-                    <p className="font-body text-[11px] text-zinc-300 leading-snug line-clamp-2 group-hover:line-clamp-none transition-all">
+                    <p className="font-body text-[11px] text-[#F5F4F0]/80 leading-snug line-clamp-2 group-hover:line-clamp-none transition-all">
                       {service.entregaveis}
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-1.5 text-[11px] font-mono font-bold uppercase tracking-wider text-white/50 group-hover:text-white transition-colors pt-2">
+                  <div className="flex items-center gap-1.5 text-[11px] font-mono font-bold uppercase tracking-wider text-muted-foreground group-hover:text-accent2 transition-colors pt-2">
                     Acessar serviço
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 text-accent transition-transform" />
                   </div>
                 </div>
               </Link>

@@ -42,9 +42,10 @@ export function Industries() {
                         alt={ind.imageAlt}
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, 50vw"
-                        className="w-full h-full object-cover opacity-50 group-hover:opacity-70 grayscale mix-blend-luminosity scale-100 group-hover:scale-105 transition-all duration-700 ease-in-out"
+                        className="w-full h-full object-cover opacity-60 group-hover:opacity-80 grayscale scale-100 group-hover:scale-105 transition-all duration-700 ease-in-out"
                       />
-                      {/* Gradient Overlay for Readability */}
+                      {/* 1.7 Duotone azul-noite/azul (#0A0F1C -> #3B82F6) */}
+                      <div className="absolute inset-0 bg-gradient-to-tr from-[#0A0F1C]/90 via-[#0A0F1C]/75 to-[#3B82F6]/35 mix-blend-multiply pointer-events-none" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent transition-opacity duration-700 group-hover:opacity-80" />
                       {/* Radial Glow on Hover */}
                       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_0%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />

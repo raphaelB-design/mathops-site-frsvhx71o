@@ -23,8 +23,10 @@ export default function Sobre() {
             alt="MathOps Building Close-up"
             fetchPriority="high"
             loading="eager"
-            className="w-full h-full object-cover opacity-40 mix-blend-luminosity grayscale"
+            className="w-full h-full object-cover opacity-60 grayscale"
           />
+          {/* 1.7 Duotone azul-noite/azul (#0A0F1C -> #3B82F6) */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#0A0F1C]/90 via-[#0A0F1C]/75 to-[#3B82F6]/35 mix-blend-multiply pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
         </div>
 
@@ -74,39 +76,39 @@ export default function Sobre() {
       <section className="container px-4 md:px-6 mx-auto mt-24">
         <FadeIn>
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <Card className="bg-white/5 border-white/10 backdrop-blur-sm rounded-none border-t-2 border-t-accent hover:bg-white/10 transition-all duration-500 ease-smooth hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(255,255,255,0.1)] hover:border-white/20">
+            <Card className="premium-card rounded-lg border-t-2 border-t-accent group">
               <CardHeader>
-                <CardTitle className="font-display text-2xl uppercase tracking-wider">
+                <CardTitle className="font-display text-2xl uppercase tracking-wider text-[#F5F4F0] group-hover:text-accent transition-colors">
                   Missão
                 </CardTitle>
               </CardHeader>
-              <CardContent className="font-serif text-muted-foreground">
+              <CardContent className="font-serif text-[#94A3B8]">
                 Entregar inteligência analítica aplicada que transforma dados brutos em vantagem
                 competitiva sustentável — com rigor metodológico, rastreabilidade total e foco em
                 resultado mensurável.
               </CardContent>
             </Card>
 
-            <Card className="bg-white/5 border-white/10 backdrop-blur-sm rounded-none border-t-2 border-t-accent hover:bg-white/10 transition-all duration-500 ease-smooth hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(255,255,255,0.1)] hover:border-white/20">
+            <Card className="premium-card rounded-lg border-t-2 border-t-accent group">
               <CardHeader>
-                <CardTitle className="font-display text-2xl uppercase tracking-wider">
+                <CardTitle className="font-display text-2xl uppercase tracking-wider text-[#F5F4F0] group-hover:text-accent transition-colors">
                   Visão
                 </CardTitle>
               </CardHeader>
-              <CardContent className="font-serif text-muted-foreground">
+              <CardContent className="font-serif text-[#94A3B8]">
                 Ser referência em consultoria de dados e processos no Brasil, reconhecida pela
                 rastreabilidade das entregas e pela capacidade de tornar decisões complexas simples
                 de executar.
               </CardContent>
             </Card>
 
-            <Card className="bg-white/5 border-white/10 backdrop-blur-sm rounded-none border-t-2 border-t-accent hover:bg-white/10 transition-all duration-500 ease-smooth hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(255,255,255,0.1)] hover:border-white/20">
+            <Card className="premium-card rounded-lg border-t-2 border-t-accent group">
               <CardHeader>
-                <CardTitle className="font-display text-2xl uppercase tracking-wider">
+                <CardTitle className="font-display text-2xl uppercase tracking-wider text-[#F5F4F0] group-hover:text-accent transition-colors">
                   Valores
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4 font-serif text-muted-foreground">
+              <CardContent className="space-y-4 font-serif text-[#94A3B8]">
                 <ul className="space-y-2">
                   <li>
                     <span>Rigor antes de velocidade</span>

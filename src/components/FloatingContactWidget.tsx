@@ -183,7 +183,7 @@ export function FloatingContactWidget() {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-white text-black hover:bg-accent hover:text-white transition-colors duration-300 py-6 font-display font-bold text-base h-12 rounded-sm mt-4"
+                className="w-full btn-primary-gradient py-6 font-display font-bold text-base h-12 rounded-sm mt-4"
               >
                 {isSubmitting ? 'Enviando...' : 'Agendar Diagnóstico'}
               </Button>

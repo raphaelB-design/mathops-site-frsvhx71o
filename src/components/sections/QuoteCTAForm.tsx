@@ -268,7 +268,7 @@ export function QuoteCTAForm() {
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-white text-black hover:bg-accent hover:text-white transition-colors duration-300 font-display font-bold text-base h-14 min-h-[44px] rounded-sm group"
+          className="w-full btn-primary-gradient font-display font-bold text-base h-14 min-h-[44px] rounded-sm group"
         >
           {isSubmitting ? 'Enviando...' : 'Solicitar Diagnóstico Estratégico'}
           {!isSubmitting && (

@@ -53,20 +53,20 @@ export function Differentials() {
           </div>
         </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {diffs.map((diff, idx) => (
             <FadeIn key={idx} delay={idx * 60}>
-              <div className="flex flex-col gap-4 p-8 border-b border-r border-white/10 hover:bg-white/[0.02] transition-colors group last:border-r-0 [&:nth-child(2n)]:border-r-0 [&:nth-last-child(-n+2)]:border-b-0 h-full">
+              <div className="premium-card flex flex-col gap-4 p-8 rounded-lg group h-full">
                 <div className="flex items-start justify-between">
-                  <span className="font-mono text-xs text-muted-foreground">{diff.num}</span>
-                  <div className="w-5 h-[2px] bg-accent group-hover:w-8 transition-all" />
+                  <span className="font-mono text-xs text-muted-foreground group-hover:text-accent2 transition-colors">
+                    {diff.num}
+                  </span>
+                  <div className="w-5 h-[2px] bg-gradient-to-r from-accent to-accent2 group-hover:w-8 transition-all" />
                 </div>
-                <h3 className="font-display text-xl font-bold group-hover:text-accent transition-colors leading-snug">
+                <h3 className="font-display text-xl font-bold group-hover:text-accent transition-colors leading-snug text-[#F5F4F0]">
                   {diff.title}
                 </h3>
-                <p className="font-body text-muted-foreground leading-relaxed text-sm">
-                  {diff.desc}
-                </p>
+                <p className="font-body text-[#94A3B8] leading-relaxed text-sm">{diff.desc}</p>
               </div>
             </FadeIn>
           ))}

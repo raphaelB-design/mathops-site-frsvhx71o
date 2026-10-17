@@ -90,15 +90,15 @@ const risksData: RiskItem[] = [
 function getCellColorClass(prob: number, imp: number): string {
   const score = prob * imp
   if (score >= 15) {
-    return 'bg-red-500/25 border-red-500/40 text-red-300 hover:bg-red-500/35'
+    return 'bg-red-500/25 border-red-500/50 text-red-300 hover:bg-red-500/35'
   }
   if (score >= 10) {
-    return 'bg-amber-500/25 border-amber-500/40 text-amber-300 hover:bg-amber-500/35'
+    return 'bg-amber-500/25 border-amber-500/50 text-amber-300 hover:bg-amber-500/35'
   }
   if (score >= 5) {
-    return 'bg-yellow-500/20 border-yellow-500/35 text-yellow-300 hover:bg-yellow-500/30'
+    return 'bg-[#3B82F6]/20 border-[#3B82F6]/40 text-[#22D3EE] hover:bg-[#3B82F6]/30'
   }
-  return 'bg-emerald-500/20 border-emerald-500/35 text-emerald-300 hover:bg-emerald-500/30'
+  return 'bg-[#22D3EE]/15 border-[#22D3EE]/30 text-[#22D3EE] hover:bg-[#22D3EE]/25'
 }
 
 export function RiskHeatMapChart() {
@@ -122,36 +122,36 @@ export function RiskHeatMapChart() {
 
   return (
     <div
-      className="relative w-full bg-black/60 border border-white/10 rounded-xl p-5 md:p-8 backdrop-blur-xl shadow-2xl"
+      className="relative w-full bg-[#111827]/80 border border-[#1E293B] rounded-xl p-5 md:p-8 backdrop-blur-xl shadow-2xl"
       role="region"
       aria-label="Matriz de calor de riscos 5x5 com probabilidade e impacto demonstrando posicionamento de riscos mapeados"
     >
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-white/10 mb-6 gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-[#1E293B] mb-6 gap-3">
         <div>
-          <span className="font-mono text-[10px] uppercase tracking-widest text-white/50 block">
+          <span className="font-mono text-[10px] uppercase tracking-widest text-[#94A3B8] block">
             Governança · Gestão de Riscos (COSO)
           </span>
-          <h4 className="font-display text-lg md:text-xl font-bold text-white">
+          <h4 className="font-display text-lg md:text-xl font-bold text-[#F5F4F0]">
             Matriz de Probabilidade × Impacto (5×5)
           </h4>
-          <p className="font-body text-xs text-muted-foreground mt-1">
+          <p className="font-body text-xs text-[#94A3B8] mt-1">
             Distribuição e priorização de riscos operacionais e estratégicos conforme apetite a
             risco
           </p>
         </div>
-        <span className="self-start sm:self-center font-mono text-[9px] uppercase tracking-widest px-2.5 py-1 rounded-sm bg-accent/20 border border-accent/40 text-accent font-semibold shrink-0">
+        <span className="self-start sm:self-center font-mono text-[9px] uppercase tracking-widest px-2.5 py-1 rounded-sm bg-[#3B82F6]/15 border border-[#3B82F6]/40 text-[#22D3EE] font-semibold shrink-0">
           Dados ilustrativos
         </span>
       </div>
 
       {/* KPI Cards Strip */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
-        <div className="p-3 bg-white/[0.03] border border-white/10 rounded-sm">
-          <span className="font-mono text-[10px] uppercase text-muted-foreground block">
+        <div className="p-3 bg-[#0A0F1C]/60 border border-[#1E293B] rounded-sm">
+          <span className="font-mono text-[10px] uppercase text-[#94A3B8] block">
             Riscos Mapeados
           </span>
-          <span className="font-display text-xl font-bold text-white">{risksData.length}</span>
+          <span className="font-display text-xl font-bold text-[#F5F4F0]">{risksData.length}</span>
         </div>
         <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-sm">
           <span className="font-mono text-[10px] uppercase text-red-300 block">
@@ -174,11 +174,11 @@ export function RiskHeatMapChart() {
             }
           </span>
         </div>
-        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-sm">
-          <span className="font-mono text-[10px] uppercase text-emerald-300 block">
+        <div className="p-3 bg-[#22D3EE]/10 border border-[#22D3EE]/30 rounded-sm">
+          <span className="font-mono text-[10px] uppercase text-[#22D3EE] block">
             Risco Baixo / Tolerável
           </span>
-          <span className="font-display text-xl font-bold text-emerald-400">
+          <span className="font-display text-xl font-bold text-[#22D3EE]">
             {risksData.filter((r) => r.probability * r.impact < 5).length}
           </span>
         </div>

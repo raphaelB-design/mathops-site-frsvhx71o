@@ -35,6 +35,7 @@ import {
 } from '@/components/ui/breadcrumb'
 import { cn } from '@/lib/utils'
 import { Helmet } from '@/components/Helmet'
+import { SectionBackdrop, SectionBackdropVariant } from '@/components/SectionBackdrop'
 
 const cleanText = (text: string | undefined) => {
   if (!text) return ''
@@ -214,14 +215,29 @@ export default function ServiceLayer() {
         <meta name="description" content={pageDescription} />
       </Helmet>
       {/* Cinematic Hero */}
-      <div className="relative pt-40 pb-32 md:pt-56 md:pb-40 px-6 md:px-12 flex flex-col items-center text-center overflow-hidden border-b border-white/5">
-        <div className="absolute inset-0 bg-zinc-950 -z-10"></div>
-        <img
-          src={layer.heroImage || 'https://img.usecurling.com/p/1920/600?q=abstract'}
-          alt={layer.title}
-          className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-luminosity -z-10 grayscale"
+      <div className="relative pt-40 pb-32 md:pt-56 md:pb-40 px-6 md:px-12 flex flex-col items-center text-center overflow-hidden border-b border-[#1E293B] bg-[#0A0F1C]">
+        {/* 1.7 Duotone azul-noite/azul (#0A0F1C -> #3B82F6) a 60% de opacidade */}
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <img
+            src={layer.heroImage || 'https://img.usecurling.com/p/1920/600?q=abstract'}
+            alt={layer.title}
+            className="w-full h-full object-cover grayscale opacity-60"
+          />
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#0A0F1C]/90 via-[#0A0F1C]/75 to-[#3B82F6]/35 mix-blend-multiply pointer-events-none" />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1C]/60 via-[#0A0F1C]/40 to-[#0A0F1C] -z-10"></div>
+
+        {/* 2.3 Páginas de camada (/servicos/...): no topo, o modelo da respectiva camada */}
+        <SectionBackdrop
+          variant={
+            (slug === 'diagnostico-e-visibilidade'
+              ? 'process'
+              : slug === 'analise-e-modelagem'
+                ? 'control'
+                : 'risk') as SectionBackdropVariant
+          }
+          opacityClass="opacity-[0.16]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black -z-10"></div>
 
         <FadeIn className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center">
           <FadeIn>
@@ -365,10 +381,9 @@ export default function ServiceLayer() {
                 <img
                   src={service.image}
                   alt={service.name}
-                  className="absolute inset-0 w-full h-full object-cover opacity-60 grayscale mix-blend-luminosity transition-transform duration-1000 group-hover:scale-105"
+                  className="absolute inset-0 w-full h-full object-cover opacity-60 grayscale transition-transform duration-1000 group-hover:scale-105"
                 />
-
-                <div className="absolute inset-0 bg-black/40 transition-opacity duration-700 group-hover:opacity-0" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#0A0F1C]/90 via-[#0A0F1C]/70 to-[#3B82F6]/35 mix-blend-multiply pointer-events-none" />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-black/50 flex flex-col justify-end p-4 sm:p-6 md:p-8">
                   <div className="space-y-1.5 sm:space-y-2 md:space-y-3">
@@ -774,7 +789,7 @@ export default function ServiceLayer() {
               onClick={() => {
                 trackClick('diagnostic_open', 'service_layer')
               }}
-              className="group inline-flex items-center gap-2 bg-white text-black font-mono font-bold uppercase tracking-wider text-sm py-4 px-8 hover:bg-black hover:text-white transition-colors duration-300"
+              className="btn-primary-gradient group inline-flex items-center gap-2 font-mono font-bold uppercase tracking-wider text-sm py-4 px-8 rounded-sm shadow-lg"
             >
               Solicitar Diagnóstico Estratégico
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
