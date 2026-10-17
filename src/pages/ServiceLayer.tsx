@@ -154,7 +154,7 @@ export default function ServiceLayer() {
       ? [
           {
             id: 'controle-projetos-obra-evm',
-            title: 'Demonstração Prática — Controle de Projetos e Obras (EVM)',
+            title: 'Demonstração Prática — Controle de Projetos',
             subtitle:
               'Visualização analítica de avanço físico-financeiro com detecção de desvio e índices de desempenho.',
             component: <EvmSCurveChart />,

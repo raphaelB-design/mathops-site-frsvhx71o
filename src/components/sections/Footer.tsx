@@ -9,7 +9,7 @@ const serviceLinks = [
     href: '/servicos/diagnostico-e-visibilidade?service=diagnostico-e-visibilidade-operacional',
   },
   {
-    label: 'Controle de Projetos e Obras (EVM)',
+    label: 'Controle de Projetos',
     href: '/servicos/diagnostico-e-visibilidade?service=controle-projetos-obra-evm',
   },
   {

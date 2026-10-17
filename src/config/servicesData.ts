@@ -74,7 +74,7 @@ export const serviceLayers: Record<string, ServiceLayer> = {
       },
       {
         id: 'controle-projetos-obra-evm',
-        name: 'Controle de Projetos e Obras (EVM)',
+        name: 'Controle de Projetos',
         image: 'https://img.usecurling.com/p/800/600?q=construction%20project',
         headline: 'Previsibilidade de prazo e custo em projetos físicos',
         dor: 'Implantação de controle orientado a dados (curva de avanço planejado vs. realizado, indicadores de custo e prazo) para obras e projetos de execução longa',
