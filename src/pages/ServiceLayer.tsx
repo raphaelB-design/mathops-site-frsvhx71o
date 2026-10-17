@@ -93,21 +93,12 @@ export default function ServiceLayer() {
 
   useScrollLock(!!selectedService)
 
+  const layer = slug ? serviceLayers[slug] : undefined
+
   useEffect(() => {
     setSelectedService(null)
     window.scrollTo({ top: 0, behavior: 'instant' })
   }, [slug])
-
-  if (!slug || !serviceLayers[slug]) {
-    return <Navigate to="/" replace />
-  }
-
-  const layer = serviceLayers[slug]
-
-  const anchorService =
-    layer.anchor && layer.anchorProductId
-      ? layer.services.find((s) => s.id === layer.anchorProductId)
-      : null
 
   useEffect(() => {
     const serviceParam = searchParams.get('service')
@@ -118,6 +109,15 @@ export default function ServiceLayer() {
       }
     }
   }, [searchParams, layer])
+
+  if (!slug || !layer) {
+    return <Navigate to="/" replace />
+  }
+
+  const anchorService =
+    layer.anchor && layer.anchorProductId
+      ? layer.services.find((s) => s.id === layer.anchorProductId)
+      : null
 
   return (
     <div className="w-full flex flex-col min-h-screen bg-black text-white">
