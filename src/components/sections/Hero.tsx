@@ -80,8 +80,9 @@ export function Hero() {
 
           <FadeIn delay={600}>
             <p className="font-body text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed mb-10">
-              Construímos a ponte entre o que sua operação sente e o que ela pode provar. Modelagem,
-              automação e dados, não para substituir seu julgamento, mas para blindá-lo.
+              Mapeamos seus processos, estruturamos seus indicadores e entregamos painéis em Power
+              BI com cada cálculo documentado e auditável. Para gestores que precisam decidir com
+              fatos.
             </p>
             <div className="flex flex-col sm:flex-row flex-wrap gap-4">
               <button
