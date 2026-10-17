@@ -29,7 +29,7 @@ export function SeoTags() {
       <title>MathOps Strategy | Consultoria em Dados, Processos e Indicadores de Gestão</title>
       <meta
         name="description"
-        content="Decisões de gestão baseadas em dados que você pode provar. Painel executivo, 7 serviços em grade, metodologia clara, garantias e Diagnóstico Estratégico em São Paulo."
+        content="Decisões de gestão baseadas em dados. Painel executivo, 7 serviços em grade, metodologia clara, garantias e Diagnóstico Estratégico em São Paulo."
       />
       <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
     </Helmet>

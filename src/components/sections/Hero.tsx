@@ -65,12 +65,8 @@ export function Hero() {
               <SlideUpMask delay={150}>baseadas</SlideUpMask>
               <SlideUpMask delay={200}>em</SlideUpMask>
               <SlideUpMask delay={250}>
-                <em className="text-accent not-italic">dados</em>
+                <em className="text-accent not-italic">dados.</em>
               </SlideUpMask>
-              <SlideUpMask delay={300}>que</SlideUpMask>
-              <SlideUpMask delay={350}>você</SlideUpMask>
-              <SlideUpMask delay={400}>pode</SlideUpMask>
-              <SlideUpMask delay={450}>provar.</SlideUpMask>
             </span>
           </h1>
 
