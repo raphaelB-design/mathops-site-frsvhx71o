@@ -56,6 +56,20 @@ export function Layout() {
     }
   }
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setIsMenuOpen(false)
+    if (location.pathname === '/' && !location.hash) {
+      e.preventDefault()
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else if (location.pathname === '/' && location.hash) {
+      // Se estiver em '/' mas com hash, deixa navegar para '/' e rola suave ao topo
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      // Se estiver em outra rota, navega para '/' e garante que o scroll inicial seja 0
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
+
   const handleNavDiagnostic = () => {
     trackClick('diagnostic_open', 'navbar')
   }
@@ -73,9 +87,14 @@ export function Layout() {
           isScrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/10' : 'bg-transparent',
         )}
       >
-        <nav className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-20">
-          <Link to="/" className="flex items-center gap-2" aria-label="Ir para a Home">
-            <BrandLogo className="h-8 md:h-9" height={36} />
+        <nav className="max-w-7xl mx-auto pl-4 pr-6 sm:pl-6 sm:pr-6 lg:pl-6 lg:pr-8 flex items-center justify-between h-20">
+          <Link
+            to="/"
+            onClick={handleLogoClick}
+            className="flex items-center -ml-1 sm:ml-0"
+            aria-label="Ir para a Home"
+          >
+            <BrandLogo className="h-10 md:h-12" height={48} />
           </Link>
           <div className="hidden lg:flex items-center gap-8">
             {NAV_LINKS.map((link) => (
@@ -113,8 +132,8 @@ export function Layout() {
         <SheetContent side="right" className="bg-black border-white/10 w-full sm:w-96">
           <SheetHeader>
             <SheetTitle className="text-left">
-              <Link to="/" onClick={() => setIsMenuOpen(false)} aria-label="Ir para a Home">
-                <BrandLogo className="h-8" height={32} />
+              <Link to="/" onClick={handleLogoClick} aria-label="Ir para a Home">
+                <BrandLogo className="h-10" height={40} />
               </Link>
             </SheetTitle>
           </SheetHeader>

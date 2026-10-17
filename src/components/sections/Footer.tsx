@@ -44,13 +44,22 @@ const navLinks = [
 export function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (window.location.pathname === '/' && !window.location.hash) {
+      e.preventDefault()
+      scrollToTop()
+    } else {
+      scrollToTop()
+    }
+  }
+
   return (
     <footer className="bg-black border-t border-white/10">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div className="flex flex-col gap-4">
-            <Link to="/" aria-label="Ir para a Home">
-              <BrandLogo className="h-10" height={40} />
+            <Link to="/" onClick={handleLogoClick} aria-label="Ir para a Home">
+              <BrandLogo className="h-10 md:h-12" height={48} />
             </Link>
             <p className="text-sm text-zinc-500 max-w-xs leading-relaxed">
               Consultoria em dados, processos e indicadores de gestão.

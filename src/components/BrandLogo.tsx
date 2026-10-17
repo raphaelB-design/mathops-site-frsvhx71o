@@ -5,6 +5,7 @@ interface BrandLogoProps {
   theme?: 'dark' | 'light'
   alt?: string
   height?: number | string
+  pulse?: boolean
 }
 
 export function BrandLogo({
@@ -12,6 +13,7 @@ export function BrandLogo({
   theme = 'dark',
   alt = 'MathOps Strategy',
   height,
+  pulse = true,
 }: BrandLogoProps) {
   const src = theme === 'light' ? '/mathops-logo-fundo-claro.svg' : '/mathops-logo-fundo-escuro.svg'
 
@@ -20,7 +22,7 @@ export function BrandLogo({
       src={src}
       alt={alt}
       style={height ? { height: typeof height === 'number' ? `${height}px` : height } : undefined}
-      className={cn('w-auto block object-contain', className)}
+      className={cn('w-auto block object-contain', pulse && 'animate-tiger-heartbeat', className)}
       loading="eager"
       decoding="async"
     />

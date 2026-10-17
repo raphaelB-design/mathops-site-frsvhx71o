@@ -286,4 +286,39 @@
     -webkit-backdrop-filter: blur(8px);
     border-left: 2px solid hsl(var(--accent) / 0.6);
   }
+
+  /* Pulsação ritmo de coração de tigre (lub-dub duplo pulso ~1s) */
+  @keyframes tiger-heartbeat {
+    0% {
+      transform: scale(1);
+    }
+    14% {
+      transform: scale(1.08);
+    }
+    28% {
+      transform: scale(1);
+    }
+    42% {
+      transform: scale(1.06);
+    }
+    56% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .animate-tiger-heartbeat {
+    animation: tiger-heartbeat 1.05s ease-in-out infinite;
+    transform-origin: center center;
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-tiger-heartbeat {
+      animation: none !important;
+      will-change: auto !important;
+    }
+  }
 }
