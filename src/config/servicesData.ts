@@ -176,27 +176,27 @@ export const serviceLayers: Record<string, ServiceLayer> = {
         fit: 'Organizações que precisam estruturar ou amadurecer sua gestão de riscos para a alta gestão, auditoria ou órgãos de controle.',
         modules: [
           {
-            name: 'I. Níveis de apetite a riscos organizacionais',
+            name: 'Níveis de apetite a riscos organizacionais',
             entregaveis:
               'Declaração de apetite a risco, limites de tolerância por categoria e critérios de aceitação aprovados pela alta gestão.',
           },
           {
-            name: 'II. Gerenciamento e monitoramento de riscos organizacionais',
+            name: 'Gerenciamento e monitoramento de riscos organizacionais',
             entregaveis:
               'Matriz de riscos, responsáveis definidos, indicadores-chave de risco e painel de monitoramento.',
           },
           {
-            name: 'III. Metodologia de Gestão de Riscos (MGR)',
+            name: 'Metodologia de Gestão de Riscos (MGR)',
             entregaveis:
               'Metodologia documentada: identificação, análise, avaliação, tratamento e comunicação de riscos, com papéis e fluxos.',
           },
           {
-            name: 'IV. Medidas de controle e mitigação de riscos',
+            name: 'Medidas de controle e mitigação de riscos',
             entregaveis:
               'Plano de tratamento com controles propostos, responsáveis e critérios de verificação.',
           },
           {
-            name: 'V. Evolução dos níveis de risco e efetividade dos controles',
+            name: 'Evolução dos níveis de risco e efetividade dos controles',
             entregaveis:
               'Acompanhamento periódico do risco residual e avaliação da efetividade das medidas implementadas.',
           },
