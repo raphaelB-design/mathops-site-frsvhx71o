@@ -2,16 +2,17 @@ import { Methodology as DMAIC } from '@/components/sections/Methodology'
 import { FadeIn } from '@/components/fade-in'
 import { SlideUpMask } from '@/components/slide-up-mask'
 import { HowItWorks } from '@/components/sections/HowItWorks'
+import { Differentials } from '@/components/sections/Differentials'
 import { Helmet } from '@/components/Helmet'
 
 export default function Metodologia() {
   return (
     <div className="w-full flex flex-col">
       <Helmet>
-        <title>Metodologia | MathOps Strategy — DMAIC, Modelagem Matemática e Estatística</title>
+        <title>Metodologia & Diferenciais | MathOps Strategy — DMAIC, Modelagem e Processos</title>
         <meta
           name="description"
-          content="Nossa metodologia combina framework DMAIC, pesquisa operacional e estatística avançada para transformar complexidade em clareza estratégica. Do Diagnóstico Estratégico à Visibilidade Operacional."
+          content="Conheça a metodologia da MathOps Strategy: framework DMAIC, modelagem matemática, estatística avançada e nossos diferenciais de independência, governança e conformidade com a LGPD."
         />
       </Helmet>
       {/* Methodology Page Hero */}
@@ -109,6 +110,9 @@ export default function Metodologia() {
           </FadeIn>
         </div>
       </section>
+
+      {/* Differentials Section (ao final de metodologia) */}
+      <Differentials />
     </div>
   )
 }

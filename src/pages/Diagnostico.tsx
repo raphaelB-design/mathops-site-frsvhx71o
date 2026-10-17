@@ -8,10 +8,10 @@ export default function Diagnostico() {
   return (
     <div className="w-full flex flex-col min-h-screen bg-background text-foreground pt-20">
       <Helmet>
-        <title>Diagnóstico Estratégico | MathOps Strategy — Ponto Zero de Avaliação</title>
+        <title>Diagnóstico Estratégico | MathOps Strategy — Oferta, Formulário e FAQ</title>
         <meta
           name="description"
-          content="Solicite o Diagnóstico Estratégico da MathOps Strategy: 2 semanas de imersão, roadmap analítico com escopo e KPIs definidos e garantia de devolução de 100% caso não haja fit."
+          content="Solicite o Diagnóstico Estratégico: 2 semanas de imersão analítica, roadmap com KPIs e escopo, garantia integral de devolução, formulário de contato e respostas a dúvidas frequentes."
         />
       </Helmet>
 

@@ -1,16 +1,15 @@
 import { useState, useEffect } from 'react'
-import { useDiagnosticModal } from '@/context/DiagnosticModalContext'
+import { useNavigate, useParams, Link, Navigate, useSearchParams } from 'react-router-dom'
 import { trackClick } from '@/services/analytics'
-import { useParams, Link, Navigate, useSearchParams } from 'react-router-dom'
 import { serviceLayers, ServiceDetail } from '@/config/servicesData'
 import { FadeIn } from '@/components/fade-in'
 import { AnimatedCounter } from '@/components/animated-counter'
 import { useScrollLock } from '@/hooks/use-scroll-lock'
+import { EvmSCurveChart } from '@/components/charts/EvmSCurveChart'
+import { CepControlChart } from '@/components/charts/CepControlChart'
+import { AuditReconciliationChart } from '@/components/charts/AuditReconciliationChart'
 import {
-  ArrowLeft,
   ArrowRight,
-  Play,
-  Info,
   AlertTriangle,
   Layers,
   Zap,
@@ -88,7 +87,7 @@ function MetricAnimator({ value }: { value: string }) {
 export default function ServiceLayer() {
   const { slug } = useParams()
   const [searchParams] = useSearchParams()
-  const { openDiagnostic } = useDiagnosticModal()
+  const navigate = useNavigate()
   const [selectedService, setSelectedService] = useState<ServiceDetail | null>(null)
 
   useScrollLock(!!selectedService)
@@ -119,11 +118,80 @@ export default function ServiceLayer() {
       ? layer.services.find((s) => s.id === layer.anchorProductId)
       : null
 
+  const renderServiceChart = (serviceId: string) => {
+    switch (serviceId) {
+      case 'controle-projetos-obra-evm':
+        return (
+          <div className="w-full my-8">
+            <EvmSCurveChart />
+          </div>
+        )
+      case 'monitoramento-estatistico-operacao':
+        return (
+          <div className="w-full my-8">
+            <CepControlChart />
+          </div>
+        )
+      case 'memorias':
+        return (
+          <div className="w-full my-8">
+            <AuditReconciliationChart />
+          </div>
+        )
+      default:
+        return null
+    }
+  }
+
+  const layerCharts =
+    slug === 'diagnostico-e-visibilidade'
+      ? [
+          {
+            id: 'controle-projetos-obra-evm',
+            title: 'Demonstração Prática — Controle de Projetos e Obras (EVM)',
+            subtitle:
+              'Visualização analítica de avanço físico-financeiro com detecção de desvio e índices de desempenho.',
+            component: <EvmSCurveChart />,
+          },
+          {
+            id: 'monitoramento-estatistico-operacao',
+            title: 'Demonstração Prática — Monitoramento Estatístico da Operação',
+            subtitle:
+              'Carta de controle estatístico de processo (CEP) com limites 3σ e sinalização imediata de causa especial.',
+            component: <CepControlChart />,
+          },
+        ]
+      : slug === 'analise-e-modelagem'
+        ? [
+            {
+              id: 'memorias',
+              title: 'Demonstração Prática — Auditoria de Memórias de Cálculo',
+              subtitle:
+                'Reconciliação e normalização de métricas divergentes entre áreas corporativas para uma base única.',
+              component: <AuditReconciliationChart />,
+            },
+          ]
+        : []
+
+  const pageTitle =
+    slug === 'diagnostico-e-visibilidade'
+      ? `${layer.title} | MathOps Strategy — Gestão EVM e Controle Estatístico (CEP)`
+      : slug === 'analise-e-modelagem'
+        ? `${layer.title} | MathOps Strategy — Auditoria de Cálculos e Modelagem de Custos`
+        : `${layer.title} | MathOps Strategy`
+
+  const pageDescription =
+    slug === 'diagnostico-e-visibilidade'
+      ? 'Mapeamento de processos, painéis executivos em Power BI, curvas S de avanço físico-financeiro (EVM) e cartas de controle estatístico (CEP) para decisões em tempo real.'
+      : slug === 'analise-e-modelagem'
+        ? 'Auditoria de memórias de cálculo com reconciliação de discrepâncias entre áreas, metodologia Lean Six Sigma e modelagem estatística preditiva de custos.'
+        : layer.description
+
   return (
     <div className="w-full flex flex-col min-h-screen bg-black text-white">
       <Helmet>
-        <title>{layer.title} | MathOps Strategy</title>
-        <meta name="description" content={layer.description} />
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
       </Helmet>
       {/* Cinematic Hero */}
       <div className="relative pt-40 pb-32 md:pt-56 md:pb-40 px-6 md:px-12 flex flex-col items-center text-center overflow-hidden border-b border-white/5">
@@ -325,6 +393,60 @@ export default function ServiceLayer() {
             ))}
           </div>
         </FadeIn>
+
+        {/* Integrated Charts Section for this Layer */}
+        {layerCharts.length > 0 && (
+          <div className="mt-24 pt-16 border-t border-white/10 space-y-20">
+            <FadeIn>
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+                <div className="flex items-center gap-4">
+                  <div className="h-px w-12 bg-accent"></div>
+                  <div>
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-accent font-bold block mb-1">
+                      Modelagem e Visualização Analítica
+                    </span>
+                    <h3 className="text-xl md:text-2xl font-serif tracking-widest text-white uppercase">
+                      Painéis e Modelos dos Serviços
+                    </h3>
+                  </div>
+                </div>
+                <p className="text-zinc-500 font-sans text-sm tracking-wider uppercase max-w-sm">
+                  Exemplos práticos da metodologia aplicada à rotina da sua empresa.
+                </p>
+              </div>
+            </FadeIn>
+
+            <div className="grid grid-cols-1 gap-16">
+              {layerCharts.map((chartItem) => (
+                <FadeIn key={chartItem.id}>
+                  <div className="space-y-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2">
+                      <div>
+                        <h4 className="font-serif text-lg md:text-xl text-white font-medium">
+                          {chartItem.title}
+                        </h4>
+                        <p className="text-xs md:text-sm text-zinc-400 font-light mt-1">
+                          {chartItem.subtitle}
+                        </p>
+                      </div>
+                      <button
+                        onClick={() => {
+                          const target = layer.services.find((s) => s.id === chartItem.id)
+                          if (target) setSelectedService(target)
+                        }}
+                        className="self-start sm:self-center inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-widest text-zinc-400 hover:text-white transition-colors"
+                      >
+                        Ver detalhes do serviço
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                    {chartItem.component}
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Anchor Product Section */}
@@ -485,6 +607,19 @@ export default function ServiceLayer() {
                     >
                       {cleanText(selectedService.dor)}
                     </DetailSection>
+                  )}
+
+                  {/* Integrated Chart inside Service Details Drawer */}
+                  {renderServiceChart(selectedService.id) && (
+                    <div>
+                      <h4 className="font-sans text-xs uppercase tracking-[0.2em] text-accent mb-4 flex items-center gap-4">
+                        <span className="w-8 h-8 rounded-full border border-accent/40 flex items-center justify-center bg-accent/10 text-accent">
+                          <Zap className="w-4 h-4" />
+                        </span>
+                        Demonstração Visual do Serviço
+                      </h4>
+                      <div className="pl-0 sm:pl-12">{renderServiceChart(selectedService.id)}</div>
+                    </div>
                   )}
 
                   {selectedService.entregaveis &&
@@ -691,16 +826,16 @@ export default function ServiceLayer() {
               Entenderemos seu cenário operacional e avaliaremos o fit estratégico.
             </p>
 
-            <button
+            <Link
+              to="/diagnostico"
               onClick={() => {
                 trackClick('diagnostic_open', 'service_layer')
-                openDiagnostic()
               }}
               className="group inline-flex items-center gap-2 bg-white text-black font-mono font-bold uppercase tracking-wider text-sm py-4 px-8 hover:bg-black hover:text-white transition-colors duration-300"
             >
               Solicitar Diagnóstico Estratégico
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-            </button>
+            </Link>
 
             <div className="mt-8 font-mono text-[10px] uppercase tracking-widest text-white/60">
               NDA disponível · Reunião de 30 min · Sem compromisso

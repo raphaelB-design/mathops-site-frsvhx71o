@@ -4,7 +4,6 @@ import { Menu, ArrowRight } from 'lucide-react'
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 import { BrandLogo } from '@/components/BrandLogo'
 import { trackClick } from '@/services/analytics'
-import { useDiagnosticModal } from '@/context/DiagnosticModalContext'
 import { FloatingWhatsApp } from '@/components/FloatingWhatsApp'
 import { FloatingContactWidget } from '@/components/FloatingContactWidget'
 import { Footer } from '@/components/sections/Footer'
@@ -20,7 +19,6 @@ const NAV_LINKS = [
 export function Layout() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const { openDiagnostic } = useDiagnosticModal()
   const location = useLocation()
 
   useEffect(() => {
@@ -60,13 +58,11 @@ export function Layout() {
 
   const handleNavDiagnostic = () => {
     trackClick('diagnostic_open', 'navbar')
-    openDiagnostic()
   }
 
   const handleMobileDiagnostic = () => {
     setIsMenuOpen(false)
     trackClick('diagnostic_open', 'mobile_menu')
-    openDiagnostic()
   }
 
   return (
@@ -96,13 +92,14 @@ export function Layout() {
               </Link>
             ))}
           </div>
-          <button
+          <Link
+            to="/diagnostico"
             onClick={handleNavDiagnostic}
             className="hidden lg:inline-flex items-center gap-2 bg-white text-black px-5 py-3 text-sm font-medium tracking-wide hover:bg-zinc-200 transition-all duration-300 min-h-[44px]"
           >
             Solicitar Diagnóstico Estratégico
             <ArrowRight className="w-4 h-4" />
-          </button>
+          </Link>
           <button
             className="lg:hidden text-white p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center"
             onClick={() => setIsMenuOpen(true)}
@@ -133,13 +130,14 @@ export function Layout() {
                 {link.label}
               </Link>
             ))}
-            <button
+            <Link
+              to="/diagnostico"
               onClick={handleMobileDiagnostic}
               className="inline-flex items-center justify-center gap-2 bg-white text-black px-5 py-3.5 text-sm font-medium tracking-wide hover:bg-zinc-200 transition-all duration-300 mt-4 min-h-[44px]"
             >
               Solicitar Diagnóstico Estratégico
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </div>
         </SheetContent>
       </Sheet>

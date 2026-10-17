@@ -1,6 +1,6 @@
 import { FadeIn } from '@/components/fade-in'
 import { ArrowUpRight } from 'lucide-react'
-import { useDiagnosticModal } from '@/context/DiagnosticModalContext'
+import { Link } from 'react-router-dom'
 import { trackClick } from '@/services/analytics'
 
 const diffs = [
@@ -27,8 +27,6 @@ const diffs = [
 ]
 
 export function Differentials() {
-  const { openDiagnostic } = useDiagnosticModal()
-
   return (
     <section className="py-24 md:py-32 px-6 md:px-12 w-full border-t border-white/10">
       <div className="max-w-7xl mx-auto w-full">
@@ -42,16 +40,16 @@ export function Differentials() {
                 Por que MathOps Strategy?
               </h2>
             </div>
-            <button
+            <Link
+              to="/diagnostico"
               onClick={() => {
                 trackClick('diagnostic_open', 'differentials')
-                openDiagnostic()
               }}
               className="shrink-0 flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-white transition-colors group"
             >
               Discutir seu cenário
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </button>
+            </Link>
           </div>
         </FadeIn>
 

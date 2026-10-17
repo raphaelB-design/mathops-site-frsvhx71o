@@ -1,12 +1,10 @@
 import { FadeIn } from '@/components/fade-in'
 import { industriesList, nonFeaturedIndustries } from '@/config/industriesData'
 import { Link } from 'react-router-dom'
-import { useDiagnosticModal } from '@/context/DiagnosticModalContext'
 import { trackClick } from '@/services/analytics'
 import { ArrowUpRight } from 'lucide-react'
 
 export function Industries() {
-  const { openDiagnostic } = useDiagnosticModal()
   return (
     <section
       id="industries"
@@ -77,17 +75,17 @@ export function Industries() {
               </span>
               <div className="flex flex-wrap gap-x-8 gap-y-4">
                 {nonFeaturedIndustries.map((ind) => (
-                  <button
+                  <Link
                     key={ind.slug}
+                    to="/diagnostico"
                     onClick={() => {
                       trackClick('diagnostic_open', 'industries')
-                      openDiagnostic()
                     }}
                     className="group inline-flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors duration-300"
                   >
                     <span className="font-body text-base">{ind.name}</span>
                     <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </button>
+                  </Link>
                 ))}
               </div>
             </div>

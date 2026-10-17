@@ -26,12 +26,10 @@ export function SeoTags() {
 
   return (
     <Helmet>
-      <title>
-        MathOps Strategy | Diagnóstico Estratégico e Visibilidade Operacional — São Paulo
-      </title>
+      <title>MathOps Strategy | Consultoria em Dados, Processos e Indicadores de Gestão</title>
       <meta
         name="description"
-        content="Diagnóstico Estratégico e Visibilidade Operacional com painéis executivos em tempo real. Consultoria boutique em modelagem matemática e inteligência analítica. São Paulo, Brasil."
+        content="Decisões de gestão baseadas em dados que você pode provar. Painel executivo, 7 serviços em grade, metodologia clara, garantias e Diagnóstico Estratégico em São Paulo."
       />
       <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
     </Helmet>

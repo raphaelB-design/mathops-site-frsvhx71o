@@ -6,7 +6,6 @@ import { TooltipProvider } from '@/components/ui/tooltip'
 import { Layout } from '@/components/Layout'
 import { IndexSkeleton } from '@/components/skeletons/IndexSkeleton'
 import { SmoothScroll } from '@/components/SmoothScroll'
-import { DiagnosticModalProvider } from '@/context/DiagnosticModalContext'
 
 const retryLazy = (componentImport: () => Promise<any>) =>
   lazy(async () => {
@@ -41,41 +40,42 @@ const PageLoader = () => (
   </div>
 )
 
+const Diagnostico = retryLazy(() => import('@/pages/Diagnostico'))
+
 const App = () => (
   <BrowserRouter>
     <SmoothScroll />
     <TooltipProvider>
-      <DiagnosticModalProvider>
-        <Toaster />
-        <Sonner />
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            <Route element={<Layout />}>
-              <Route
-                path="/"
-                element={
-                  <Suspense fallback={<IndexSkeleton />}>
-                    <Index />
-                  </Suspense>
-                }
-              />
-              <Route path="/sobre" element={<Sobre />} />
-              <Route
-                path="/servicos"
-                element={<Navigate to="/servicos/diagnostico-e-visibilidade" replace />}
-              />
-              <Route path="/servicos/:slug" element={<ServiceLayer />} />
-              <Route path="/industrias/:slug" element={<IndustryLayer />} />
-              <Route path="/metodologia" element={<Metodologia />} />
-              <Route path="/termos-de-uso" element={<TermosDeUso />} />
-              <Route path="/politica-de-privacidade" element={<PoliticaDePrivacidade />} />
-              <Route path="/login" element={<Navigate to="/" replace />} />
-              <Route path="/dashboard" element={<Navigate to="/" replace />} />
-            </Route>
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
-      </DiagnosticModalProvider>
+      <Toaster />
+      <Sonner />
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route
+              path="/"
+              element={
+                <Suspense fallback={<IndexSkeleton />}>
+                  <Index />
+                </Suspense>
+              }
+            />
+            <Route path="/diagnostico" element={<Diagnostico />} />
+            <Route path="/sobre" element={<Sobre />} />
+            <Route
+              path="/servicos"
+              element={<Navigate to="/servicos/diagnostico-e-visibilidade" replace />}
+            />
+            <Route path="/servicos/:slug" element={<ServiceLayer />} />
+            <Route path="/industrias/:slug" element={<IndustryLayer />} />
+            <Route path="/metodologia" element={<Metodologia />} />
+            <Route path="/termos-de-uso" element={<TermosDeUso />} />
+            <Route path="/politica-de-privacidade" element={<PoliticaDePrivacidade />} />
+            <Route path="/login" element={<Navigate to="/" replace />} />
+            <Route path="/dashboard" element={<Navigate to="/" replace />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </TooltipProvider>
   </BrowserRouter>
 )

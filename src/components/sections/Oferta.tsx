@@ -1,11 +1,17 @@
 import { FadeIn } from '@/components/fade-in'
 import { ArrowUpRight, Check, ShieldCheck } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { diagnosticoEstrategico } from '@/config/servicesData'
-import { useDiagnosticModal } from '@/context/DiagnosticModalContext'
 import { trackClick } from '@/services/analytics'
 
 export function Oferta() {
-  const { openDiagnostic } = useDiagnosticModal()
+  const handleCtaClick = () => {
+    trackClick('diagnostic_open', 'oferta')
+    const formEl = document.getElementById('formulario-diagnostico')
+    if (formEl) {
+      formEl.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
 
   return (
     <section
@@ -85,17 +91,14 @@ export function Oferta() {
               </div>
 
               <div className="pt-8">
-                <button
-                  type="button"
-                  onClick={() => {
-                    trackClick('diagnostic_open', 'oferta')
-                    openDiagnostic()
-                  }}
+                <Link
+                  to="/diagnostico#formulario-diagnostico"
+                  onClick={handleCtaClick}
                   className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-white text-black font-display font-bold text-base hover:bg-accent hover:text-white transition-colors duration-300 rounded-sm group min-h-[44px]"
                 >
                   Solicitar Diagnóstico Estratégico
                   <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </button>
+                </Link>
               </div>
             </div>
           </FadeIn>

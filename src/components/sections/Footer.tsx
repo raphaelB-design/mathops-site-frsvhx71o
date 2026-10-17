@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { BrandLogo } from '@/components/BrandLogo'
 
 const serviceLinks = [
-  { label: 'Diagnóstico Estratégico', href: '/#oferta' },
+  { label: 'Diagnóstico Estratégico', href: '/diagnostico' },
   {
     label: 'Diagnóstico e Visibilidade Operacional',
     href: '/servicos/diagnostico-e-visibilidade?service=diagnostico-e-visibilidade-operacional',
