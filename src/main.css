@@ -287,37 +287,39 @@
     border-left: 2px solid hsl(var(--accent) / 0.6);
   }
 
-  /* Pulsação ritmo de coração de tigre (lub-dub duplo pulso ~1s) */
+  /* Pulsação ritmo de coração de tigre: efeito de luz/cor (lub-dub duplo pulso ~1s) sem alteração de escala */
   @keyframes tiger-heartbeat {
     0% {
-      transform: scale(1);
+      filter: drop-shadow(0 0 0px rgba(59, 130, 246, 0)) brightness(1);
     }
     14% {
-      transform: scale(1.08);
+      filter: drop-shadow(0 0 14px rgba(59, 130, 246, 0.75))
+        drop-shadow(0 0 28px rgba(34, 211, 238, 0.45)) brightness(1.15);
     }
     28% {
-      transform: scale(1);
+      filter: drop-shadow(0 0 2px rgba(59, 130, 246, 0.2)) brightness(1.02);
     }
     42% {
-      transform: scale(1.06);
+      filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.6))
+        drop-shadow(0 0 20px rgba(34, 211, 238, 0.35)) brightness(1.1);
     }
     56% {
-      transform: scale(1);
+      filter: drop-shadow(0 0 0px rgba(59, 130, 246, 0)) brightness(1);
     }
     100% {
-      transform: scale(1);
+      filter: drop-shadow(0 0 0px rgba(59, 130, 246, 0)) brightness(1);
     }
   }
 
   .animate-tiger-heartbeat {
     animation: tiger-heartbeat 1.05s ease-in-out infinite;
-    transform-origin: center center;
-    will-change: transform;
+    will-change: filter;
   }
 
   @media (prefers-reduced-motion: reduce) {
     .animate-tiger-heartbeat {
       animation: none !important;
+      filter: none !important;
       will-change: auto !important;
     }
   }

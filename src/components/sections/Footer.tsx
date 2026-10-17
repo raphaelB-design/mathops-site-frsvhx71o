@@ -59,7 +59,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div className="flex flex-col gap-4">
             <Link to="/" onClick={handleLogoClick} aria-label="Ir para a Home">
-              <BrandLogo className="h-10 md:h-12" height={48} />
+              <BrandLogo className="h-12 md:h-14" />
             </Link>
             <p className="text-sm text-zinc-500 max-w-xs leading-relaxed">
               Consultoria em dados, processos e indicadores de gestão.

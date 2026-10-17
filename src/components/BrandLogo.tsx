@@ -22,7 +22,11 @@ export function BrandLogo({
       src={src}
       alt={alt}
       style={height ? { height: typeof height === 'number' ? `${height}px` : height } : undefined}
-      className={cn('w-auto block object-contain', pulse && 'animate-tiger-heartbeat', className)}
+      className={cn(
+        'w-auto block object-contain select-none',
+        pulse && 'animate-tiger-heartbeat',
+        className,
+      )}
       loading="eager"
       decoding="async"
     />

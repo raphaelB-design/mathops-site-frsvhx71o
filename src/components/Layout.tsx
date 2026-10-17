@@ -87,14 +87,14 @@ export function Layout() {
           isScrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/10' : 'bg-transparent',
         )}
       >
-        <nav className="max-w-7xl mx-auto pl-4 pr-6 sm:pl-6 sm:pr-6 lg:pl-6 lg:pr-8 flex items-center justify-between h-20">
+        <nav className="max-w-7xl mx-auto pl-4 pr-6 sm:pl-6 sm:pr-6 lg:pl-6 lg:pr-8 flex items-center justify-between h-20 md:h-22">
           <Link
             to="/"
             onClick={handleLogoClick}
             className="flex items-center -ml-1 sm:ml-0"
             aria-label="Ir para a Home"
           >
-            <BrandLogo className="h-10 md:h-12" height={48} />
+            <BrandLogo className="h-12 md:h-14" />
           </Link>
           <div className="hidden lg:flex items-center gap-8">
             {NAV_LINKS.map((link) => (
@@ -133,7 +133,7 @@ export function Layout() {
           <SheetHeader>
             <SheetTitle className="text-left">
               <Link to="/" onClick={handleLogoClick} aria-label="Ir para a Home">
-                <BrandLogo className="h-10" height={40} />
+                <BrandLogo className="h-12" />
               </Link>
             </SheetTitle>
           </SheetHeader>
