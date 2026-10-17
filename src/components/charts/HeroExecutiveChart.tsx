@@ -83,9 +83,6 @@ export function HeroExecutiveChart() {
               Performance Operacional Consolidada
             </h4>
           </div>
-          <span className="font-mono text-[9px] uppercase tracking-widest px-2.5 py-1 rounded-sm bg-[#3B82F6]/15 border border-[#3B82F6]/40 text-[#22D3EE] font-semibold">
-            Dados ilustrativos
-          </span>
         </div>
 
         {/* 3 KPIs com contador animado */}
