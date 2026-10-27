@@ -202,6 +202,50 @@ export const serviceLayers: Record<string, ServiceLayer> = {
           },
         ],
       },
+      {
+        id: 'transformacao-organizacional',
+        name: 'Transformação Organizacional e Gestão Estratégica',
+        image: 'https://img.usecurling.com/p/800/600?q=strategy%20corporate',
+        headline:
+          'Alinhamento da estrutura corporativa e execução estratégica orientada a indicadores.',
+        dor: 'Estruturas com papéis sobrepostos, desalinhamento entre metas corporativas e rotina operacional, falta de governança e ausência de acompanhamento formal da estratégia.',
+        entregaveis: 'Ver módulos.',
+        tecnicos:
+          'Método Hoshin Kanri, modelo de três linhas de governança, matriz de responsabilidades, integração com ERP.',
+        fit: 'Organizações em processo de reestruturação, crescimento acelerado ou profissionalização da gestão que necessitam de governança integrada e desdobramento claro de metas.',
+        modules: [
+          {
+            name: 'Diagnóstico de maturidade',
+            entregaveis:
+              'Relatório técnico de maturidade da gestão, mapeamento de lacunas organizacionais e matriz de prontidão institucional.',
+          },
+          {
+            name: 'Arquitetura organizacional',
+            entregaveis:
+              'Organograma funcional, mapa de responsabilidade, matriz de alçadas decisórias e estruturação do modelo de três linhas de governança.',
+          },
+          {
+            name: 'Desdobramento estratégico Hoshin',
+            entregaveis:
+              'Matriz Hoshin Kanri estruturada com desdobramento de diretrizes corporativas até indicadores operacionais por gestão.',
+          },
+          {
+            name: 'Painel de gestão integrado ao ERP',
+            entregaveis:
+              'Painel executivo de acompanhamento de indicadores conectado e sincronizado às fontes de dados do ERP corporativo.',
+          },
+          {
+            name: 'Governança do programa com gates anuais',
+            entregaveis:
+              'Rito de governança formalizado, critérios de avaliação de gates anuais e relatórios de acompanhamento de marcos da estratégia.',
+          },
+          {
+            name: 'Gestão da mudança',
+            entregaveis:
+              'Plano de comunicação estruturado, plano de engajamento dos líderes e protocolo de transição cultural dos processos.',
+          },
+        ],
+      },
     ],
   },
 }

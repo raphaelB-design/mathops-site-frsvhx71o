@@ -18,7 +18,7 @@ interface ServiceCardItem {
 
 export function Services() {
   const [hoveredCardId, setHoveredCardId] = useState<string | null>(null)
-  // Collect the 8 services across three layers + diagnostico
+  // Collect the 9 services across three layers + diagnostico
   const allServices: ServiceCardItem[] = [
     // Diagnostico Estrategico (Porta de entrada / Ponto zero)
     {
@@ -86,7 +86,7 @@ export function Services() {
                   Matriz de Serviços Estratégicos
                 </h2>
                 <p className="font-body text-muted-foreground leading-relaxed max-w-2xl">
-                  Oito serviços em três camadas: enxergar a operação, modelar decisões e governar
+                  Nove serviços em três camadas: enxergar a operação, modelar decisões e governar
                   riscos.
                 </p>
               </div>

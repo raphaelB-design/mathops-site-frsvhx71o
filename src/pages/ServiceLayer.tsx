@@ -190,8 +190,12 @@ export default function ServiceLayer() {
             ]
           : []
 
-  const pageTitle =
-    slug === 'diagnostico-e-visibilidade'
+  const serviceParam = searchParams.get('service')
+  const currentService = serviceParam ? layer.services.find((s) => s.id === serviceParam) : null
+
+  const pageTitle = currentService
+    ? `${currentService.name} | ${layer.title} | MathOps Strategy`
+    : slug === 'diagnostico-e-visibilidade'
       ? `${layer.title} | MathOps Strategy — Gestão EVM e Controle Estatístico (CEP)`
       : slug === 'analise-e-modelagem'
         ? `${layer.title} | MathOps Strategy — Auditoria de Cálculos e Modelagem de Custos`
@@ -199,13 +203,14 @@ export default function ServiceLayer() {
           ? `${layer.title} | MathOps Strategy — Governança e Gestão de Riscos (COSO)`
           : `${layer.title} | MathOps Strategy`
 
-  const pageDescription =
-    slug === 'diagnostico-e-visibilidade'
+  const pageDescription = currentService
+    ? `${currentService.headline} Mapeamento de maturidade, arquitetura organizacional, desdobramento estratégico Hoshin e governança.`
+    : slug === 'diagnostico-e-visibilidade'
       ? 'Mapeamento de processos, painéis executivos em Power BI, curvas S de avanço físico-financeiro (EVM) e cartas de controle estatístico (CEP) para decisões em tempo real.'
       : slug === 'analise-e-modelagem'
         ? 'Auditoria de memórias de cálculo com reconciliação de discrepâncias entre áreas, metodologia Lean Six Sigma e modelagem estatística de custos.'
         : slug === 'governanca-e-riscos'
-          ? 'Estruturação da gestão de riscos organizacionais, apetite a risco, modelo das três linhas e monitoramento da efetividade dos controles.'
+          ? 'Estruturação da gestão de riscos organizacionais, transformação organizacional, apetite a risco, modelo das três linhas e monitoramento da efetividade dos controles.'
           : layer.description
 
   return (

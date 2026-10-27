@@ -32,6 +32,10 @@ const serviceLinks = [
     label: 'Gestão de Riscos Organizacionais',
     href: '/servicos/governanca-e-riscos?service=gestao-riscos-organizacionais',
   },
+  {
+    label: 'Transformação Organizacional e Gestão Estratégica',
+    href: '/servicos/governanca-e-riscos?service=transformacao-organizacional',
+  },
 ]
 
 const navLinks = [
