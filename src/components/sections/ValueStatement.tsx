@@ -25,7 +25,7 @@ export function ValueStatement() {
           <FadeIn>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-tight tracking-tight">
               Empresas não quebram por falta de esforço. Quebram por decisões que pareciam certas e
-              nunca foram testadas.
+              nunca foram testadas com dados.
             </h2>
           </FadeIn>
 
