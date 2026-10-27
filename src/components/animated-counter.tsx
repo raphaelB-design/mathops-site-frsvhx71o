@@ -43,12 +43,19 @@ export function AnimatedCounter({
     return () => observer.disconnect()
   }, [prefersReducedMotion])
 
+  const startValueRef = useRef(prefersReducedMotion ? value : 0)
+
   useEffect(() => {
     if (prefersReducedMotion) {
       setCount(value)
+      startValueRef.current = value
       return
     }
     if (!isVisible) return
+
+    const startVal = startValueRef.current
+    const targetVal = value
+    const delta = targetVal - startVal
 
     let startTimestamp: number | null = null
     let animationFrameId: number
@@ -59,28 +66,32 @@ export function AnimatedCounter({
 
       const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress)
 
-      setCount(easeProgress * value)
+      setCount(startVal + easeProgress * delta)
 
       if (progress < 1) {
         animationFrameId = window.requestAnimationFrame(step)
       } else {
-        setCount(value)
+        setCount(targetVal)
+        startValueRef.current = targetVal
       }
     }
 
     animationFrameId = window.requestAnimationFrame(step)
 
-    return () => window.cancelAnimationFrame(animationFrameId)
+    return () => {
+      window.cancelAnimationFrame(animationFrameId)
+    }
   }, [value, duration, isVisible, prefersReducedMotion])
 
   const displayValue = count.toFixed(decimals)
   const finalDisplay =
     displayValue === '-0' || displayValue === '-0.0' ? (0).toFixed(decimals) : displayValue
+  const formattedDisplay = finalDisplay.replace('.', ',')
 
   return (
     <span ref={elementRef}>
       {prefix}
-      {finalDisplay}
+      {formattedDisplay}
       {suffix}
     </span>
   )

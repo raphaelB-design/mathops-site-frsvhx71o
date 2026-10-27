@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import {
   ResponsiveContainer,
   AreaChart,
@@ -27,23 +27,67 @@ const executiveTrendData = [
   { month: 'M12', valor: 98, meta: 95 },
 ]
 
+const CUSTO_INITIAL = 98.1
+const CUSTO_STEP = 0.1
+const CUSTO_FLOOR = 91.0
+const CUSTO_INTERVAL_MS = 4000 // 4s de pausa entre degraus
+
 export function HeroExecutiveChart() {
   const prefersReducedMotion = useReducedMotion()
   const [isHovered, setIsHovered] = useState(false)
   const [pulseIndex, setPulseIndex] = useState(0)
+  const [custoCurrent, setCustoCurrent] = useState(CUSTO_INITIAL)
+  const [isVisible, setIsVisible] = useState(true)
+  const containerRef = useRef<HTMLDivElement>(null)
 
-  // Atualização contínua e suave a cada 3.5 segundos sem saltos (Item 3)
+  // IntersectionObserver: pausar animações quando o painel estiver fora da tela
   useEffect(() => {
-    if (prefersReducedMotion) return
+    if (!containerRef.current) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting)
+      },
+      { threshold: 0.1 },
+    )
+
+    observer.observe(containerRef.current)
+    return () => observer.disconnect()
+  }, [])
+
+  // Atualização contínua e suave a cada 3.5 segundos sem saltos dos demais KPIs
+  useEffect(() => {
+    if (prefersReducedMotion || !isVisible) return
     const interval = setInterval(() => {
       setPulseIndex((prev) => (prev + 1) % 3)
     }, 3500)
     return () => clearInterval(interval)
-  }, [prefersReducedMotion])
+  }, [prefersReducedMotion, isVisible])
 
-  // KPIs dinâmicos sutis
+  // Diminuição lenta em pausas do KPI de custo: degrau de 0,1 a cada 4 segundos
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      setCustoCurrent(CUSTO_INITIAL)
+      return
+    }
+    if (!isVisible) return
+
+    const interval = setInterval(() => {
+      setCustoCurrent((prev) => {
+        const next = Math.round((prev - CUSTO_STEP) * 10) / 10
+        if (next < CUSTO_FLOOR) {
+          return CUSTO_INITIAL
+        }
+        return next
+      })
+    }, CUSTO_INTERVAL_MS)
+
+    return () => clearInterval(interval)
+  }, [prefersReducedMotion, isVisible])
+
+  // KPIs dinâmicos sutis (prazo e qualidade mantêm a oscilação sutil; custo diminui lentamente em pausas)
   const prazoVal = [96.4, 96.8, 96.5][pulseIndex]
-  const custoVal = [98.1, 98.4, 98.2][pulseIndex]
+  const custoVal = prefersReducedMotion ? CUSTO_INITIAL : custoCurrent
   const qualVal = [99.3, 99.5, 99.4][pulseIndex]
 
   // Perspectiva 3D: rotateY -10°, rotateX 5° em repouso; no hover (desktop) endireita suavemente
@@ -55,6 +99,7 @@ export function HeroExecutiveChart() {
 
   return (
     <div
+      ref={containerRef}
       className="relative w-full transition-transform duration-700 ease-smooth group cursor-pointer"
       style={{
         transform: transformStyle,
@@ -103,8 +148,7 @@ export function HeroExecutiveChart() {
               Custo
             </span>
             <span className="font-display text-xl sm:text-2xl font-bold text-[#F5F4F0] block">
-              <AnimatedCounter value={Math.floor(custoVal)} decimals={0} duration={1500} />,
-              {(custoVal % 1).toFixed(1).replace('0.', '')}%
+              <AnimatedCounter value={custoVal} decimals={1} duration={1000} suffix="%" />
             </span>
             <span className="font-mono text-[9px] text-[#22D3EE] block mt-0.5">+2.8 p.p.</span>
           </div>
