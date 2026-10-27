@@ -25,7 +25,6 @@ const retryLazy = (componentImport: () => Promise<any>) =>
 
 const Index = retryLazy(() => import('@/pages/Index'))
 const NotFound = retryLazy(() => import('@/pages/NotFound'))
-const ServiceLayer = retryLazy(() => import('@/pages/ServiceLayer'))
 const Sobre = retryLazy(() => import('@/pages/Sobre'))
 const Metodologia = retryLazy(() => import('@/pages/Metodologia'))
 const IndustryLayer = retryLazy(() => import('@/pages/IndustryLayer'))
@@ -61,20 +60,8 @@ const App = () => (
             />
             <Route path="/diagnostico" element={<Diagnostico />} />
             <Route path="/sobre" element={<Sobre />} />
-            <Route
-              path="/servicos"
-              element={<Navigate to="/servicos/diagnostico-e-visibilidade" replace />}
-            />
-            <Route
-              path="/servicos/transformacao-organizacional"
-              element={
-                <Navigate
-                  to="/servicos/governanca-e-riscos?service=transformacao-organizacional"
-                  replace
-                />
-              }
-            />
-            <Route path="/servicos/:slug" element={<ServiceLayer />} />
+            <Route path="/servicos" element={<Navigate to="/#servicos" replace />} />
+            <Route path="/servicos/:slug" element={<Navigate to="/#servicos" replace />} />
             <Route path="/industrias/:slug" element={<IndustryLayer />} />
             <Route path="/metodologia" element={<Metodologia />} />
             <Route path="/termos-de-uso" element={<TermosDeUso />} />

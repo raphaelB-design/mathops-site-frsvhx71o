@@ -1,7 +1,6 @@
 import { FadeIn } from '@/components/fade-in'
 import { useState } from 'react'
-import { ArrowRight, Layers } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Layers } from 'lucide-react'
 import { serviceLayers, diagnosticoEstrategico } from '@/config/servicesData'
 import { SectionBackdrop, SectionBackdropVariant } from '@/components/SectionBackdrop'
 
@@ -12,7 +11,6 @@ interface ServiceCardItem {
   entregaveis: string
   layerLabel: string
   layerSlug: string
-  link: string
   backdropVariant?: SectionBackdropVariant
 }
 
@@ -28,7 +26,6 @@ export function Services() {
       entregaveis: diagnosticoEstrategico.deliverables.slice(0, 3).join(', '),
       layerLabel: 'Ponto Zero',
       layerSlug: 'diagnostico-e-visibilidade',
-      link: '/diagnostico',
     },
     // Camada 1 services
     ...serviceLayers['diagnostico-e-visibilidade'].services.map((s) => ({
@@ -39,7 +36,6 @@ export function Services() {
       layerLabel: 'Camada 1',
       layerSlug: 'diagnostico-e-visibilidade',
       backdropVariant: 'process' as SectionBackdropVariant,
-      link: `/servicos/diagnostico-e-visibilidade?service=${s.id}`,
     })),
     // Camada 2 services
     ...serviceLayers['analise-e-modelagem'].services.map((s) => ({
@@ -50,7 +46,6 @@ export function Services() {
       layerLabel: 'Camada 2',
       layerSlug: 'analise-e-modelagem',
       backdropVariant: 'control' as SectionBackdropVariant,
-      link: `/servicos/analise-e-modelagem?service=${s.id}`,
     })),
     // Camada 3 services
     ...serviceLayers['governanca-e-riscos'].services.map((s) => ({
@@ -61,7 +56,6 @@ export function Services() {
       layerLabel: 'Camada 3',
       layerSlug: 'governanca-e-riscos',
       backdropVariant: 'risk' as SectionBackdropVariant,
-      link: `/servicos/governanca-e-riscos?service=${s.id}`,
     })),
   ]
 
@@ -99,8 +93,7 @@ export function Services() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {allServices.map((service, index) => (
             <FadeIn key={service.id} delay={60 + index * 40}>
-              <Link
-                to={service.link}
+              <div
                 onMouseEnter={() => setHoveredCardId(service.id)}
                 onMouseLeave={() => setHoveredCardId(null)}
                 className="premium-card group relative flex flex-col h-full p-6 rounded-lg overflow-hidden min-h-[300px]"
@@ -147,13 +140,8 @@ export function Services() {
                       {service.entregaveis}
                     </p>
                   </div>
-
-                  <div className="flex items-center gap-1.5 text-[11px] font-mono font-bold uppercase tracking-wider text-muted-foreground group-hover:text-accent2 transition-colors pt-2">
-                    Acessar serviço
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 text-accent transition-transform" />
-                  </div>
                 </div>
-              </Link>
+              </div>
             </FadeIn>
           ))}
         </div>

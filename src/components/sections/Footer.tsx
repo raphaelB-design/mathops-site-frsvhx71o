@@ -2,39 +2,31 @@ import { ArrowUp, Linkedin, Mail, MapPin, ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { BrandLogo } from '@/components/BrandLogo'
 
-const serviceLinks = [
+const serviceItems = [
   { label: 'Diagnóstico Estratégico', href: '/diagnostico' },
   {
     label: 'Diagnóstico e Visibilidade Operacional',
-    href: '/servicos/diagnostico-e-visibilidade?service=diagnostico-e-visibilidade-operacional',
   },
   {
     label: 'Controle de Projetos',
-    href: '/servicos/diagnostico-e-visibilidade?service=controle-projetos-obra-evm',
   },
   {
     label: 'Monitoramento Estatístico da Operação',
-    href: '/servicos/diagnostico-e-visibilidade?service=monitoramento-estatistico-operacao',
   },
   {
     label: 'Auditoria de Memórias de Cálculo',
-    href: '/servicos/analise-e-modelagem?service=memorias',
   },
   {
     label: 'Lean Six Sigma & Melhoria de Processos',
-    href: '/servicos/analise-e-modelagem?service=lean-six-sigma-processos',
   },
   {
     label: 'Modelagem Estatística de Custos',
-    href: '/servicos/analise-e-modelagem?service=modelagem-estatistica-custos',
   },
   {
     label: 'Gestão de Riscos Organizacionais',
-    href: '/servicos/governanca-e-riscos?service=gestao-riscos-organizacionais',
   },
   {
     label: 'Transformação Organizacional e Gestão Estratégica',
-    href: '/servicos/governanca-e-riscos?service=transformacao-organizacional',
   },
 ]
 
@@ -132,24 +124,24 @@ export function Footer() {
 
           <div className="flex flex-col gap-3">
             <h4 className="text-xs uppercase tracking-widest text-zinc-600 mb-1">Serviços</h4>
-            {serviceLinks.map((link) => (
-              <Link
-                key={link.label}
-                to={link.href}
-                onClick={(e) => {
-                  if (link.href.startsWith('/#')) {
-                    const targetId = link.href.replace('/#', '')
-                    if (window.location.pathname === '/') {
-                      e.preventDefault()
-                      document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' })
-                    }
-                  }
-                }}
-                className="text-sm text-zinc-400 hover:text-white transition-colors duration-300 inline-flex items-center gap-2 min-h-[36px]"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {serviceItems.map((item) =>
+              item.href ? (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  className="text-sm text-zinc-400 hover:text-white transition-colors duration-300 inline-flex items-center gap-2 min-h-[36px]"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <span
+                  key={item.label}
+                  className="text-sm text-zinc-400 select-none inline-flex items-center gap-2 min-h-[36px]"
+                >
+                  {item.label}
+                </span>
+              ),
+            )}
           </div>
 
           <div className="flex flex-col gap-3">

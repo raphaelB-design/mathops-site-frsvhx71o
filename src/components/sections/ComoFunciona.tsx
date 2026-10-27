@@ -19,8 +19,8 @@ const steps = [
     subtitle: 'Valor do diagnóstico abatido',
     description:
       'Executamos a camada de solução definida no roadmap: mapeamento de processos, painéis executivos ou modelos estatísticos. O valor do diagnóstico é abatido deste escopo.',
-    link: '/servicos/diagnostico-e-visibilidade',
-    linkLabel: 'Ver Visibilidade Operacional',
+    link: null as string | null,
+    linkLabel: null as string | null,
   },
   {
     number: '03',
