@@ -11,9 +11,9 @@ import { SectionBackdrop } from '@/components/SectionBackdrop'
 const statsCards = [
   {
     label: 'LEAN SIX SIGMA',
-    value: 'Black Belt',
+    value: 'Lean Six Sigma',
     isNumeric: false,
-    sub: 'Metodologia aplicada à operação',
+    sub: 'Metodologia DMAIC aplicada em projetos reais',
   },
   {
     label: 'PLATAFORMA',
