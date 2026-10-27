@@ -39,7 +39,7 @@ import { SectionBackdrop, SectionBackdropVariant } from '@/components/SectionBac
 
 const cleanText = (text: string | undefined) => {
   if (!text) return ''
-  return text.replace(/: onde a matemática muda o resultado da sua operação\?/g, '.')
+  return text.replace(/: onde (?:a matemática|os dados) mudam? o resultado da sua operação\?/g, '.')
 }
 
 function MetricAnimator({ value }: { value: string }) {

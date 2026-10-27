@@ -264,7 +264,7 @@ export const diagnosticoEstrategico = {
     'Sessão de apresentação ao time de gestão (90 min)',
   ],
   forWhom:
-    'Para líderes que precisam de clareza antes de avançar para novos projetos. O diagnóstico responde uma pergunta: onde a matemática muda o resultado da sua operação?',
+    'Para líderes que precisam de clareza antes de avançar para novos projetos. O diagnóstico responde uma pergunta: onde os dados mudam o resultado da sua operação?',
   guarantee: 'Garantia de escopo: KPIs e entregáveis acordados antes de começar o trabalho.',
   note: 'O valor do Diagnóstico Estratégico é integralmente abatido do investimento no engajamento completo.',
 }
