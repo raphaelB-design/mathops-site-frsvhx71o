@@ -26,10 +26,11 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['"Space Grotesk"', 'sans-serif'],
+        display: ['Inter', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
-        mono: ['"Space Mono"', 'monospace'],
+        mono: ['Inter', 'monospace'],
         sans: ['Inter', 'sans-serif'],
+        serif: ['Inter', 'sans-serif'],
       },
       letterSpacing: {
         extreme: '0.4em',
