@@ -90,12 +90,7 @@ export function Services() {
                   riscos.
                 </p>
               </div>
-              <div className="flex items-center gap-3 font-mono text-xs text-muted-foreground">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white/5 border border-white/10 rounded-sm">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                  Passe o mouse para ver entregáveis
-                </span>
-              </div>
+              <div className="flex items-center gap-3 font-mono text-xs text-muted-foreground"></div>
             </div>
           </div>
         </FadeIn>
