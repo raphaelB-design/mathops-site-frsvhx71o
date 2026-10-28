@@ -24,8 +24,8 @@ const layerMetadata = [
     icon: Eye,
     colorClasses: {
       badge:
-        'border-blue-500/30 bg-blue-500/10 text-blue-400 group-hover:border-blue-400/60 group-hover:text-blue-300',
-      dot: 'bg-blue-400 shadow-[0_0_8px_rgba(59,130,246,0.5)]',
+        'border-blue-500/50 bg-blue-500/20 text-blue-300 shadow-[0_0_12px_rgba(59,130,246,0.22)] group-hover:border-blue-400/80 group-hover:bg-blue-500/25 group-hover:text-blue-100 group-hover:shadow-[0_0_18px_rgba(59,130,246,0.38)]',
+      dot: 'bg-blue-400 shadow-[0_0_8px_rgba(59,130,246,0.9)]',
       legendBorder: 'border-blue-500/30 bg-blue-500/5 text-blue-300',
       bullet: 'text-blue-400',
       bar: 'from-blue-500 via-blue-400 to-cyan-400',
@@ -39,8 +39,8 @@ const layerMetadata = [
     icon: Cpu,
     colorClasses: {
       badge:
-        'border-cyan-500/30 bg-cyan-500/10 text-cyan-400 group-hover:border-cyan-400/60 group-hover:text-cyan-300',
-      dot: 'bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.5)]',
+        'border-cyan-400/50 bg-cyan-400/20 text-cyan-200 shadow-[0_0_12px_rgba(34,211,238,0.22)] group-hover:border-cyan-300/80 group-hover:bg-cyan-400/25 group-hover:text-cyan-100 group-hover:shadow-[0_0_18px_rgba(34,211,238,0.38)]',
+      dot: 'bg-cyan-300 shadow-[0_0_8px_rgba(34,211,238,0.9)]',
       legendBorder: 'border-cyan-500/30 bg-cyan-500/5 text-cyan-300',
       bullet: 'text-cyan-400',
       bar: 'from-cyan-500 via-cyan-400 to-sky-300',
@@ -54,8 +54,8 @@ const layerMetadata = [
     icon: ShieldCheck,
     colorClasses: {
       badge:
-        'border-indigo-400/30 bg-indigo-500/10 text-indigo-300 group-hover:border-indigo-300/60 group-hover:text-indigo-200',
-      dot: 'bg-indigo-300 shadow-[0_0_8px_rgba(165,180,252,0.5)]',
+        'border-indigo-400/50 bg-indigo-500/20 text-indigo-200 shadow-[0_0_12px_rgba(129,140,248,0.22)] group-hover:border-indigo-300/80 group-hover:bg-indigo-500/25 group-hover:text-indigo-100 group-hover:shadow-[0_0_18px_rgba(129,140,248,0.38)]',
+      dot: 'bg-indigo-300 shadow-[0_0_8px_rgba(165,180,252,0.9)]',
       legendBorder: 'border-indigo-500/30 bg-indigo-500/5 text-indigo-300',
       bullet: 'text-indigo-300',
       bar: 'from-indigo-500 via-indigo-400 to-cyan-400',
@@ -220,13 +220,13 @@ export function Services() {
                   {/* Topo do card: Etiqueta/Chip refinado por camada */}
                   <div className="relative z-10 flex items-center justify-between mb-4">
                     <span
-                      className={`inline-flex items-center gap-1.5 font-mono text-[11px] font-semibold px-2.5 py-1 border rounded-md uppercase tracking-wider transition-all duration-200 ${colors.badge}`}
+                      className={`inline-flex items-center gap-2 font-mono text-xs font-semibold px-3 py-1.5 border rounded-md uppercase tracking-wider backdrop-blur-sm transition-all duration-200 ${colors.badge}`}
                     >
                       <span
-                        className={`w-1.5 h-1.5 rounded-full ${colors.dot}`}
+                        className={`w-2 h-2 rounded-full shrink-0 ${colors.dot}`}
                         aria-hidden="true"
                       />
-                      {service.layerName}
+                      <span className="truncate">{service.layerName}</span>
                     </span>
                   </div>
 
