@@ -26,6 +26,5 @@ const commitments = [
 ]
 
 export function Metrics() {
-  return
-  null
+  return null
 }

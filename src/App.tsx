@@ -6,6 +6,8 @@ import { TooltipProvider } from '@/components/ui/tooltip'
 import { Layout } from '@/components/Layout'
 import { IndexSkeleton } from '@/components/skeletons/IndexSkeleton'
 import { SmoothScroll } from '@/components/SmoothScroll'
+import { AuthProvider } from '@/hooks/use-auth'
+import { usePageTracking } from '@/hooks/use-page-tracking'
 
 const retryLazy = (componentImport: () => Promise<any>) =>
   lazy(async () => {
@@ -40,40 +42,52 @@ const PageLoader = () => (
 )
 
 const Diagnostico = retryLazy(() => import('@/pages/Diagnostico'))
+const Estatisticas = retryLazy(() => import('@/pages/Estatisticas'))
+
+function AppTracker() {
+  usePageTracking()
+  return null
+}
 
 const App = () => (
-  <BrowserRouter>
-    <SmoothScroll />
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <Suspense fallback={<PageLoader />}>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route
-              path="/"
-              element={
-                <Suspense fallback={<IndexSkeleton />}>
-                  <Index />
-                </Suspense>
-              }
-            />
-            <Route path="/diagnostico" element={<Diagnostico />} />
-            <Route path="/sobre" element={<Sobre />} />
-            <Route path="/servicos" element={<Navigate to="/#servicos" replace />} />
-            <Route path="/servicos/:slug" element={<Navigate to="/#servicos" replace />} />
-            <Route path="/industrias/:slug" element={<IndustryLayer />} />
-            <Route path="/metodologia" element={<Metodologia />} />
-            <Route path="/termos-de-uso" element={<TermosDeUso />} />
-            <Route path="/politica-de-privacidade" element={<PoliticaDePrivacidade />} />
-            <Route path="/login" element={<Navigate to="/" replace />} />
-            <Route path="/dashboard" element={<Navigate to="/" replace />} />
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Suspense>
-    </TooltipProvider>
-  </BrowserRouter>
+  <AuthProvider>
+    <BrowserRouter>
+      <AppTracker />
+      <SmoothScroll />
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            {/* Hidden admin statistics route - without public Layout */}
+            <Route path="/estatisticas" element={<Estatisticas />} />
+
+            <Route element={<Layout />}>
+              <Route
+                path="/"
+                element={
+                  <Suspense fallback={<IndexSkeleton />}>
+                    <Index />
+                  </Suspense>
+                }
+              />
+              <Route path="/diagnostico" element={<Diagnostico />} />
+              <Route path="/sobre" element={<Sobre />} />
+              <Route path="/servicos" element={<Navigate to="/#servicos" replace />} />
+              <Route path="/servicos/:slug" element={<Navigate to="/#servicos" replace />} />
+              <Route path="/industrias/:slug" element={<IndustryLayer />} />
+              <Route path="/metodologia" element={<Metodologia />} />
+              <Route path="/termos-de-uso" element={<TermosDeUso />} />
+              <Route path="/politica-de-privacidade" element={<PoliticaDePrivacidade />} />
+              <Route path="/login" element={<Navigate to="/" replace />} />
+              <Route path="/dashboard" element={<Navigate to="/" replace />} />
+            </Route>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
+      </TooltipProvider>
+    </BrowserRouter>
+  </AuthProvider>
 )
 
 export default App
