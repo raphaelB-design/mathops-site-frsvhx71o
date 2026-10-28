@@ -5,7 +5,7 @@ const steps = [
     number: '01',
     title: 'Diagnóstico Analítico',
     description:
-      'Mapeamento rigoroso e exaustivo das variáveis de processos e dados. Coletamos e estruturamos as bases da operação, isolando fatos de ruídos e identificando gargalos e pontos críticos.',
+      'Mapeamento detalhado das variáveis de processos e dados. Coletamos e estruturamos as bases da operação, isolando fatos de ruídos e identificando gargalos e pontos críticos.',
   },
   {
     number: '02',
