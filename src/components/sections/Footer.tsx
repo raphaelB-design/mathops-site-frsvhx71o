@@ -68,7 +68,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-sm text-zinc-500 max-w-xs leading-relaxed">
-              Consultoria em dados, processos e indicadores de gestão.
+              Consultoria boutique em dados, processos e indicadores de gestão.
             </p>
             <div className="flex items-center gap-3 mt-2">
               <a
