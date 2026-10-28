@@ -220,7 +220,7 @@ export const LocationMapVisual: React.FC<LocationMapVisualProps> = ({ className 
             />
             <circle cx="9" cy="10" r="3" fill="#22D3EE" />
             <text x="17" y="13" fill="#F8FAFC" fontSize="7" fontWeight="600" letterSpacing="0.3">
-              MathOps #1811
+              MathOps
             </text>
           </g>
 
