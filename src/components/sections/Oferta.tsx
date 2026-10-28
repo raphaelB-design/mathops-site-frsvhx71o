@@ -83,16 +83,7 @@ export function Oferta() {
                 </div>
               </div>
 
-              <div className="pt-8">
-                <Link
-                  to="/diagnostico#formulario-diagnostico"
-                  onClick={handleCtaClick}
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 btn-primary-gradient font-display font-bold text-base rounded-sm group min-h-[44px]"
-                >
-                  Solicitar Diagnóstico Estratégico
-                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </Link>
-              </div>
+              <div className="pt-8"></div>
             </div>
           </FadeIn>
         </div>
