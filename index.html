@@ -64,6 +64,31 @@
       name="keywords"
       content="consultoria em dados, consultoria Power BI, dashboard Power BI, business intelligence, indicadores de gestão, Lean Six Sigma, melhoria de processos, mapeamento de processos BPMN, gestão de riscos, controles internos COSO, controle de obras EVM, consultoria São Paulo"
     />
+    <link rel="canonical" href="https://www.mathops.com.br/" />
+    <script>
+      (function () {
+        try {
+          var search = window.location.search;
+          if (!search) return;
+          var params = new URLSearchParams(search);
+          var cacheKeys = ['v', 'version', '_v', 'cb', 'cache_bust'];
+          var changed = false;
+          for (var i = 0; i < cacheKeys.length; i++) {
+            if (params.has(cacheKeys[i])) {
+              params.delete(cacheKeys[i]);
+              changed = true;
+            }
+          }
+          if (window.location.pathname === '/' || changed) {
+            var rest = params.toString();
+            var cleanUrl = window.location.pathname + (rest ? '?' + rest : '') + window.location.hash;
+            if (cleanUrl !== window.location.pathname + search + window.location.hash) {
+              window.history.replaceState(window.history.state, '', cleanUrl);
+            }
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
 
   <body>

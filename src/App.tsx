@@ -8,6 +8,7 @@ import { IndexSkeleton } from '@/components/skeletons/IndexSkeleton'
 import { SmoothScroll } from '@/components/SmoothScroll'
 import { AuthProvider } from '@/hooks/use-auth'
 import { usePageTracking } from '@/hooks/use-page-tracking'
+import { useCleanCacheParams } from '@/hooks/use-clean-cache-params'
 
 const retryLazy = (componentImport: () => Promise<any>) =>
   lazy(async () => {
@@ -46,6 +47,7 @@ const Estatisticas = retryLazy(() => import('@/pages/Estatisticas'))
 
 function AppTracker() {
   usePageTracking()
+  useCleanCacheParams()
   return null
 }
 
