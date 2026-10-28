@@ -1,6 +1,7 @@
-import { ArrowUp, Linkedin, Mail, MapPin, ArrowUpRight } from 'lucide-react'
+import { ArrowUp, Linkedin, Mail, MapPin } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { BrandLogo } from '@/components/BrandLogo'
+import { LocationMapVisual } from '@/components/LocationMapVisual'
 
 const serviceItems = [
   { label: 'Diagnóstico Estratégico', href: '/diagnostico' },
@@ -150,6 +151,10 @@ export function Footer() {
               <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-zinc-400" />
               <span>Avenida Brigadeiro Faria Lima, 1811 - ESC 1119, Jardim Paulistano/SP</span>
             </div>
+
+            {/* Visual elegante do mapa estilizado dark da MathOps */}
+            <LocationMapVisual className="mt-1 mb-1" />
+
             <a
               href="mailto:contato@mathops.com.br"
               className="text-sm text-zinc-400 hover:text-white transition-colors duration-300"
