@@ -171,8 +171,19 @@ export const LocationMapVisual: React.FC<LocationMapVisualProps> = ({ className 
             Av. Brig. Faria Lima
           </text>
 
-          {/* Marcador MathOps Strategy - Pin no número 1811 (coordenada central x=154, y=74) */}
-          <g transform="translate(154, 74)">
+          {/* Marcador MathOps Strategy - Edifício 1811 (lado ímpar/noroeste da Av. Faria Lima, sobre a quadra/lote do prédio) */}
+          {/* Conector sutil entre o edifício marcado e o badge */}
+          <path
+            d="M 143 71 L 152 64 L 162 64"
+            fill="none"
+            stroke="#3B82F6"
+            strokeWidth="0.8"
+            strokeDasharray="2 1.5"
+            opacity="0.7"
+          />
+
+          {/* Pin sobre o prédio no número 1811 (deslocado da faixa da avenida para a quadra) */}
+          <g transform="translate(143, 71)">
             {/* Halo pulsante animado (desativado se prefers-reduced-motion) */}
             <circle
               r="18"
