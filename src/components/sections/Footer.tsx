@@ -146,9 +146,9 @@ export function Footer() {
 
           <div className="flex flex-col gap-3">
             <h4 className="text-xs uppercase tracking-widest text-zinc-600 mb-1">Contato</h4>
-            <div className="flex items-start gap-2 text-sm text-zinc-400">
-              <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-              <span>São Paulo, Brasil</span>
+            <div className="flex items-start gap-2 text-sm text-zinc-400 leading-relaxed">
+              <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-zinc-400" />
+              <span>Avenida Brigadeiro Faria Lima, 1811 - ESC 1119, Jardim Paulistano/SP</span>
             </div>
             <a
               href="mailto:contato@mathops.com.br"
