@@ -1,2 +1,2 @@
 export const WHATSAPP_URL =
-  'https://wa.me/5511976094559?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20sobre%20o%20Diagn%C3%B3stico%20Estrat%C3%A9gico.'
+  'https://wa.me/5511976094559?text=Ol%C3%A1!%20Conheci%20a%20MathOps%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20o%20Diagn%C3%B3stico%20Estrat%C3%A9gico.%20Podemos%20falar%3F'
