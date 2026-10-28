@@ -34,7 +34,7 @@ export function FinalCallout() {
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
           <div className="mt-6 font-mono text-[10px] uppercase tracking-widest text-[#94A3B8]/70">
-            NDA disponível · Reunião de 30 min · Sem compromisso
+            NDA disponível · Reunião de 30 min
           </div>
         </FadeIn>
       </div>
