@@ -230,40 +230,7 @@ export function QuoteCTAForm() {
           placeholder="Selecione o prazo de início"
           options={TIMELINES}
         />
-        <FormField
-          control={form.control}
-          name="challenge"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className={labelCls}>Seu desafio</FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder="Qual gargalo operacional ou estratégico precisamos resolver?"
-                  className={`${textareaCls} min-h-[120px]`}
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="operation_details"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className={labelCls}>Detalhes operacionais (opcional)</FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder="Informações adicionais sobre sua operação"
-                  className={`${textareaCls} min-h-[80px]`}
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+
         <TurnstileWidget key={formKey} onVerify={setTurnstileToken} />
         <Button
           type="submit"

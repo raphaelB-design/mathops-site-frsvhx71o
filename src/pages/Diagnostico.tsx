@@ -32,10 +32,6 @@ export default function Diagnostico() {
               <h2 className="font-display text-3xl md:text-5xl font-bold mb-6 text-white">
                 Vamos conversar sobre seu desafio
               </h2>
-              <p className="font-body text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
-                Preencha o formulário e nossa equipe entrará em contato em até 48 horas para agendar
-                a conversa técnica de 30 minutos.
-              </p>
             </div>
           </FadeIn>
           <FadeIn delay={200}>
