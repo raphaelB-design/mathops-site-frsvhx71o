@@ -1,149 +1,271 @@
 import { FadeIn } from '@/components/fade-in'
 import { useState } from 'react'
-import { Layers } from 'lucide-react'
-import { serviceLayers, diagnosticoEstrategico } from '@/config/servicesData'
+import { Layers, Eye, Cpu, ShieldCheck, CheckCircle2 } from 'lucide-react'
+import { serviceLayers } from '@/config/servicesData'
 import { SectionBackdrop, SectionBackdropVariant } from '@/components/SectionBackdrop'
 
 interface ServiceCardItem {
   id: string
   name: string
   headline: string
-  entregaveis: string
-  layerLabel: string
+  modulesList: string[]
+  layerNumber: 1 | 2 | 3
+  layerName: string
   layerSlug: string
-  backdropVariant?: SectionBackdropVariant
+  backdropVariant: SectionBackdropVariant
+}
+
+const layerMetadata = [
+  {
+    number: 1,
+    title: 'Camada 1 — Enxergar a Operação',
+    slug: 'diagnostico-e-visibilidade',
+    shortName: 'Visibilidade Operacional',
+    icon: Eye,
+    colorClasses: {
+      badge:
+        'border-blue-500/30 bg-blue-500/10 text-blue-400 group-hover:border-blue-400/60 group-hover:text-blue-300',
+      dot: 'bg-blue-400 shadow-[0_0_8px_rgba(59,130,246,0.5)]',
+      legendBorder: 'border-blue-500/30 bg-blue-500/5 text-blue-300',
+      bullet: 'text-blue-400',
+      bar: 'from-blue-500 via-blue-400 to-cyan-400',
+    },
+  },
+  {
+    number: 2,
+    title: 'Camada 2 — Modelar Decisões',
+    slug: 'analise-e-modelagem',
+    shortName: 'Análise e Modelagem',
+    icon: Cpu,
+    colorClasses: {
+      badge:
+        'border-cyan-500/30 bg-cyan-500/10 text-cyan-400 group-hover:border-cyan-400/60 group-hover:text-cyan-300',
+      dot: 'bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.5)]',
+      legendBorder: 'border-cyan-500/30 bg-cyan-500/5 text-cyan-300',
+      bullet: 'text-cyan-400',
+      bar: 'from-cyan-500 via-cyan-400 to-sky-300',
+    },
+  },
+  {
+    number: 3,
+    title: 'Camada 3 — Governança e Riscos',
+    slug: 'governanca-e-riscos',
+    shortName: 'Governança e Riscos',
+    icon: ShieldCheck,
+    colorClasses: {
+      badge:
+        'border-indigo-400/30 bg-indigo-500/10 text-indigo-300 group-hover:border-indigo-300/60 group-hover:text-indigo-200',
+      dot: 'bg-indigo-300 shadow-[0_0_8px_rgba(165,180,252,0.5)]',
+      legendBorder: 'border-indigo-500/30 bg-indigo-500/5 text-indigo-300',
+      bullet: 'text-indigo-300',
+      bar: 'from-indigo-500 via-indigo-400 to-cyan-400',
+    },
+  },
+] as const
+
+function parseDeliverables(entregaveisText: string): string[] {
+  return entregaveisText
+    .split(',')
+    .map((item) => item.replace(/\.$/, '').trim())
+    .filter((item) => item.length > 0)
 }
 
 export function Services() {
   const [hoveredCardId, setHoveredCardId] = useState<string | null>(null)
-  // Collect the 9 services across three layers + diagnostico
+
+  // Coleta os 9 serviços estritamente organizados nas três camadas estruturadas
   const allServices: ServiceCardItem[] = [
-    // Diagnostico Estrategico (Porta de entrada / Ponto zero)
-    {
-      id: diagnosticoEstrategico.id,
-      name: diagnosticoEstrategico.name,
-      headline: diagnosticoEstrategico.headline,
-      entregaveis: diagnosticoEstrategico.deliverables.slice(0, 3).join(', '),
-      layerLabel: 'Ponto Zero',
-      layerSlug: 'diagnostico-e-visibilidade',
-    },
-    // Camada 1 services
+    // Camada 1: Visibilidade Operacional (3 serviços)
     ...serviceLayers['diagnostico-e-visibilidade'].services.map((s) => ({
       id: s.id,
       name: s.name,
       headline: s.headline,
-      entregaveis: s.modules ? s.modules.map((m) => m.name).join(', ') : s.entregaveis,
-      layerLabel: 'Camada 1',
+      modulesList: s.modules
+        ? s.modules.map((m) => m.name.trim())
+        : parseDeliverables(s.entregaveis),
+      layerNumber: 1 as const,
+      layerName: 'Camada 1 — Enxergar a Operação',
       layerSlug: 'diagnostico-e-visibilidade',
       backdropVariant: 'process' as SectionBackdropVariant,
     })),
-    // Camada 2 services
+    // Camada 2: Análise e Modelagem (3 serviços)
     ...serviceLayers['analise-e-modelagem'].services.map((s) => ({
       id: s.id,
       name: s.name,
       headline: s.headline,
-      entregaveis: s.entregaveis,
-      layerLabel: 'Camada 2',
+      modulesList: s.modules
+        ? s.modules.map((m) => m.name.trim())
+        : parseDeliverables(s.entregaveis),
+      layerNumber: 2 as const,
+      layerName: 'Camada 2 — Modelar Decisões',
       layerSlug: 'analise-e-modelagem',
       backdropVariant: 'control' as SectionBackdropVariant,
     })),
-    // Camada 3 services
+    // Camada 3: Governança e Riscos (3 serviços: inclui Gestão de Riscos Organizacionais e Transformação Organizacional)
     ...serviceLayers['governanca-e-riscos'].services.map((s) => ({
       id: s.id,
       name: s.name,
       headline: s.headline,
-      entregaveis: s.modules ? s.modules.map((m) => m.name).join(', ') : s.entregaveis,
-      layerLabel: 'Camada 3',
+      modulesList: s.modules
+        ? s.modules.map((m) => m.name.trim())
+        : parseDeliverables(s.entregaveis),
+      layerNumber: 3 as const,
+      layerName: 'Camada 3 — Governança e Riscos',
       layerSlug: 'governanca-e-riscos',
       backdropVariant: 'risk' as SectionBackdropVariant,
     })),
   ]
+
+  const getLayerColor = (layerNum: 1 | 2 | 3) => {
+    return (
+      layerMetadata.find((l) => l.number === layerNum)?.colorClasses ||
+      layerMetadata[0].colorClasses
+    )
+  }
 
   return (
     <section
       id="servicos"
       className="relative py-24 md:py-32 px-6 md:px-12 w-full bg-[#0A0F1C] border-t border-[#1E293B] overflow-hidden"
     >
-      {/* 1.3 Brilhos radiais suaves (#3B82F6 e #22D3EE, 10-15% de opacidade, blur alto) atrás da grade */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-[#3B82F6]/12 blur-[160px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] bg-[#22D3EE]/10 blur-[150px] rounded-full pointer-events-none" />
+      {/* Brilhos radiais atmosféricos (#3B82F6 e #22D3EE, 10-15% de opacidade, blur alto) */}
+      <div
+        aria-hidden="true"
+        className="absolute top-1/3 left-1/4 -translate-y-1/2 w-[650px] h-[650px] bg-[#3B82F6]/12 blur-[170px] rounded-full pointer-events-none"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute bottom-16 right-1/4 w-[550px] h-[550px] bg-[#22D3EE]/10 blur-[160px] rounded-full pointer-events-none"
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto w-full">
+        {/* Cabeçalho da Seção com espaçamento generoso e alinhamento equilibrado */}
         <FadeIn>
-          <div className="mb-14">
+          <div className="max-w-3xl mb-12 md:mb-16">
             <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
               Nossas Soluções
             </span>
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-              <div>
-                <h2 className="font-display text-4xl md:text-5xl font-bold mb-4 text-white">
-                  Matriz de Serviços Estratégicos
-                </h2>
-                <p className="font-body text-muted-foreground leading-relaxed max-w-2xl">
-                  Nove serviços em três camadas: enxergar a operação, modelar decisões e governar
-                  riscos.
-                </p>
+            <h2 className="font-display text-4xl sm:text-5xl lg:text-[46px] font-bold text-white tracking-tight mb-5 leading-[1.15]">
+              Matriz de Serviços Estratégicos
+            </h2>
+            <p className="font-body text-base md:text-lg text-[#94A3B8] leading-relaxed">
+              Nove serviços em três camadas: enxergar a operação, modelar decisões e governar
+              riscos.
+            </p>
+          </div>
+        </FadeIn>
+
+        {/* Faixa/Linha de Legenda das Camadas antes da grade */}
+        <FadeIn delay={80}>
+          <div
+            aria-label="Legenda das camadas da Matriz de Serviços"
+            className="mb-10 md:mb-12 p-3 sm:p-4 rounded-xl border border-[#1E293B] bg-[#111827]/60 backdrop-blur-md"
+          >
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-[#94A3B8] font-semibold flex items-center gap-2">
+                <Layers className="w-3.5 h-3.5 text-accent" aria-hidden="true" />
+                Estrutura em 3 Camadas:
+              </span>
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                {layerMetadata.map((layer) => {
+                  const Icon = layer.icon
+                  return (
+                    <div
+                      key={layer.number}
+                      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-md border text-xs font-mono transition-colors ${layer.colorClasses.legendBorder}`}
+                    >
+                      <Icon className="w-3.5 h-3.5" aria-hidden="true" />
+                      <span className="font-semibold text-white/90">{layer.title}</span>
+                    </div>
+                  )
+                })}
               </div>
-              <div className="flex items-center gap-3 font-mono text-xs text-muted-foreground"></div>
             </div>
           </div>
         </FadeIn>
 
-        {/* 4 columns desktop, 1 column mobile */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {allServices.map((service, index) => (
-            <FadeIn key={service.id} delay={60 + index * 40}>
-              <div
-                onMouseEnter={() => setHoveredCardId(service.id)}
-                onMouseLeave={() => setHoveredCardId(null)}
-                className="premium-card group relative flex flex-col h-full p-6 rounded-lg overflow-hidden min-h-[300px]"
-              >
-                {/* 2.3 No hover de cada card, exibir dentro o modelo da sua camada em opacidade baixa */}
-                {service.backdropVariant && hoveredCardId === service.id && (
-                  <div className="absolute inset-0 pointer-events-none z-0">
-                    <SectionBackdrop
-                      variant={service.backdropVariant}
-                      isHovered={true}
-                      opacityClass="opacity-[0.22]"
-                    />
+        {/* Grade de 9 serviços: 3 colunas no desktop, 2 no tablet e 1 no mobile */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7 items-stretch">
+          {allServices.map((service, index) => {
+            const colors = getLayerColor(service.layerNumber)
+            const isHovered = hoveredCardId === service.id
+
+            return (
+              <FadeIn key={service.id} delay={100 + (index % 3) * 60}>
+                <article
+                  onMouseEnter={() => setHoveredCardId(service.id)}
+                  onMouseLeave={() => setHoveredCardId(null)}
+                  className="premium-card group relative flex flex-col h-full p-6 sm:p-7 rounded-xl overflow-hidden min-h-[380px] bg-[#111827]/80 hover:bg-[#111827]/95 transition-all duration-300"
+                >
+                  {/* Backdrop animado da camada correspondente no hover com opacidade baixa */}
+                  {service.backdropVariant && isHovered && (
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 pointer-events-none z-0 transition-opacity duration-300"
+                    >
+                      <SectionBackdrop
+                        variant={service.backdropVariant}
+                        isHovered={true}
+                        opacityClass="opacity-[0.22]"
+                      />
+                    </div>
+                  )}
+
+                  {/* Barra de acento sutil no topo do card */}
+                  <div
+                    aria-hidden="true"
+                    className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-accent via-accent2 to-accent opacity-40 group-hover:opacity-100 transition-opacity duration-300 z-10"
+                  />
+
+                  {/* Topo do card: Etiqueta/Chip refinado por camada */}
+                  <div className="relative z-10 flex items-center justify-between mb-4">
+                    <span
+                      className={`inline-flex items-center gap-1.5 font-mono text-[11px] font-semibold px-2.5 py-1 border rounded-md uppercase tracking-wider transition-all duration-200 ${colors.badge}`}
+                    >
+                      <span
+                        className={`w-1.5 h-1.5 rounded-full ${colors.dot}`}
+                        aria-hidden="true"
+                      />
+                      {service.layerName}
+                    </span>
                   </div>
-                )}
 
-                {/* Accent top bar */}
-                <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-accent to-accent2 opacity-50 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+                  {/* Título do Serviço */}
+                  <h3 className="relative z-10 font-display text-xl font-bold text-white mb-2.5 group-hover:text-accent2 transition-colors duration-200 leading-snug">
+                    {service.name}
+                  </h3>
 
-                {/* Layer Badge */}
-                <div className="relative z-10 flex items-center justify-between mb-4">
-                  <span className="font-mono text-[10px] font-bold px-2 py-0.5 border border-[#1E293B] bg-[#0A0F1C]/80 text-[#94A3B8] rounded-sm uppercase tracking-wider group-hover:border-accent/40 group-hover:text-accent2 transition-colors">
-                    {service.layerLabel}
-                  </span>
-                </div>
+                  {/* Headline do Serviço com contraste aprimorado */}
+                  <p className="relative z-10 font-body text-sm text-[#CBD5E1] leading-relaxed mb-6">
+                    {service.headline}
+                  </p>
 
-                {/* Service Name */}
-                <h3 className="relative z-10 font-display text-lg font-bold text-white mb-2 group-hover:text-accent transition-colors leading-snug">
-                  {service.name}
-                </h3>
-
-                {/* Headline */}
-                <p className="relative z-10 font-body text-xs text-muted-foreground leading-relaxed mb-4 line-clamp-3">
-                  {service.headline}
-                </p>
-
-                {/* Hover reveal: Principais Entregáveis */}
-                <div className="relative z-10 mt-auto pt-4 border-t border-[#1E293B] space-y-2">
-                  <div className="transition-all duration-300">
-                    <span className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground block mb-1 flex items-center gap-1">
-                      <Layers className="w-3 h-3 text-accent" />
+                  {/* Bloco de Entregáveis / Módulos estruturado em lista vertical com marcador sutil */}
+                  <div className="relative z-10 mt-auto pt-4 border-t border-[#1E293B]/90 space-y-2.5">
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-[#94A3B8] flex items-center gap-1.5 font-semibold">
+                      <Layers className="w-3.5 h-3.5 text-accent" aria-hidden="true" />
                       Entregáveis principais:
                     </span>
-                    <p className="font-body text-[11px] text-[#F5F4F0]/80 leading-snug line-clamp-2 group-hover:line-clamp-none transition-all">
-                      {service.entregaveis}
-                    </p>
+
+                    <ul className="space-y-1.5 pt-1" aria-label="Módulos e entregáveis">
+                      {service.modulesList.map((item, mIdx) => (
+                        <li
+                          key={mIdx}
+                          className="font-body text-xs text-[#F1F5F9]/85 leading-snug flex items-start gap-2 group-hover:text-white transition-colors"
+                        >
+                          <CheckCircle2
+                            className={`w-3.5 h-3.5 mt-0.5 shrink-0 ${colors.bullet} opacity-80`}
+                            aria-hidden="true"
+                          />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                </div>
-              </div>
-            </FadeIn>
-          ))}
+                </article>
+              </FadeIn>
+            )
+          })}
         </div>
       </div>
     </section>
