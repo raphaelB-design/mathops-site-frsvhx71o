@@ -20,6 +20,7 @@ import {
 } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { Confetti } from '@/components/confetti'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 
 interface DmaicPhase {
   id: string
@@ -92,7 +93,7 @@ const phases: DmaicPhase[] = [
     letter: 'I',
     name: 'Implement',
     subtitle: 'Solução em produção, não em teoria',
-    vozDoCliente: 'Quero ver a solução funcionando, não uma teoria.',
+    vozDoCliente: 'Quero ver a solução funcionando.',
     metodologia: ['Desenho de solução', 'Piloto controlado', 'Validação A/B'],
     ferramentas: ['Python', 'Power Automate'],
     entregavel: 'Solução implantada e validada',
@@ -218,20 +219,31 @@ function MethodologyComponent() {
             <div className="flex items-center justify-between min-w-[340px] max-w-2xl mx-auto relative px-2">
               {phases.map((p, i) => (
                 <div key={p.id} className="flex items-center flex-1 last:flex-none">
-                  <button
-                    onClick={() => goToPhase(i)}
-                    className={cn(
-                      'w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center font-display font-bold text-lg md:text-xl transition-all duration-300 z-10 relative flex-shrink-0',
-                      activePhase === i
-                        ? 'bg-accent text-white scale-110 stepper-glow border-none'
-                        : activePhase > i
-                          ? 'bg-accent/15 text-accent border border-accent/40 hover:bg-accent/25'
-                          : 'bg-background/40 text-muted-foreground/50 border border-white/8 hover:border-white/25 backdrop-blur-sm',
-                    )}
-                    aria-label={`Ir para fase ${p.name}`}
-                  >
-                    {activePhase > i ? <Check className="w-5 h-5" /> : p.letter}
-                  </button>
+                  <Tooltip delayDuration={150}>
+                    <TooltipTrigger asChild>
+                      <button
+                        onClick={() => goToPhase(i)}
+                        className={cn(
+                          'w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center font-display font-bold text-lg md:text-xl transition-all duration-300 z-10 relative flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+                          activePhase === i
+                            ? 'bg-accent text-white scale-110 stepper-glow border-none'
+                            : activePhase > i
+                              ? 'bg-accent/15 text-accent border border-accent/40 hover:bg-accent/25'
+                              : 'bg-background/40 text-muted-foreground/50 border border-white/8 hover:border-white/25 backdrop-blur-sm',
+                        )}
+                        aria-label={`Ir para fase ${p.name}`}
+                      >
+                        {activePhase > i ? <Check className="w-5 h-5" /> : p.letter}
+                      </button>
+                    </TooltipTrigger>
+                    <TooltipContent
+                      side="top"
+                      sideOffset={8}
+                      className="bg-[#111827]/90 backdrop-blur-md border border-white/10 text-[#F5F4F0] text-xs font-mono font-medium px-3 py-1.5 shadow-xl shadow-black/40 pointer-events-none"
+                    >
+                      {p.name}
+                    </TooltipContent>
+                  </Tooltip>
                   {i < phases.length - 1 && (
                     <div className="flex-1 h-[2px] bg-white/5 mx-2 md:mx-4 relative overflow-hidden rounded-full">
                       <div
