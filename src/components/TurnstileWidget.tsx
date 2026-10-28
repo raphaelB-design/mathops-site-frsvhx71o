@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react'
-import { AlertCircle } from 'lucide-react'
 
 interface TurnstileWidgetProps {
   onVerify: (token: string) => void
@@ -11,8 +10,6 @@ export function TurnstileWidget({ onVerify }: TurnstileWidgetProps) {
 
   useEffect(() => {
     if (!siteKey) {
-      console.error('[MathOps] VITE_TURNSTILE_SITE_KEY não configurada — Turnstile desabilitado')
-      onVerify('')
       return
     }
 
@@ -52,13 +49,9 @@ export function TurnstileWidget({ onVerify }: TurnstileWidgetProps) {
     }
   }, [onVerify, siteKey])
 
+  // Se a chave não estiver configurada no frontend, não renderiza o widget nem mensagem de erro
   if (!siteKey) {
-    return (
-      <div className="w-full flex items-center gap-3 p-3 rounded-lg border border-red-500/30 bg-red-500/10 text-red-200 text-xs font-mono">
-        <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
-        <span>Verificação de segurança indisponível no momento. Configuração pendente.</span>
-      </div>
-    )
+    return null
   }
 
   return (

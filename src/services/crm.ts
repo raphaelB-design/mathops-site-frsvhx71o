@@ -8,9 +8,9 @@ export type CandidateInput = {
   cv_url?: string | null
 }
 
-export const submitCandidate = async (data: CandidateInput, token: string) => {
+export const submitCandidate = async (data: CandidateInput, token?: string) => {
   const { data: responseData, error } = await supabase.functions.invoke('submit-candidate', {
-    body: { ...data, token },
+    body: { ...data, ...(token ? { token } : {}) },
   })
   if (error) throw error
   return responseData
@@ -38,7 +38,7 @@ export type VoCLeadInput = {
   strategic_goals: string
   contact_name: string
   email: string
-  token: string
+  token?: string
 }
 
 export const submitVoCLead = async (data: VoCLeadInput) => {

@@ -112,8 +112,10 @@ export function QuoteCTAForm() {
     },
   })
 
+  const turnstileSiteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY
+
   async function onSubmit(data: FormValues) {
-    if (!turnstileToken) {
+    if (turnstileSiteKey && !turnstileToken) {
       toast({
         title: 'Verificação necessária',
         description: 'Por favor, complete a verificação de segurança.',
@@ -133,7 +135,7 @@ export function QuoteCTAForm() {
           challenge: data.challenge,
           start_timeline: data.start_timeline,
           operation_details: data.operation_details,
-          token: turnstileToken,
+          token: turnstileToken || undefined,
         },
       })
       if (error) throw error
@@ -231,7 +233,7 @@ export function QuoteCTAForm() {
           options={TIMELINES}
         />
 
-        <TurnstileWidget key={formKey} onVerify={setTurnstileToken} />
+        {turnstileSiteKey && <TurnstileWidget key={formKey} onVerify={setTurnstileToken} />}
         <Button
           type="submit"
           disabled={isSubmitting}

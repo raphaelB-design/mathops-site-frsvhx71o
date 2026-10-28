@@ -10,9 +10,9 @@ export type LeadInput = {
   strategic_goals: string
 }
 
-export const submitLead = async (data: LeadInput, token: string) => {
+export const submitLead = async (data: LeadInput, token?: string) => {
   const { data: responseData, error } = await supabase.functions.invoke('submit-lead', {
-    body: { ...data, token },
+    body: { ...data, ...(token ? { token } : {}) },
   })
   if (error) throw error
   return responseData
