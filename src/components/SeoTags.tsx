@@ -17,7 +17,7 @@ export function SeoTags() {
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+55-11-99155-3336',
+      telephone: '+55-11-97609-4559',
       contactType: 'customer service',
       availableLanguage: 'Portuguese',
     },
