@@ -3,7 +3,7 @@ import { MapPin, ExternalLink, Navigation } from 'lucide-react'
 
 // URL segura e oficial para navegação no Google Maps sem iframe ou APIs externas pagas
 const GOOGLE_MAPS_URL =
-  'https://www.google.com/maps/search/?api=1&query=Avenida+Brigadeiro+Faria+Lima,+1811+-+Jardim+Paulistano,+S%C3%A3o+Paulo+-+SP'
+  'https://www.google.com/maps/search/?api=1&query=Avenida+Brigadeiro+Faria+Lima,+1811+-+Faria+Lima,+S%C3%A3o+Paulo+-+SP'
 
 interface LocationMapVisualProps {
   className?: string
@@ -104,7 +104,7 @@ export const LocationMapVisual: React.FC<LocationMapVisualProps> = ({ className 
             strokeLinecap="round"
           />
 
-          {/* Malha viária secundária (ruas transversais do Jardim Paulistano / Itaim / Pinheiros) */}
+          {/* Malha viária secundária (ruas transversais de Faria Lima / Itaim / Pinheiros) */}
           <g stroke="#1E293B" strokeWidth="1.2" opacity="0.75" strokeLinecap="round">
             {/* Ruas transversais */}
             <line x1="10" y1="44" x2="130" y2="44" />
@@ -259,7 +259,7 @@ export const LocationMapVisual: React.FC<LocationMapVisualProps> = ({ className 
       >
         <span className="flex items-center gap-1.5 font-medium truncate">
           <Navigation className="w-3.5 h-3.5 text-[#3B82F6] shrink-0" />
-          <span className="truncate">Jardim Paulistano · SP</span>
+          <span className="truncate">Faria Lima · SP</span>
         </span>
         <span className="inline-flex items-center gap-1 text-[11px] text-zinc-400 group-hover:text-[#3B82F6] transition-colors shrink-0">
           <span>Ver mapa</span>
