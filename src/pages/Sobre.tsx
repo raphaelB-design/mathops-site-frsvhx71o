@@ -83,8 +83,8 @@ export default function Sobre() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="font-serif text-[#94A3B8]">
-                Entregar inteligência analítica aplicada que transforma dados brutos em vantagem
-                competitiva sustentável — com rigor metodológico, rastreabilidade total e foco em
+                Entregar inteligência analítica aplicada, transformando dados brutos em vantagem
+                competitiva sustentável, com rigor metodológico, rastreabilidade total e foco em
                 resultado mensurável.
               </CardContent>
             </Card>
