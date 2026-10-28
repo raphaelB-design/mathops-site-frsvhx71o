@@ -1,8 +1,10 @@
 import { FadeIn } from '@/components/fade-in'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { Layers, Eye, Cpu, ShieldCheck, CheckCircle2 } from 'lucide-react'
 import { serviceLayers } from '@/config/servicesData'
 import { SectionBackdrop, SectionBackdropVariant } from '@/components/SectionBackdrop'
+import { cn } from '@/lib/utils'
 
 interface ServiceCardItem {
   id: string
@@ -72,6 +74,71 @@ function parseDeliverables(entregaveisText: string): string[] {
 
 export function Services() {
   const [hoveredCardId, setHoveredCardId] = useState<string | null>(null)
+  const [highlightedCardId, setHighlightedCardId] = useState<string | null>(null)
+  const location = useLocation()
+
+  // Efeito para rolar e destacar card quando a página for carregada ou quando mudar o hash
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash
+      if (!hash) return
+
+      const rawId = hash.replace('#', '')
+      const targetElement =
+        document.getElementById(rawId) || document.getElementById(`servico-${rawId}`)
+
+      if (targetElement) {
+        setHighlightedCardId(rawId)
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        targetElement.scrollIntoView({
+          behavior: prefersReducedMotion ? 'auto' : 'smooth',
+          block: 'center',
+        })
+      }
+    }
+
+    if (location.hash) {
+      handleHash()
+      const t1 = setTimeout(handleHash, 80)
+      const t2 = setTimeout(handleHash, 280)
+      const clearTimer = setTimeout(() => {
+        setHighlightedCardId(null)
+      }, 2500)
+
+      return () => {
+        clearTimeout(t1)
+        clearTimeout(t2)
+        clearTimeout(clearTimer)
+      }
+    }
+  }, [location.hash, location.pathname])
+
+  // Ouvinte adicional de hashchange para quando clicar em serviços repetidamente dentro da própria Home
+  useEffect(() => {
+    const onHashChange = () => {
+      const hash = window.location.hash
+      if (!hash) return
+
+      const rawId = hash.replace('#', '')
+      const targetElement =
+        document.getElementById(rawId) || document.getElementById(`servico-${rawId}`)
+
+      if (targetElement) {
+        setHighlightedCardId(rawId)
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        targetElement.scrollIntoView({
+          behavior: prefersReducedMotion ? 'auto' : 'smooth',
+          block: 'center',
+        })
+        setTimeout(() => {
+          setHighlightedCardId(null)
+        }, 2500)
+      }
+    }
+
+    window.addEventListener('hashchange', onHashChange)
+    return () => window.removeEventListener('hashchange', onHashChange)
+  }, [])
 
   // Coleta os 9 serviços estritamente organizados nas três camadas estruturadas
   const allServices: ServiceCardItem[] = [
@@ -190,13 +257,41 @@ export function Services() {
             const colors = getLayerColor(service.layerNumber)
             const isHovered = hoveredCardId === service.id
 
+            const isHighlighted =
+              highlightedCardId === service.id ||
+              highlightedCardId === `servico-${service.id}` ||
+              (index === 0 &&
+                (highlightedCardId === 'diagnostico-estrategico' ||
+                  highlightedCardId === 'servico-diagnostico-estrategico'))
+
+            const mainCardId =
+              index === 0 ? 'servico-diagnostico-estrategico' : `servico-${service.id}`
+
             return (
               <FadeIn key={service.id} delay={100 + (index % 3) * 60}>
                 <article
+                  id={mainCardId}
                   onMouseEnter={() => setHoveredCardId(service.id)}
                   onMouseLeave={() => setHoveredCardId(null)}
-                  className="premium-card group relative flex flex-col h-full p-6 sm:p-7 rounded-xl overflow-hidden min-h-[380px] bg-[#111827]/80 hover:bg-[#111827]/95 transition-all duration-300"
+                  className={cn(
+                    'premium-card group relative flex flex-col h-full p-6 sm:p-7 rounded-xl overflow-hidden min-h-[380px] bg-[#111827]/80 hover:bg-[#111827]/95 transition-all duration-300 scroll-mt-28',
+                    isHighlighted && 'card-highlight-active',
+                  )}
                 >
+                  {/* Âncoras invisíveis adicionais para suportar IDs diretos e compatibilidade */}
+                  <span id={service.id} className="sr-only scroll-mt-28" aria-hidden="true" />
+                  <span
+                    id={`servico-${service.id}`}
+                    className="sr-only scroll-mt-28"
+                    aria-hidden="true"
+                  />
+                  {index === 0 && (
+                    <span
+                      id="diagnostico-estrategico"
+                      className="sr-only scroll-mt-28"
+                      aria-hidden="true"
+                    />
+                  )}
                   {/* Backdrop animado da camada correspondente no hover com opacidade baixa */}
                   {service.backdropVariant && isHovered && (
                     <div

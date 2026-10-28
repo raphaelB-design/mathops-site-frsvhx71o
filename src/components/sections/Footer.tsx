@@ -1,33 +1,44 @@
 import { ArrowUp, Linkedin, Mail, MapPin } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { BrandLogo } from '@/components/BrandLogo'
 import { LocationMapVisual } from '@/components/LocationMapVisual'
 
 const serviceItems = [
-  { label: 'Diagnóstico Estratégico', href: '/diagnostico' },
+  {
+    label: 'Diagnóstico Estratégico',
+    targetId: 'servico-diagnostico-estrategico',
+  },
   {
     label: 'Diagnóstico e Visibilidade Operacional',
+    targetId: 'servico-diagnostico-e-visibilidade-operacional',
   },
   {
     label: 'Controle de Projetos',
+    targetId: 'servico-controle-projetos-obra-evm',
   },
   {
     label: 'Monitoramento Estatístico da Operação',
+    targetId: 'servico-monitoramento-estatistico-operacao',
   },
   {
     label: 'Auditoria de Memórias de Cálculo',
+    targetId: 'servico-memorias',
   },
   {
     label: 'Lean Six Sigma & Melhoria de Processos',
+    targetId: 'servico-lean-six-sigma-processos',
   },
   {
     label: 'Modelagem Estatística de Custos',
+    targetId: 'servico-modelagem-estatistica-custos',
   },
   {
     label: 'Gestão de Riscos Organizacionais',
+    targetId: 'servico-gestao-riscos-organizacionais',
   },
   {
     label: 'Transformação Organizacional e Gestão Estratégica',
+    targetId: 'servico-transformacao-organizacional',
   },
 ]
 
@@ -39,6 +50,9 @@ const navLinks = [
 ]
 
 export function Footer() {
+  const navigate = useNavigate()
+  const location = useLocation()
+
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -125,24 +139,44 @@ export function Footer() {
 
           <div className="flex flex-col gap-3">
             <h4 className="text-xs uppercase tracking-widest text-zinc-600 mb-1">Serviços</h4>
-            {serviceItems.map((item) =>
-              item.href ? (
+            {serviceItems.map((item) => {
+              const href = `/#${item.targetId}`
+              const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+                const prefersReducedMotion = window.matchMedia(
+                  '(prefers-reduced-motion: reduce)',
+                ).matches
+
+                if (location.pathname === '/') {
+                  e.preventDefault()
+                  // Atualiza hash na URL sem recarregar
+                  window.history.pushState(null, '', href)
+                  const el = document.getElementById(item.targetId)
+                  if (el) {
+                    el.scrollIntoView({
+                      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+                      block: 'center',
+                    })
+                    // Dispara evento para highlight visual imediato se já estava em hash igual
+                    window.dispatchEvent(new HashChangeEvent('hashchange'))
+                  }
+                } else {
+                  // Se vier de outra página (ex: /diagnostico, /metodologia), usa navigate
+                  e.preventDefault()
+                  navigate(href)
+                }
+              }
+
+              return (
                 <Link
                   key={item.label}
-                  to={item.href}
-                  className="text-sm text-zinc-400 hover:text-white transition-colors duration-300 inline-flex items-center gap-2 min-h-[36px]"
+                  to={href}
+                  onClick={handleClick}
+                  className="text-sm text-zinc-400 hover:text-white transition-colors duration-300 inline-flex items-center gap-2 min-h-[36px] focus:outline-none focus-visible:text-white focus-visible:underline"
                 >
                   {item.label}
                 </Link>
-              ) : (
-                <span
-                  key={item.label}
-                  className="text-sm text-zinc-400 select-none inline-flex items-center gap-2 min-h-[36px]"
-                >
-                  {item.label}
-                </span>
-              ),
-            )}
+              )
+            })}
           </div>
 
           <div className="flex flex-col gap-3">

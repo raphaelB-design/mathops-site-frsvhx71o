@@ -34,11 +34,22 @@ export function Layout() {
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace('#', '')
-      const el = document.getElementById(id)
-      if (el) {
-        setTimeout(() => {
-          el.scrollIntoView({ behavior: 'smooth' })
-        }, 100)
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      const scrollToTarget = () => {
+        const el = document.getElementById(id)
+        if (el) {
+          el.scrollIntoView({
+            behavior: prefersReducedMotion ? 'auto' : 'smooth',
+            block: id.startsWith('servico-') ? 'center' : 'start',
+          })
+        }
+      }
+      // Executa logo e com um pequeno delay para aguardar carregamento de componentes assíncronos/lazy
+      const timer1 = setTimeout(scrollToTarget, 50)
+      const timer2 = setTimeout(scrollToTarget, 250)
+      return () => {
+        clearTimeout(timer1)
+        clearTimeout(timer2)
       }
     }
   }, [location.pathname, location.hash])
@@ -48,9 +59,13 @@ export function Layout() {
     if (href.startsWith('/#')) {
       const id = href.replace('/#', '')
       if (location.pathname === '/') {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
         const el = document.getElementById(id)
         if (el) {
-          el.scrollIntoView({ behavior: 'smooth' })
+          el.scrollIntoView({
+            behavior: prefersReducedMotion ? 'auto' : 'smooth',
+            block: id.startsWith('servico-') ? 'center' : 'start',
+          })
         }
       }
     }

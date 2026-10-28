@@ -305,12 +305,37 @@
     will-change: opacity, filter;
   }
 
+  @keyframes card-highlight-pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(34, 211, 238, 0);
+      border-color: rgba(34, 211, 238, 0.3);
+    }
+    20% {
+      box-shadow:
+        0 0 0 3px rgba(34, 211, 238, 0.65),
+        0 0 28px rgba(59, 130, 246, 0.5);
+      border-color: rgba(34, 211, 238, 0.95);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(34, 211, 238, 0);
+      border-color: #1e293b;
+    }
+  }
+
+  .card-highlight-active {
+    animation: card-highlight-pulse 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .animate-logo-m {
       animation: none !important;
       filter: none !important;
       opacity: 1 !important;
       will-change: auto !important;
+    }
+    .card-highlight-active {
+      animation: none !important;
+      border-color: rgba(34, 211, 238, 0.8) !important;
     }
   }
 }
