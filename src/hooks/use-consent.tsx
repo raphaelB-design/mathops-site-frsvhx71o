@@ -1,11 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  useCallback,
-  ReactNode,
-} from 'react'
+import { createContext, useContext, useEffect, useState, useCallback, ReactNode } from 'react'
 import {
   ConsentPreferences,
   StoredConsent,
@@ -87,14 +80,11 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
     setIsPreferencesOpen(false)
   }, [])
 
-  const handleSavePreferences = useCallback(
-    (prefs: { analytics: boolean; marketing: boolean }) => {
-      const updated = saveConsent(prefs)
-      setConsent(updated)
-      setIsPreferencesOpen(false)
-    },
-    [],
-  )
+  const handleSavePreferences = useCallback((prefs: { analytics: boolean; marketing: boolean }) => {
+    const updated = saveConsent(prefs)
+    setConsent(updated)
+    setIsPreferencesOpen(false)
+  }, [])
 
   const isUndecided = consent === null
   const isAnalyticsAllowed = Boolean(consent?.preferences?.analytics)

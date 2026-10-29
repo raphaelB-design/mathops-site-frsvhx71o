@@ -1,5 +1,5 @@
 import { supabase } from '@/lib/supabase/client'
-import { hasAnalyticsConsent } from '@/lib/consent'
+import { shouldTrackVisits } from '@/lib/consent'
 
 const VISITOR_STORAGE_KEY = 'mathops_vid'
 const LAST_PAGE_KEY = 'mathops_last_pv'
@@ -129,8 +129,11 @@ export interface VisitorJourneyStep {
 export function recordPageView(pathname: string) {
   if (typeof window === 'undefined') return
 
-  // Gate LGPD: só grava evento se houver consentimento explícito para analítico
-  if (!hasAnalyticsConsent()) {
+  // Regra LGPD MathOps:
+  // - Se undecided (sem escolha): continua medindo visitas anônimas próprias normalmente.
+  // - Se analytics consentido: mede normalmente.
+  // - Se analytics recusado pelo usuário: interrompe a coleta de novas visitas.
+  if (!shouldTrackVisits()) {
     return
   }
 

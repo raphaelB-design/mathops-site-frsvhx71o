@@ -215,10 +215,11 @@ export function Footer() {
             <button
               type="button"
               onClick={openPreferences}
-              className="inline-flex items-center gap-1.5 text-xs text-zinc-500 hover:text-zinc-300 transition-colors duration-300 py-1"
+              className="inline-flex items-center gap-1.5 text-xs text-zinc-500 hover:text-zinc-300 transition-colors duration-300 py-1 focus:outline-none focus-visible:underline"
+              aria-label="Abrir painel de preferências de cookies"
             >
               <SlidersHorizontal className="w-3.5 h-3.5 text-blue-400" />
-              <span>Privacidade e cookies</span>
+              <span>Cookies e Privacidade</span>
             </button>
             <Link
               to="/privacidade"
