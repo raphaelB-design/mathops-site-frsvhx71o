@@ -49,9 +49,9 @@ export function CookieBanner() {
                   className="text-xs sm:text-sm text-zinc-300 leading-relaxed font-sans max-w-4xl"
                 >
                   Utilizamos cookies e tecnologias similares para melhorar a sua experiência de
-                  navegação, garantir o funcionamento seguro do site e, opcionalmente, medir de
-                  forma anônima e agregada a nossa audiência. Suas escolhas são respeitadas de
-                  acordo com a Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018).{' '}
+                  navegação, garantir o funcionamento seguro do site e medir de forma anônima e
+                  agregada a nossa audiência. Suas escolhas são respeitadas de acordo com a Lei
+                  Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018).{' '}
                   <Link
                     to="/privacidade"
                     className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors font-medium inline-block ml-1"
