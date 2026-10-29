@@ -125,19 +125,19 @@ export function CookiePreferencesModal() {
           </div>
         </div>
 
-        <DialogFooter className="flex-col sm:flex-row sm:justify-between items-stretch sm:items-center gap-2 pt-3 border-t border-white/5">
+        <DialogFooter className="flex-col sm:flex-row sm:justify-between items-stretch sm:items-center gap-2.5 pt-3 border-t border-white/5">
           <div className="flex items-center gap-2">
             <button
               type="button"
               onClick={rejectAll}
-              className="flex-1 sm:flex-none px-3 py-2 rounded-sm border border-white/10 text-xs font-medium text-zinc-400 hover:text-white hover:bg-white/5 transition-colors"
+              className="flex-1 sm:flex-none px-3.5 py-2 rounded-sm border border-red-500/30 bg-red-500/10 hover:bg-red-500/20 text-xs font-medium text-red-300 hover:text-red-200 transition-colors"
             >
-              Recusar todos
+              Recusar opcionais
             </button>
             <button
               type="button"
               onClick={acceptAll}
-              className="flex-1 sm:flex-none px-3 py-2 rounded-sm border border-white/10 text-xs font-medium text-zinc-400 hover:text-white hover:bg-white/5 transition-colors"
+              className="flex-1 sm:flex-none px-3.5 py-2 rounded-sm border border-white/10 text-xs font-medium text-zinc-300 hover:text-white hover:bg-white/5 transition-colors"
             >
               Aceitar todos
             </button>
@@ -147,14 +147,14 @@ export function CookiePreferencesModal() {
             <button
               type="button"
               onClick={closePreferences}
-              className="flex-1 sm:flex-none px-4 py-2.5 rounded-sm border border-white/10 text-xs font-medium text-zinc-300 hover:text-white hover:bg-white/5 transition-colors"
+              className="flex-1 sm:flex-none px-3.5 py-2 rounded-sm border border-white/10 text-xs font-medium text-zinc-400 hover:text-white hover:bg-white/5 transition-colors"
             >
               Cancelar
             </button>
             <button
               type="button"
               onClick={handleSave}
-              className="flex-1 sm:flex-none px-5 py-2.5 rounded-sm bg-blue-600 hover:bg-blue-500 text-xs font-semibold text-white transition-colors shadow-sm"
+              className="flex-1 sm:flex-none px-4 py-2 rounded-sm bg-blue-600 hover:bg-blue-500 text-xs font-semibold text-white transition-colors shadow-sm"
             >
               Salvar preferências
             </button>
