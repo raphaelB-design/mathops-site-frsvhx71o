@@ -10,6 +10,10 @@ import { Footer } from '@/components/sections/Footer'
 import { CookieBanner } from '@/components/CookieBanner'
 import { cn } from '@/lib/utils'
 
+// URL do portal do CRM MathOps (mantida comentada/inativa até definição final da URL pelo usuário)
+// export const CRM_PORTAL_URL = 'https://crm.mathops.com.br'
+const CRM_PORTAL_URL: string | null = null // Defina como string (ex: 'https://crm.mathops.com.br') quando o link estiver pronto
+
 const NAV_LINKS = [
   { label: 'Início', href: '/' },
   { label: 'Serviços', href: '/#servicos' },
@@ -86,7 +90,11 @@ export function Layout() {
     }
   }
 
-  const handleNavCRM = () => {
+  const handleNavCRM = (e: React.MouseEvent) => {
+    if (!CRM_PORTAL_URL) {
+      e.preventDefault()
+      return
+    }
     trackClick('crm_portal_open', 'navbar')
   }
 
@@ -131,15 +139,13 @@ export function Layout() {
               </Link>
             ))}
           </div>
-          {/* Porta de entrada do CRM dos clientes (abre em nova aba) */}
-          {/* TODO: substituir pela URL real do CRM quando o usuário fornecer */}
-          <a
-            href="https://crm.mathops.com.br"
-            target="_blank"
-            rel="noopener noreferrer"
+          {/* Porta de entrada da Área do Cliente / CRM MathOps */}
+          {/* Temporariamente sem link até o usuário ajustar o endereço do CRM */}
+          <button
+            type="button"
             onClick={handleNavCRM}
-            className="hidden lg:inline-flex items-center gap-2.5 px-4 py-2.5 text-xs font-medium tracking-wide rounded-sm min-h-[44px] bg-accent/10 border border-accent/40 text-white hover:bg-accent/20 hover:border-accent/70 hover:shadow-[0_0_20px_rgba(59,130,246,0.35)] transition-all duration-200 group focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            aria-label="Área do Cliente (Acessar CRM MathOps em nova aba)"
+            className="hidden lg:inline-flex items-center gap-2.5 px-4 py-2.5 text-xs font-medium tracking-wide rounded-sm min-h-[44px] bg-accent/10 border border-accent/40 text-white hover:bg-accent/20 hover:border-accent/70 hover:shadow-[0_0_20px_rgba(59,130,246,0.35)] transition-all duration-200 group focus:outline-none focus-visible:ring-2 focus-visible:ring-accent cursor-pointer"
+            aria-label="Área do Cliente"
           >
             <span className="flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
@@ -149,7 +155,7 @@ export function Layout() {
             </span>
 
             <ExternalLink className="w-3.5 h-3.5 text-zinc-400 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform transition-colors" />
-          </a>
+          </button>
           <button
             className="lg:hidden text-white p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center"
             onClick={() => setIsMenuOpen(true)}
