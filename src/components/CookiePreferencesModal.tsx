@@ -12,8 +12,15 @@ import { useConsent } from '@/hooks/use-consent'
 import { ShieldCheck, BarChart3, Target } from 'lucide-react'
 
 export function CookiePreferencesModal() {
-  const { consent, isPreferencesOpen, closePreferences, savePreferences, acceptAll, rejectAll } =
-    useConsent()
+  const {
+    consent,
+    isUndecided,
+    isPreferencesOpen,
+    closePreferences,
+    savePreferences,
+    acceptAll,
+    rejectAll,
+  } = useConsent()
 
   // Default para categorias opcionais quando o usuário abre para fazer escolha explícita: OFF
   const [analytics, setAnalytics] = useState(false)
@@ -37,9 +44,36 @@ export function CookiePreferencesModal() {
     savePreferences({ analytics, marketing })
   }
 
+  // Quando o visitante é indeciso, o modal não pode ser fechado por Escape nem clique fora se não gravar decisão.
+  // Mas se for reaberto via rodapé (já com consentimento prévio), pode ser fechado livremente.
+  const handleOpenChange = (open: boolean) => {
+    if (!open) {
+      if (!isUndecided) {
+        closePreferences()
+      } else {
+        // Se indeciso, fechar o painel de preferências retorna para a tela bloqueadora principal
+        closePreferences()
+      }
+    }
+  }
+
   return (
-    <Dialog open={isPreferencesOpen} onOpenChange={(open) => !open && closePreferences()}>
-      <DialogContent className="bg-zinc-950 border-white/10 text-white max-w-xl p-5 sm:p-7">
+    <Dialog open={isPreferencesOpen} onOpenChange={handleOpenChange}>
+      <DialogContent
+        className="bg-zinc-950/95 backdrop-blur-2xl border-white/10 text-white max-w-xl p-5 sm:p-7 z-[110]"
+        onEscapeKeyDown={(e) => {
+          if (isUndecided) {
+            // Se indeciso, Escape volta para o banner principal em vez de fechar tudo e liberar o site sem decisão
+            e.preventDefault()
+            closePreferences()
+          }
+        }}
+        onPointerDownOutside={(e) => {
+          if (isUndecided) {
+            e.preventDefault()
+          }
+        }}
+      >
         <DialogHeader className="space-y-2 text-left">
           <div className="flex items-center gap-2.5 text-blue-400">
             <ShieldCheck className="w-5 h-5 text-blue-400" />
@@ -130,14 +164,14 @@ export function CookiePreferencesModal() {
             <button
               type="button"
               onClick={rejectAll}
-              className="flex-1 sm:flex-none px-3.5 py-2 rounded-sm border border-red-500/30 bg-red-500/10 hover:bg-red-500/20 text-xs font-medium text-red-300 hover:text-red-200 transition-colors"
+              className="flex-1 sm:flex-none px-3.5 py-2 rounded-sm border border-red-500/30 bg-red-500/10 hover:bg-red-500/20 text-xs font-medium text-red-300 hover:text-red-200 transition-colors min-h-[36px]"
             >
               Recusar opcionais
             </button>
             <button
               type="button"
               onClick={acceptAll}
-              className="flex-1 sm:flex-none px-3.5 py-2 rounded-sm border border-white/10 text-xs font-medium text-zinc-300 hover:text-white hover:bg-white/5 transition-colors"
+              className="flex-1 sm:flex-none px-3.5 py-2 rounded-sm border border-white/10 text-xs font-medium text-zinc-300 hover:text-white hover:bg-white/5 transition-colors min-h-[36px]"
             >
               Aceitar todos
             </button>
@@ -147,14 +181,14 @@ export function CookiePreferencesModal() {
             <button
               type="button"
               onClick={closePreferences}
-              className="flex-1 sm:flex-none px-3.5 py-2 rounded-sm border border-white/10 text-xs font-medium text-zinc-400 hover:text-white hover:bg-white/5 transition-colors"
+              className="flex-1 sm:flex-none px-3.5 py-2 rounded-sm border border-white/10 text-xs font-medium text-zinc-400 hover:text-white hover:bg-white/5 transition-colors min-h-[36px]"
             >
-              Cancelar
+              {isUndecided ? 'Voltar' : 'Cancelar'}
             </button>
             <button
               type="button"
               onClick={handleSave}
-              className="flex-1 sm:flex-none px-4 py-2 rounded-sm bg-blue-600 hover:bg-blue-500 text-xs font-semibold text-white transition-colors shadow-sm"
+              className="flex-1 sm:flex-none px-4 py-2 rounded-sm bg-blue-600 hover:bg-blue-500 text-xs font-semibold text-white transition-colors shadow-sm min-h-[36px]"
             >
               Salvar preferências
             </button>
