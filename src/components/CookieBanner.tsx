@@ -48,15 +48,14 @@ export function CookieBanner() {
                   id="cookie-consent-desc"
                   className="text-xs sm:text-sm text-zinc-300 leading-relaxed font-sans max-w-4xl"
                 >
-                  Utilizamos cookies e tecnologias similares para melhorar a sua experiência de
-                  navegação, garantir o funcionamento seguro do site e medir de forma anônima e
-                  agregada a nossa audiência. Suas escolhas são respeitadas de acordo com a Lei
-                  Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018).{' '}
+                  Usamos cookies para melhorar sua experiência no site, analisar o tráfego e
+                  personalizar conteúdos e anúncios. Você pode aceitar todos, gerenciar suas
+                  preferências ou recusar os não essenciais. Saiba mais em nossa{' '}
                   <Link
                     to="/privacidade"
-                    className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors font-medium inline-block ml-1"
+                    className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors font-medium"
                   >
-                    Diretrizes de Privacidade e Cookies
+                    Política de Privacidade
                   </Link>
                   .
                 </p>
