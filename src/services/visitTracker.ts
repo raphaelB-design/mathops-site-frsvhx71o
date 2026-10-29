@@ -93,6 +93,34 @@ export interface VisitStatsData {
   periodDays: number
 }
 
+export interface VisitorSummaryItem {
+  visitor_id: string
+  pageviews_count: number
+  first_seen: string
+  last_seen: string
+  device: 'mobile' | 'desktop' | string
+  first_referrer: string
+}
+
+export interface VisitorStatsResponse {
+  period_days: number
+  total_visitors: number
+  total_pageviews: number
+  avg_pageviews_per_visitor: number
+  limit: number
+  offset: number
+  has_more: boolean
+  visitors: VisitorSummaryItem[]
+}
+
+export interface VisitorJourneyStep {
+  id: string
+  path: string
+  referrer_host: string
+  device: string
+  created_at: string
+}
+
 /**
  * Fire-and-forget visit logger via Supabase RPC.
  * Never throws, never blocks UI or navigation.
@@ -164,4 +192,44 @@ export async function fetchVisitStats(days: 7 | 30 = 30): Promise<VisitStatsData
   }
 
   return data as VisitStatsData
+}
+
+/**
+ * Fetches breakdown of individual anonymous visitors for authorized admin users.
+ */
+export async function fetchVisitorsList(
+  days: 7 | 30 = 30,
+  limit: number = 20,
+  offset: number = 0,
+): Promise<VisitorStatsResponse> {
+  const { data, error } = await (supabase as any).rpc('get_visitor_stats', {
+    p_days: days,
+    p_limit: limit,
+    p_offset: offset,
+  })
+
+  if (error) {
+    throw error
+  }
+
+  return data as VisitorStatsResponse
+}
+
+/**
+ * Fetches chronological browsing journey for a single visitor_id.
+ */
+export async function fetchVisitorJourney(
+  visitorId: string,
+  days: 7 | 30 = 30,
+): Promise<VisitorJourneyStep[]> {
+  const { data, error } = await (supabase as any).rpc('get_visitor_journey', {
+    p_visitor_id: visitorId,
+    p_days: days,
+  })
+
+  if (error) {
+    throw error
+  }
+
+  return (data || []) as VisitorJourneyStep[]
 }
