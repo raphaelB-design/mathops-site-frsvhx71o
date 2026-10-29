@@ -147,9 +147,7 @@ export function Layout() {
                 Área do Cliente
               </span>
             </span>
-            <span className="text-[10px] uppercase font-mono tracking-widest px-1.5 py-0.5 rounded bg-accent/20 text-accent-foreground/90 border border-accent/30 font-semibold">
-              CRM
-            </span>
+
             <ExternalLink className="w-3.5 h-3.5 text-zinc-400 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform transition-colors" />
           </a>
           <button
