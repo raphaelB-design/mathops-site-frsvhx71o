@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
-import { Menu, ArrowRight } from 'lucide-react'
+import { Menu, ArrowRight, ExternalLink } from 'lucide-react'
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 import { BrandLogo } from '@/components/BrandLogo'
 import { trackClick } from '@/services/analytics'
@@ -86,8 +86,8 @@ export function Layout() {
     }
   }
 
-  const handleNavDiagnostic = () => {
-    trackClick('diagnostic_open', 'navbar')
+  const handleNavCRM = () => {
+    trackClick('crm_portal_open', 'navbar')
   }
 
   const handleMobileDiagnostic = () => {
@@ -131,14 +131,27 @@ export function Layout() {
               </Link>
             ))}
           </div>
-          <Link
-            to="/diagnostico"
-            onClick={handleNavDiagnostic}
-            className="hidden lg:inline-flex items-center gap-2 btn-primary-gradient px-5 py-3 text-sm font-medium tracking-wide rounded-sm min-h-[44px]"
+          {/* Porta de entrada do CRM dos clientes (abre em nova aba) */}
+          {/* TODO: substituir pela URL real do CRM quando o usuário fornecer */}
+          <a
+            href="https://crm.mathops.com.br"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={handleNavCRM}
+            className="hidden lg:inline-flex items-center gap-2.5 px-4 py-2.5 text-xs font-medium tracking-wide rounded-sm min-h-[44px] bg-accent/10 border border-accent/40 text-white hover:bg-accent/20 hover:border-accent/70 hover:shadow-[0_0_20px_rgba(59,130,246,0.35)] transition-all duration-200 group focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            aria-label="Área do Cliente (Acessar CRM MathOps em nova aba)"
           >
-            Solicitar Diagnóstico Estratégico
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+            <span className="flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+              <span className="text-zinc-200 group-hover:text-white transition-colors text-sm font-medium">
+                Área do Cliente
+              </span>
+            </span>
+            <span className="text-[10px] uppercase font-mono tracking-widest px-1.5 py-0.5 rounded bg-accent/20 text-accent-foreground/90 border border-accent/30 font-semibold">
+              CRM
+            </span>
+            <ExternalLink className="w-3.5 h-3.5 text-zinc-400 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform transition-colors" />
+          </a>
           <button
             className="lg:hidden text-white p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center"
             onClick={() => setIsMenuOpen(true)}
