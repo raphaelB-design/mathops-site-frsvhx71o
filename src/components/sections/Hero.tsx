@@ -16,8 +16,8 @@ const statsCards = [
     sub: 'Metodologia DMAIC aplicada em projetos reais',
   },
   {
-    label: 'PLATAFORMA',
-    value: 'Power BI',
+    label: 'VISIBILIDADE',
+    value: 'Dashboards',
     isNumeric: false,
     sub: 'Painéis executivos e modelagem de dados',
   },
@@ -79,9 +79,9 @@ export function Hero() {
 
           <FadeIn delay={300}>
             <p className="font-body text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed mb-10">
-              Mapeamos seus processos, estruturamos seus indicadores e entregamos painéis em Power
-              BI com cada cálculo documentado e auditável. Para gestores que precisam decidir com
-              fatos.
+              Mapeamos seus processos, estruturamos seus indicadores e entregamos dashboards
+              interativos com cada cálculo documentado e auditável. Para gestores que precisam
+              decidir com fatos.
             </p>
             <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-4">
               <Link

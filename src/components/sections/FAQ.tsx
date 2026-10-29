@@ -21,7 +21,7 @@ const faqs = [
   {
     question: 'Como o modelo final é entregue?',
     answer:
-      'Em painel Power BI publicado no seu ambiente, acompanhado de documentação, memória de cálculo e dicionário de dados.',
+      'Em painéis e dashboards publicados no seu ambiente, acompanhados de documentação, memória de cálculo e dicionário de dados.',
   },
   {
     question: 'Existe um Acordo de Confidencialidade (NDA) envolvido?',

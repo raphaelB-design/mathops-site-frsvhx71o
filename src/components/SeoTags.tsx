@@ -31,7 +31,7 @@ export function SeoTags() {
       </title>
       <meta
         name="description"
-        content="Indicadores confiáveis, painéis em Power BI, melhoria de processos com Lean Six Sigma e gestão de riscos com COSO. Comece pelo Diagnóstico Estratégico."
+        content="Indicadores confiáveis, painéis gerenciais, melhoria de processos com Lean Six Sigma e gestão de riscos com COSO. Comece pelo Diagnóstico Estratégico."
       />
       <meta
         property="og:title"
@@ -39,7 +39,7 @@ export function SeoTags() {
       />
       <meta
         property="og:description"
-        content="Indicadores confiáveis, painéis em Power BI, melhoria de processos com Lean Six Sigma e gestão de riscos com COSO. Comece pelo Diagnóstico Estratégico."
+        content="Indicadores confiáveis, painéis gerenciais, melhoria de processos com Lean Six Sigma e gestão de riscos com COSO. Comece pelo Diagnóstico Estratégico."
       />
       <meta
         name="twitter:title"
@@ -47,7 +47,7 @@ export function SeoTags() {
       />
       <meta
         name="twitter:description"
-        content="Indicadores confiáveis, painéis em Power BI, melhoria de processos com Lean Six Sigma e gestão de riscos com COSO. Comece pelo Diagnóstico Estratégico."
+        content="Indicadores confiáveis, painéis gerenciais, melhoria de processos com Lean Six Sigma e gestão de riscos com COSO. Comece pelo Diagnóstico Estratégico."
       />
       <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
     </Helmet>

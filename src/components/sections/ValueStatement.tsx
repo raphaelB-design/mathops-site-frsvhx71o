@@ -3,7 +3,7 @@ import { SectionBackdrop } from '@/components/SectionBackdrop'
 
 const pills = [
   'DMAIC · Lean Six Sigma',
-  'Power BI',
+  'Dashboards Gerenciais',
   'Controle Estatístico de Processo',
   'Mapeamento BPMN',
   'Earned Value (EVM)',

@@ -41,7 +41,7 @@ export const serviceLayers: Record<string, ServiceLayer> = {
     layerNumber: 1,
     metrics: [
       { value: 'KPIs', label: 'Indicadores executivos centralizados' },
-      { value: 'Power BI', label: 'Plataforma dos painéis entregues' },
+      { value: 'Dashboards', label: 'Painéis e relatórios executivos' },
       { value: 'BPMN 2.0', label: 'Padrão de modelagem aplicado' },
     ],
     anchor: false,
@@ -56,7 +56,7 @@ export const serviceLayers: Record<string, ServiceLayer> = {
         name: 'Diagnóstico e Visibilidade Operacional',
         image: 'https://img.usecurling.com/p/800/600?q=abstract',
         headline: 'Engenharia reversa da sua operação',
-        dor: 'Mapeamento de processos (AS IS/TO BE) e construção de painel executivo em Power BI, substituindo relatório manual por medição em tempo real',
+        dor: 'Mapeamento de processos (AS IS/TO BE) e construção de painel executivo interativo, substituindo relatório manual por medição em tempo real',
         entregaveis: 'Ver módulos.',
         tecnicos: 'Ver módulos.',
         fit: 'Empresas que cresceram mais rápido do que sua capacidade de enxergar a própria operação, e precisam de governança sem um investimento inicial pesado.',
@@ -66,9 +66,9 @@ export const serviceLayers: Record<string, ServiceLayer> = {
             entregaveis: 'Imersão de Diagnóstico, Topologia AS IS, Arquitetura TO BE.',
           },
           {
-            name: 'Observatório de Dados (Painel Power BI)',
+            name: 'Observatório de Dados (Painel Gerencial)',
             entregaveis:
-              'Integração Power BI, Centralização de KPIs C-Level, Painel Analítico de Alta Fidelidade.',
+              'Integração de Dados, Centralização de KPIs C-Level, Painel Analítico de Alta Fidelidade.',
           },
         ],
       },
