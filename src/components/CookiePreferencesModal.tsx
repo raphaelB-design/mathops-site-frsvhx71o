@@ -44,36 +44,15 @@ export function CookiePreferencesModal() {
     savePreferences({ analytics, marketing })
   }
 
-  // Quando o visitante é indeciso, o modal não pode ser fechado por Escape nem clique fora se não gravar decisão.
-  // Mas se for reaberto via rodapé (já com consentimento prévio), pode ser fechado livremente.
   const handleOpenChange = (open: boolean) => {
     if (!open) {
-      if (!isUndecided) {
-        closePreferences()
-      } else {
-        // Se indeciso, fechar o painel de preferências retorna para a tela bloqueadora principal
-        closePreferences()
-      }
+      closePreferences()
     }
   }
 
   return (
     <Dialog open={isPreferencesOpen} onOpenChange={handleOpenChange}>
-      <DialogContent
-        className="bg-zinc-950/95 backdrop-blur-2xl border-white/10 text-white max-w-xl p-5 sm:p-7 z-[110]"
-        onEscapeKeyDown={(e) => {
-          if (isUndecided) {
-            // Se indeciso, Escape volta para o banner principal em vez de fechar tudo e liberar o site sem decisão
-            e.preventDefault()
-            closePreferences()
-          }
-        }}
-        onPointerDownOutside={(e) => {
-          if (isUndecided) {
-            e.preventDefault()
-          }
-        }}
-      >
+      <DialogContent className="bg-zinc-950/95 backdrop-blur-2xl border-white/10 text-white max-w-xl p-5 sm:p-7 z-[110]">
         <DialogHeader className="space-y-2 text-left">
           <div className="flex items-center gap-2.5 text-blue-400">
             <ShieldCheck className="w-5 h-5 text-blue-400" />
