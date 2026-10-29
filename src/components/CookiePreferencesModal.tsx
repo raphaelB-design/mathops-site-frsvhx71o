@@ -58,21 +58,24 @@ export function CookiePreferencesModal() {
         </DialogHeader>
 
         <div className="space-y-3.5 my-2 max-h-[60vh] overflow-y-auto pr-1">
-          {/* Categoria (a): Essencial */}
+          {/* Categoria (a): Essencial - Padrão oficial ANPD / gov.br (badge 'Sempre ativo', sem toggle) */}
           <div className="p-4 rounded-lg bg-white/[0.03] border border-white/5 space-y-2 text-left">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-2 font-medium text-sm text-zinc-200">
                 <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Essencial (Necessários)</span>
+                <span>Cookies estritamente necessários (Essenciais)</span>
               </div>
-              <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0">
+              <span className="text-[11px] font-medium px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0">
                 Sempre ativo
               </span>
             </div>
             <p className="text-xs text-zinc-400 leading-relaxed">
-              Necessários para o funcionamento seguro e estável do site, incluindo memorização das
-              suas preferências de privacidade e proteção contra ataques. Não podem ser desligados e
-              não armazenam dados pessoais identificáveis.
+              Estes cookies são indispensáveis ao funcionamento do site e ativam recursos
+              fundamentais, como segurança da infraestrutura, gerenciamento de rede, identificador
+              anônimo de navegação e a gravação de suas preferências de privacidade (como esta
+              própria escolha). Eles não podem ser desativados em nossos sistemas, embora você possa
+              configurá-los ou bloqueá-los diretamente nas configurações do seu navegador — ciente
+              de que isso poderá prejudicar ou impedir o correto funcionamento de partes do site.
             </p>
           </div>
 
@@ -81,19 +84,20 @@ export function CookiePreferencesModal() {
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-2 font-medium text-sm text-zinc-200">
                 <BarChart3 className="w-4 h-4 text-blue-400 shrink-0" />
-                <span>Estatística e medição anônima</span>
+                <span>Cookies de estatística (Medição anônima)</span>
               </div>
               <Switch
                 checked={analytics}
                 onCheckedChange={setAnalytics}
-                aria-label="Ativar estatística e medição anônima"
+                aria-label="Ativar cookies de estatística"
                 className="data-[state=checked]:bg-blue-600 shrink-0"
               />
             </div>
             <p className="text-xs text-zinc-400 leading-relaxed">
-              Coleta interna própria e anônima de métricas de navegação (páginas acessadas,
-              dispositivo móvel/desktop, tempo). Se desativado, novas visitas do seu navegador não
-              serão contabilizadas nas estatísticas do site.
+              Coletam dados sobre o uso do site de forma agregada e anônima (páginas visitadas,
+              tempo de navegação e categoria de dispositivo), permitindo compreender a audiência e
+              melhorar a experiência de navegação. Caso você desative esta categoria, suas visitas
+              não serão contabilizadas em nossas métricas estatísticas internas.
             </p>
           </div>
 
@@ -102,19 +106,21 @@ export function CookiePreferencesModal() {
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-2 font-medium text-sm text-zinc-200">
                 <Target className="w-4 h-4 text-purple-400 shrink-0" />
-                <span>Marketing e remarketing</span>
+                <span>Cookies de marketing</span>
               </div>
               <Switch
                 checked={marketing}
                 onCheckedChange={setMarketing}
-                aria-label="Ativar marketing e remarketing"
+                aria-label="Ativar cookies de marketing"
                 className="data-[state=checked]:bg-blue-600 shrink-0"
               />
             </div>
             <p className="text-xs text-zinc-400 leading-relaxed">
-              Reservado para futuras campanhas em canais parceiros. Hoje, o site não carrega nenhum
-              pixel ou rastreador de terceiros; ativar esta opção apenas registra sua autorização
-              para quando tags forem implementadas.
+              Utilizados para registrar a interação do visitante e possibilitar a exibição de
+              anúncios ou conteúdos relevantes por parceiros em campanhas futuras. No momento, o
+              site não carrega nenhum pixel ou rastreador de terceiros; a ativação serve
+              exclusivamente para registrar seu consentimento prévio caso tais campanhas sejam
+              iniciadas.
             </p>
           </div>
         </div>
