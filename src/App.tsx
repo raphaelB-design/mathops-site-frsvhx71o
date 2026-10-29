@@ -7,6 +7,7 @@ import { Layout } from '@/components/Layout'
 import { IndexSkeleton } from '@/components/skeletons/IndexSkeleton'
 import { SmoothScroll } from '@/components/SmoothScroll'
 import { AuthProvider } from '@/hooks/use-auth'
+import { ConsentProvider } from '@/hooks/use-consent'
 import { usePageTracking } from '@/hooks/use-page-tracking'
 import { useCleanCacheParams } from '@/hooks/use-clean-cache-params'
 
@@ -33,6 +34,7 @@ const Metodologia = retryLazy(() => import('@/pages/Metodologia'))
 const IndustryLayer = retryLazy(() => import('@/pages/IndustryLayer'))
 const TermosDeUso = retryLazy(() => import('@/pages/TermosDeUso'))
 const PoliticaDePrivacidade = retryLazy(() => import('@/pages/PoliticaDePrivacidade'))
+const Privacidade = retryLazy(() => import('@/pages/Privacidade'))
 
 const PageLoader = () => (
   <div className="min-h-screen flex flex-col items-center justify-center w-full bg-background">
@@ -53,42 +55,45 @@ function AppTracker() {
 
 const App = () => (
   <AuthProvider>
-    <BrowserRouter>
-      <AppTracker />
-      <SmoothScroll />
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            {/* Hidden admin statistics route - without public Layout */}
-            <Route path="/estatisticas" element={<Estatisticas />} />
+    <ConsentProvider>
+      <BrowserRouter>
+        <AppTracker />
+        <SmoothScroll />
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              {/* Hidden admin statistics route - without public Layout */}
+              <Route path="/estatisticas" element={<Estatisticas />} />
 
-            <Route element={<Layout />}>
-              <Route
-                path="/"
-                element={
-                  <Suspense fallback={<IndexSkeleton />}>
-                    <Index />
-                  </Suspense>
-                }
-              />
-              <Route path="/diagnostico" element={<Diagnostico />} />
-              <Route path="/sobre" element={<Sobre />} />
-              <Route path="/servicos" element={<Navigate to="/#servicos" replace />} />
-              <Route path="/servicos/:slug" element={<Navigate to="/#servicos" replace />} />
-              <Route path="/industrias/:slug" element={<IndustryLayer />} />
-              <Route path="/metodologia" element={<Metodologia />} />
-              <Route path="/termos-de-uso" element={<TermosDeUso />} />
-              <Route path="/politica-de-privacidade" element={<PoliticaDePrivacidade />} />
-              <Route path="/login" element={<Navigate to="/" replace />} />
-              <Route path="/dashboard" element={<Navigate to="/" replace />} />
-            </Route>
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
-      </TooltipProvider>
-    </BrowserRouter>
+              <Route element={<Layout />}>
+                <Route
+                  path="/"
+                  element={
+                    <Suspense fallback={<IndexSkeleton />}>
+                      <Index />
+                    </Suspense>
+                  }
+                />
+                <Route path="/diagnostico" element={<Diagnostico />} />
+                <Route path="/sobre" element={<Sobre />} />
+                <Route path="/servicos" element={<Navigate to="/#servicos" replace />} />
+                <Route path="/servicos/:slug" element={<Navigate to="/#servicos" replace />} />
+                <Route path="/industrias/:slug" element={<IndustryLayer />} />
+                <Route path="/metodologia" element={<Metodologia />} />
+                <Route path="/termos-de-uso" element={<TermosDeUso />} />
+                <Route path="/politica-de-privacidade" element={<PoliticaDePrivacidade />} />
+                <Route path="/privacidade" element={<Privacidade />} />
+                <Route path="/login" element={<Navigate to="/" replace />} />
+                <Route path="/dashboard" element={<Navigate to="/" replace />} />
+              </Route>
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </TooltipProvider>
+      </BrowserRouter>
+    </ConsentProvider>
   </AuthProvider>
 )
 

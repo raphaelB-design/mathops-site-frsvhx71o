@@ -1,7 +1,8 @@
-import { ArrowUp, Linkedin, Mail, MapPin } from 'lucide-react'
+import { ArrowUp, Linkedin, Mail, MapPin, SlidersHorizontal } from 'lucide-react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { BrandLogo } from '@/components/BrandLogo'
 import { LocationMapVisual } from '@/components/LocationMapVisual'
+import { useConsent } from '@/hooks/use-consent'
 
 const serviceItems = [
   {
@@ -52,6 +53,7 @@ const navLinks = [
 export function Footer() {
   const navigate = useNavigate()
   const location = useLocation()
+  const { openPreferences } = useConsent()
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
@@ -209,16 +211,30 @@ export function Footer() {
           <p className="text-xs text-zinc-600">
             © {new Date().getFullYear()} MathOps Strategy. Todos os direitos reservados.
           </p>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+            <button
+              type="button"
+              onClick={openPreferences}
+              className="inline-flex items-center gap-1.5 text-xs text-zinc-500 hover:text-zinc-300 transition-colors duration-300 py-1"
+            >
+              <SlidersHorizontal className="w-3.5 h-3.5 text-blue-400" />
+              <span>Privacidade e cookies</span>
+            </button>
+            <Link
+              to="/privacidade"
+              className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors duration-300 py-1"
+            >
+              Privacidade
+            </Link>
             <Link
               to="/termos-de-uso"
-              className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors duration-300"
+              className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors duration-300 py-1"
             >
               Termos de Uso
             </Link>
             <Link
               to="/politica-de-privacidade"
-              className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors duration-300"
+              className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors duration-300 py-1"
             >
               Política de Privacidade
             </Link>

@@ -1,4 +1,5 @@
 import { supabase } from '@/lib/supabase/client'
+import { hasAnalyticsConsent } from '@/lib/consent'
 
 const VISITOR_STORAGE_KEY = 'mathops_vid'
 const LAST_PAGE_KEY = 'mathops_last_pv'
@@ -127,6 +128,11 @@ export interface VisitorJourneyStep {
  */
 export function recordPageView(pathname: string) {
   if (typeof window === 'undefined') return
+
+  // Gate LGPD: só grava evento se houver consentimento explícito para analítico
+  if (!hasAnalyticsConsent()) {
+    return
+  }
 
   // Ignore admin and internal pages
   if (

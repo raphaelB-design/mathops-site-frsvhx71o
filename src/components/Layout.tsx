@@ -7,6 +7,7 @@ import { trackClick } from '@/services/analytics'
 import { FloatingWhatsApp } from '@/components/FloatingWhatsApp'
 import { FloatingContactWidget } from '@/components/FloatingContactWidget'
 import { Footer } from '@/components/sections/Footer'
+import { CookieBanner } from '@/components/CookieBanner'
 import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
@@ -196,6 +197,7 @@ export function Layout() {
       <Footer />
       <FloatingWhatsApp />
       <FloatingContactWidget />
+      <CookieBanner />
     </div>
   )
 }

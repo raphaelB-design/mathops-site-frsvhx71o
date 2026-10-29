@@ -18,4 +18,16 @@ export function usePageTracking() {
 
     recordPageView(currentPath)
   }, [location.pathname])
+
+  // Quando o usuário concede consentimento analítico na mesma página,
+  // aciona o registro da página atual sem precisar que ele troque de rota
+  useEffect(() => {
+    const handleConsentChange = () => {
+      recordPageView(location.pathname)
+    }
+    window.addEventListener('mathops:consent-updated', handleConsentChange)
+    return () => {
+      window.removeEventListener('mathops:consent-updated', handleConsentChange)
+    }
+  }, [location.pathname])
 }
