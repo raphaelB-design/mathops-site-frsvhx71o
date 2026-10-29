@@ -20,16 +20,16 @@ export function CookieBanner() {
           aria-describedby="cookie-consent-desc"
           className={cn(
             'fixed bottom-0 left-0 right-0 z-50 w-full pointer-events-auto',
-            'border-t border-white/15 bg-zinc-950/85 backdrop-blur-md shadow-2xl shadow-black/80',
+            'border-t border-white/15 bg-zinc-950/70 backdrop-blur-md shadow-2xl shadow-black/80',
             prefersReduced
               ? 'transition-none'
               : 'transition-all duration-300 animate-in slide-in-from-bottom-4',
           )}
         >
-          <div className="max-w-7xl mx-auto px-4 py-3.5 sm:px-6 sm:py-4 lg:px-8">
-            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3.5 sm:gap-4">
+          <div className="max-w-7xl mx-auto px-4 py-5 sm:px-6 sm:py-6 lg:px-8">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 sm:gap-6">
               {/* Bloco de conteúdo / texto ANPD */}
-              <div className="space-y-1.5 flex-1 pr-0 lg:pr-4">
+              <div className="space-y-2 flex-1 pr-0 lg:pr-6">
                 <div className="flex items-center gap-2 text-blue-400">
                   <ShieldCheck className="w-4 h-4 text-blue-400 shrink-0" />
                   <span className="text-[11px] font-semibold tracking-wider uppercase font-mono">
@@ -46,7 +46,7 @@ export function CookieBanner() {
 
                 <p
                   id="cookie-consent-desc"
-                  className="text-xs text-zinc-300 leading-relaxed font-sans max-w-4xl"
+                  className="text-xs sm:text-sm text-zinc-300 leading-relaxed font-sans max-w-4xl"
                 >
                   Utilizamos cookies e tecnologias similares para melhorar a sua experiência de
                   navegação, garantir o funcionamento seguro do site e, opcionalmente, medir de
@@ -60,20 +60,6 @@ export function CookieBanner() {
                   </Link>
                   .
                 </p>
-
-                {/* Categorias compactas informativas */}
-                <div className="flex flex-wrap items-center gap-2 pt-0.5 text-[11px]">
-                  <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-white/[0.04] border border-white/10 text-zinc-300">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                    Essenciais:{' '}
-                    <strong className="text-emerald-400 font-medium">Sempre ativo</strong>
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-white/[0.04] border border-white/10 text-zinc-400">
-                    <span className="w-1.5 h-1.5 rounded-full bg-zinc-500" />
-                    Estatística e Marketing:{' '}
-                    <span className="text-zinc-300 font-medium">Desativados por padrão</span>
-                  </span>
-                </div>
               </div>
 
               {/* Botões de Ação na Faixa: Apenas Preferências e Aceitar todos */}
@@ -81,7 +67,7 @@ export function CookieBanner() {
                 <button
                   type="button"
                   onClick={openPreferences}
-                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-3.5 py-2 sm:px-4 sm:py-2 rounded-sm border border-white/20 bg-white/5 hover:bg-white/10 text-xs font-medium text-zinc-200 hover:text-white transition-colors min-h-[38px] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2.5 sm:px-4 sm:py-2.5 rounded-sm border border-white/20 bg-white/5 hover:bg-white/10 text-xs font-medium text-zinc-200 hover:text-white transition-colors min-h-[40px] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
                 >
                   <SlidersHorizontal className="w-3.5 h-3.5 text-blue-400 shrink-0" />
                   <span>Preferências</span>
@@ -90,7 +76,7 @@ export function CookieBanner() {
                 <button
                   type="button"
                   onClick={acceptAll}
-                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2 sm:px-5 sm:py-2 rounded-sm bg-blue-600 hover:bg-blue-500 text-xs font-semibold text-white transition-colors min-h-[38px] shadow-md shadow-blue-900/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2.5 sm:px-5 sm:py-2.5 rounded-sm bg-blue-600 hover:bg-blue-500 text-xs font-semibold text-white transition-colors min-h-[40px] shadow-md shadow-blue-900/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
                 >
                   <Check className="w-3.5 h-3.5 text-white shrink-0" />
                   <span>Aceitar todos</span>
