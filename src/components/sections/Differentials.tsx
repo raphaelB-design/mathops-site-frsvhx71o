@@ -36,9 +36,9 @@ export function Differentials() {
               <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
                 Nossos Diferenciais
               </span>
-              <h2 className="font-display text-4xl md:text-5xl font-bold">
-                Por que MathOps Strategy?
-              </h2>
+              <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight">
+                Por que a MathOps
+              </h2>{' '}
             </div>
             <Link
               to="/diagnostico"

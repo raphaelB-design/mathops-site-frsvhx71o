@@ -185,7 +185,7 @@ export function HeroExecutiveChart() {
         {/* Header do painel */}
         <div className="flex items-center justify-between pb-4 border-b border-[#1E293B] mb-5">
           <div>
-            <span className="font-mono text-[10px] uppercase tracking-widest text-[#94A3B8] block">
+            <span className="font-mono text-[10px] uppercase tracking-wider text-[#94A3B8] block">
               Painel Executivo C-Level
             </span>
             <h4 className="font-display text-base font-bold text-[#F5F4F0]">

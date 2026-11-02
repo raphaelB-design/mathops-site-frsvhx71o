@@ -69,7 +69,7 @@ export default function IndustryLayer() {
               </span>
             </div>
 
-            <h1 className="font-display text-5xl md:text-7xl font-bold mb-6 max-w-4xl drop-shadow-2xl text-white">
+            <h1 className="font-display text-5xl md:text-7xl font-bold tracking-tight mb-6 max-w-4xl drop-shadow-2xl text-white">
               {layer.name}
             </h1>
 
@@ -84,7 +84,7 @@ export default function IndustryLayer() {
       <section className="py-24 px-6 md:px-12 bg-background border-b border-white/10">
         <div className="max-w-4xl mx-auto">
           <FadeIn>
-            <h2 className="font-display text-3xl md:text-4xl font-bold mb-8 text-white">
+            <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-8 text-white">
               A MathOps na {layer.name}
             </h2>
             <div className="text-xl leading-relaxed text-white/80 font-body space-y-6">
@@ -98,7 +98,7 @@ export default function IndustryLayer() {
       <section className="py-24 px-6 md:px-12 bg-black border-t border-white/5 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <FadeIn>
-            <h2 className="font-display text-3xl font-bold mb-10 text-white">
+            <h2 className="font-display text-3xl font-bold tracking-tight mb-10 text-white">
               Explore Outras Indústrias
             </h2>
           </FadeIn>

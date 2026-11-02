@@ -62,9 +62,9 @@ export function FAQ() {
         <div className="max-w-3xl mx-auto">
           <FadeIn>
             <div className="mb-16">
-              <h2 className="font-display text-3xl md:text-5xl font-bold mb-6">
-                Dúvidas Frequentes
-              </h2>
+              <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tight mb-6">
+                Perguntas Frequentes
+              </h2>{' '}
               <p className="font-body text-white/60 text-lg">
                 Transparência metodológica é o nosso padrão. Entenda como operamos antes de firmar
                 compromissos.

@@ -58,7 +58,7 @@ export default function Metodologia() {
                 <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
                   Modelagem Matemática
                 </span>
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-6">
+                <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-white mb-6">
                   Estruturando o Caos
                 </h2>
               </div>
@@ -83,7 +83,7 @@ export default function Metodologia() {
                 <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
                   Estatística Avançada
                 </span>
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-6">
+                <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-white mb-6">
                   Separando o Sinal do Ruído
                 </h2>
               </div>

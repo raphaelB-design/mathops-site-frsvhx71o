@@ -189,7 +189,7 @@ export function Layout() {
                 key={link.href}
                 to={link.href}
                 className={cn(
-                  'text-lg font-serif transition-colors duration-300 min-h-[44px] py-3 flex items-center',
+                  'text-lg font-display transition-colors duration-300 min-h-[44px] py-3 flex items-center',
                   location.pathname === link.href ? 'text-white' : 'text-zinc-400 hover:text-white',
                 )}
                 onClick={() => handleLinkClick(link.href)}

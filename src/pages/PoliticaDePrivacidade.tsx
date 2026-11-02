@@ -13,13 +13,13 @@ export default function PoliticaDePrivacidade() {
                 Política de Privacidade
               </h1>
             </SlideUpMask>
-            <p className="text-muted-foreground font-serif text-lg">
+            <p className="text-muted-foreground font-body text-lg">
               Última atualização: {new Date().toLocaleDateString('pt-BR')}
             </p>
             <Separator className="w-24 bg-accent/50 mt-8" />
           </div>
 
-          <div className="space-y-12 text-muted-foreground font-serif leading-relaxed">
+          <div className="space-y-12 text-muted-foreground font-body leading-relaxed">
             <section className="space-y-4">
               <h2 className="font-display text-2xl text-foreground font-bold">
                 1. Compromisso com a LGPD

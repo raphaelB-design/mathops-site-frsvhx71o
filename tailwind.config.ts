@@ -26,11 +26,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Inter', 'sans-serif'],
+        display: ['Instrument Sans', 'Inter', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
-        mono: ['Inter', 'monospace'],
         sans: ['Inter', 'sans-serif'],
-        serif: ['Inter', 'sans-serif'],
+        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       letterSpacing: {
         extreme: '0.4em',

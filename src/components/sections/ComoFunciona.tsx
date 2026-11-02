@@ -48,7 +48,7 @@ export function ComoFunciona() {
             <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
               Como Funciona
             </span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 text-white">
+            <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight mb-6 text-white">
               Do diagnóstico à visibilidade
             </h2>
             <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">

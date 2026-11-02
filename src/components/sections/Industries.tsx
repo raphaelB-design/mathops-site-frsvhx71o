@@ -17,7 +17,7 @@ export function Industries() {
               <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
                 Aplicações Setoriais
               </span>
-              <h2 className="font-display text-4xl md:text-5xl font-bold">
+              <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight">
                 Experiência Cross-Industry
               </h2>
             </div>

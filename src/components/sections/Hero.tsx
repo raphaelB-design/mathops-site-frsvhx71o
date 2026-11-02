@@ -53,7 +53,7 @@ export function Hero() {
 
       {/* Top badge */}
       <FadeIn delay={50}>
-        <div className="relative z-10 inline-flex items-center gap-2 px-3 py-1.5 border border-white/10 bg-white/5 rounded-full font-mono text-xs uppercase tracking-widest text-muted-foreground">
+        <div className="relative z-10 inline-flex items-center gap-2 px-3 py-1.5 border border-white/10 bg-white/5 rounded-full font-mono text-xs uppercase tracking-wider text-muted-foreground">
           <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse" />
           Dados · Processos · Decisão
         </div>
@@ -121,7 +121,7 @@ export function Hero() {
             <FadeIn key={stat.label} delay={500 + idx * 100}>
               <div className="premium-card p-6 rounded-xl h-full flex flex-col justify-between group">
                 <div>
-                  <span className="font-mono text-[10px] md:text-xs text-muted-foreground uppercase tracking-widest block mb-2 group-hover:text-accent2 transition-colors">
+                  <span className="font-mono text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider block mb-2 group-hover:text-accent2 transition-colors">
                     {stat.label}
                   </span>
                   <span className="font-display text-3xl md:text-4xl font-bold text-white block mb-2 group-hover:text-accent transition-colors duration-300">
@@ -148,7 +148,7 @@ export function Hero() {
       <FadeIn delay={800}>
         <button
           onClick={scrollToServices}
-          className="relative z-10 flex items-center justify-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-white transition-colors mx-auto mt-8 min-h-[44px] min-w-[44px] px-3"
+          className="relative z-10 flex items-center justify-center gap-2 font-mono text-xs uppercase tracking-wider text-muted-foreground hover:text-white transition-colors mx-auto mt-8 min-h-[44px] min-w-[44px] px-3"
         >
           <ChevronDown className="w-4 h-4 animate-bounce" />
           Explorar

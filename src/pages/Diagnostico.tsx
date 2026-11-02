@@ -29,7 +29,7 @@ export default function Diagnostico() {
               <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
                 Solicitar Diagnóstico
               </span>
-              <h2 className="font-display text-3xl md:text-5xl font-bold mb-6 text-white">
+              <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tight mb-6 text-white">
                 Vamos conversar sobre seu desafio
               </h2>
             </div>

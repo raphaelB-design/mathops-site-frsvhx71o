@@ -35,7 +35,7 @@ export default function Sobre() {
             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-6">
               <SlideUpMask delay={100}>Sobre a MathOps</SlideUpMask>
             </h1>
-            <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground font-serif italic">
+            <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground font-body italic">
               Decisões de gestão baseadas em dados que você pode provar.
             </p>
           </FadeIn>
@@ -55,7 +55,7 @@ export default function Sobre() {
               <Separator className="w-12 bg-accent/50" />
             </div>
 
-            <div className="space-y-8 text-xl md:text-2xl font-serif leading-relaxed text-muted-foreground">
+            <div className="space-y-8 text-xl md:text-2xl font-body leading-relaxed text-muted-foreground">
               <p>
                 A MathOps nasceu da convicção de que a excelência operacional não é um privilégio de
                 grandes corporações. Empresas de qualquer porte enfrentam decisões complexas que
@@ -82,7 +82,7 @@ export default function Sobre() {
                   Missão
                 </CardTitle>
               </CardHeader>
-              <CardContent className="font-serif text-[#94A3B8]">
+              <CardContent className="font-body text-[#94A3B8]">
                 Entregar inteligência analítica aplicada, transformando dados brutos em vantagem
                 competitiva sustentável, com rigor metodológico, rastreabilidade total e foco em
                 resultado mensurável.
@@ -95,7 +95,7 @@ export default function Sobre() {
                   Visão
                 </CardTitle>
               </CardHeader>
-              <CardContent className="font-serif text-[#94A3B8]">
+              <CardContent className="font-body text-[#94A3B8]">
                 Ser referência em consultoria de dados e processos no Brasil, reconhecida pela
                 rastreabilidade das entregas e pela capacidade de tornar decisões complexas simples
                 de executar.
@@ -108,7 +108,7 @@ export default function Sobre() {
                   Valores
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4 font-serif text-[#94A3B8]">
+              <CardContent className="space-y-4 font-body text-[#94A3B8]">
                 <ul className="space-y-2">
                   <li>
                     <span>Rigor antes de velocidade</span>

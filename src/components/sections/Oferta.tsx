@@ -14,7 +14,7 @@ export function Oferta() {
             <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
               Porta de Entrada
             </span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight mb-6">
               {diagnosticoEstrategico.name}
             </h2>
             <p className="font-body text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">

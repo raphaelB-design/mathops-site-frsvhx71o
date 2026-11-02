@@ -30,7 +30,7 @@ export function HowItWorks() {
             <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
               Nosso Processo
             </span>
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tight text-white mb-6">
               A Engenharia do Resultado
             </h2>
           </div>

@@ -11,7 +11,7 @@ export function QuoteCTA() {
               <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
                 Solicitar Diagnóstico
               </span>
-              <h2 className="font-display text-3xl md:text-5xl font-bold mb-6">
+              <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tight mb-6">
                 Vamos conversar sobre seu desafio
               </h2>
               <p className="font-body text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
