@@ -1,4 +1,5 @@
 import { supabase } from '@/lib/supabase/client'
+import { loadGoogleAnalytics, unloadGoogleAnalytics } from '@/lib/ga'
 
 /**
  * Gestão de Consentimento LGPD (MathOps Strategy)
@@ -149,6 +150,13 @@ export function saveConsent(
 
   // Registra no banco para auditoria de conformidade LGPD (fire-and-forget)
   recordConsentLog(completePreferences, action)
+
+  // Gerencia o ciclo de vida do Google Analytics conforme categoria Analítica
+  if (completePreferences.analytics) {
+    loadGoogleAnalytics()
+  } else {
+    unloadGoogleAnalytics()
+  }
 
   // Notifica ponto de extensão para pixels de marketing
   if (completePreferences.marketing) {

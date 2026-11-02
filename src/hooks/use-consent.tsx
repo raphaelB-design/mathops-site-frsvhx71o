@@ -9,6 +9,7 @@ import {
   hasAnalyticsConsent,
   hasMarketingConsent,
 } from '@/lib/consent'
+import { loadGoogleAnalytics } from '@/lib/ga'
 
 interface ConsentContextValue {
   /** Consentimento persistido atualmente, ou null se não decidiu */
@@ -40,6 +41,11 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
   const [isPreferencesOpen, setIsPreferencesOpen] = useState(false)
 
   useEffect(() => {
+    // Inicialização do Google Analytics: SOMENTE se consentimento analítico explícito foi concedido previamente
+    if (hasAnalyticsConsent()) {
+      loadGoogleAnalytics()
+    }
+
     // Sincroniza caso o consentimento seja alterado em outra aba ou via evento customizado
     const handleConsentEvent = (e: Event) => {
       const customEvent = e as CustomEvent<StoredConsent>
