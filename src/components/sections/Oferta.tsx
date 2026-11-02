@@ -1,18 +1,8 @@
 import { FadeIn } from '@/components/fade-in'
-import { ArrowUpRight, Check, ShieldCheck } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Check, ShieldCheck } from 'lucide-react'
 import { diagnosticoEstrategico } from '@/config/servicesData'
-import { trackClick } from '@/services/analytics'
 
 export function Oferta() {
-  const handleCtaClick = () => {
-    trackClick('diagnostic_open', 'oferta')
-    const formEl = document.getElementById('formulario-diagnostico')
-    if (formEl) {
-      formEl.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
     <section
       id="oferta"

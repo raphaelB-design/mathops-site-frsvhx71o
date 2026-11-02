@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
-import { industriesData, industriesList, allIndustriesList } from '@/config/industriesData'
+import { industriesData, allIndustriesList } from '@/config/industriesData'
 import { FadeIn } from '@/components/fade-in'
 import { ArrowLeft } from 'lucide-react'
 import {

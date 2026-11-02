@@ -13,7 +13,6 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
 import {
   Select,
   SelectContent,
@@ -49,7 +48,6 @@ type FormValues = z.infer<typeof schema>
 
 const inputCls = 'bg-white/5 border-white/10 text-white h-12 text-base'
 const labelCls = 'text-xs uppercase tracking-wider text-muted-foreground font-mono'
-const textareaCls = 'bg-white/5 border-white/10 text-white text-base resize-none'
 
 function SelectField({
   control,

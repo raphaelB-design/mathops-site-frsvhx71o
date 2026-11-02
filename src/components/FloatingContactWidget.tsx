@@ -4,7 +4,6 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { supabase } from '@/lib/supabase/client'
 import { useToast } from '@/hooks/use-toast'
-import { MessageSquarePlus } from 'lucide-react'
 import {
   Dialog,
   DialogContent,
@@ -70,7 +69,7 @@ export function FloatingContactWidget() {
       })
       form.reset()
       setIsOpen(false)
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: 'Erro ao enviar',
         description: 'Não foi possível enviar sua solicitação. Tente novamente mais tarde.',

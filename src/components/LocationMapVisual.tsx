@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { MapPin, ExternalLink, Navigation } from 'lucide-react'
+import React from 'react'
+import { ExternalLink, Navigation } from 'lucide-react'
 
 // URL segura e oficial para navegação no Google Maps sem iframe ou APIs externas pagas
 const GOOGLE_MAPS_URL =
@@ -10,13 +10,9 @@ interface LocationMapVisualProps {
 }
 
 export const LocationMapVisual: React.FC<LocationMapVisualProps> = ({ className = '' }) => {
-  const [isHovered, setIsHovered] = useState(false)
-
   return (
     <div
       className={`relative w-full rounded-lg overflow-hidden border border-[#1E293B] bg-[#0F1626] transition-all duration-300 group hover:border-[#3B82F6]/50 shadow-md shadow-black/40 ${className}`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       {/* Visual Estético do Mapa em SVG - Tema Dark MathOps */}
       <div className="relative w-full h-36 select-none overflow-hidden" aria-hidden="true">

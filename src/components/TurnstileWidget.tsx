@@ -42,7 +42,7 @@ export function TurnstileWidget({ onVerify }: TurnstileWidgetProps) {
       if (widgetId !== undefined && (window as any).turnstile) {
         try {
           ;(window as any).turnstile.remove(widgetId)
-        } catch (e) {
+        } catch (_e) {
           // Ignore if already removed
         }
       }

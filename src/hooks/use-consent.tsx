@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useState, useCallback, ReactNode } from 'react'
 import {
-  ConsentPreferences,
   StoredConsent,
   getStoredConsent,
   saveConsent,
