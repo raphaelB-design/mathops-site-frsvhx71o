@@ -9,6 +9,7 @@ import { FloatingContactWidget } from '@/components/FloatingContactWidget'
 import { Footer } from '@/components/sections/Footer'
 import { CookieBanner } from '@/components/CookieBanner'
 import { cn } from '@/lib/utils'
+import { useHashScroll } from '@/hooks/use-hash-scroll'
 
 // URL do portal do CRM MathOps
 export const CRM_PORTAL_URL = 'https://portal.mathops.com.br'
@@ -25,6 +26,8 @@ export function Layout() {
   const [isScrolled, setIsScrolled] = useState(false)
   const location = useLocation()
 
+  useHashScroll()
+
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20)
     window.addEventListener('scroll', handleScroll)
@@ -34,29 +37,6 @@ export function Layout() {
   useEffect(() => {
     setIsMenuOpen(false)
   }, [location.pathname])
-
-  useEffect(() => {
-    if (location.hash) {
-      const id = location.hash.replace('#', '')
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-      const scrollToTarget = () => {
-        const el = document.getElementById(id)
-        if (el) {
-          el.scrollIntoView({
-            behavior: prefersReducedMotion ? 'auto' : 'smooth',
-            block: id.startsWith('servico-') ? 'center' : 'start',
-          })
-        }
-      }
-      // Executa logo e com um pequeno delay para aguardar carregamento de componentes assíncronos/lazy
-      const timer1 = setTimeout(scrollToTarget, 50)
-      const timer2 = setTimeout(scrollToTarget, 250)
-      return () => {
-        clearTimeout(timer1)
-        clearTimeout(timer2)
-      }
-    }
-  }, [location.pathname, location.hash])
 
   const handleLinkClick = (href: string) => {
     setIsMenuOpen(false)

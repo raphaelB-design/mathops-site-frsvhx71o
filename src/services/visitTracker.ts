@@ -174,7 +174,7 @@ export function recordPageView(pathname: string) {
   // Fire-and-forget RPC call
   Promise.resolve().then(async () => {
     try {
-      await (supabase as any).rpc('log_visit', {
+      await supabase.rpc('log_visit', {
         p_path: pathname,
         p_referrer_host: referrerHost,
         p_device: device,
@@ -192,7 +192,7 @@ export function recordPageView(pathname: string) {
  * Fetches aggregated statistics for authorized admin users only.
  */
 export async function fetchVisitStats(days: 7 | 30 = 30): Promise<VisitStatsData> {
-  const { data, error } = await (supabase as any).rpc('get_visit_stats', {
+  const { data, error } = await supabase.rpc('get_visit_stats', {
     p_days: days,
   })
 
@@ -200,7 +200,7 @@ export async function fetchVisitStats(days: 7 | 30 = 30): Promise<VisitStatsData
     throw error
   }
 
-  return data as VisitStatsData
+  return data as unknown as VisitStatsData
 }
 
 /**
@@ -211,7 +211,7 @@ export async function fetchVisitorsList(
   limit: number = 20,
   offset: number = 0,
 ): Promise<VisitorStatsResponse> {
-  const { data, error } = await (supabase as any).rpc('get_visitor_stats', {
+  const { data, error } = await supabase.rpc('get_visitor_stats', {
     p_days: days,
     p_limit: limit,
     p_offset: offset,
@@ -221,7 +221,7 @@ export async function fetchVisitorsList(
     throw error
   }
 
-  return data as VisitorStatsResponse
+  return data as unknown as VisitorStatsResponse
 }
 
 /**
@@ -231,7 +231,7 @@ export async function fetchVisitorJourney(
   visitorId: string,
   days: 7 | 30 = 30,
 ): Promise<VisitorJourneyStep[]> {
-  const { data, error } = await (supabase as any).rpc('get_visitor_journey', {
+  const { data, error } = await supabase.rpc('get_visitor_journey', {
     p_visitor_id: visitorId,
     p_days: days,
   })
@@ -240,5 +240,5 @@ export async function fetchVisitorJourney(
     throw error
   }
 
-  return (data || []) as VisitorJourneyStep[]
+  return (data || []) as unknown as VisitorJourneyStep[]
 }

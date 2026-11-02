@@ -105,7 +105,7 @@ async function recordConsentLog(
     const viewportWidth = window.innerWidth || null
     const deviceCategory = viewportWidth && viewportWidth < 768 ? 'mobile' : 'desktop'
 
-    await (supabase as any).from('consent_log').insert({
+    await supabase.from('consent_log').insert({
       visitor_id: visitorId,
       necessary: true,
       analytics: preferences.analytics,
