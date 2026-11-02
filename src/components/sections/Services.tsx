@@ -631,7 +631,6 @@ export function Services() {
 
                   {/* Rodapé sutil de cada camada */}
                   <div className="relative z-10 mt-8 pt-4 border-t border-[#1E293B]/60 flex items-center justify-between text-xs text-[#94A3B8]">
-                    <span className="font-mono text-[11px]">Camada 0{layerNum} de 03</span>
                     <button
                       type="button"
                       onClick={() =>
