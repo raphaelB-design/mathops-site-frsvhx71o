@@ -432,12 +432,7 @@ export function Services() {
               </div>
 
               {/* Rodapé do card sticky */}
-              <div className="mt-8 pt-5 border-t border-[#1E293B]/80 flex items-center justify-between text-xs text-[#94A3B8] font-mono">
-                <span>Total: 9 serviços</span>
-                <span className="text-accent font-semibold">
-                  Camada {activeLayerNumber}/3 ativa
-                </span>
-              </div>
+              <div className="mt-8 pt-5 border-t border-[#1E293B]/80 flex items-center justify-between text-xs text-[#94A3B8] font-mono"></div>
             </div>
           </aside>
 
