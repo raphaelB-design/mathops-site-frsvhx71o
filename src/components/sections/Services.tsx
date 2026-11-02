@@ -26,11 +26,11 @@ const layerMetadata = [
     icon: Eye,
     colorClasses: {
       badge:
-        'border-blue-500/50 bg-blue-500/20 text-blue-300 shadow-[0_0_12px_rgba(59,130,246,0.22)] group-hover:border-blue-400/80 group-hover:bg-blue-500/25 group-hover:text-blue-100 group-hover:shadow-[0_0_18px_rgba(59,130,246,0.38)]',
-      dot: 'bg-blue-400 shadow-[0_0_8px_rgba(59,130,246,0.9)]',
-      legendBorder: 'border-blue-500/30 bg-blue-500/5 text-blue-300',
-      bullet: 'text-blue-400',
-      bar: 'from-blue-500 via-blue-400 to-cyan-400',
+        'border-accent/40 bg-accent/15 text-blue-200 group-hover:border-accent/70 group-hover:bg-accent/20 group-hover:text-blue-100',
+      dot: 'bg-accent',
+      legendBorder: 'border-accent/30 bg-accent/5 text-blue-200',
+      bullet: 'text-accent',
+      bar: 'from-accent via-accent/80 to-accent2',
     },
   },
   {
@@ -41,11 +41,11 @@ const layerMetadata = [
     icon: Cpu,
     colorClasses: {
       badge:
-        'border-cyan-400/50 bg-cyan-400/20 text-cyan-200 shadow-[0_0_12px_rgba(34,211,238,0.22)] group-hover:border-cyan-300/80 group-hover:bg-cyan-400/25 group-hover:text-cyan-100 group-hover:shadow-[0_0_18px_rgba(34,211,238,0.38)]',
-      dot: 'bg-cyan-300 shadow-[0_0_8px_rgba(34,211,238,0.9)]',
-      legendBorder: 'border-cyan-500/30 bg-cyan-500/5 text-cyan-300',
-      bullet: 'text-cyan-400',
-      bar: 'from-cyan-500 via-cyan-400 to-sky-300',
+        'border-accent2/40 bg-accent2/15 text-teal-200 group-hover:border-accent2/70 group-hover:bg-accent2/20 group-hover:text-teal-100',
+      dot: 'bg-accent2',
+      legendBorder: 'border-accent2/30 bg-accent2/5 text-teal-200',
+      bullet: 'text-accent2',
+      bar: 'from-accent2 via-accent2/80 to-sky-300',
     },
   },
   {
@@ -56,11 +56,11 @@ const layerMetadata = [
     icon: ShieldCheck,
     colorClasses: {
       badge:
-        'border-indigo-400/50 bg-indigo-500/20 text-indigo-200 shadow-[0_0_12px_rgba(129,140,248,0.22)] group-hover:border-indigo-300/80 group-hover:bg-indigo-500/25 group-hover:text-indigo-100 group-hover:shadow-[0_0_18px_rgba(129,140,248,0.38)]',
-      dot: 'bg-indigo-300 shadow-[0_0_8px_rgba(165,180,252,0.9)]',
+        'border-indigo-400/40 bg-indigo-500/15 text-indigo-200 group-hover:border-indigo-300/70 group-hover:bg-indigo-500/20 group-hover:text-indigo-100',
+      dot: 'bg-indigo-300',
       legendBorder: 'border-indigo-500/30 bg-indigo-500/5 text-indigo-300',
       bullet: 'text-indigo-300',
-      bar: 'from-indigo-500 via-indigo-400 to-cyan-400',
+      bar: 'from-indigo-500 via-indigo-400 to-accent2',
     },
   },
 ] as const
@@ -195,14 +195,14 @@ export function Services() {
       id="servicos"
       className="relative py-24 md:py-32 px-6 md:px-12 w-full bg-[#0A0F1C] border-t border-[#1E293B] overflow-hidden"
     >
-      {/* Brilhos radiais atmosféricos (#3B82F6 e #22D3EE, 10-15% de opacidade, blur alto) */}
+      {/* Brilhos radiais atmosféricos com tokens de accent, opacidade sutil e blur alto */}
       <div
         aria-hidden="true"
-        className="absolute top-1/3 left-1/4 -translate-y-1/2 w-[650px] h-[650px] bg-[#3B82F6]/12 blur-[170px] rounded-full pointer-events-none"
+        className="absolute top-1/3 left-1/4 -translate-y-1/2 w-[650px] h-[650px] bg-accent/12 blur-[170px] rounded-full pointer-events-none"
       />
       <div
         aria-hidden="true"
-        className="absolute bottom-16 right-1/4 w-[550px] h-[550px] bg-[#22D3EE]/10 blur-[160px] rounded-full pointer-events-none"
+        className="absolute bottom-16 right-1/4 w-[550px] h-[550px] bg-accent2/10 blur-[160px] rounded-full pointer-events-none"
       />
 
       <div className="relative z-10 max-w-7xl mx-auto w-full">

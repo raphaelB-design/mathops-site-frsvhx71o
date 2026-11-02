@@ -144,11 +144,11 @@ export function Layout() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={handleNavCRM}
-            className="hidden lg:inline-flex items-center gap-2.5 px-4 py-2.5 text-xs font-medium tracking-wide rounded-sm min-h-[44px] bg-accent/10 border border-accent/40 text-white hover:bg-accent/20 hover:border-accent/70 hover:shadow-[0_0_20px_rgba(59,130,246,0.35)] transition-all duration-200 group focus:outline-none focus-visible:ring-2 focus-visible:ring-accent cursor-pointer"
+            className="hidden lg:inline-flex items-center gap-2.5 px-4 py-2.5 text-xs font-medium tracking-wide rounded-sm min-h-[44px] bg-accent/10 border border-accent/40 text-white hover:bg-accent/20 hover:border-accent/70 transition-all duration-200 group focus:outline-none focus-visible:ring-2 focus-visible:ring-accent cursor-pointer"
             aria-label="Área do Cliente"
           >
             <span className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
               <span className="text-zinc-200 group-hover:text-white transition-colors text-sm font-medium">
                 Área do Cliente
               </span>

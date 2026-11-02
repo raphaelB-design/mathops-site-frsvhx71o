@@ -12,7 +12,7 @@ interface LocationMapVisualProps {
 export const LocationMapVisual: React.FC<LocationMapVisualProps> = ({ className = '' }) => {
   return (
     <div
-      className={`relative w-full rounded-lg overflow-hidden border border-[#1E293B] bg-[#0F1626] transition-all duration-300 group hover:border-[#3B82F6]/50 shadow-md shadow-black/40 ${className}`}
+      className={`relative w-full rounded-lg overflow-hidden border border-[#1E293B] bg-[#0F1626] transition-all duration-300 group hover:border-accent/50 shadow-md shadow-black/40 ${className}`}
     >
       {/* Visual Estético do Mapa em SVG - Tema Dark MathOps */}
       <div className="relative w-full h-36 select-none overflow-hidden" aria-hidden="true">
@@ -35,17 +35,17 @@ export const LocationMapVisual: React.FC<LocationMapVisualProps> = ({ className 
               <stop offset="100%" stopColor="#0F172A" stopOpacity="0.9" />
             </linearGradient>
 
-            {/* Gradiente para a Av. Faria Lima */}
+            {/* Gradiente para a Av. Faria Lima - Tokens: #3D63DD (--accent) e #2EB8A6 (--accent-2) */}
             <linearGradient id="faria-lima-glow" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.9" />
-              <stop offset="100%" stopColor="#22D3EE" stopOpacity="0.75" />
+              <stop offset="0%" stopColor="#3D63DD" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="#2EB8A6" stopOpacity="0.75" />
             </linearGradient>
 
-            {/* Pulso radial do pin */}
+            {/* Pulso radial do pin - Token #3D63DD (--accent) */}
             <radialGradient id="pin-glow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.8" />
-              <stop offset="60%" stopColor="#3B82F6" stopOpacity="0.25" />
-              <stop offset="100%" stopColor="#3B82F6" stopOpacity="0" />
+              <stop offset="0%" stopColor="#3D63DD" stopOpacity="0.8" />
+              <stop offset="60%" stopColor="#3D63DD" stopOpacity="0.25" />
+              <stop offset="100%" stopColor="#3D63DD" stopOpacity="0" />
             </radialGradient>
 
             {/* Padrão quadriculado sutil de quadras urbanas */}
@@ -137,7 +137,7 @@ export const LocationMapVisual: React.FC<LocationMapVisualProps> = ({ className 
             y1="-10"
             x2="182"
             y2="160"
-            stroke="#3B82F6"
+            stroke="#3D63DD" /* Token --accent */
             strokeWidth="5"
             strokeOpacity="0.18"
             strokeLinecap="round"
@@ -172,7 +172,7 @@ export const LocationMapVisual: React.FC<LocationMapVisualProps> = ({ className 
           <path
             d="M 143 71 L 152 64 L 162 64"
             fill="none"
-            stroke="#3B82F6"
+            stroke="#3D63DD" /* Token --accent */
             strokeWidth="0.8"
             strokeDasharray="2 1.5"
             opacity="0.7"
@@ -190,14 +190,14 @@ export const LocationMapVisual: React.FC<LocationMapVisualProps> = ({ className 
             {/* Círculo de radar intermediário */}
             <circle
               r="10"
-              fill="#3B82F6"
+              fill="#3D63DD" /* Token --accent */
               fillOpacity="0.2"
-              stroke="#3B82F6"
+              stroke="#3D63DD"
               strokeWidth="0.75"
               strokeOpacity="0.5"
             />
             {/* Ponto central vivo */}
-            <circle r="4" fill="#3B82F6" stroke="#FFFFFF" strokeWidth="1.2" />
+            <circle r="4" fill="#3D63DD" stroke="#FFFFFF" strokeWidth="1.2" /* Token --accent */ />
             <circle r="1.5" fill="#FFFFFF" />
           </g>
 
@@ -214,7 +214,7 @@ export const LocationMapVisual: React.FC<LocationMapVisualProps> = ({ className 
               stroke="#1E293B"
               strokeWidth="0.8"
             />
-            <circle cx="9" cy="10" r="3" fill="#22D3EE" />
+            <circle cx="9" cy="10" r="3" fill="#2EB8A6" /* Token --accent-2 */ />
             <text x="17" y="13" fill="#F8FAFC" fontSize="7" fontWeight="600" letterSpacing="0.3">
               MathOps
             </text>
@@ -223,7 +223,7 @@ export const LocationMapVisual: React.FC<LocationMapVisualProps> = ({ className 
           {/* Rosa dos ventos / bússola discreta no canto superior direito */}
           <g transform="translate(300, 16)" opacity="0.5">
             <circle cx="0" cy="0" r="7" fill="none" stroke="#334155" strokeWidth="0.6" />
-            <path d="M 0 -6 L 2 0 L -2 0 Z" fill="#3B82F6" />
+            <path d="M 0 -6 L 2 0 L -2 0 Z" fill="#3D63DD" /* Token --accent */ />
             <path d="M 0 6 L 2 0 L -2 0 Z" fill="#475569" />
             <text x="-2" y="-8" fill="#94A3B8" fontSize="5" fontWeight="700">
               N
@@ -254,10 +254,10 @@ export const LocationMapVisual: React.FC<LocationMapVisualProps> = ({ className 
         className="flex items-center justify-between px-3 py-2 bg-[#0B1120]/90 border-t border-[#1E293B] text-xs text-zinc-300 hover:text-white transition-colors duration-200"
       >
         <span className="flex items-center gap-1.5 font-medium truncate">
-          <Navigation className="w-3.5 h-3.5 text-[#3B82F6] shrink-0" />
+          <Navigation className="w-3.5 h-3.5 text-accent shrink-0" />
           <span className="truncate">Faria Lima · SP</span>
         </span>
-        <span className="inline-flex items-center gap-1 text-[11px] text-zinc-400 group-hover:text-[#3B82F6] transition-colors shrink-0">
+        <span className="inline-flex items-center gap-1 text-[11px] text-zinc-400 group-hover:text-accent transition-colors shrink-0">
           <span>Ver mapa</span>
           <ExternalLink className="w-3 h-3" />
         </span>

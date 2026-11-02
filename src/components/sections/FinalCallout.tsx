@@ -7,9 +7,9 @@ import { SectionBackdrop } from '@/components/SectionBackdrop'
 export function FinalCallout() {
   return (
     <section className="relative w-full py-20 md:py-28 px-6 md:px-12 bg-[#0A0F1C] text-white border-t border-[#1E293B] overflow-hidden">
-      {/* 1.3 Brilhos radiais suaves (#3B82F6 e #22D3EE, 10-15% de opacidade, blur alto) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#3B82F6]/14 blur-[160px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-4 right-1/4 w-[400px] h-[300px] bg-[#22D3EE]/10 blur-[140px] rounded-full pointer-events-none" />
+      {/* 1.3 Brilhos radiais atmosféricos */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-accent/14 blur-[160px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-4 right-1/4 w-[400px] h-[300px] bg-accent2/10 blur-[140px] rounded-full pointer-events-none" />
 
       {/* 2.3 Faixa final: "scurve", terminando próxima ao botão */}
       <SectionBackdrop variant="scurve" opacityClass="opacity-[0.18]" />

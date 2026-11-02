@@ -410,12 +410,14 @@ export default function Estatisticas() {
                         >
                           <defs>
                             <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.4} />
-                              <stop offset="95%" stopColor="#3B82F6" stopOpacity={0} />
+                              {/* Token --accent: #3D63DD */}
+                              <stop offset="5%" stopColor="#3D63DD" stopOpacity={0.4} />
+                              <stop offset="95%" stopColor="#3D63DD" stopOpacity={0} />
                             </linearGradient>
                             <linearGradient id="colorVis" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="5%" stopColor="#22D3EE" stopOpacity={0.3} />
-                              <stop offset="95%" stopColor="#22D3EE" stopOpacity={0} />
+                              {/* Token --accent-2: #2EB8A6 */}
+                              <stop offset="5%" stopColor="#2EB8A6" stopOpacity={0.3} />
+                              <stop offset="95%" stopColor="#2EB8A6" stopOpacity={0} />
                             </linearGradient>
                           </defs>
                           <CartesianGrid
@@ -452,7 +454,7 @@ export default function Estatisticas() {
                             type="monotone"
                             dataKey="pageviews"
                             name="Visualizações"
-                            stroke="#3B82F6"
+                            stroke="#3D63DD" /* Token --accent */
                             strokeWidth={2}
                             fillOpacity={1}
                             fill="url(#colorPv)"
@@ -461,7 +463,7 @@ export default function Estatisticas() {
                             type="monotone"
                             dataKey="visitors"
                             name="Visitantes"
-                            stroke="#22D3EE"
+                            stroke="#2EB8A6" /* Token --accent-2 */
                             strokeWidth={2}
                             fillOpacity={1}
                             fill="url(#colorVis)"

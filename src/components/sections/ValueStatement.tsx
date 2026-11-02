@@ -43,7 +43,7 @@ export function ValueStatement() {
                 {pills.map((pill, idx) => (
                   <div
                     key={idx}
-                    className="px-4 py-2 border border-[#1E293B] bg-[#111827]/70 backdrop-blur-sm rounded-md font-mono text-xs uppercase tracking-wider text-[#94A3B8] hover:border-accent hover:text-white hover:shadow-[0_0_12px_rgba(59,130,246,0.3)] transition-all cursor-default"
+                    className="px-4 py-2 border border-[#1E293B] bg-[#111827]/70 backdrop-blur-sm rounded-md font-mono text-xs uppercase tracking-wider text-[#94A3B8] hover:border-accent/60 hover:text-white transition-all cursor-default"
                   >
                     {pill}
                   </div>

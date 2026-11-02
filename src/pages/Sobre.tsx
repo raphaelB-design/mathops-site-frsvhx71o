@@ -25,8 +25,8 @@ export default function Sobre() {
             loading="eager"
             className="w-full h-full object-cover opacity-60 grayscale"
           />
-          {/* 1.7 Duotone azul-noite/azul (#0A0F1C -> #3B82F6) */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-[#0A0F1C]/90 via-[#0A0F1C]/75 to-[#3B82F6]/35 mix-blend-multiply pointer-events-none" />
+          {/* 1.7 Duotone azul-noite/azul (#0A0F1C -> hsl(var(--accent))) */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#0A0F1C]/90 via-[#0A0F1C]/75 to-accent/35 mix-blend-multiply pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
         </div>
 

@@ -174,13 +174,13 @@ export function HeroExecutiveChart() {
       role="region"
       aria-label="Painel executivo com KPIs de prazo, custo e qualidade e linha de tendência histórica de 12 meses"
     >
-      {/* Glow externo suave em azul vivo */}
-      <div className="absolute -inset-1.5 bg-gradient-to-r from-[#3B82F6]/30 to-[#22D3EE]/30 rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      {/* Glow externo suave com os novos tokens de accent */}
+      <div className="absolute -inset-1.5 bg-gradient-to-r from-accent/30 to-accent2/30 rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
       {/* Card container com borda em degradê e fundo #111827 a 80% de opacidade com backdrop-blur */}
-      <div className="relative w-full bg-[#111827]/80 backdrop-blur-xl border border-[#1E293B] rounded-xl p-5 md:p-6 shadow-[0_20px_50px_rgba(10,15,28,0.8)] group-hover:border-[#3B82F6]/60 transition-colors duration-500 overflow-hidden">
+      <div className="relative w-full bg-[#111827]/80 backdrop-blur-xl border border-[#1E293B] rounded-xl p-5 md:p-6 shadow-[0_20px_50px_rgba(10,15,28,0.8)] group-hover:border-accent/60 transition-colors duration-500 overflow-hidden">
         {/* Barra superior de acento gradiente */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#3B82F6] via-[#22D3EE] to-[#3B82F6]" />
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent via-accent2 to-accent" />
 
         {/* Header do painel */}
         <div className="flex items-center justify-between pb-4 border-b border-[#1E293B] mb-5">
@@ -196,7 +196,7 @@ export function HeroExecutiveChart() {
 
         {/* 3 KPIs com contador animado */}
         <div className="grid grid-cols-3 gap-3 mb-5">
-          <div className="p-3 bg-[#0A0F1C]/60 border border-[#1E293B] rounded-sm group-hover:border-[#3B82F6]/30 transition-colors">
+          <div className="p-3 bg-[#0A0F1C]/60 border border-[#1E293B] rounded-sm group-hover:border-accent/30 transition-colors">
             <span className="font-mono text-[10px] uppercase tracking-wider text-[#94A3B8] block">
               Prazo
             </span>
@@ -204,20 +204,20 @@ export function HeroExecutiveChart() {
               <AnimatedCounter value={Math.floor(prazoVal)} decimals={0} duration={1500} />,
               {(prazoVal % 1).toFixed(1).replace('0.', '')}%
             </span>
-            <span className="font-mono text-[9px] text-[#22D3EE] block mt-0.5">+4.2 p.p.</span>
+            <span className="font-mono text-[9px] text-accent2 block mt-0.5">+4.2 p.p.</span>
           </div>
 
-          <div className="p-3 bg-[#0A0F1C]/60 border border-[#1E293B] rounded-sm group-hover:border-[#3B82F6]/30 transition-colors">
+          <div className="p-3 bg-[#0A0F1C]/60 border border-[#1E293B] rounded-sm group-hover:border-accent/30 transition-colors">
             <span className="font-mono text-[10px] uppercase tracking-wider text-[#94A3B8] block">
               Custo
             </span>
             <span className="font-display text-xl sm:text-2xl font-bold text-[#F5F4F0] block">
               <AnimatedCounter value={custoVal} decimals={1} duration={1000} suffix="%" />
             </span>
-            <span className="font-mono text-[9px] text-[#22D3EE] block mt-0.5">+2.8 p.p.</span>
+            <span className="font-mono text-[9px] text-accent2 block mt-0.5">+2.8 p.p.</span>
           </div>
 
-          <div className="p-3 bg-[#0A0F1C]/60 border border-[#1E293B] rounded-sm group-hover:border-[#3B82F6]/30 transition-colors">
+          <div className="p-3 bg-[#0A0F1C]/60 border border-[#1E293B] rounded-sm group-hover:border-accent/30 transition-colors">
             <span className="font-mono text-[10px] uppercase tracking-wider text-[#94A3B8] block">
               Qualidade
             </span>
@@ -225,7 +225,7 @@ export function HeroExecutiveChart() {
               <AnimatedCounter value={Math.floor(qualVal)} decimals={0} duration={1500} />,
               {(qualVal % 1).toFixed(1).replace('0.', '')}%
             </span>
-            <span className="font-mono text-[9px] text-[#22D3EE] block mt-0.5">+1.5 p.p.</span>
+            <span className="font-mono text-[9px] text-accent2 block mt-0.5">+1.5 p.p.</span>
           </div>
         </div>
 
@@ -235,7 +235,7 @@ export function HeroExecutiveChart() {
             <span className="font-mono text-[10px] uppercase tracking-wider text-[#94A3B8]">
               Evolução de Eficiência Global (12 meses)
             </span>
-            <span className="font-mono text-[10px] text-[#22D3EE] font-medium">Meta: 95%</span>
+            <span className="font-mono text-[10px] text-accent2 font-medium">Meta: 95%</span>
           </div>
 
           {/* Gráfico SVG puro */}
@@ -247,10 +247,10 @@ export function HeroExecutiveChart() {
               onMouseLeave={() => setActiveTooltipIndex(null)}
             >
               <defs>
-                {/* Degradê vertical 40% -> 0% opacidade */}
+                {/* Degradê vertical 40% -> 0% opacidade - Token #3D63DD (--accent) */}
                 <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#3B82F6" stopOpacity={0.4} />
-                  <stop offset="100%" stopColor="#3B82F6" stopOpacity={0.0} />
+                  <stop offset="0%" stopColor="#3D63DD" stopOpacity={0.4} />
+                  <stop offset="100%" stopColor="#3D63DD" stopOpacity={0.0} />
                 </linearGradient>
               </defs>
 
@@ -282,13 +282,13 @@ export function HeroExecutiveChart() {
                 })}
               </g>
 
-              {/* Linha da Meta constante (95%) tracejada ciano #22D3EE */}
+              {/* Linha da Meta constante (95%) tracejada teal - Token #2EB8A6 (--accent-2) */}
               <line
                 x1={PADDING.left}
                 y1={metaY}
                 x2={SVG_WIDTH - PADDING.right}
                 y2={metaY}
-                stroke="#22D3EE"
+                stroke="#2EB8A6" /* Token --accent-2 */
                 strokeWidth="1.5"
                 strokeDasharray="4 4"
                 opacity="0.85"
@@ -304,11 +304,11 @@ export function HeroExecutiveChart() {
                 }}
               />
 
-              {/* Linha de tendência azul #3B82F6 */}
+              {/* Linha de tendência azul - Token #3D63DD (--accent) */}
               <path
                 d={linePathD}
                 fill="none"
-                stroke="#3B82F6"
+                stroke="#3D63DD" /* Token --accent */
                 strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -330,7 +330,7 @@ export function HeroExecutiveChart() {
                 ))}
               </g>
 
-              {/* Pontos da linha: normais e ponto final destacado */}
+              {/* Pontos da linha: normais e ponto final destacado - Tokens: #3D63DD (--accent) e #2EB8A6 (--accent-2) */}
               <g>
                 {points.map((pt, idx) => {
                   const isLast = idx === points.length - 1
@@ -341,8 +341,8 @@ export function HeroExecutiveChart() {
                       cx={pt.x}
                       cy={pt.y}
                       r={isHoveredPoint ? 5 : isLast ? 4 : 2.5}
-                      fill={isHoveredPoint ? '#22D3EE' : isLast ? '#22D3EE' : '#3B82F6'}
-                      stroke={isHoveredPoint || isLast ? '#0A0F1C' : '#3B82F6'}
+                      fill={isHoveredPoint ? '#2EB8A6' : isLast ? '#2EB8A6' : '#3D63DD'}
+                      stroke={isHoveredPoint || isLast ? '#0A0F1C' : '#3D63DD'}
                       strokeWidth={isHoveredPoint || isLast ? 1.5 : 1}
                       className="transition-all duration-200"
                     />
@@ -357,7 +357,7 @@ export function HeroExecutiveChart() {
                   cy={lastPoint.y}
                   r="7"
                   fill="none"
-                  stroke="#22D3EE"
+                  stroke="#2EB8A6" /* Token --accent-2 */
                   strokeWidth="1.5"
                   opacity="0.6"
                   className={prefersReducedMotion ? '' : 'animate-ping'}
@@ -389,7 +389,7 @@ export function HeroExecutiveChart() {
                   y1={PADDING.top}
                   x2={hoveredData.x}
                   y2={bottomY}
-                  stroke="#22D3EE"
+                  stroke="#2EB8A6" /* Token --accent-2 */
                   strokeWidth="1"
                   strokeDasharray="2 2"
                   opacity="0.6"
@@ -408,8 +408,8 @@ export function HeroExecutiveChart() {
               >
                 <div className="font-mono text-[10px] text-[#94A3B8]">{hoveredData.month}</div>
                 <div className="flex items-center gap-1.5 font-bold text-[#F5F4F0]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />
-                  Índice: <span className="text-[#22D3EE]">{hoveredData.valor}%</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                  Índice: <span className="text-accent2">{hoveredData.valor}%</span>
                 </div>
               </div>
             )}

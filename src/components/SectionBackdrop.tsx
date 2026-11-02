@@ -144,11 +144,12 @@ function ExecutiveVariant({
       <div className="bg-[#111827]/70 border border-[#1E293B] rounded p-3 flex flex-col justify-between">
         <div className="flex justify-between items-center text-[10px] font-mono text-[#94A3B8]">
           <span>KPI_TREND</span>
-          <span className="text-[#22D3EE]">+{ticker * 0.4}%</span>
+          <span className="text-accent2">+{ticker * 0.4}%</span>
         </div>
-        <svg viewBox="0 0 100 35" className="w-full h-12 stroke-[#3B82F6] fill-none">
+        {/* Token #3D63DD (--accent) e #2EB8A6 (--accent-2) */}
+        <svg viewBox="0 0 100 35" className="w-full h-12 stroke-[#3D63DD] fill-none">
           <path d="M 5 28 Q 25 15, 45 22 T 85 8 L 95 6" strokeWidth="2" strokeLinecap="round" />
-          <circle cx="95" cy="6" r="3" fill="#22D3EE" />
+          <circle cx="95" cy="6" r="3" fill="#2EB8A6" /* Token --accent-2 */ />
         </svg>
       </div>
 
@@ -159,10 +160,13 @@ function ExecutiveVariant({
           {[40, 65, 80, 55, 90, 75, 88].map((h, i) => (
             <div
               key={i}
-              className="flex-1 bg-[#3B82F6]/70 rounded-t transition-all duration-1000"
+              className="flex-1 bg-accent/70 rounded-t transition-all duration-1000"
               style={{
                 height: `${Math.min(100, h + (i === ticker ? 10 : 0))}%`,
-                backgroundColor: i === 4 ? '#22D3EE' : '#3B82F6',
+                backgroundColor:
+                  i === 4
+                    ? '#2EB8A6'
+                    : '#3D63DD' /* Tokens: #2EB8A6 (--accent-2), #3D63DD (--accent) */,
               }}
             />
           ))}
@@ -174,11 +178,11 @@ function ExecutiveVariant({
         <span className="text-[10px] font-mono text-[#94A3B8]">EVM_CPI</span>
         <div className="font-mono text-2xl font-bold text-[#F5F4F0] flex items-baseline gap-1">
           <span>{val1.toFixed(1)}</span>
-          <span className="text-xs text-[#22D3EE] font-normal">%</span>
+          <span className="text-xs text-accent2 font-normal">%</span>
         </div>
         <div className="w-full bg-[#1E293B] h-1.5 rounded-full overflow-hidden">
           <div
-            className="bg-[#22D3EE] h-full transition-all duration-1000"
+            className="bg-accent2 h-full transition-all duration-1000"
             style={{ width: `${val1}%` }}
           />
         </div>
@@ -200,7 +204,7 @@ function ExecutiveVariant({
           <path
             d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
             fill="none"
-            stroke="#3B82F6"
+            stroke="#3D63DD" /* Token --accent */
             strokeWidth="3.5"
             strokeDasharray="92, 100"
             strokeLinecap="round"
@@ -208,7 +212,7 @@ function ExecutiveVariant({
           <path
             d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
             fill="none"
-            stroke="#22D3EE"
+            stroke="#2EB8A6" /* Token --accent-2 */
             strokeWidth="3.5"
             strokeDasharray="25, 100"
             strokeDashoffset="-92"
@@ -226,15 +230,16 @@ function ExecutiveVariant({
             <svg viewBox="0 0 100 40" className="w-full h-12">
               <defs>
                 <linearGradient id="execAreaGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.4" />
-                  <stop offset="100%" stopColor="#3B82F6" stopOpacity="0" />
+                  {/* Token #3D63DD (--accent) */}
+                  <stop offset="0%" stopColor="#3D63DD" stopOpacity="0.4" />
+                  <stop offset="100%" stopColor="#3D63DD" stopOpacity="0" />
                 </linearGradient>
               </defs>
               <path d="M 5 35 Q 25 32, 45 10 T 75 25 L 95 35 Z" fill="url(#execAreaGrad)" />
               <path
                 d="M 5 35 Q 25 32, 45 10 T 75 25 L 95 35"
                 fill="none"
-                stroke="#3B82F6"
+                stroke="#3D63DD" /* Token --accent */
                 strokeWidth="1.8"
               />
             </svg>
@@ -244,9 +249,12 @@ function ExecutiveVariant({
           <div className="bg-[#111827]/70 border border-[#1E293B] rounded p-3 flex flex-col justify-between">
             <div className="flex justify-between items-center text-[10px] font-mono text-[#94A3B8]">
               <span>SAMPLE_CYCLE</span>
-              <span className="text-[#22D3EE] font-bold">{val2} ms</span>
+              <span className="text-accent2 font-bold">{val2} ms</span>
             </div>
-            <svg viewBox="0 0 100 25" className="w-full h-10 stroke-[#22D3EE] fill-none">
+            <svg
+              viewBox="0 0 100 25"
+              className="w-full h-10 stroke-[#2EB8A6] fill-none" /* Token --accent-2 */
+            >
               <polyline points="2,15 15,12 28,18 42,6 55,14 68,9 82,16 98,4" strokeWidth="1.5" />
             </svg>
           </div>
@@ -261,7 +269,11 @@ function ExecutiveVariant({
                   className="h-2 rounded-sm"
                   style={{
                     backgroundColor:
-                      i === (ticker * 2) % 8 ? '#22D3EE' : i % 2 === 0 ? '#3B82F6' : '#1E293B',
+                      i === (ticker * 2) % 8
+                        ? '#2EB8A6'
+                        : i % 2 === 0
+                          ? '#3D63DD'
+                          : '#1E293B' /* Tokens: #2EB8A6 (--accent-2), #3D63DD (--accent) */,
                   }}
                 />
               ))}
@@ -277,7 +289,7 @@ function ExecutiveVariant({
                 y1="30"
                 x2="95"
                 y2="8"
-                stroke="#3B82F6"
+                stroke="#3D63DD" /* Token --accent */
                 strokeWidth="1.5"
                 strokeDasharray="2 2"
               />
@@ -290,7 +302,13 @@ function ExecutiveVariant({
                 [75, 12],
                 [88, 9],
               ].map(([cx, cy], i) => (
-                <circle key={i} cx={cx} cy={cy} r="2" fill={i === 3 ? '#22D3EE' : '#94A3B8'} />
+                <circle
+                  key={i}
+                  cx={cx}
+                  cy={cy}
+                  r="2"
+                  fill={i === 3 ? '#2EB8A6' : '#94A3B8'} /* Token #2EB8A6 (--accent-2) */
+                />
               ))}
             </svg>
           </div>
@@ -299,14 +317,14 @@ function ExecutiveVariant({
           <div className="bg-[#111827]/70 border border-[#1E293B] rounded p-3 flex flex-col justify-between">
             <div className="flex justify-between items-center text-[10px] font-mono text-[#94A3B8]">
               <span>SIX_SIGMA</span>
-              <span className="text-[#3B82F6] font-bold">Cp 1.67</span>
+              <span className="text-accent font-bold">Cp 1.67</span>
             </div>
             <div className="flex items-center gap-1">
-              <span className="h-6 w-1 bg-[#3B82F6] rounded-full" />
-              <span className="h-10 w-1 bg-[#22D3EE] rounded-full" />
-              <span className="h-8 w-1 bg-[#3B82F6] rounded-full" />
+              <span className="h-6 w-1 bg-accent rounded-full" />
+              <span className="h-10 w-1 bg-accent2 rounded-full" />
+              <span className="h-8 w-1 bg-accent rounded-full" />
               <span className="h-5 w-1 bg-[#1E293B] rounded-full" />
-              <span className="h-7 w-1 bg-[#3B82F6] rounded-full" />
+              <span className="h-7 w-1 bg-accent rounded-full" />
             </div>
           </div>
         </>
@@ -329,13 +347,14 @@ function DivergenceVariant({
   return (
     <svg viewBox="0 0 1200 400" preserveAspectRatio="none" className="w-full h-full">
       <defs>
+        {/* Tokens: #3D63DD (--accent) e #2EB8A6 (--accent-2) */}
         <linearGradient id="divGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#3B82F6" stopOpacity="1" />
+          <stop offset="0%" stopColor="#3D63DD" stopOpacity="0.4" />
+          <stop offset="100%" stopColor="#3D63DD" stopOpacity="1" />
         </linearGradient>
         <linearGradient id="divGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#22D3EE" stopOpacity="1" />
+          <stop offset="0%" stopColor="#3D63DD" stopOpacity="0.4" />
+          <stop offset="100%" stopColor="#2EB8A6" stopOpacity="1" />
         </linearGradient>
       </defs>
 
@@ -379,13 +398,13 @@ function DivergenceVariant({
         }}
       />
 
-      {/* Ponto inicial de confluência */}
-      <circle cx="50" cy="250" r="5" fill="#3B82F6" />
-      <circle cx="50" cy="250" r="10" fill="none" stroke="#3B82F6" strokeWidth="1" opacity="0.6" />
+      {/* Ponto inicial de confluência - Token #3D63DD (--accent) */}
+      <circle cx="50" cy="250" r="5" fill="#3D63DD" />
+      <circle cx="50" cy="250" r="10" fill="none" stroke="#3D63DD" strokeWidth="1" opacity="0.6" />
 
-      {/* Pontos de chegada divergentes */}
-      <circle cx="1150" cy="50" r="5" fill="#3B82F6" />
-      <circle cx="1150" cy="380" r="5" fill="#22D3EE" />
+      {/* Pontos de chegada divergentes - Tokens #3D63DD (--accent) e #2EB8A6 (--accent-2) */}
+      <circle cx="1150" cy="50" r="5" fill="#3D63DD" />
+      <circle cx="1150" cy="380" r="5" fill="#2EB8A6" />
 
       {/* Linha de divergência entre os pontos finais */}
       <line
@@ -393,7 +412,7 @@ function DivergenceVariant({
         y1="50"
         x2="1150"
         y2="380"
-        stroke="#22D3EE"
+        stroke="#2EB8A6" /* Token --accent-2 */
         strokeWidth="1.5"
         strokeDasharray="4 4"
         opacity="0.7"
@@ -419,11 +438,12 @@ function ProcessVariant({
 
   return (
     <div className="w-full h-full flex items-center justify-between p-6">
-      <svg viewBox="0 0 700 240" className="w-full h-full max-w-3xl mx-auto stroke-[#3B82F6]">
+      {/* Tokens: #3D63DD (--accent) e #2EB8A6 (--accent-2) */}
+      <svg viewBox="0 0 700 240" className="w-full h-full max-w-3xl mx-auto stroke-[#3D63DD]">
         <defs>
           <linearGradient id="procGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#3B82F6" />
-            <stop offset="100%" stopColor="#22D3EE" />
+            <stop offset="0%" stopColor="#3D63DD" />
+            <stop offset="100%" stopColor="#2EB8A6" />
           </linearGradient>
           <filter id="procGlow" x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="3" result="blur" />
@@ -432,12 +452,12 @@ function ProcessVariant({
         </defs>
 
         {/* Start Event Circle */}
-        <circle cx="60" cy="120" r="22" fill="#111827" stroke="#3B82F6" strokeWidth="2.5" />
-        <circle cx="60" cy="120" r="8" fill="#3B82F6" />
+        <circle cx="60" cy="120" r="22" fill="#111827" stroke="#3D63DD" strokeWidth="2.5" />
+        <circle cx="60" cy="120" r="8" fill="#3D63DD" />
 
         {/* Arrow 1 */}
-        <line x1="82" y1="120" x2="150" y2="120" stroke="#3B82F6" strokeWidth="2" />
-        <polygon points="150,116 158,120 150,124" fill="#3B82F6" />
+        <line x1="82" y1="120" x2="150" y2="120" stroke="#3D63DD" strokeWidth="2" />
+        <polygon points="150,116 158,120 150,124" fill="#3D63DD" />
 
         {/* Task Box 1 */}
         <rect
@@ -447,28 +467,28 @@ function ProcessVariant({
           height="70"
           rx="6"
           fill="#111827"
-          stroke="#3B82F6"
+          stroke="#3D63DD"
           strokeWidth="2"
         />
         <line x1="175" y1="105" x2="255" y2="105" stroke="#94A3B8" strokeWidth="2" />
         <line x1="175" y1="120" x2="230" y2="120" stroke="#94A3B8" strokeWidth="2" />
-        <line x1="175" y1="135" x2="210" y2="135" stroke="#3B82F6" strokeWidth="2" />
+        <line x1="175" y1="135" x2="210" y2="135" stroke="#3D63DD" strokeWidth="2" />
 
         {/* Arrow 2 */}
-        <line x1="270" y1="120" x2="330" y2="120" stroke="#3B82F6" strokeWidth="2" />
-        <polygon points="330,116 338,120 330,124" fill="#3B82F6" />
+        <line x1="270" y1="120" x2="330" y2="120" stroke="#3D63DD" strokeWidth="2" />
+        <polygon points="330,116 338,120 330,124" fill="#3D63DD" />
 
         {/* Gateway Diamond */}
         <polygon
           points="370,85 405,120 370,155 335,120"
           fill="#111827"
-          stroke="#22D3EE"
+          stroke="#2EB8A6"
           strokeWidth="2"
         />
         <text
           x="370"
           y="126"
-          fill="#22D3EE"
+          fill="#2EB8A6"
           fontSize="18"
           fontWeight="bold"
           textAnchor="middle"
@@ -478,8 +498,8 @@ function ProcessVariant({
         </text>
 
         {/* Arrow 3 */}
-        <line x1="405" y1="120" x2="465" y2="120" stroke="#22D3EE" strokeWidth="2" />
-        <polygon points="465,116 473,120 465,124" fill="#22D3EE" />
+        <line x1="405" y1="120" x2="465" y2="120" stroke="#2EB8A6" strokeWidth="2" />
+        <polygon points="465,116 473,120 465,124" fill="#2EB8A6" />
 
         {/* Task Box 2 */}
         <rect
@@ -489,23 +509,23 @@ function ProcessVariant({
           height="70"
           rx="6"
           fill="#111827"
-          stroke="#22D3EE"
+          stroke="#2EB8A6"
           strokeWidth="2"
         />
         <line x1="490" y1="105" x2="570" y2="105" stroke="#94A3B8" strokeWidth="2" />
         <line x1="490" y1="120" x2="550" y2="120" stroke="#94A3B8" strokeWidth="2" />
-        <line x1="490" y1="135" x2="530" y2="135" stroke="#22D3EE" strokeWidth="2" />
+        <line x1="490" y1="135" x2="530" y2="135" stroke="#2EB8A6" strokeWidth="2" />
 
         {/* Arrow 4 */}
-        <line x1="585" y1="120" x2="635" y2="120" stroke="#22D3EE" strokeWidth="2" />
-        <polygon points="635,116 643,120 635,124" fill="#22D3EE" />
+        <line x1="585" y1="120" x2="635" y2="120" stroke="#2EB8A6" strokeWidth="2" />
+        <polygon points="635,116 643,120 635,124" fill="#2EB8A6" />
 
         {/* End Event Circle */}
-        <circle cx="665" cy="120" r="22" fill="#111827" stroke="#22D3EE" strokeWidth="3.5" />
+        <circle cx="665" cy="120" r="22" fill="#111827" stroke="#2EB8A6" strokeWidth="3.5" />
 
         {/* Pulso de luz animado percorrendo o fluxo */}
         {active && (
-          <circle r="5" fill="#22D3EE" filter="url(#procGlow)">
+          <circle r="5" fill="#2EB8A6" filter="url(#procGlow)">
             <animateMotion
               path="M 60 120 L 215 120 L 370 120 L 530 120 L 665 120"
               dur="3.5s"
@@ -553,18 +573,18 @@ function ControlVariant({
         UCL (+3σ)
       </text>
 
-      {/* CL Média */}
+      {/* CL Média - Token #2EB8A6 (--accent-2) */}
       <line
         x1="50"
         y1="160"
         x2="750"
         y2="160"
-        stroke="#22D3EE"
+        stroke="#2EB8A6"
         strokeWidth="1.5"
         strokeDasharray="4 4"
         opacity="0.9"
       />
-      <text x="755" y="164" fill="#22D3EE" fontSize="10" fontFamily="monospace">
+      <text x="755" y="164" fill="#2EB8A6" fontSize="10" fontFamily="monospace">
         CL (X̄)
       </text>
 
@@ -583,7 +603,7 @@ function ControlVariant({
         LCL (-3σ)
       </text>
 
-      {/* Pontos e linha de controle */}
+      {/* Pontos e linha de controle - Token #3D63DD (--accent) */}
       <polyline
         points="
           70,165 110,140 150,175 190,130 230,155 270,180 310,145 
@@ -591,11 +611,11 @@ function ControlVariant({
           630,155 670,175 710,150
         "
         fill="none"
-        stroke="#3B82F6"
+        stroke="#3D63DD"
         strokeWidth="2.5"
       />
 
-      {/* Pontos normais */}
+      {/* Pontos normais - Token #3D63DD (--accent) */}
       {[
         [70, 165],
         [110, 140],
@@ -614,7 +634,7 @@ function ControlVariant({
         [670, 175],
         [710, 150],
       ].map(([cx, cy], i) => (
-        <circle key={i} cx={cx} cy={cy} r="3.5" fill="#3B82F6" stroke="#0A0F1C" strokeWidth="1" />
+        <circle key={i} cx={cx} cy={cy} r="3.5" fill="#3D63DD" stroke="#0A0F1C" strokeWidth="1" />
       ))}
 
       {/* Ponto fora de controle (sinalizado vermelho) */}
@@ -659,7 +679,7 @@ function RiskVariant({
           } else if (severity >= 10) {
             bg = 'bg-[#F59E0B]/25 border-[#F59E0B]/40 text-amber-300'
           } else if (severity >= 5) {
-            bg = 'bg-[#3B82F6]/20 border-[#3B82F6]/35 text-[#22D3EE]'
+            bg = 'bg-accent/20 border-accent/35 text-accent2'
           } else {
             bg = 'bg-[#10B981]/20 border-[#10B981]/30 text-emerald-300'
           }
@@ -675,8 +695,8 @@ function RiskVariant({
                 <span
                   className="w-2 h-2 rounded-full"
                   style={{
-                    backgroundColor: severity >= 16 ? '#EF4444' : '#22D3EE',
-                    boxShadow: severity >= 16 ? '0 0 8px #EF4444' : '0 0 6px #22D3EE',
+                    backgroundColor:
+                      severity >= 16 ? '#EF4444' : '#2EB8A6' /* Token #2EB8A6 (--accent-2) */,
                   }}
                 />
               )}
@@ -705,14 +725,14 @@ function TimelineVariant({
       className="w-full h-full max-w-5xl mx-auto"
       preserveAspectRatio="none"
     >
-      {/* Linha horizontal conectando os marcos */}
+      {/* Linha horizontal conectando os marcos - Token #3D63DD (--accent) */}
       <line x1="150" y1="120" x2="850" y2="120" stroke="#1E293B" strokeWidth="3" />
       <line
         x1="150"
         y1="120"
         x2="850"
         y2="120"
-        stroke="#3B82F6"
+        stroke="#3D63DD"
         strokeWidth="3"
         strokeDasharray={prefersReducedMotion ? 'none' : '700'}
         strokeDashoffset={animateOnce || prefersReducedMotion ? '0' : '700'}
@@ -723,7 +743,7 @@ function TimelineVariant({
         }}
       />
 
-      {/* Marcos 1, 2, 3 */}
+      {/* Marcos 1, 2, 3 - Tokens #3D63DD (--accent) e #2EB8A6 (--accent-2) */}
       {[
         { cx: 200, label: '01', delay: '0.4s' },
         { cx: 500, label: '02', delay: '1.0s' },
@@ -737,8 +757,8 @@ function TimelineVariant({
           }}
         >
           {/* Anéis concêntricos */}
-          <circle cx={m.cx} cy="120" r="32" fill="#0A0F1C" stroke="#3B82F6" strokeWidth="2" />
-          <circle cx={m.cx} cy="120" r="22" fill="#111827" stroke="#22D3EE" strokeWidth="1.5" />
+          <circle cx={m.cx} cy="120" r="32" fill="#0A0F1C" stroke="#3D63DD" strokeWidth="2" />
+          <circle cx={m.cx} cy="120" r="22" fill="#111827" stroke="#2EB8A6" strokeWidth="1.5" />
           <text
             x={m.cx}
             y="126"
@@ -770,9 +790,10 @@ function SCurveVariant({
   return (
     <svg viewBox="0 0 1200 400" preserveAspectRatio="none" className="w-full h-full">
       <defs>
+        {/* Token #3D63DD (--accent) */}
         <linearGradient id="scurveArea" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.25" />
-          <stop offset="100%" stopColor="#3B82F6" stopOpacity="0" />
+          <stop offset="0%" stopColor="#3D63DD" stopOpacity="0.25" />
+          <stop offset="100%" stopColor="#3D63DD" stopOpacity="0" />
         </linearGradient>
       </defs>
 
@@ -782,11 +803,11 @@ function SCurveVariant({
         fill="url(#scurveArea)"
       />
 
-      {/* Curva S principal */}
+      {/* Curva S principal - Token #2EB8A6 (--accent-2) */}
       <path
         d="M 50 360 C 350 360, 500 320, 700 160 C 900 30, 1050 40, 1150 40"
         fill="none"
-        stroke="#22D3EE"
+        stroke="#2EB8A6"
         strokeWidth="3.5"
         strokeDasharray={prefersReducedMotion ? 'none' : '1500'}
         strokeDashoffset={animateOnce || prefersReducedMotion ? '0' : '1500'}
@@ -797,9 +818,9 @@ function SCurveVariant({
         }}
       />
 
-      {/* Ponto final culminando */}
-      <circle cx="1150" cy="40" r="6" fill="#3B82F6" />
-      <circle cx="1150" cy="40" r="14" fill="none" stroke="#22D3EE" strokeWidth="2" opacity="0.7" />
+      {/* Ponto final culminando - Tokens #3D63DD (--accent) e #2EB8A6 (--accent-2) */}
+      <circle cx="1150" cy="40" r="6" fill="#3D63DD" />
+      <circle cx="1150" cy="40" r="14" fill="none" stroke="#2EB8A6" strokeWidth="2" opacity="0.7" />
     </svg>
   )
 }

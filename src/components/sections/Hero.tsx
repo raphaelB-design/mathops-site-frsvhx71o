@@ -42,11 +42,11 @@ export function Hero() {
       className="relative flex flex-col justify-between px-6 md:px-12 pt-16 pb-12 w-full overflow-hidden bg-[#0A0F1C]"
     >
       {/* 2.3 Hero: "executive" ao fundo + 1.3 grade com opacidade levemente maior */}
-      <div className="absolute inset-0 z-0 opacity-[0.10] pointer-events-none bg-[linear-gradient(to_right,#3B82F6_1px,transparent_1px),linear-gradient(to_bottom,#3B82F6_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+      <div className="absolute inset-0 z-0 opacity-[0.10] pointer-events-none bg-[linear-gradient(to_right,hsl(var(--accent))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--accent))_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
-      {/* 1.3 Brilhos radiais suaves (#3B82F6 e #22D3EE, 10-15% opacidade, blur alto) */}
-      <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#3B82F6]/15 blur-[150px] rounded-full z-0 pointer-events-none" />
-      <div className="absolute top-1/2 right-1/4 translate-x-1/3 w-[500px] h-[500px] bg-[#22D3EE]/12 blur-[140px] rounded-full z-0 pointer-events-none" />
+      {/* 1.3 Brilhos radiais atmosféricos */}
+      <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/15 blur-[150px] rounded-full z-0 pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 translate-x-1/3 w-[500px] h-[500px] bg-accent2/12 blur-[140px] rounded-full z-0 pointer-events-none" />
 
       {/* 2.3 Executive backdrop */}
       <SectionBackdrop variant="executive" opacityClass="opacity-[0.16]" />
