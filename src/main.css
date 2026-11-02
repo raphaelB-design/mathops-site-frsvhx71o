@@ -315,5 +315,51 @@
       animation: none !important;
       border-color: hsl(var(--accent-2) / 0.8) !important;
     }
+
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+      animation: none !important;
+    }
+  }
+}
+
+/* View Transitions API: continuidade do logo e cross-fade suave */
+::view-transition-old(brand-logo),
+::view-transition-new(brand-logo) {
+  animation-duration: 350ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 300ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Progressive enhancement: animation-timeline view() para a barra de progresso do storytelling de serviços */
+@supports (animation-timeline: view()) {
+  @keyframes scroll-story-progress {
+    from {
+      height: 0%;
+    }
+    to {
+      height: 100%;
+    }
+  }
+
+  .scroll-story-timeline-fill {
+    animation: scroll-story-progress linear both;
+    animation-timeline: --services-scroll-timeline;
+    animation-range: entry 10% exit 90%;
+  }
+
+  #servicos {
+    timeline-scope: --services-scroll-timeline;
+  }
+
+  .services-story-container {
+    view-timeline-name: --services-scroll-timeline;
+    view-timeline-axis: block;
   }
 }

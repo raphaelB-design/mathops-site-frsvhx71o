@@ -38,6 +38,12 @@ export function Layout() {
     setIsMenuOpen(false)
   }, [location.pathname])
 
+  const shouldEnableViewTransition = () => {
+    if (typeof window === 'undefined') return false
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    return !prefersReducedMotion && typeof document.startViewTransition === 'function'
+  }
+
   const handleLinkClick = (href: string) => {
     setIsMenuOpen(false)
     if (href.startsWith('/#')) {
@@ -93,6 +99,7 @@ export function Layout() {
         <nav className="max-w-7xl mx-auto pl-2 pr-4 sm:pl-4 sm:pr-6 lg:pl-4 lg:pr-8 flex items-center justify-between h-20 md:h-22">
           <Link
             to="/"
+            viewTransition={shouldEnableViewTransition()}
             onClick={handleLogoClick}
             className="inline-flex items-center p-1 -ml-1 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 transition-opacity hover:opacity-90"
             aria-label="Ir para a Home"
@@ -108,6 +115,7 @@ export function Layout() {
               <Link
                 key={link.href}
                 to={link.href}
+                viewTransition={shouldEnableViewTransition()}
                 onClick={() => handleLinkClick(link.href)}
                 className={cn(
                   'inline-flex items-center text-sm tracking-wide transition-colors duration-300 min-h-[44px] px-2',
@@ -151,6 +159,7 @@ export function Layout() {
             <SheetTitle className="text-left">
               <Link
                 to="/"
+                viewTransition={shouldEnableViewTransition()}
                 onClick={handleLogoClick}
                 aria-label="Ir para a Home"
                 className="inline-flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
@@ -168,6 +177,7 @@ export function Layout() {
               <Link
                 key={link.href}
                 to={link.href}
+                viewTransition={shouldEnableViewTransition()}
                 className={cn(
                   'text-lg font-display transition-colors duration-300 min-h-[44px] py-3 flex items-center',
                   location.pathname === link.href ? 'text-white' : 'text-zinc-400 hover:text-white',
@@ -179,6 +189,7 @@ export function Layout() {
             ))}
             <Link
               to="/diagnostico"
+              viewTransition={shouldEnableViewTransition()}
               onClick={handleMobileDiagnostic}
               className="inline-flex items-center justify-center gap-2 btn-primary-gradient px-5 py-3.5 text-sm font-medium tracking-wide rounded-sm mt-4 min-h-[44px]"
             >

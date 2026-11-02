@@ -1,5 +1,12 @@
 import { Suspense, lazy } from 'react'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+  Route,
+  Navigate,
+  Outlet,
+} from 'react-router-dom'
 import { Toaster } from '@/components/ui/toaster'
 import { Toaster as Sonner } from '@/components/ui/sonner'
 import { TooltipProvider } from '@/components/ui/tooltip'
@@ -53,46 +60,58 @@ function AppTracker() {
   return null
 }
 
+function RootApp() {
+  return (
+    <>
+      <AppTracker />
+      <SmoothScroll />
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <Suspense fallback={<PageLoader />}>
+          <Outlet />
+        </Suspense>
+      </TooltipProvider>
+    </>
+  )
+}
+
+const routes = createRoutesFromElements(
+  <Route element={<RootApp />}>
+    {/* Hidden admin statistics route - without public Layout */}
+    <Route path="/estatisticas" element={<Estatisticas />} />
+
+    <Route element={<Layout />}>
+      <Route
+        path="/"
+        element={
+          <Suspense fallback={<IndexSkeleton />}>
+            <Index />
+          </Suspense>
+        }
+      />
+      <Route path="/diagnostico" element={<Diagnostico />} />
+      <Route path="/sobre" element={<Sobre />} />
+      <Route path="/servicos" element={<Navigate to="/#servicos" replace />} />
+      <Route path="/servicos/:slug" element={<Navigate to="/#servicos" replace />} />
+      <Route path="/industrias/:slug" element={<IndustryLayer />} />
+      <Route path="/metodologia" element={<Metodologia />} />
+      <Route path="/termos-de-uso" element={<TermosDeUso />} />
+      <Route path="/politica-de-privacidade" element={<PoliticaDePrivacidade />} />
+      <Route path="/privacidade" element={<Privacidade />} />
+      <Route path="/login" element={<Navigate to="/" replace />} />
+      <Route path="/dashboard" element={<Navigate to="/" replace />} />
+    </Route>
+    <Route path="*" element={<NotFound />} />
+  </Route>,
+)
+
+const router = createBrowserRouter(routes)
+
 const App = () => (
   <AuthProvider>
     <ConsentProvider>
-      <BrowserRouter>
-        <AppTracker />
-        <SmoothScroll />
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <Suspense fallback={<PageLoader />}>
-            <Routes>
-              {/* Hidden admin statistics route - without public Layout */}
-              <Route path="/estatisticas" element={<Estatisticas />} />
-
-              <Route element={<Layout />}>
-                <Route
-                  path="/"
-                  element={
-                    <Suspense fallback={<IndexSkeleton />}>
-                      <Index />
-                    </Suspense>
-                  }
-                />
-                <Route path="/diagnostico" element={<Diagnostico />} />
-                <Route path="/sobre" element={<Sobre />} />
-                <Route path="/servicos" element={<Navigate to="/#servicos" replace />} />
-                <Route path="/servicos/:slug" element={<Navigate to="/#servicos" replace />} />
-                <Route path="/industrias/:slug" element={<IndustryLayer />} />
-                <Route path="/metodologia" element={<Metodologia />} />
-                <Route path="/termos-de-uso" element={<TermosDeUso />} />
-                <Route path="/politica-de-privacidade" element={<PoliticaDePrivacidade />} />
-                <Route path="/privacidade" element={<Privacidade />} />
-                <Route path="/login" element={<Navigate to="/" replace />} />
-                <Route path="/dashboard" element={<Navigate to="/" replace />} />
-              </Route>
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
-        </TooltipProvider>
-      </BrowserRouter>
+      <RouterProvider router={router} />
     </ConsentProvider>
   </AuthProvider>
 )

@@ -23,7 +23,10 @@ export function BrandLogo({
   const src = isLight ? '/mathops-marca-clara.svg' : '/mathops-marca.svg'
 
   return (
-    <div className={cn('inline-flex items-center gap-2.5 select-none', className)}>
+    <div
+      style={{ viewTransitionName: 'brand-logo' }}
+      className={cn('inline-flex items-center gap-2.5 select-none', className)}
+    >
       <img
         src={src}
         alt={alt}
