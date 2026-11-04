@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom'
 import { Layers, Eye, Cpu, ShieldCheck, CheckCircle2, ChevronRight } from 'lucide-react'
 import { serviceLayers } from '@/config/servicesData'
 import { SectionBackdrop, SectionBackdropVariant } from '@/components/SectionBackdrop'
+import { VideoBackdrop } from '@/components/VideoBackdrop'
 import { useReducedMotion } from '@/hooks/use-reduced-motion'
 import { cn } from '@/lib/utils'
 
@@ -473,11 +474,15 @@ export function Services() {
                       prefersReducedMotion && '!opacity-60 !transition-none',
                     )}
                   >
-                    <SectionBackdrop
-                      variant={layerGroup.backdropVariant}
-                      isHovered={isActive}
-                      opacityClass={isActive ? 'opacity-[0.22]' : 'opacity-[0.10]'}
-                    />
+                    {layerNum === 3 ? (
+                      <VideoBackdrop name="05-relevo-de-risco" opacity={0.45} />
+                    ) : (
+                      <SectionBackdrop
+                        variant={layerGroup.backdropVariant}
+                        isHovered={isActive}
+                        opacityClass={isActive ? 'opacity-[0.22]' : 'opacity-[0.10]'}
+                      />
+                    )}
                   </div>
 
                   {/* Header da Camada */}

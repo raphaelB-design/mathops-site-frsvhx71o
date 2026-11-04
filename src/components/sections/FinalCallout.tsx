@@ -2,7 +2,7 @@ import { FadeIn } from '@/components/fade-in'
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { trackClick } from '@/services/analytics'
-import { SectionBackdrop } from '@/components/SectionBackdrop'
+import { VideoBackdrop } from '@/components/VideoBackdrop'
 
 export function FinalCallout() {
   return (
@@ -11,8 +11,13 @@ export function FinalCallout() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-accent/14 blur-[160px] rounded-full pointer-events-none" />
       <div className="absolute bottom-4 right-1/4 w-[400px] h-[300px] bg-accent2/10 blur-[140px] rounded-full pointer-events-none" />
 
-      {/* 2.3 Faixa final: "scurve", terminando próxima ao botão */}
-      <SectionBackdrop variant="scurve" opacityClass="opacity-[0.18]" />
+      {/* Vídeo de fundo: constelação à direita, texto à esquerda */}
+      <VideoBackdrop
+        name="04-constelacao-marca"
+        opacity={0.5}
+        objectPosition="right center"
+        overlayVariant="left"
+      />
 
       <div className="max-w-5xl mx-auto w-full text-center relative z-10">
         <FadeIn>

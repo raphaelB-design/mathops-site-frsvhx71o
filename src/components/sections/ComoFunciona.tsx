@@ -1,7 +1,7 @@
 import { FadeIn } from '@/components/fade-in'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
-import { SectionBackdrop } from '@/components/SectionBackdrop'
+import { VideoBackdrop } from '@/components/VideoBackdrop'
 
 const steps = [
   {
@@ -40,7 +40,7 @@ export function ComoFunciona() {
       className="relative py-24 md:py-32 px-6 md:px-12 w-full bg-[#0F1626] border-t border-[#1E293B] overflow-hidden"
     >
       {/* 2.3 Como Funciona: "timeline" */}
-      <SectionBackdrop variant="timeline" opacityClass="opacity-[0.16]" />
+      <VideoBackdrop name="06-fluxos-de-luz" opacity={0.4} />
 
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         <FadeIn>

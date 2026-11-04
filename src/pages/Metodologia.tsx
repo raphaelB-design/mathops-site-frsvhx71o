@@ -4,6 +4,7 @@ import { SlideUpMask } from '@/components/slide-up-mask'
 import { HowItWorks } from '@/components/sections/HowItWorks'
 import { Differentials } from '@/components/sections/Differentials'
 import { Helmet } from '@/components/Helmet'
+import { VideoBackdrop } from '@/components/VideoBackdrop'
 
 export default function Metodologia() {
   return (
@@ -17,6 +18,7 @@ export default function Metodologia() {
       </Helmet>
       {/* Methodology Page Hero */}
       <section className="relative pt-32 pb-16 px-6 md:px-12 w-full overflow-hidden bg-background">
+        <VideoBackdrop name="06-fluxos-de-luz" opacity={0.35} />
         <div className="absolute inset-0 z-0 opacity-[0.06] pointer-events-none bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:4rem_4rem]" />
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-accent/15 blur-[120px] rounded-full z-0 pointer-events-none" />
 

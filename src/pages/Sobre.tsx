@@ -3,6 +3,7 @@ import { SlideUpMask } from '@/components/slide-up-mask'
 import { Separator } from '@/components/ui/separator'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Helmet } from '@/components/Helmet'
+import { VideoBackdrop } from '@/components/VideoBackdrop'
 import heroBg from '@/assets/imagem2026-06-18231310090-99a81.png'
 
 export default function Sobre() {
@@ -29,6 +30,7 @@ export default function Sobre() {
           <div className="absolute inset-0 bg-gradient-to-tr from-[#0A0F1C]/90 via-[#0A0F1C]/75 to-accent/35 mix-blend-multiply pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
         </div>
+        <VideoBackdrop name="04-constelacao-marca" opacity={0.4} />
 
         <div className="relative z-10 container px-4 md:px-6 mx-auto text-center">
           <FadeIn>
