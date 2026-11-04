@@ -5,6 +5,7 @@ import { HowItWorks } from '@/components/sections/HowItWorks'
 import { Differentials } from '@/components/sections/Differentials'
 import { Helmet } from '@/components/Helmet'
 import { VideoBackdrop } from '@/components/VideoBackdrop'
+import { ControlChartLive } from '@/components/ControlChartLive'
 
 export default function Metodologia() {
   return (
@@ -50,58 +51,83 @@ export default function Metodologia() {
       {/* DMAIC Section */}
       <DMAIC />
 
-      {/* Mathematical Modeling Section */}
-      <section className="py-24 px-6 md:px-12 w-full bg-background relative overflow-hidden">
-        <div className="max-w-4xl mx-auto w-full relative z-10">
-          <FadeIn>
-            <div className="flex flex-col md:flex-row gap-12 items-start">
-              <div className="md:w-1/3 shrink-0">
+      {/* Modelagem Matemática + Estatística Avançada — seção unificada em duas colunas */}
+      <section className="py-24 px-6 md:px-12 w-full bg-[#0A0F1C] relative overflow-hidden">
+        <div className="max-w-6xl mx-auto w-full relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-12">
+            {/* Coluna esquerda — Estruturando o Caos */}
+            <div className="flex flex-col gap-6">
+              <FadeIn>
                 <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
                   Modelagem Matemática
                 </span>
                 <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-white mb-6">
                   Estruturando o Caos
                 </h2>
-              </div>
-              <div className="md:w-2/3 flex flex-col gap-6 font-body text-muted-foreground text-lg leading-relaxed">
-                <p>
+                <p className="font-body text-muted-foreground text-lg leading-relaxed">
                   Cada decisão começa por um modelo explícito: premissas documentadas, fórmulas
                   rastreáveis e cenários comparáveis. Antes de recomendar uma mudança, mostramos o
                   cálculo que a sustenta.
                 </p>
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
+              </FadeIn>
 
-      {/* Statistics Section */}
-      <section className="py-24 px-6 md:px-12 w-full bg-white/5 relative overflow-hidden border-t border-white/5">
-        <div className="max-w-4xl mx-auto w-full relative z-10">
-          <FadeIn>
-            <div className="flex flex-col md:flex-row-reverse gap-12 items-start">
-              <div className="md:w-1/3 shrink-0">
+              {/* Cartão com a constelação (vídeo limitado ao cartão) */}
+              <FadeIn delay={120} className="flex-1 flex">
+                <div className="relative w-full min-h-[260px] md:min-h-[320px] rounded-xl overflow-hidden border border-[#1E293B]">
+                  <VideoBackdrop
+                    name="04-constelacao-marca"
+                    opacity={0.35}
+                    objectPosition="right center"
+                  />
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background:
+                        'radial-gradient(ellipse at center, rgba(10,15,28,0) 0%, rgba(10,15,28,0.35) 70%, rgba(10,15,28,0.7) 100%)',
+                    }}
+                  />
+                </div>
+              </FadeIn>
+            </div>
+
+            {/* Coluna direita — Separando o Sinal do Ruído */}
+            <div className="flex flex-col gap-6">
+              <FadeIn delay={100}>
                 <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4 block">
                   Estatística Avançada
                 </span>
                 <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-white mb-6">
                   Separando o Sinal do Ruído
                 </h2>
-              </div>
-              <div className="md:w-2/3 flex flex-col gap-6 font-body text-muted-foreground text-lg leading-relaxed">
-                <p>
-                  Em mercados saturados de dados, a maioria das empresas reage a anomalias
-                  estatísticas como se fossem tendências reais. Nossa camada de inteligência
-                  estatística garante que cada insight extraído tenha validade comprobatória.
-                </p>
-                <p>
-                  Aplicamos Controle Estatístico de Processo (CEP), análise de variância e cartas de
-                  controle para separar variação normal de desvio real e identificar a causa raiz
-                  antes de agir.
-                </p>
-              </div>
+                <div className="flex flex-col gap-6 font-body text-muted-foreground text-lg leading-relaxed">
+                  <p>
+                    Em mercados saturados de dados, a maioria das empresas reage a anomalias
+                    estatísticas como se fossem tendências reais. Nossa camada de inteligência
+                    estatística garante que cada insight extraído tenha validade comprobatória.
+                  </p>
+                  <p>
+                    Aplicamos Controle Estatístico de Processo (CEP), análise de variância e cartas
+                    de controle para separar variação normal de desvio real e identificar a causa
+                    raiz antes de agir.
+                  </p>
+                </div>
+              </FadeIn>
+
+              {/* Cartão com a carta de controle viva (100% da largura da coluna) */}
+              <FadeIn delay={220} className="flex-1 flex">
+                <div className="relative w-full min-h-[260px] md:min-h-[320px] rounded-xl overflow-hidden border border-[#1E293B] bg-[#111827]/40">
+                  <ControlChartLive className="opacity-[0.55]" />
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background:
+                        'radial-gradient(ellipse at center, rgba(10,15,28,0) 40%, rgba(10,15,28,0.45) 100%)',
+                    }}
+                  />
+                </div>
+              </FadeIn>
             </div>
-          </FadeIn>
+          </div>
         </div>
       </section>
 

@@ -11,6 +11,7 @@ import {
   X,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { VideoBackdrop } from '@/components/VideoBackdrop'
 import {
   Dialog,
   DialogContent,
@@ -189,6 +190,7 @@ function MethodologyComponent() {
       id="methodology"
       className="py-24 md:py-40 px-5 md:px-12 w-full bg-background relative overflow-hidden"
     >
+      <VideoBackdrop name="09-superficie-estatistica" opacity={0.3} overlayVariant="radial" />
       <div className="absolute inset-0 bg-gradient-to-b from-accent/[0.03] via-transparent to-accent/[0.03] pointer-events-none" />
       <div
         className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
@@ -291,7 +293,7 @@ function MethodologyComponent() {
         </div>
 
         {/* Phase Panel */}
-        <div className="glass-panel rounded-2xl relative overflow-hidden">
+        <div className="glass-panel rounded-2xl relative overflow-hidden backdrop-blur-md">
           <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
           <FadeIn key={activePhase} direction="up" delay={0} className="p-6 md:p-12">
             {/* Header */}

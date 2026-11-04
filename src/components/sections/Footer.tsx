@@ -1,47 +1,8 @@
 import { ArrowUp, Linkedin, Mail, MapPin, SlidersHorizontal } from 'lucide-react'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { BrandLogo } from '@/components/BrandLogo'
 import { LocationMapVisual } from '@/components/LocationMapVisual'
 import { useConsent } from '@/hooks/use-consent'
-
-const serviceItems = [
-  {
-    label: 'Diagnóstico Estratégico',
-    targetId: 'servico-diagnostico-estrategico',
-  },
-  {
-    label: 'Diagnóstico e Visibilidade Operacional',
-    targetId: 'servico-diagnostico-e-visibilidade-operacional',
-  },
-  {
-    label: 'Controle de Projetos',
-    targetId: 'servico-controle-projetos-obra-evm',
-  },
-  {
-    label: 'Monitoramento Estatístico da Operação',
-    targetId: 'servico-monitoramento-estatistico-operacao',
-  },
-  {
-    label: 'Auditoria de Memórias de Cálculo',
-    targetId: 'servico-memorias',
-  },
-  {
-    label: 'Lean Six Sigma & Melhoria de Processos',
-    targetId: 'servico-lean-six-sigma-processos',
-  },
-  {
-    label: 'Modelagem Estatística de Custos',
-    targetId: 'servico-modelagem-estatistica-custos',
-  },
-  {
-    label: 'Gestão de Riscos Organizacionais',
-    targetId: 'servico-gestao-riscos-organizacionais',
-  },
-  {
-    label: 'Transformação Organizacional e Gestão Estratégica',
-    targetId: 'servico-transformacao-organizacional',
-  },
-]
 
 const navLinks = [
   { label: 'Início', href: '/' },
@@ -51,8 +12,6 @@ const navLinks = [
 ]
 
 export function Footer() {
-  const navigate = useNavigate()
-  const location = useLocation()
   const { openPreferences } = useConsent()
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -68,8 +27,8 @@ export function Footer() {
 
   return (
     <footer className="bg-black border-t border-white/10">
-      <div className="max-w-7xl mx-auto pl-3 pr-6 sm:pl-4 sm:pr-6 lg:pl-4 lg:pr-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="max-w-7xl mx-auto pl-3 pr-6 sm:pl-4 sm:pr-6 lg:pl-4 lg:pr-8 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="flex flex-col gap-4 items-start">
             <Link
               to="/"
@@ -140,56 +99,14 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col gap-3">
-            <h4 className="text-xs uppercase tracking-widest text-zinc-600 mb-1">Serviços</h4>
-            {serviceItems.map((item) => {
-              const href = `/#${item.targetId}`
-              const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-                const prefersReducedMotion = window.matchMedia(
-                  '(prefers-reduced-motion: reduce)',
-                ).matches
-
-                if (location.pathname === '/') {
-                  e.preventDefault()
-                  // Atualiza hash na URL sem recarregar
-                  window.history.pushState(null, '', href)
-                  const el = document.getElementById(item.targetId)
-                  if (el) {
-                    el.scrollIntoView({
-                      behavior: prefersReducedMotion ? 'auto' : 'smooth',
-                      block: 'center',
-                    })
-                    // Dispara evento para highlight visual imediato se já estava em hash igual
-                    window.dispatchEvent(new HashChangeEvent('hashchange'))
-                  }
-                } else {
-                  // Se vier de outra página (ex: /diagnostico, /metodologia), usa navigate
-                  e.preventDefault()
-                  navigate(href)
-                }
-              }
-
-              return (
-                <Link
-                  key={item.label}
-                  to={href}
-                  onClick={handleClick}
-                  className="text-sm text-zinc-400 hover:text-white transition-colors duration-300 inline-flex items-center gap-2 min-h-[36px] focus:outline-none focus-visible:text-white focus-visible:underline"
-                >
-                  {item.label}
-                </Link>
-              )
-            })}
-          </div>
-
-          <div className="flex flex-col gap-3">
             <h4 className="text-xs uppercase tracking-widest text-zinc-600 mb-1">Contato</h4>
             <div className="flex items-start gap-2 text-sm text-zinc-400 leading-relaxed">
               <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-zinc-400" />
               <span>Avenida Brigadeiro Faria Lima, 1811 /SP</span>
             </div>
 
-            {/* Visual elegante do mapa estilizado dark da MathOps */}
-            <LocationMapVisual className="mt-1 mb-1" />
+            {/* Visual elegante do mapa estilizado dark da MathOps (altura máxima 120px) */}
+            <LocationMapVisual className="mt-1 mb-1 [&>div:first-child]:h-[96px] [&>div:first-child]:max-h-[120px]" />
 
             <a
               href="mailto:contato@mathops.com.br"
@@ -207,7 +124,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="mt-8 py-4 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-zinc-600">
             © {new Date().getFullYear()} MathOps Strategy. Todos os direitos reservados.
           </p>
