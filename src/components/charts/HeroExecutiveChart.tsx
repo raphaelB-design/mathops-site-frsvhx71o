@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef, useId } from 'react'
 import { useReducedMotion } from '@/hooks/use-reduced-motion'
+import { useIsMobile } from '@/hooks/use-mobile'
 import { AnimatedCounter } from '@/components/animated-counter'
+import './executive-chart.css'
 
 const executiveTrendData = [
   { month: 'M01', valor: 78, meta: 95 },
@@ -40,7 +42,9 @@ export function HeroExecutiveChart() {
   const [isVisible, setIsVisible] = useState(true)
   const [hasAnimated, setHasAnimated] = useState(false)
   const [activeTooltipIndex, setActiveTooltipIndex] = useState<number | null>(null)
+  const [tilt, setTilt] = useState({ x: 0, y: 0 })
   const containerRef = useRef<HTMLDivElement>(null)
+  const isMobile = useIsMobile()
 
   // IntersectionObserver: pausar animações quando o painel estiver fora da tela e disparar animação de entrada
   useEffect(() => {
@@ -95,12 +99,27 @@ export function HeroExecutiveChart() {
   const custoVal = prefersReducedMotion ? CUSTO_INITIAL : custoCurrent
   const qualVal = [99.3, 99.5, 99.4][pulseIndex]
 
-  // Perspectiva 3D: rotateY -10°, rotateX 5° em repouso; no hover (desktop) endireita suavemente
-  const transformStyle = prefersReducedMotion
+  // Parallax 3D leve: o painel inclina até 4° seguindo o mouse, com retorno suave ao centro.
+  // Desativado no celular e com prefers-reduced-motion.
+  const tiltEnabled = !prefersReducedMotion && !isMobile
+
+  const handleTiltMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!tiltEnabled || !containerRef.current) return
+    const rect = containerRef.current.getBoundingClientRect()
+    const relX = (e.clientX - rect.left) / rect.width - 0.5
+    const relY = (e.clientY - rect.top) / rect.height - 0.5
+    setTilt({ x: -relY * 8, y: relX * 8 }) // máx. ±4° em cada eixo
+  }
+
+  const handleTiltLeave = () => {
+    setIsHovered(false)
+    setActiveTooltipIndex(null)
+    setTilt({ x: 0, y: 0 }) // retorno suave ao centro (transition do container)
+  }
+
+  const transformStyle = !tiltEnabled
     ? 'none'
-    : isHovered
-      ? 'perspective(1200px) rotateY(0deg) rotateX(0deg) translateY(-4px)'
-      : 'perspective(1200px) rotateY(-10deg) rotateX(5deg)'
+    : `perspective(1200px) rotateX(${tilt.x.toFixed(2)}deg) rotateY(${tilt.y.toFixed(2)}deg)${isHovered ? ' translateY(-4px)' : ''}`
 
   // Geometria do SVG inline
   const innerWidth = SVG_WIDTH - PADDING.left - PADDING.right
@@ -161,16 +180,14 @@ export function HeroExecutiveChart() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full transition-transform duration-700 ease-smooth group cursor-pointer"
+      className="relative w-full transition-transform duration-500 ease-out group cursor-pointer"
       style={{
         transform: transformStyle,
         transformStyle: 'preserve-3d',
       }}
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => {
-        setIsHovered(false)
-        setActiveTooltipIndex(null)
-      }}
+      onMouseMove={handleTiltMove}
+      onMouseLeave={handleTiltLeave}
       role="region"
       aria-label="Painel executivo com KPIs de prazo, custo e qualidade e linha de tendência histórica de 12 meses"
     >
@@ -179,8 +196,20 @@ export function HeroExecutiveChart() {
 
       {/* Card container com borda em degradê e fundo #111827 a 80% de opacidade com backdrop-blur */}
       <div className="relative w-full bg-[#111827]/80 backdrop-blur-xl border border-[#1E293B] rounded-xl p-5 md:p-6 shadow-[0_20px_50px_rgba(10,15,28,0.8)] group-hover:border-accent/60 transition-colors duration-500 overflow-hidden">
-        {/* Barra superior de acento gradiente */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent via-accent2 to-accent" />
+        {/* Barra superior de acento gradiente com brilho percorrendo (azul → cyan) */}
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent via-accent2 to-accent overflow-hidden">
+          {!prefersReducedMotion && (
+            <div className="panel-border-shine absolute top-0 left-0 h-full w-1/3 bg-gradient-to-r from-transparent via-white/80 to-transparent" />
+          )}
+        </div>
+
+        {/* Varredura de luz: faixa diagonal translúcida atravessando o painel a cada 6s */}
+        {!prefersReducedMotion && (
+          <div
+            aria-hidden="true"
+            className="panel-light-sweep pointer-events-none absolute top-0 bottom-0 left-0 w-1/5 bg-gradient-to-r from-transparent via-white/[0.07] to-transparent"
+          />
+        )}
 
         {/* Header do painel */}
         <div className="flex items-center justify-between pb-4 border-b border-[#1E293B] mb-5">
@@ -201,7 +230,7 @@ export function HeroExecutiveChart() {
               Prazo
             </span>
             <span className="font-display text-xl sm:text-2xl font-bold text-[#F5F4F0] block">
-              <AnimatedCounter value={Math.floor(prazoVal)} decimals={0} duration={1500} />,
+              <AnimatedCounter value={Math.floor(prazoVal)} decimals={0} duration={1200} />,
               {(prazoVal % 1).toFixed(1).replace('0.', '')}%
             </span>
             <span className="font-mono text-[9px] text-accent2 block mt-0.5">+4.2 p.p.</span>
@@ -212,7 +241,7 @@ export function HeroExecutiveChart() {
               Custo
             </span>
             <span className="font-display text-xl sm:text-2xl font-bold text-[#F5F4F0] block">
-              <AnimatedCounter value={custoVal} decimals={1} duration={1000} suffix="%" />
+              <AnimatedCounter value={custoVal} decimals={1} duration={1200} suffix="%" />
             </span>
             <span className="font-mono text-[9px] text-accent2 block mt-0.5">+2.8 p.p.</span>
           </div>
@@ -222,7 +251,7 @@ export function HeroExecutiveChart() {
               Qualidade
             </span>
             <span className="font-display text-xl sm:text-2xl font-bold text-[#F5F4F0] block">
-              <AnimatedCounter value={Math.floor(qualVal)} decimals={0} duration={1500} />,
+              <AnimatedCounter value={Math.floor(qualVal)} decimals={0} duration={1200} />,
               {(qualVal % 1).toFixed(1).replace('0.', '')}%
             </span>
             <span className="font-mono text-[9px] text-accent2 block mt-0.5">+1.5 p.p.</span>
@@ -317,7 +346,7 @@ export function HeroExecutiveChart() {
                 style={{
                   transition: prefersReducedMotion
                     ? 'none'
-                    : 'stroke-dashoffset 1.8s cubic-bezier(0.16, 1, 0.3, 1)',
+                    : 'stroke-dashoffset 1.5s cubic-bezier(0.16, 1, 0.3, 1)',
                 }}
               />
 
@@ -359,8 +388,7 @@ export function HeroExecutiveChart() {
                   fill="none"
                   stroke="#2EB8A6" /* Token --accent-2 */
                   strokeWidth="1.5"
-                  opacity="0.6"
-                  className={prefersReducedMotion ? '' : 'animate-ping'}
+                  className={prefersReducedMotion ? '' : 'chart-endpoint-pulse'}
                   style={{ transformOrigin: `${lastPoint.x}px ${lastPoint.y}px` }}
                 />
               )}

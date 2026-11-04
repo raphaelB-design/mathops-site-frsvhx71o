@@ -39,8 +39,14 @@ export function ComoFunciona() {
       id="como-funciona"
       className="relative py-24 md:py-32 px-6 md:px-12 w-full bg-[#0F1626] border-t border-[#1E293B] overflow-hidden"
     >
-      {/* 2.3 Como Funciona: "timeline" */}
-      <VideoBackdrop name="06-fluxos-de-luz" opacity={0.4} />
+      {/* 2.3 Como Funciona: "timeline" (seção calma) */}
+      <VideoBackdrop name="06-fluxos-de-luz" opacity={0.25} />
+
+      {/* Transição para a chamada final: degradê de 160px do vídeo para #0A0F1C sólido (faixa navy) */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[#0A0F1C] pointer-events-none"
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         <FadeIn>
@@ -62,7 +68,14 @@ export function ComoFunciona() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {steps.map((step, index) => (
             <FadeIn key={step.number} delay={index * 150}>
-              <div className="premium-card flex flex-col h-full p-8 rounded-lg relative group">
+              <div
+                className="premium-card flex flex-col h-full p-8 rounded-lg relative group hover:!border-accent2/50 transition-colors"
+                style={{
+                  background: 'rgba(17, 24, 39, 0.85)',
+                  backdropFilter: 'blur(12px)',
+                  WebkitBackdropFilter: 'blur(12px)',
+                }}
+              >
                 <div className="flex items-center justify-between mb-6">
                   <span className="font-display text-5xl lg:text-6xl font-bold text-[#94A3B8]/20 group-hover:text-accent/40 transition-colors duration-500">
                     {step.number}

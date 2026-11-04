@@ -4,7 +4,6 @@ import { Separator } from '@/components/ui/separator'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Helmet } from '@/components/Helmet'
 import { VideoBackdrop } from '@/components/VideoBackdrop'
-import heroBg from '@/assets/imagem2026-06-18231310090-99a81.png'
 
 export default function Sobre() {
   return (
@@ -17,19 +16,7 @@ export default function Sobre() {
         />
       </Helmet>
       {/* Hero Section */}
-      <section className="relative w-full h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 bg-black">
-          <img
-            src={heroBg}
-            alt="MathOps Building Close-up"
-            fetchPriority="high"
-            loading="eager"
-            className="w-full h-full object-cover opacity-60 grayscale"
-          />
-          {/* 1.7 Duotone azul-noite/azul (#0A0F1C -> hsl(var(--accent))) */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-[#0A0F1C]/90 via-[#0A0F1C]/75 to-accent/35 mix-blend-multiply pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
-        </div>
+      <section className="relative w-full h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b border-white/10 bg-[#0A0F1C]">
         <VideoBackdrop name="04-constelacao-marca" opacity={0.4} />
 
         <div className="relative z-10 container px-4 md:px-6 mx-auto text-center">

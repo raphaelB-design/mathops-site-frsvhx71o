@@ -15,6 +15,8 @@ interface VideoBackdropProps {
   objectPosition?: string
   /** "radial": bordas escuras; "left": escuro à esquerda (texto), transparente à direita */
   overlayVariant?: 'radial' | 'left'
+  /** Quando false, renderiza apenas a capa estática (vídeo só na camada ativa do storytelling) */
+  videoActive?: boolean
 }
 
 /**
@@ -29,6 +31,7 @@ export function VideoBackdrop({
   overlay = true,
   objectPosition = 'center center',
   overlayVariant = 'radial',
+  videoActive = true,
 }: VideoBackdropProps) {
   const prefersReducedMotion = useReducedMotion()
   const [isMobile, setIsMobile] = useState(() =>
@@ -58,7 +61,7 @@ export function VideoBackdrop({
   }, [prefersReducedMotion, isMobile])
 
   const poster = `${VIDEO_BASE}/${name}-poster.jpg`
-  const showPosterOnly = prefersReducedMotion || isMobile || !shouldLoad
+  const showPosterOnly = prefersReducedMotion || isMobile || !shouldLoad || !videoActive
 
   const mediaStyle = {
     opacity,

@@ -48,9 +48,9 @@ export function CookieBanner() {
                   id="cookie-consent-desc"
                   className="text-xs sm:text-sm text-zinc-300 leading-relaxed font-sans max-w-4xl"
                 >
-                  Usamos cookies para melhorar sua experiência no site, analisar o tráfego e
-                  personalizar conteúdos e anúncios. Você pode aceitar todos, gerenciar suas
-                  preferências ou recusar os não essenciais. Saiba mais em nossa{' '}
+                  Usamos cookies essenciais para o funcionamento do site e, com seu consentimento,
+                  cookies de análise para entender como ele é usado. Nenhum dado é usado para
+                  publicidade. Saiba mais em nossa{' '}
                   <Link
                     to="/privacidade"
                     className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors font-medium"

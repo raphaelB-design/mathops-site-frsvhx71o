@@ -255,7 +255,7 @@ export const LocationMapVisual: React.FC<LocationMapVisualProps> = ({ className 
       >
         <span className="flex items-center gap-1.5 font-medium truncate">
           <Navigation className="w-3.5 h-3.5 text-accent shrink-0" />
-          <span className="truncate">Faria Lima · SP</span>
+          <span className="truncate">Faria Lima, SP</span>
         </span>
         <span className="inline-flex items-center gap-1 text-[11px] text-zinc-400 group-hover:text-accent transition-colors shrink-0">
           <span>Ver mapa</span>

@@ -465,7 +465,8 @@ export function Services() {
                     prefersReducedMotion && '!opacity-100 !transition-none',
                   )}
                 >
-                  {/* Backdrop temático SVG da camada ativo quando a camada está ativa */}
+                  {/* Vídeo da camada: vídeo em movimento apenas na camada ativa (scroll storytelling);
+                      nas inativas, somente a capa estática com opacidade reduzida. */}
                   <div
                     aria-hidden="true"
                     className={cn(
@@ -474,13 +475,23 @@ export function Services() {
                       prefersReducedMotion && '!opacity-60 !transition-none',
                     )}
                   >
-                    {layerNum === 3 ? (
-                      <VideoBackdrop name="05-relevo-de-risco" opacity={0.45} />
+                    {layerNum === 1 ? (
+                      <VideoBackdrop
+                        name="10-varredura-operacao"
+                        opacity={0.45}
+                        videoActive={isActive || prefersReducedMotion}
+                      />
+                    ) : layerNum === 2 ? (
+                      <VideoBackdrop
+                        name="09-superficie-estatistica"
+                        opacity={0.45}
+                        videoActive={isActive || prefersReducedMotion}
+                      />
                     ) : (
-                      <SectionBackdrop
-                        variant={layerGroup.backdropVariant}
-                        isHovered={isActive}
-                        opacityClass={isActive ? 'opacity-[0.22]' : 'opacity-[0.10]'}
+                      <VideoBackdrop
+                        name="05-relevo-de-risco"
+                        opacity={0.45}
+                        videoActive={isActive || prefersReducedMotion}
                       />
                     )}
                   </div>

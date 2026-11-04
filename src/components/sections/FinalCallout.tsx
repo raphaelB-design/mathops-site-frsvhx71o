@@ -6,7 +6,10 @@ import { VideoBackdrop } from '@/components/VideoBackdrop'
 
 export function FinalCallout() {
   return (
-    <section className="relative w-full py-20 md:py-28 px-6 md:px-12 bg-[#0A0F1C] text-white border-t border-[#1E293B] overflow-hidden">
+    <section
+      className="relative w-full py-20 md:py-28 px-6 md:px-12 bg-[#0A0F1C] text-white overflow-hidden"
+      style={{ isolation: 'isolate' }}
+    >
       {/* 1.3 Brilhos radiais atmosféricos */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-accent/14 blur-[160px] rounded-full pointer-events-none" />
       <div className="absolute bottom-4 right-1/4 w-[400px] h-[300px] bg-accent2/10 blur-[140px] rounded-full pointer-events-none" />
@@ -17,6 +20,13 @@ export function FinalCallout() {
         opacity={0.5}
         objectPosition="right center"
         overlayVariant="left"
+        overlay={false}
+      />
+
+      {/* Transição da faixa navy: degradê de 160px de #0A0F1C sólido para o vídeo */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#0A0F1C] to-transparent pointer-events-none"
       />
 
       <div className="max-w-5xl mx-auto w-full text-center relative z-10">
@@ -39,7 +49,7 @@ export function FinalCallout() {
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
           <div className="mt-6 font-mono text-[10px] uppercase tracking-widest text-[#94A3B8]/70">
-            NDA disponível · Reunião de 30 min
+            NDA disponível, reunião de 30 min
           </div>
         </FadeIn>
       </div>

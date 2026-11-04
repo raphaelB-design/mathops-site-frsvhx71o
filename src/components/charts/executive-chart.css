@@ -1,0 +1,57 @@
+/* Animações do painel executivo (HeroExecutiveChart) */
+
+/* Ponto do último mês: anel expandindo continuamente a cada 2s */
+@keyframes chart-endpoint-pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.7;
+  }
+  70%,
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.chart-endpoint-pulse {
+  animation: chart-endpoint-pulse 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  will-change: transform, opacity;
+}
+
+/* Varredura de luz: faixa diagonal translúcida atravessando o painel a cada 6s */
+@keyframes panel-light-sweep {
+  0% {
+    transform: translateX(-160%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(520%) skewX(-12deg);
+  }
+}
+
+.panel-light-sweep {
+  animation: panel-light-sweep 6s ease-in-out 2s infinite;
+  will-change: transform;
+}
+
+/* Borda superior: brilho percorrendo o gradiente azul → cyan */
+@keyframes panel-border-shine {
+  0% {
+    transform: translateX(-110%);
+  }
+  100% {
+    transform: translateX(320%);
+  }
+}
+
+.panel-border-shine {
+  animation: panel-border-shine 4s ease-in-out 1.5s infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chart-endpoint-pulse,
+  .panel-light-sweep,
+  .panel-border-shine {
+    animation: none !important;
+  }
+}

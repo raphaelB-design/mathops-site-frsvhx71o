@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/dialog'
 import { Switch } from '@/components/ui/switch'
 import { useConsent } from '@/hooks/use-consent'
-import { ShieldCheck, BarChart3, Target } from 'lucide-react'
+import { ShieldCheck, BarChart3 } from 'lucide-react'
 
 export function CookiePreferencesModal() {
   const {
@@ -24,24 +24,22 @@ export function CookiePreferencesModal() {
 
   // Default para categorias opcionais quando o usuário abre para fazer escolha explícita: OFF
   const [analytics, setAnalytics] = useState(false)
-  const [marketing, setMarketing] = useState(false)
 
   // Sincroniza estado com o consentimento atual quando abrir
   useEffect(() => {
     if (isPreferencesOpen) {
       if (consent) {
         setAnalytics(Boolean(consent.preferences?.analytics))
-        setMarketing(Boolean(consent.preferences?.marketing))
       } else {
-        // Se ainda não havia escolha prévia (undecided), defaults explícitos das opcionais são OFF
+        // Se ainda não havia escolha prévia (undecided), default explícito da opcional é OFF
         setAnalytics(false)
-        setMarketing(false)
       }
     }
   }, [isPreferencesOpen, consent])
 
   const handleSave = () => {
-    savePreferences({ analytics, marketing })
+    // Marketing não é mais uma categoria oferecida no modal: permanece sempre recusado
+    savePreferences({ analytics, marketing: false })
   }
 
   const handleOpenChange = (open: boolean) => {
@@ -111,28 +109,6 @@ export function CookiePreferencesModal() {
               tempo de navegação e categoria de dispositivo), permitindo compreender a audiência e
               melhorar a experiência de navegação. Caso você desative esta categoria, suas visitas
               não serão contabilizadas em nossas métricas estatísticas internas.
-            </p>
-          </div>
-
-          {/* Categoria (c): Marketing */}
-          <div className="p-4 rounded-lg bg-white/[0.03] border border-white/5 space-y-2 text-left">
-            <div className="flex items-center justify-between gap-3">
-              <div className="flex items-center gap-2 font-medium text-sm text-zinc-200">
-                <Target className="w-4 h-4 text-purple-400 shrink-0" />
-                <span>Cookies de marketing</span>
-              </div>
-              <Switch
-                checked={marketing}
-                onCheckedChange={setMarketing}
-                aria-label="Ativar cookies de marketing"
-                className="data-[state=checked]:bg-blue-600 shrink-0"
-              />
-            </div>
-            <p className="text-xs text-zinc-400 leading-relaxed">
-              Utilizados para personalizar conteúdos e anúncios com base no seu perfil de navegação,
-              exibindo comunicados e ofertas mais relevantes para o seu contexto. A ativação serve
-              para registrar seu consentimento prévio; no momento, o site ainda não carrega nenhum
-              pixel ou rastreador de terceiros.
             </p>
           </div>
         </div>

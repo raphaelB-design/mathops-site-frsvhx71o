@@ -1,14 +1,15 @@
 import { FadeIn } from '@/components/fade-in'
 import { HeroExecutiveChart } from '@/components/charts/HeroExecutiveChart'
+import { VideoBackdrop } from '@/components/VideoBackdrop'
 
 const pills = [
-  'DMAIC · Lean Six Sigma',
+  'DMAIC, Lean Six Sigma',
   'Dashboards Gerenciais',
   'Controle Estatístico de Processo',
   'Mapeamento BPMN',
   'Earned Value (EVM)',
   'Auditoria de Indicadores',
-  'Gestão de Riscos · COSO',
+  'Gestão de Riscos, COSO',
 ]
 
 export function ValueStatement() {
@@ -17,6 +18,14 @@ export function ValueStatement() {
       id="about"
       className="relative py-24 md:py-32 px-6 md:px-12 w-full bg-[#0F1626] border-y border-[#1E293B] overflow-hidden"
     >
+      {/* Vídeo de fundo: sala executiva, texto à esquerda sobre a parte escura do gradiente */}
+      <VideoBackdrop
+        name="07-sala-executiva"
+        opacity={0.4}
+        objectPosition="60% center"
+        overlayVariant="left"
+      />
+
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         {/* Desktop: texto à esquerda, painel executivo à direita. Celular: painel abaixo do texto */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
