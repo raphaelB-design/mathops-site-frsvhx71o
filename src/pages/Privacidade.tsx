@@ -157,8 +157,9 @@ export default function Privacidade() {
                   <p className="text-xs text-zinc-400 leading-relaxed">
                     Tratadas sob a base legal do{' '}
                     <strong>consentimento livre, informado e inequívoco</strong> (Art. 7º, I da
-                    LGPD). Caso o usuário recuse a categoria Estatística, novas visitas não são
-                    registradas.
+                    LGPD). A categoria Marketing é utilizada para personalizar conteúdos e anúncios
+                    com base no seu perfil de navegação. Caso o usuário recuse a categoria
+                    Estatística, novas visitas não são registradas.
                   </p>
                 </div>
               </div>
@@ -176,10 +177,10 @@ export default function Privacidade() {
                 </div>
                 <p className="text-xs text-zinc-400 leading-relaxed">
                   O site da MathOps não possui nenhum pixel ou rastreador de terceiros ativo no
-                  momento. A categoria Marketing existe como estrutura de conformidade antecipada:
-                  caso ferramentas de medição de terceiros venham a ser adotadas no futuro, os
-                  respectivos scripts só serão carregados para visitantes que tiverem fornecido
-                  consentimento explícito prévio.
+                  momento. A categoria Marketing existe como estrutura de conformidade antecipada,
+                  destinada à personalização de conteúdos e anúncios: caso ferramentas de medição de
+                  terceiros venham a ser adotadas no futuro, os respectivos scripts só serão
+                  carregados para visitantes que tiverem fornecido consentimento explícito prévio.
                 </p>
               </div>
             </section>

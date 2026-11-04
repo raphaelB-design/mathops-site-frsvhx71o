@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ShieldCheck, SlidersHorizontal, Check, X } from 'lucide-react'
+import { ShieldCheck, SlidersHorizontal, Check } from 'lucide-react'
 import { useConsent } from '@/hooks/use-consent'
 import { useReducedMotion } from '@/hooks/use-reduced-motion'
 import { CookiePreferencesModal } from '@/components/CookiePreferencesModal'
@@ -48,8 +48,9 @@ export function CookieBanner() {
                   id="cookie-consent-desc"
                   className="text-xs sm:text-sm text-zinc-300 leading-relaxed font-sans max-w-4xl"
                 >
-                  Usamos cookies essenciais para o funcionamento do site e, com sua permissão,
-                  cookies de análise para entender como ele é usado. Saiba mais na{' '}
+                  Usamos cookies para melhorar sua experiência no site, analisar o tráfego e
+                  personalizar conteúdos e anúncios. Você pode aceitar todos, gerenciar suas
+                  preferências ou recusar os não essenciais. Saiba mais em nossa{' '}
                   <Link
                     to="/privacidade"
                     className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors font-medium"
@@ -60,7 +61,7 @@ export function CookieBanner() {
                 </p>
               </div>
 
-              {/* Botões de Ação na Faixa: Preferências, Recusar opcionais e Aceitar todos (mesmo destaque) */}
+              {/* Botões de Ação na Faixa: Preferências e Aceitar todos */}
               <div className="flex items-center gap-2.5 shrink-0 self-stretch sm:self-end lg:self-center">
                 <button
                   type="button"
@@ -69,15 +70,6 @@ export function CookieBanner() {
                 >
                   <SlidersHorizontal className="w-3.5 h-3.5 text-blue-400 shrink-0" />
                   <span>Preferências</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={rejectAll}
-                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2.5 sm:px-5 sm:py-2.5 rounded-sm bg-blue-600 hover:bg-blue-500 text-xs font-semibold text-white transition-colors min-h-[40px] shadow-md shadow-blue-900/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
-                >
-                  <X className="w-3.5 h-3.5 text-white shrink-0" />
-                  <span>Recusar opcionais</span>
                 </button>
 
                 <button

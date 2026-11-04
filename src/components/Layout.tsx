@@ -98,7 +98,7 @@ export function Layout() {
             : 'bg-[#0A0F1C]/50 backdrop-blur-md',
         )}
       >
-        <nav className="max-w-7xl mx-auto pl-2 pr-4 sm:pl-4 sm:pr-6 lg:pl-4 lg:pr-8 flex items-center justify-between h-20 md:h-22">
+        <nav className="max-w-7xl mx-auto pl-2 pr-4 sm:pl-4 sm:pr-6 lg:pl-4 lg:pr-8 flex items-center justify-between min-h-20 md:min-h-24 py-2">
           <Link
             to="/"
             viewTransition={shouldEnableViewTransition()}

@@ -49,19 +49,44 @@ export function HeroVideo() {
 
   // Desktop: olho inteiro no terço direito; celular: centralizado um pouco acima
   const objectPosition = isMobile ? 'center 35%' : '72% 45%'
+  // Ampliação reduzida: em vez de "cover" (que amplia demais o olho), o vídeo usa
+  // "contain" com uma leve escala — mostra o quadro quase inteiro (olho menor) e as
+  // bordas reveladas são preenchidas por uma camada desfocada do próprio poster,
+  // sem "bordas vazias" visíveis.
+  const videoTransform = isMobile ? 'scale(1.05)' : 'scale(1.15)'
+  const objectFit = 'contain' as const
 
   return (
     <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+      {/* Preenchimento desfocado atrás do vídeo (evita bordas vazias no modo contain) */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-2xl brightness-[0.85]"
+        style={{
+          backgroundImage: `url(${poster})`,
+          transform: 'scale(1.1)',
+        }}
+      />
       {prefersReducedMotion || !shouldLoad ? (
         // Capa estática (reduced motion) ou enquanto o vídeo não carregou
         <div
-          className="absolute inset-0 bg-cover bg-no-repeat"
-          style={{ backgroundImage: `url(${poster})`, backgroundPosition: objectPosition }}
+          className="absolute inset-0 bg-no-repeat"
+          style={{
+            backgroundImage: `url(${poster})`,
+            backgroundPosition: objectPosition,
+            backgroundSize: 'contain',
+            transform: videoTransform,
+            transformOrigin: 'center center',
+          }}
         />
       ) : (
         <video
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ objectPosition }}
+          className="absolute inset-0 w-full h-full object-contain"
+          style={{
+            objectPosition,
+            objectFit,
+            transform: videoTransform,
+            transformOrigin: 'center center',
+          }}
           autoPlay
           muted
           loop
