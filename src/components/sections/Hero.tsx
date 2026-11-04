@@ -57,7 +57,7 @@ export function Hero() {
 
       {/* Main content: título/CTAs na metade esquerda; o vídeo (olho) ocupa a direita */}
       <div className="relative z-10 flex-1 flex flex-col justify-center my-8 max-w-7xl mx-auto w-full">
-        <div className="flex-1 flex flex-col items-start text-left max-w-2xl lg:max-w-[55%]">
+        <div className="flex-1 flex flex-col items-start text-left max-w-2xl lg:max-w-[44%]">
           <h1 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight tracking-tight mb-8 text-white max-w-5xl break-words">
             <span className="inline-flex flex-wrap gap-x-3 md:gap-x-4 lg:gap-x-5 gap-y-2 md:gap-y-4 items-center">
               <span className="inline-flex flex-wrap gap-x-3 md:gap-x-4 lg:gap-x-5">

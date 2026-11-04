@@ -47,7 +47,8 @@ export function HeroVideo() {
     ? `${VIDEO_BASE}/olho-hero-mobile-poster.jpg`
     : `${VIDEO_BASE}/olho-hero-poster.jpg`
 
-  const objectPosition = isMobile ? 'center 30%' : '72% center'
+  // Desktop: olho inteiro no terço direito; celular: centralizado um pouco acima
+  const objectPosition = isMobile ? 'center 35%' : '72% 45%'
 
   return (
     <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
@@ -94,11 +95,11 @@ export function HeroVideo() {
         />
       ) : (
         <>
-          {/* Desktop: horizontal — #0A0F1C à esquerda até transparente em 50% */}
+          {/* Desktop: horizontal — #0A0F1C à esquerda até transparente em 58% */}
           <div
             className="absolute inset-0"
             style={{
-              background: 'linear-gradient(to right, rgba(10,15,28,0.94) 0%, rgba(10,15,28,0) 50%)',
+              background: 'linear-gradient(to right, rgba(10,15,28,0.94) 0%, rgba(10,15,28,0) 58%)',
             }}
           />
           {/* Desktop: vertical escuro nos 18% inferiores */}

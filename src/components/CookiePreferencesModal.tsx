@@ -114,7 +114,7 @@ export function CookiePreferencesModal() {
             </p>
           </div>
 
-          {/* Categoria (c): Marketing / remarketing */}
+          {/* Categoria (c): Marketing — ponto de extensão futuro, sem promessa de personalização */}
           <div className="p-4 rounded-lg bg-white/[0.03] border border-white/5 space-y-2 text-left">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-2 font-medium text-sm text-zinc-200">
@@ -129,11 +129,10 @@ export function CookiePreferencesModal() {
               />
             </div>
             <p className="text-xs text-zinc-400 leading-relaxed">
-              Utilizados para registrar a interação do visitante e possibilitar a exibição de
-              anúncios ou conteúdos relevantes por parceiros em campanhas futuras. No momento, o
+              Reservada para futuras ferramentas de medição complementar de terceiros. No momento, o
               site não carrega nenhum pixel ou rastreador de terceiros; a ativação serve
-              exclusivamente para registrar seu consentimento prévio caso tais campanhas sejam
-              iniciadas.
+              exclusivamente para registrar seu consentimento prévio caso ferramentas desse tipo
+              venham a ser adotadas.
             </p>
           </div>
         </div>

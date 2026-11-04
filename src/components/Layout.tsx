@@ -93,7 +93,9 @@ export function Layout() {
       <header
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
-          isScrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/10' : 'bg-transparent',
+          isScrolled
+            ? 'bg-black/80 backdrop-blur-xl border-b border-white/10'
+            : 'bg-[#0A0F1C]/50 backdrop-blur-md',
         )}
       >
         <nav className="max-w-7xl mx-auto pl-2 pr-4 sm:pl-4 sm:pr-6 lg:pl-4 lg:pr-8 flex items-center justify-between h-20 md:h-22">

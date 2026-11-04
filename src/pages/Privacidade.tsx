@@ -175,10 +175,11 @@ export default function Privacidade() {
                   <span>Sem pixels de terceiros ativos atualmente</span>
                 </div>
                 <p className="text-xs text-zinc-400 leading-relaxed">
-                  O site da MathOps não possui nenhum pixel de marketing ou remarketing ativo no
+                  O site da MathOps não possui nenhum pixel ou rastreador de terceiros ativo no
                   momento. A categoria Marketing existe como estrutura de conformidade antecipada:
-                  caso campanhas venham a ser adotadas no futuro, os respectivos scripts só serão
-                  carregados para visitantes que tiverem fornecido consentimento explícito prévio.
+                  caso ferramentas de medição de terceiros venham a ser adotadas no futuro, os
+                  respectivos scripts só serão carregados para visitantes que tiverem fornecido
+                  consentimento explícito prévio.
                 </p>
               </div>
             </section>
