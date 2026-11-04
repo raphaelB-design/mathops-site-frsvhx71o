@@ -1,0 +1,115 @@
+import { useEffect, useState } from 'react'
+import { useIsMobile } from '@/hooks/use-mobile'
+import { useReducedMotion } from '@/hooks/use-reduced-motion'
+
+const VIDEO_BASE = 'https://qzdsxtqskwrslsxodexc.supabase.co/storage/v1/object/public/site-media'
+
+type NetworkInformationLike = {
+  saveData?: boolean
+  effectiveType?: string
+}
+
+function isSlowConnection(): boolean {
+  if (typeof navigator === 'undefined') return false
+  const conn = (navigator as Navigator & { connection?: NetworkInformationLike }).connection
+  if (!conn) return false
+  if (conn.saveData) return true
+  const et = conn.effectiveType
+  return et === 'slow-2g' || et === '2g' || et === '3g'
+}
+
+/**
+ * Vídeo do olho no fundo do Hero.
+ * - Desktop: olho-hero-1080 (webm preferencial, mp4 fallback); conexão lenta: 720.mp4
+ * - Celular: olho-hero-mobile-9x16 (webm/mp4)
+ * - prefers-reduced-motion: apenas a capa (sem reprodução)
+ * - Carregamento adiado para depois do evento load da página
+ */
+export function HeroVideo() {
+  const isMobile = useIsMobile()
+  const prefersReducedMotion = useReducedMotion()
+  const [shouldLoad, setShouldLoad] = useState(false)
+  const [slow] = useState(() => isSlowConnection())
+
+  // Carregar o vídeo somente após o load da página (não bloquear o carregamento inicial)
+  useEffect(() => {
+    if (prefersReducedMotion) return
+    if (document.readyState === 'complete') {
+      setShouldLoad(true)
+      return
+    }
+    const onLoad = () => setShouldLoad(true)
+    window.addEventListener('load', onLoad, { once: true })
+    return () => window.removeEventListener('load', onLoad)
+  }, [prefersReducedMotion])
+
+  const poster = isMobile
+    ? `${VIDEO_BASE}/olho-hero-mobile-poster.jpg`
+    : `${VIDEO_BASE}/olho-hero-poster.jpg`
+
+  const objectPosition = isMobile ? 'center 30%' : '72% center'
+
+  return (
+    <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+      {prefersReducedMotion || !shouldLoad ? (
+        // Capa estática (reduced motion) ou enquanto o vídeo não carregou
+        <div
+          className="absolute inset-0 bg-cover bg-no-repeat"
+          style={{ backgroundImage: `url(${poster})`, backgroundPosition: objectPosition }}
+        />
+      ) : (
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition }}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster={poster}
+        >
+          {!isMobile && !slow && (
+            <source src={`${VIDEO_BASE}/olho-hero-1080.webm`} type="video/webm" />
+          )}
+          {!isMobile && !slow && (
+            <source src={`${VIDEO_BASE}/olho-hero-1080.mp4`} type="video/mp4" />
+          )}
+          {isMobile && (
+            <source src={`${VIDEO_BASE}/olho-hero-mobile-9x16.webm`} type="video/webm" />
+          )}
+          {isMobile && <source src={`${VIDEO_BASE}/olho-hero-mobile-9x16.mp4`} type="video/mp4" />}
+          {!isMobile && slow && <source src={`${VIDEO_BASE}/olho-hero-720.mp4`} type="video/mp4" />}
+        </video>
+      )}
+
+      {/* Degradês de legibilidade sobre o vídeo */}
+      {isMobile ? (
+        // Celular: vertical — escuro no topo, transparente no meio, escuro na base
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(to bottom, rgba(10,15,28,0.92) 0%, rgba(10,15,28,0) 50%, rgba(10,15,28,0.92) 100%)',
+          }}
+        />
+      ) : (
+        <>
+          {/* Desktop: horizontal — #0A0F1C à esquerda até transparente em 50% */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: 'linear-gradient(to right, rgba(10,15,28,0.94) 0%, rgba(10,15,28,0) 50%)',
+            }}
+          />
+          {/* Desktop: vertical escuro nos 18% inferiores */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: 'linear-gradient(to top, rgba(10,15,28,0.92) 0%, rgba(10,15,28,0) 18%)',
+            }}
+          />
+        </>
+      )}
+    </div>
+  )
+}

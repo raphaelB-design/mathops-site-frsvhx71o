@@ -5,7 +5,7 @@ import { AnimatedCounter } from '@/components/animated-counter'
 import { useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { trackClick } from '@/services/analytics'
-import { HeroExecutiveChart } from '@/components/charts/HeroExecutiveChart'
+import { HeroVideo } from '@/components/HeroVideo'
 import { SectionBackdrop } from '@/components/SectionBackdrop'
 
 const statsCards = [
@@ -39,17 +39,13 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex flex-col justify-between px-6 md:px-12 pt-16 pb-12 w-full overflow-hidden bg-[#0A0F1C]"
+      className="relative flex flex-col justify-between px-6 md:px-12 pt-16 pb-12 w-full overflow-hidden bg-[#0A0F1C] min-h-[92svh] lg:min-h-[100svh]"
     >
-      {/* 2.3 Hero: "executive" ao fundo + 1.3 grade com opacidade levemente maior */}
-      <div className="absolute inset-0 z-0 opacity-[0.10] pointer-events-none bg-[linear-gradient(to_right,hsl(var(--accent))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--accent))_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+      {/* Vídeo do olho ao fundo */}
+      <HeroVideo />
 
-      {/* 1.3 Brilhos radiais atmosféricos */}
-      <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/15 blur-[150px] rounded-full z-0 pointer-events-none" />
-      <div className="absolute top-1/2 right-1/4 translate-x-1/3 w-[500px] h-[500px] bg-accent2/12 blur-[140px] rounded-full z-0 pointer-events-none" />
-
-      {/* 2.3 Executive backdrop */}
-      <SectionBackdrop variant="executive" opacityClass="opacity-[0.16]" />
+      {/* 2.3 Executive backdrop (só textura) */}
+      <SectionBackdrop variant="executive" opacityClass="opacity-[0.06]" />
 
       {/* Top badge */}
       <FadeIn delay={50}>
@@ -59,9 +55,9 @@ export function Hero() {
         </div>
       </FadeIn>
 
-      {/* Main content: Hero Title/CTA on left, Executive Panel on right */}
-      <div className="relative z-10 flex-1 flex flex-col lg:flex-row gap-12 lg:gap-16 items-center justify-between my-8 max-w-7xl mx-auto w-full">
-        <div className="flex-1 flex flex-col items-start text-left">
+      {/* Main content: título/CTAs na metade esquerda; o vídeo (olho) ocupa a direita */}
+      <div className="relative z-10 flex-1 flex flex-col justify-center my-8 max-w-7xl mx-auto w-full">
+        <div className="flex-1 flex flex-col items-start text-left max-w-2xl lg:max-w-[55%]">
           <h1 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight tracking-tight mb-8 text-white max-w-5xl break-words">
             <span className="inline-flex flex-wrap gap-x-3 md:gap-x-4 lg:gap-x-5 gap-y-2 md:gap-y-4 items-center">
               <span className="inline-flex flex-wrap gap-x-3 md:gap-x-4 lg:gap-x-5">
@@ -103,13 +99,6 @@ export function Hero() {
                 Ver serviços
               </a>
             </div>
-          </FadeIn>
-        </div>
-
-        {/* Executive Mini Panel */}
-        <div className="w-full lg:w-[480px] shrink-0">
-          <FadeIn delay={400}>
-            <HeroExecutiveChart />
           </FadeIn>
         </div>
       </div>

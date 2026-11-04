@@ -1,5 +1,5 @@
 import { FadeIn } from '@/components/fade-in'
-import { SectionBackdrop } from '@/components/SectionBackdrop'
+import { HeroExecutiveChart } from '@/components/charts/HeroExecutiveChart'
 
 const pills = [
   'DMAIC · Lean Six Sigma',
@@ -17,19 +17,17 @@ export function ValueStatement() {
       id="about"
       className="relative py-24 md:py-32 px-6 md:px-12 w-full bg-[#0F1626] border-y border-[#1E293B] overflow-hidden"
     >
-      {/* 2.3 ValueStatement: "divergence" */}
-      <SectionBackdrop variant="divergence" opacityClass="opacity-[0.15]" />
-
       <div className="relative z-10 max-w-7xl mx-auto w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-          <FadeIn>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-tight tracking-tight">
-              Empresas não quebram por falta de esforço. Quebram por decisões que pareciam certas e
-              nunca foram testadas com dados.
-            </h2>
-          </FadeIn>
-
+        {/* Desktop: texto à esquerda, painel executivo à direita. Celular: painel abaixo do texto */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <div className="flex flex-col gap-8">
+            <FadeIn>
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-tight tracking-tight">
+                Empresas não quebram por falta de esforço. Quebram por decisões que pareciam certas
+                e nunca foram testadas com dados.
+              </h2>
+            </FadeIn>
+
             <FadeIn delay={200}>
               <p className="font-body text-lg md:text-xl text-muted-foreground leading-relaxed">
                 <strong className="text-white font-medium">MathOps Strategy</strong>&nbsp;nasce do
@@ -51,6 +49,10 @@ export function ValueStatement() {
               </div>
             </FadeIn>
           </div>
+
+          <FadeIn delay={300}>
+            <HeroExecutiveChart />
+          </FadeIn>
         </div>
       </div>
     </section>
