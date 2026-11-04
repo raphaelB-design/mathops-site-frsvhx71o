@@ -53,7 +53,7 @@ export function HeroVideo() {
   // "contain" com uma leve escala — mostra o quadro quase inteiro (olho menor) e as
   // bordas reveladas são preenchidas por uma camada desfocada do próprio poster,
   // sem "bordas vazias" visíveis.
-  const videoTransform = isMobile ? 'scale(1.05)' : 'scale(1.15)'
+  const videoTransform = isMobile ? 'scale(1.0)' : 'scale(1.08)'
   const objectFit = 'contain' as const
 
   return (
