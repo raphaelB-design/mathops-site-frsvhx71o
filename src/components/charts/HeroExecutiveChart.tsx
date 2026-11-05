@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useId } from 'react'
 import { useReducedMotion } from '@/hooks/use-reduced-motion'
 import { useIsMobile } from '@/hooks/use-mobile'
 import { AnimatedCounter } from '@/components/animated-counter'
+import { AreaAdherenceBars, CapacityGauge } from '@/components/charts/ExecutiveSecondaryCharts'
 import './executive-chart.css'
 
 const executiveTrendData = [
@@ -195,7 +196,7 @@ export function HeroExecutiveChart() {
       <div className="absolute -inset-1.5 bg-gradient-to-r from-accent/30 to-accent2/30 rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
       {/* Card container com borda em degradê e fundo #111827 a 80% de opacidade com backdrop-blur */}
-      <div className="relative w-full bg-[#111827]/80 backdrop-blur-xl border border-[#1E293B] rounded-xl p-5 md:p-6 shadow-[0_20px_50px_rgba(10,15,28,0.8)] group-hover:border-accent/60 transition-colors duration-500 overflow-hidden">
+      <div className="relative w-full bg-[#111827]/80 backdrop-blur-xl border border-[#1E293B] rounded-xl p-6 md:p-8 shadow-[0_20px_50px_rgba(10,15,28,0.8)] group-hover:border-accent/60 transition-colors duration-500 overflow-hidden">
         {/* Barra superior de acento gradiente com brilho percorrendo (azul → cyan) */}
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent via-accent2 to-accent overflow-hidden">
           {!prefersReducedMotion && (
@@ -221,6 +222,9 @@ export function HeroExecutiveChart() {
               Performance Operacional Consolidada
             </h4>
           </div>
+          <span className="font-mono text-[9px] uppercase tracking-wider text-[#94A3B8] border border-[#1E293B] bg-[#0A0F1C]/60 rounded-sm px-2 py-1 shrink-0">
+            Dados ilustrativos
+          </span>
         </div>
 
         {/* 3 KPIs com contador animado */}
@@ -229,7 +233,7 @@ export function HeroExecutiveChart() {
             <span className="font-mono text-[10px] uppercase tracking-wider text-[#94A3B8] block">
               Prazo
             </span>
-            <span className="font-display text-xl sm:text-2xl font-bold text-[#F5F4F0] block">
+            <span className="font-display text-2xl sm:text-3xl font-bold text-[#F5F4F0] block">
               <AnimatedCounter value={Math.floor(prazoVal)} decimals={0} duration={1200} />,
               {(prazoVal % 1).toFixed(1).replace('0.', '')}%
             </span>
@@ -240,7 +244,7 @@ export function HeroExecutiveChart() {
             <span className="font-mono text-[10px] uppercase tracking-wider text-[#94A3B8] block">
               Custo
             </span>
-            <span className="font-display text-xl sm:text-2xl font-bold text-[#F5F4F0] block">
+            <span className="font-display text-2xl sm:text-3xl font-bold text-[#F5F4F0] block">
               <AnimatedCounter value={custoVal} decimals={1} duration={1200} suffix="%" />
             </span>
             <span className="font-mono text-[9px] text-accent2 block mt-0.5">+2.8 p.p.</span>
@@ -250,7 +254,7 @@ export function HeroExecutiveChart() {
             <span className="font-mono text-[10px] uppercase tracking-wider text-[#94A3B8] block">
               Qualidade
             </span>
-            <span className="font-display text-xl sm:text-2xl font-bold text-[#F5F4F0] block">
+            <span className="font-display text-2xl sm:text-3xl font-bold text-[#F5F4F0] block">
               <AnimatedCounter value={Math.floor(qualVal)} decimals={0} duration={1200} />,
               {(qualVal % 1).toFixed(1).replace('0.', '')}%
             </span>
@@ -268,7 +272,7 @@ export function HeroExecutiveChart() {
           </div>
 
           {/* Gráfico SVG puro */}
-          <div className="h-40 w-full relative" aria-hidden="true">
+          <div className="h-44 md:h-52 w-full relative" aria-hidden="true">
             <svg
               viewBox={`0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`}
               className="w-full h-full select-none overflow-visible"
@@ -442,6 +446,12 @@ export function HeroExecutiveChart() {
               </div>
             )}
           </div>
+        </div>
+
+        {/* Gráficos secundários: barras por área e gauge de capacidade (dados fictícios) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-5">
+          <AreaAdherenceBars animate={isLineAnimated} reducedMotion={prefersReducedMotion} />
+          <CapacityGauge animate={isLineAnimated} reducedMotion={prefersReducedMotion} />
         </div>
       </div>
     </div>
