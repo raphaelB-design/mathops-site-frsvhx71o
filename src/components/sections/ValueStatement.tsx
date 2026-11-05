@@ -21,7 +21,7 @@ export function ValueStatement() {
       {/* Vídeo de fundo: sala executiva, texto à esquerda sobre a parte escura do gradiente */}
       <VideoBackdrop
         name="07-sala-executiva"
-        opacity={0.4}
+        opacity={0.55}
         objectPosition="60% center"
         overlayVariant="left"
       />
