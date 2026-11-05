@@ -3,6 +3,7 @@ import { useReducedMotion } from '@/hooks/use-reduced-motion'
 import { useIsMobile } from '@/hooks/use-mobile'
 import { AnimatedCounter } from '@/components/animated-counter'
 import { AreaAdherenceBars, CapacityGauge } from '@/components/charts/ExecutiveSecondaryCharts'
+import { useExecutiveClock, waveOffset } from '@/components/charts/executive-live'
 import './executive-chart.css'
 
 const executiveTrendData = [
@@ -95,6 +96,11 @@ export function HeroExecutiveChart() {
     return () => clearInterval(interval)
   }, [prefersReducedMotion, isVisible])
 
+  // Movimento contínuo e sutil dos gráficos: só corre com o painel visível, após a entrada
+  // e sem reduzir movimento. Fora disso o relógio zera e os gráficos mostram o valor-base.
+  const liveCharts = !prefersReducedMotion && isVisible && hasAnimated
+  const chartElapsed = useExecutiveClock(liveCharts)
+
   // KPIs dinâmicos sutis (prazo e qualidade mantêm a oscilação sutil; custo diminui lentamente em pausas)
   const prazoVal = [96.4, 96.8, 96.5][pulseIndex]
   const custoVal = prefersReducedMotion ? CUSTO_INITIAL : custoCurrent
@@ -148,14 +154,14 @@ export function HeroExecutiveChart() {
   }))
 
   // Construção de curva suave (monotone / catmull-rom adaptada para SVG cúbico)
-  const createSmoothLinePath = () => {
-    if (points.length === 0) return ''
-    let d = `M ${points[0].x.toFixed(2)} ${points[0].y.toFixed(2)}`
-    for (let i = 0; i < points.length - 1; i++) {
-      const p0 = i > 0 ? points[i - 1] : points[i]
-      const p1 = points[i]
-      const p2 = points[i + 1]
-      const p3 = i < points.length - 2 ? points[i + 2] : p2
+  const createSmoothLinePath = (pts: typeof points) => {
+    if (pts.length === 0) return ''
+    let d = `M ${pts[0].x.toFixed(2)} ${pts[0].y.toFixed(2)}`
+    for (let i = 0; i < pts.length - 1; i++) {
+      const p0 = i > 0 ? pts[i - 1] : pts[i]
+      const p1 = pts[i]
+      const p2 = pts[i + 1]
+      const p3 = i < pts.length - 2 ? pts[i + 2] : p2
 
       const cp1x = p1.x + (p2.x - p0.x) / 6
       const cp1y = p1.y + (p2.y - p0.y) / 6
@@ -167,9 +173,18 @@ export function HeroExecutiveChart() {
     return d
   }
 
-  const linePathD = createSmoothLinePath()
-  const firstPoint = points[0]
-  const lastPoint = points[points.length - 1]
+  // Último ponto oscila suavemente em torno de 98% (±0,6 p.p.) enquanto o painel está ativo
+  const lastLiveValor = liveCharts
+    ? executiveTrendData[executiveTrendData.length - 1].valor + waveOffset(chartElapsed, 7, 0.6)
+    : null
+  const livePoints =
+    lastLiveValor === null
+      ? points
+      : points.map((pt, i) => (i === points.length - 1 ? { ...pt, y: getY(lastLiveValor) } : pt))
+
+  const linePathD = createSmoothLinePath(livePoints)
+  const firstPoint = livePoints[0]
+  const lastPoint = livePoints[livePoints.length - 1]
   const areaPathD = `${linePathD} L ${lastPoint.x.toFixed(2)} ${bottomY} L ${firstPoint.x.toFixed(2)} ${bottomY} Z`
 
   // Comprimento aproximado da curva para stroke-dasharray
@@ -367,12 +382,13 @@ export function HeroExecutiveChart() {
               <g>
                 {points.map((pt, idx) => {
                   const isLast = idx === points.length - 1
+                  const drawY = isLast && lastLiveValor !== null ? getY(lastLiveValor) : pt.y
                   const isHoveredPoint = activeTooltipIndex === idx
                   return (
                     <circle
                       key={pt.month}
                       cx={pt.x}
-                      cy={pt.y}
+                      cy={drawY}
                       r={isHoveredPoint ? 5 : isLast ? 4 : 2.5}
                       fill={isHoveredPoint ? '#2EB8A6' : isLast ? '#2EB8A6' : '#3D63DD'}
                       stroke={isHoveredPoint || isLast ? '#0A0F1C' : '#3D63DD'}
@@ -450,8 +466,18 @@ export function HeroExecutiveChart() {
 
         {/* Gráficos secundários: barras por área e gauge de capacidade (dados fictícios) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-5">
-          <AreaAdherenceBars animate={isLineAnimated} reducedMotion={prefersReducedMotion} />
-          <CapacityGauge animate={isLineAnimated} reducedMotion={prefersReducedMotion} />
+          <AreaAdherenceBars
+            animate={isLineAnimated}
+            reducedMotion={prefersReducedMotion}
+            live={liveCharts}
+            elapsed={chartElapsed}
+          />
+          <CapacityGauge
+            animate={isLineAnimated}
+            reducedMotion={prefersReducedMotion}
+            live={liveCharts}
+            elapsed={chartElapsed}
+          />
         </div>
       </div>
     </div>
