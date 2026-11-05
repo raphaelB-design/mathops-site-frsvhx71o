@@ -237,7 +237,7 @@ function MethodologyComponent() {
       return
     }
 
-    const STEP_DURATION = 4800 // ~4.8s por fase: tempo ideal para leitura e transição suave
+    const STEP_DURATION = 6000 // ~6s por fase: mais tempo de permanência antes de avançar
 
     const timer = setInterval(() => {
       setActivePhase((prev) => {
