@@ -268,7 +268,7 @@ function MethodologyComponent() {
       onMouseLeave={() => setIsPaused(false)}
       className="py-24 md:py-40 px-5 md:px-12 w-full bg-background relative overflow-hidden"
     >
-      <VideoBackdrop name="09-superficie-estatistica" opacity={0.3} overlayVariant="radial" />
+      <VideoBackdrop name="09-superficie-estatistica" opacity={0.4} overlayVariant="radial" />
       <div className="absolute inset-0 bg-gradient-to-b from-accent/[0.03] via-transparent to-accent/[0.03] pointer-events-none" />
       <div
         className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"

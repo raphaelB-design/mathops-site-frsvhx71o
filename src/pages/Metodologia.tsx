@@ -19,7 +19,7 @@ export default function Metodologia() {
       </Helmet>
       {/* Methodology Page Hero */}
       <section className="relative pt-32 pb-16 px-6 md:px-12 w-full overflow-hidden bg-background">
-        <VideoBackdrop name="06-fluxos-de-luz" opacity={0.35} />
+        <VideoBackdrop name="06-fluxos-de-luz" opacity={0.5} />
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-accent/15 blur-[120px] rounded-full z-0 pointer-events-none" />
 
         <div className="relative z-10 max-w-4xl mx-auto w-full text-center mt-12 mb-12">
@@ -76,7 +76,7 @@ export default function Metodologia() {
                 <div className="relative w-full min-h-[260px] md:min-h-[320px] rounded-xl overflow-hidden border border-[#1E293B]">
                   <VideoBackdrop
                     name="04-constelacao-marca"
-                    opacity={0.35}
+                    opacity={0.5}
                     objectPosition="right center"
                   />
                   <div

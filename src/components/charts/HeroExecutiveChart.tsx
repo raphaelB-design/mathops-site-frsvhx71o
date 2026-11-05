@@ -403,8 +403,9 @@ export function HeroExecutiveChart() {
                 })}
               </g>
 
-              {/* Ponto final com halo suave piscando */}
-              {isLineAnimated && (
+              {/* Ponto final: reage à passagem da luz com um deslocamento/pulso
+                  (sweep-move-endpoint, mesmo atraso do flash da linha) */}
+              {isLineAnimated && !prefersReducedMotion && (
                 <circle
                   cx={lastPoint.x}
                   cy={lastPoint.y}
@@ -412,8 +413,7 @@ export function HeroExecutiveChart() {
                   fill="none"
                   stroke="#2EB8A6" /* Token --accent-2 */
                   strokeWidth="1.5"
-                  className={prefersReducedMotion ? '' : 'chart-endpoint-pulse'}
-                  style={{ transformOrigin: `${lastPoint.x}px ${lastPoint.y}px` }}
+                  className="sweep-move-endpoint sweep-delay-chart"
                 />
               )}
 

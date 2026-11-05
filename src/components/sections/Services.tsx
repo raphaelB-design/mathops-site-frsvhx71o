@@ -478,19 +478,19 @@ export function Services() {
                     {layerNum === 1 ? (
                       <VideoBackdrop
                         name="10-varredura-operacao"
-                        opacity={0.45}
+                        opacity={0.55}
                         videoActive={isActive || prefersReducedMotion}
                       />
                     ) : layerNum === 2 ? (
                       <VideoBackdrop
                         name="09-superficie-estatistica"
-                        opacity={0.45}
+                        opacity={0.55}
                         videoActive={isActive || prefersReducedMotion}
                       />
                     ) : (
                       <VideoBackdrop
                         name="05-relevo-de-risco"
-                        opacity={0.45}
+                        opacity={0.55}
                         videoActive={isActive || prefersReducedMotion}
                       />
                     )}

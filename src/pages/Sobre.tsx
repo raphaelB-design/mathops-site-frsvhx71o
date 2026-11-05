@@ -17,7 +17,7 @@ export default function Sobre() {
       </Helmet>
       {/* Hero Section */}
       <section className="relative w-full h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden border-b border-white/10 bg-[#0A0F1C]">
-        <VideoBackdrop name="04-constelacao-marca" opacity={0.4} />
+        <VideoBackdrop name="04-constelacao-marca" opacity={0.55} />
 
         <div className="relative z-10 container px-4 md:px-6 mx-auto text-center">
           <FadeIn>

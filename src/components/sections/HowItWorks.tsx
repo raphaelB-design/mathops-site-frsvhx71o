@@ -52,7 +52,7 @@ export function HowItWorks() {
 
   return (
     <section className="py-24 px-6 md:px-12 w-full bg-background relative overflow-hidden">
-      <VideoBackdrop name="10-varredura-operacao" opacity={0.3} />
+      <VideoBackdrop name="10-varredura-operacao" opacity={0.45} />
       <div className="max-w-4xl mx-auto w-full relative z-10">
         <FadeIn>
           <div className="mb-16">

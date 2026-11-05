@@ -17,7 +17,7 @@ export function FinalCallout() {
       {/* Vídeo de fundo: constelação à direita, texto à esquerda */}
       <VideoBackdrop
         name="04-constelacao-marca"
-        opacity={0.5}
+        opacity={0.7}
         objectPosition="right center"
         overlayVariant="left"
         overlay={false}

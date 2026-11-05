@@ -49,16 +49,31 @@
 }
 
 /* Reação dos gráficos à varredura de luz (.panel-light-sweep): cada elemento
-   acende no instante em que o centro da faixa passa sobre ele e volta ao normal
-   em seguida — a luz "pinta" o painel da esquerda para a direita.
-   A varredura tem ciclo de 6s com 2s de atraso inicial e easing ease-in-out
-   (cubic-bezier(0.4, 0, 0.2, 1)); a faixa (20% da largura) percorre de -32% até
-   +104% da largura do painel. Os atrasos abaixo = 2s + 6s × fração de tempo em
-   que o centro da faixa cruza o centro de cada elemento, descontado o
-   deslocamento do pico do flash (8% ≈ 0,48s no flash curto, 10% ≈ 0,6s no
-   largo). Ordem percebida: KPI Prazo → Aderência → linha/KPI Custo → gauge →
-   KPI Qualidade. Como todas usam o mesmo ciclo e começam juntas na montagem do
-   painel, ficam em fase com a varredura para sempre (sem deriva). */
+   acende no instante em que a faixa passa sobre ele e volta ao normal em
+   seguida — a luz "pinta" o painel da esquerda para a direita.
+
+   Geometria da varredura (ciclo de 6s, 2s de atraso inicial, ease-in-out =
+   cubic-bezier(0.42, 0, 0.58, 1)): a faixa tem 20% da largura do painel e
+   translateX vai de -160% a 520% do próprio largo, ou seja a borda esquerda
+   percorre de -32% até +104% da largura do painel. O centro da faixa vale
+   c = -22% + 136% × progresso(p). Para um elemento cujo centro está em X% do
+   painel: p = (X + 22) / 136; o instante de cruzamento é 2s + 6s × x(u), onde
+   u resolve y(u) = p na bezier (y(u) = 3u² - 2u³, x(u) = 1,2u - 1,8u² + 1,6u³).
+
+   Calibração perceptual: o flash demora 0,48s (curto) / 0,6s (largo) para
+   chegar ao pico, e o olho percebe o "acender" no começo da subida (~40% do
+   ramp), não no pico matemático. Alinhar o pico ao cruzamento fazia o brilho
+   parecer adiantado (reportado nos 3 KPIs). Correção aplicada IGUAL a todos os
+   elementos: atraso = cruzamento - 0,19s (curto) / - 0,24s (largo), de modo que
+   o início perceptível do brilho coincide com o centro da faixa sobre o centro
+   do elemento — a luz encosta a borda esquerda do cartão, o brilho sobe
+   enquanto ela atravessa e atinge o pico logo depois do centro.
+
+   Centros usados: KPIs ≈ 20% / 50% / 80%; linha = 50%; barras ≈ 26,5% e gauge
+   ≈ 73,5% em sm+ (lado a lado); empilhados no celular, ambos ≈ 50%, com o
+   gauge um pouco depois para manter a sensação de sequência. Como todas usam o
+   mesmo ciclo de 6s e começam juntas na montagem do painel, ficam em fase com
+   a varredura para sempre (sem deriva). */
 
 /* Flash curto (KPIs e cartões): pico em 0,48s, volta ao normal em 0,96s */
 @keyframes sweep-glow-flash {
@@ -141,44 +156,127 @@
   animation: sweep-glow-stroke 6s ease-in-out infinite;
 }
 
-/* Atrasos por elemento (ver cálculo no comentário acima) */
+/* Atrasos por elemento (ver cálculo no comentário acima). Classes de atraso
+   são separadas da animação para poderem ser reaproveitadas pelo movimento de
+   passagem (sweep-move-*) e vêm DEPOIS dos shorthands para vencer o
+   animation-delay: 0s implícito deles. */
 .sweep-glow-kpi-1 {
-  animation-delay: 3.17s;
+  animation-delay: 3.48s;
 }
 
 .sweep-glow-kpi-2 {
-  animation-delay: 3.69s;
+  animation-delay: 3.98s;
 }
 
 .sweep-glow-kpi-3 {
-  animation-delay: 4.44s;
+  animation-delay: 4.69s;
 }
 
-.sweep-glow-chart {
-  animation-delay: 3.57s;
+.sweep-delay-chart {
+  animation-delay: 3.93s;
 }
 
-/* Barras e gauge: em telas sm+ ficam lado a lado ( centros ≈ 26,5% e 73,5% );
-   empilhados no celular, ambos centram em ~50%, com o gauge levemente depois
-   para manter a sensação de sequência */
-.sweep-glow-bars {
-  animation: sweep-glow-flash 6s ease-in-out infinite;
-  animation-delay: 3.69s;
+.sweep-delay-bars {
+  animation-delay: 3.98s;
 }
 
-.sweep-glow-gauge {
-  animation: sweep-glow-flash-wide 6s ease-in-out infinite;
-  animation-delay: 3.99s;
+.sweep-delay-gauge {
+  animation-delay: 4.03s;
 }
 
 @media (min-width: 640px) {
-  .sweep-glow-bars {
-    animation-delay: 3.3s;
+  .sweep-delay-bars {
+    animation-delay: 3.59s;
   }
 
-  .sweep-glow-gauge {
-    animation-delay: 4.09s;
+  .sweep-delay-gauge {
+    animation-delay: 4.45s;
   }
+}
+
+/* O movimento de passagem herda o atraso do cartão que o contém (as classes
+   sweep-delay-* ficam no cartão, o sweep-move-* no elemento interno) */
+.sweep-delay-bars .sweep-move-bars {
+  animation-delay: 3.98s;
+}
+
+.sweep-delay-gauge .sweep-move-gauge {
+  animation-delay: 4.03s;
+}
+
+@media (min-width: 640px) {
+  .sweep-delay-bars .sweep-move-bars {
+    animation-delay: 3.59s;
+  }
+
+  .sweep-delay-gauge .sweep-move-gauge {
+    animation-delay: 4.45s;
+  }
+}
+
+/* Movimento na passagem da luz: além do brilho, cada gráfico reage com um
+   impulso curto que sai do valor-base e volta a ele, em fase com o flash do
+   próprio elemento (mesmas classes de atraso). Sutil por natureza: cresce a
+   partir de 0 e retorna antes de metade do ciclo, sem saltos nos números.
+   Barras: esticam levemente a partir da borda esquerda; gauge: o arco avança
+   alguns graus; ponto final da linha: desloca e pulsa. */
+@keyframes sweep-move-bars {
+  0%,
+  100% {
+    transform: scaleX(1);
+  }
+  10% {
+    transform: scaleX(1.05);
+  }
+  24% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes sweep-move-gauge {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(3deg);
+  }
+  26% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes sweep-move-endpoint {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  10% {
+    transform: translate(2.5px, -5px) scale(1.2);
+  }
+  26% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+.sweep-move-bars {
+  animation: sweep-move-bars 6s ease-in-out infinite;
+  transform-origin: left center;
+  will-change: transform;
+}
+
+.sweep-move-gauge {
+  animation: sweep-move-gauge 6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+.sweep-move-endpoint {
+  animation: sweep-move-endpoint 6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -189,8 +287,9 @@
   .sweep-glow-wide,
   .sweep-glow-text,
   .sweep-glow-line,
-  .sweep-glow-bars,
-  .sweep-glow-gauge {
+  .sweep-move-bars,
+  .sweep-move-gauge,
+  .sweep-move-endpoint {
     animation: none !important;
   }
 }

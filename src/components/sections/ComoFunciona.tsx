@@ -40,7 +40,7 @@ export function ComoFunciona() {
       className="relative py-24 md:py-32 px-6 md:px-12 w-full bg-[#0F1626] border-t border-[#1E293B] overflow-hidden"
     >
       {/* 2.3 Como Funciona: "timeline" (seção calma) */}
-      <VideoBackdrop name="06-fluxos-de-luz" opacity={0.25} />
+      <VideoBackdrop name="06-fluxos-de-luz" opacity={0.35} />
 
       {/* Transição para a chamada final: degradê de 160px do vídeo para #0A0F1C sólido (faixa navy) */}
       <div

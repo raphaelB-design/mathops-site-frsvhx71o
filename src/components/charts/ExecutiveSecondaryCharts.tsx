@@ -45,7 +45,7 @@ export function AreaAdherenceBars({ animate, reducedMotion, live, elapsed }: Cha
               </div>
               <div className="h-1.5 w-full bg-[#1E293B] rounded-full overflow-hidden">
                 <div
-                  className="h-full rounded-full bg-gradient-to-r from-accent to-accent2"
+                  className="h-full rounded-full bg-gradient-to-r from-accent to-accent2 sweep-move-bars"
                   style={{
                     width: showFinal ? `${current.toFixed(2)}%` : '0%',
                     transition: reducedMotion
@@ -89,6 +89,7 @@ export function CapacityGauge({ animate, reducedMotion, live, elapsed }: ChartPr
               strokeLinecap="round"
               strokeDasharray={GAUGE_C}
               strokeDashoffset={offset}
+              className={reducedMotion ? undefined : 'sweep-move-gauge'}
               style={{
                 transition: reducedMotion
                   ? 'none'

@@ -34,7 +34,7 @@ const diffs = [
 export function Differentials() {
   return (
     <section className="py-24 md:py-32 px-6 md:px-12 w-full relative overflow-hidden">
-      <VideoBackdrop name="07-sala-executiva" opacity={0.25} />
+      <VideoBackdrop name="07-sala-executiva" opacity={0.4} />
       <div className="max-w-7xl mx-auto w-full relative z-10">
         <FadeIn>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
