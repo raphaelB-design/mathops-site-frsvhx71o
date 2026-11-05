@@ -51,7 +51,7 @@ export function Hero() {
       <FadeIn delay={50}>
         <div className="relative z-10 inline-flex items-center gap-2 px-3 py-1.5 border border-white/10 bg-white/5 rounded-full font-mono text-xs uppercase tracking-wider text-muted-foreground">
           <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse" />
-          Dados · Processos · Decisão
+          Dados, Processos, Decisão
         </div>
       </FadeIn>
 

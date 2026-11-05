@@ -102,7 +102,7 @@ export function Footer() {
             <h4 className="text-xs uppercase tracking-widest text-zinc-600 mb-1">Contato</h4>
             <div className="flex items-start gap-2 text-sm text-zinc-400 leading-relaxed">
               <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-zinc-400" />
-              <span>Avenida Brigadeiro Faria Lima, 1811 /SP</span>
+              <span>Avenida Brigadeiro Faria Lima, 1811, São Paulo, SP</span>
             </div>
 
             {/* Visual elegante do mapa estilizado dark da MathOps (altura máxima 120px) */}
