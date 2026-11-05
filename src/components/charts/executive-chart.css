@@ -48,10 +48,149 @@
   will-change: transform;
 }
 
+/* Reação dos gráficos à varredura de luz (.panel-light-sweep): cada elemento
+   acende no instante em que o centro da faixa passa sobre ele e volta ao normal
+   em seguida — a luz "pinta" o painel da esquerda para a direita.
+   A varredura tem ciclo de 6s com 2s de atraso inicial e easing ease-in-out
+   (cubic-bezier(0.4, 0, 0.2, 1)); a faixa (20% da largura) percorre de -32% até
+   +104% da largura do painel. Os atrasos abaixo = 2s + 6s × fração de tempo em
+   que o centro da faixa cruza o centro de cada elemento, descontado o
+   deslocamento do pico do flash (8% ≈ 0,48s no flash curto, 10% ≈ 0,6s no
+   largo). Ordem percebida: KPI Prazo → Aderência → linha/KPI Custo → gauge →
+   KPI Qualidade. Como todas usam o mesmo ciclo e começam juntas na montagem do
+   painel, ficam em fase com a varredura para sempre (sem deriva). */
+
+/* Flash curto (KPIs e cartões): pico em 0,48s, volta ao normal em 0,96s */
+@keyframes sweep-glow-flash {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(46, 184, 166, 0);
+  }
+  8% {
+    box-shadow:
+      0 0 0 1px rgba(46, 184, 166, 0.5),
+      0 0 22px rgba(46, 184, 166, 0.18),
+      inset 0 0 14px rgba(255, 255, 255, 0.05);
+  }
+  16% {
+    box-shadow: 0 0 0 0 rgba(46, 184, 166, 0);
+  }
+}
+
+/* Flash largo (linha de 12 meses e gauge): pico em 0,6s, volta em 1,56s */
+@keyframes sweep-glow-flash-wide {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(46, 184, 166, 0);
+  }
+  10% {
+    box-shadow:
+      0 0 0 1px rgba(46, 184, 166, 0.45),
+      0 0 30px rgba(46, 184, 166, 0.16),
+      inset 0 0 18px rgba(255, 255, 255, 0.04);
+  }
+  26% {
+    box-shadow: 0 0 0 0 rgba(46, 184, 166, 0);
+  }
+}
+
+/* Texto do KPI clareia brevemente com a passagem da luz */
+@keyframes sweep-glow-text {
+  0%,
+  100% {
+    text-shadow: 0 0 0 rgba(245, 244, 240, 0);
+  }
+  8% {
+    text-shadow: 0 0 14px rgba(245, 244, 240, 0.4);
+  }
+  16% {
+    text-shadow: 0 0 0 rgba(245, 244, 240, 0);
+  }
+}
+
+/* A linha de tendência clareia e ganha halo cyan enquanto a faixa a atravessa */
+@keyframes sweep-glow-stroke {
+  0%,
+  100% {
+    stroke: #3d63dd;
+    filter: drop-shadow(0 0 0 rgba(46, 184, 166, 0));
+  }
+  10% {
+    stroke: #8fa9f8;
+    filter: drop-shadow(0 0 5px rgba(46, 184, 166, 0.55));
+  }
+  26% {
+    stroke: #3d63dd;
+    filter: drop-shadow(0 0 0 rgba(46, 184, 166, 0));
+  }
+}
+
+.sweep-glow {
+  animation: sweep-glow-flash 6s ease-in-out infinite;
+}
+
+.sweep-glow-wide {
+  animation: sweep-glow-flash-wide 6s ease-in-out infinite;
+}
+
+.sweep-glow-text {
+  animation: sweep-glow-text 6s ease-in-out infinite;
+}
+
+.sweep-glow-line {
+  animation: sweep-glow-stroke 6s ease-in-out infinite;
+}
+
+/* Atrasos por elemento (ver cálculo no comentário acima) */
+.sweep-glow-kpi-1 {
+  animation-delay: 3.17s;
+}
+
+.sweep-glow-kpi-2 {
+  animation-delay: 3.69s;
+}
+
+.sweep-glow-kpi-3 {
+  animation-delay: 4.44s;
+}
+
+.sweep-glow-chart {
+  animation-delay: 3.57s;
+}
+
+/* Barras e gauge: em telas sm+ ficam lado a lado ( centros ≈ 26,5% e 73,5% );
+   empilhados no celular, ambos centram em ~50%, com o gauge levemente depois
+   para manter a sensação de sequência */
+.sweep-glow-bars {
+  animation: sweep-glow-flash 6s ease-in-out infinite;
+  animation-delay: 3.69s;
+}
+
+.sweep-glow-gauge {
+  animation: sweep-glow-flash-wide 6s ease-in-out infinite;
+  animation-delay: 3.99s;
+}
+
+@media (min-width: 640px) {
+  .sweep-glow-bars {
+    animation-delay: 3.3s;
+  }
+
+  .sweep-glow-gauge {
+    animation-delay: 4.09s;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .chart-endpoint-pulse,
   .panel-light-sweep,
-  .panel-border-shine {
+  .panel-border-shine,
+  .sweep-glow,
+  .sweep-glow-wide,
+  .sweep-glow-text,
+  .sweep-glow-line,
+  .sweep-glow-bars,
+  .sweep-glow-gauge {
     animation: none !important;
   }
 }

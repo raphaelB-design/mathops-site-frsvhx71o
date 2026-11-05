@@ -244,32 +244,32 @@ export function HeroExecutiveChart() {
 
         {/* 3 KPIs com contador animado */}
         <div className="grid grid-cols-3 gap-3 mb-5">
-          <div className="p-3 bg-[#0A0F1C]/60 border border-[#1E293B] rounded-sm group-hover:border-accent/30 transition-colors">
+          <div className="p-3 bg-[#0A0F1C]/60 border border-[#1E293B] rounded-sm group-hover:border-accent/30 transition-colors sweep-glow sweep-glow-kpi-1">
             <span className="font-mono text-[10px] uppercase tracking-wider text-[#94A3B8] block">
               Prazo
             </span>
-            <span className="font-display text-2xl sm:text-3xl font-bold text-[#F5F4F0] block">
+            <span className="font-display text-2xl sm:text-3xl font-bold text-[#F5F4F0] block sweep-glow-text">
               <AnimatedCounter value={Math.floor(prazoVal)} decimals={0} duration={1200} />,
               {(prazoVal % 1).toFixed(1).replace('0.', '')}%
             </span>
             <span className="font-mono text-[9px] text-accent2 block mt-0.5">+4.2 p.p.</span>
           </div>
 
-          <div className="p-3 bg-[#0A0F1C]/60 border border-[#1E293B] rounded-sm group-hover:border-accent/30 transition-colors">
+          <div className="p-3 bg-[#0A0F1C]/60 border border-[#1E293B] rounded-sm group-hover:border-accent/30 transition-colors sweep-glow sweep-glow-kpi-2">
             <span className="font-mono text-[10px] uppercase tracking-wider text-[#94A3B8] block">
               Custo
             </span>
-            <span className="font-display text-2xl sm:text-3xl font-bold text-[#F5F4F0] block">
+            <span className="font-display text-2xl sm:text-3xl font-bold text-[#F5F4F0] block sweep-glow-text">
               <AnimatedCounter value={custoVal} decimals={1} duration={1200} suffix="%" />
             </span>
             <span className="font-mono text-[9px] text-accent2 block mt-0.5">+2.8 p.p.</span>
           </div>
 
-          <div className="p-3 bg-[#0A0F1C]/60 border border-[#1E293B] rounded-sm group-hover:border-accent/30 transition-colors">
+          <div className="p-3 bg-[#0A0F1C]/60 border border-[#1E293B] rounded-sm group-hover:border-accent/30 transition-colors sweep-glow sweep-glow-kpi-3">
             <span className="font-mono text-[10px] uppercase tracking-wider text-[#94A3B8] block">
               Qualidade
             </span>
-            <span className="font-display text-2xl sm:text-3xl font-bold text-[#F5F4F0] block">
+            <span className="font-display text-2xl sm:text-3xl font-bold text-[#F5F4F0] block sweep-glow-text">
               <AnimatedCounter value={Math.floor(qualVal)} decimals={0} duration={1200} />,
               {(qualVal % 1).toFixed(1).replace('0.', '')}%
             </span>
@@ -287,7 +287,10 @@ export function HeroExecutiveChart() {
           </div>
 
           {/* Gráfico SVG puro */}
-          <div className="h-44 md:h-52 w-full relative" aria-hidden="true">
+          <div
+            className="h-44 md:h-52 w-full relative sweep-glow-wide sweep-glow-chart"
+            aria-hidden="true"
+          >
             <svg
               viewBox={`0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`}
               className="w-full h-full select-none overflow-visible"
@@ -356,6 +359,7 @@ export function HeroExecutiveChart() {
               <path
                 d={linePathD}
                 fill="none"
+                className="sweep-glow-line"
                 stroke="#3D63DD" /* Token --accent */
                 strokeWidth="2.5"
                 strokeLinecap="round"
@@ -464,20 +468,25 @@ export function HeroExecutiveChart() {
           </div>
         </div>
 
-        {/* Gráficos secundários: barras por área e gauge de capacidade (dados fictícios) */}
+        {/* Gráficos secundários: barras por área e gauge de capacidade (dados fictícios).
+            Cartões de brilho: reagem à passagem da varredura de luz (executive-chart.css) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-5">
-          <AreaAdherenceBars
-            animate={isLineAnimated}
-            reducedMotion={prefersReducedMotion}
-            live={liveCharts}
-            elapsed={chartElapsed}
-          />
-          <CapacityGauge
-            animate={isLineAnimated}
-            reducedMotion={prefersReducedMotion}
-            live={liveCharts}
-            elapsed={chartElapsed}
-          />
+          <div className="sweep-glow sweep-glow-bars">
+            <AreaAdherenceBars
+              animate={isLineAnimated}
+              reducedMotion={prefersReducedMotion}
+              live={liveCharts}
+              elapsed={chartElapsed}
+            />
+          </div>
+          <div className="sweep-glow-wide sweep-glow-gauge">
+            <CapacityGauge
+              animate={isLineAnimated}
+              reducedMotion={prefersReducedMotion}
+              live={liveCharts}
+              elapsed={chartElapsed}
+            />
+          </div>
         </div>
       </div>
     </div>
