@@ -1,5 +1,5 @@
 import { FadeIn } from '@/components/fade-in'
-import { useState, useCallback, memo } from 'react'
+import { useState, useCallback, useEffect, useRef, memo } from 'react'
 import {
   Check,
   ChevronLeft,
@@ -22,6 +22,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { Confetti } from '@/components/confetti'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
+import { useReducedMotion } from '@/hooks/use-reduced-motion'
 
 interface DmaicPhase {
   id: string
@@ -128,6 +129,12 @@ function MethodologyComponent() {
   const [progress, setProgress] = useState(20)
   const [pulse, setPulse] = useState(false)
   const [showCelebration, setShowCelebration] = useState(false)
+  const [isPaused, setIsPaused] = useState(false)
+
+  const prefersReducedMotion = useReducedMotion()
+  const sectionRef = useRef<HTMLElement>(null)
+  const [isInView, setIsInView] = useState(false)
+  const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const phase = phases[activePhase]
   const isLast = activePhase === phases.length - 1
@@ -137,16 +144,31 @@ function MethodologyComponent() {
     setTimeout(() => setPulse(false), 600)
   }, [])
 
+  // Pausa temporária em interação manual para não lutar com o usuário
+  const pauseAutoAdvanceBriefly = useCallback((durationMs = 8000) => {
+    setIsPaused(true)
+    if (resumeTimerRef.current) {
+      clearTimeout(resumeTimerRef.current)
+    }
+    resumeTimerRef.current = setTimeout(() => {
+      setIsPaused(false)
+    }, durationMs)
+  }, [])
+
   const goToPhase = useCallback(
-    (index: number) => {
+    (index: number, isManual = true) => {
       setActivePhase(index)
       setProgress(phaseProgress(index))
       triggerPulse()
+      if (isManual) {
+        pauseAutoAdvanceBriefly()
+      }
     },
-    [triggerPulse],
+    [triggerPulse, pauseAutoAdvanceBriefly],
   )
 
   const nextPhase = useCallback(() => {
+    pauseAutoAdvanceBriefly()
     if (isLast) {
       setShowCelebration(true)
       triggerPulse()
@@ -156,38 +178,94 @@ function MethodologyComponent() {
       setProgress(phaseProgress(next))
       triggerPulse()
     }
-  }, [isLast, activePhase, triggerPulse])
+  }, [isLast, activePhase, triggerPulse, pauseAutoAdvanceBriefly])
 
   const resetCycle = useCallback(() => {
     setShowCelebration(false)
     setProgress(0)
     setActivePhase(0)
+    pauseAutoAdvanceBriefly(6000)
     setTimeout(() => {
       setProgress(phaseProgress(0))
       triggerPulse()
     }, 350)
-  }, [triggerPulse])
+  }, [triggerPulse, pauseAutoAdvanceBriefly])
 
   const prevPhase = useCallback(() => {
+    pauseAutoAdvanceBriefly()
     if (activePhase > 0) {
       const prev = activePhase - 1
       setActivePhase(prev)
       setProgress(phaseProgress(prev))
       triggerPulse()
     }
-  }, [activePhase, triggerPulse])
+  }, [activePhase, triggerPulse, pauseAutoAdvanceBriefly])
 
   const handleGateNo = useCallback(() => {
+    pauseAutoAdvanceBriefly()
     if (phase.gate.naoTipo === 'etapa-anterior') {
       setActivePhase(2)
       setProgress(phaseProgress(2))
       triggerPulse()
     }
-  }, [phase, triggerPulse])
+  }, [phase, triggerPulse, pauseAutoAdvanceBriefly])
+
+  // Observa quando a seção está visível para não rodar timers fora de tela
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el || typeof IntersectionObserver === 'undefined') {
+      setIsInView(true)
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0]
+        setIsInView(entry.isIntersecting)
+      },
+      { threshold: 0.2 },
+    )
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  // Auto-avanço suave entre etapas (D → M → A → I → C → D)
+  useEffect(() => {
+    // Respeita prefers-reduced-motion, modal aberto, fora de tela ou pausa manual/hover
+    if (prefersReducedMotion || showCelebration || !isInView || isPaused) {
+      return
+    }
+
+    const STEP_DURATION = 4800 // ~4.8s por fase: tempo ideal para leitura e transição suave
+
+    const timer = setInterval(() => {
+      setActivePhase((prev) => {
+        const next = (prev + 1) % phases.length
+        setProgress(phaseProgress(next))
+        triggerPulse()
+        return next
+      })
+    }, STEP_DURATION)
+
+    return () => clearInterval(timer)
+  }, [prefersReducedMotion, showCelebration, isInView, isPaused, triggerPulse])
+
+  // Limpeza de timers ao desmontar
+  useEffect(() => {
+    return () => {
+      if (resumeTimerRef.current) {
+        clearTimeout(resumeTimerRef.current)
+      }
+    }
+  }, [])
 
   return (
     <section
+      ref={sectionRef}
       id="methodology"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
       className="py-24 md:py-40 px-5 md:px-12 w-full bg-background relative overflow-hidden"
     >
       <VideoBackdrop name="09-superficie-estatistica" opacity={0.3} overlayVariant="radial" />
@@ -249,7 +327,12 @@ function MethodologyComponent() {
                   {i < phases.length - 1 && (
                     <div className="flex-1 h-[2px] bg-white/5 mx-2 md:mx-4 relative overflow-hidden rounded-full">
                       <div
-                        className="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-accent/40 to-accent transition-all duration-500 ease-in-out rounded-full"
+                        className={cn(
+                          'absolute left-0 top-0 bottom-0 bg-gradient-to-r from-accent/40 to-accent rounded-full',
+                          prefersReducedMotion
+                            ? 'transition-none'
+                            : 'transition-all duration-500 ease-in-out',
+                        )}
                         style={{ width: activePhase > i ? '100%' : '0%' }}
                       />
                     </div>
@@ -273,7 +356,7 @@ function MethodologyComponent() {
             <span
               className={cn(
                 'font-mono text-xs font-bold text-accent transition-transform duration-300',
-                pulse && 'scale-125',
+                !prefersReducedMotion && pulse && 'scale-125',
               )}
             >
               {progress}%
@@ -282,8 +365,9 @@ function MethodologyComponent() {
           <div className="h-1 rounded-full bg-white/5 overflow-hidden">
             <div
               className={cn(
-                'h-full rounded-full bg-gradient-to-r from-accent/60 to-accent transition-all duration-500 ease-out relative',
-                pulse && 'progress-glow',
+                'h-full rounded-full bg-gradient-to-r from-accent/60 to-accent relative',
+                prefersReducedMotion ? 'transition-none' : 'transition-all duration-500 ease-out',
+                !prefersReducedMotion && pulse && 'progress-glow',
               )}
               style={{ width: `${progress}%` }}
             >
@@ -293,7 +377,10 @@ function MethodologyComponent() {
         </div>
 
         {/* Phase Panel */}
-        <div className="glass-panel rounded-2xl relative overflow-hidden backdrop-blur-md">
+        <div
+          className="glass-panel rounded-2xl relative overflow-hidden backdrop-blur-md transition-all duration-500 ease-in-out"
+          aria-live="polite"
+        >
           <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
           <FadeIn key={activePhase} direction="up" delay={0} className="p-6 md:p-12">
             {/* Header */}
