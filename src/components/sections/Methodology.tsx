@@ -406,46 +406,6 @@ function MethodologyComponent() {
             </div>
 
             {/* Navigation Controls */}
-            <div className="flex items-center justify-between mt-10 border-t border-white/5 pt-8">
-              <button
-                onClick={prevPhase}
-                disabled={activePhase === 0}
-                className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-white/10 hover:bg-white/5 hover:border-white/20 disabled:opacity-25 disabled:hover:bg-transparent disabled:hover:border-white/10 transition-all duration-200 text-xs font-mono uppercase tracking-widest"
-              >
-                <ChevronLeft className="w-4 h-4" /> anterior
-              </button>
-
-              <div className="hidden sm:flex gap-2.5">
-                {phases.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => goToPhase(i)}
-                    className={cn(
-                      'w-2.5 h-2.5 rounded-full transition-all duration-300',
-                      activePhase === i
-                        ? 'bg-accent w-7 shadow-[0_0_8px_hsl(var(--accent)/0.5)]'
-                        : 'bg-white/15 hover:bg-white/35',
-                    )}
-                    aria-label={`Ir para etapa ${i + 1}`}
-                  />
-                ))}
-              </div>
-
-              <button
-                onClick={isLast ? resetCycle : nextPhase}
-                className="flex items-center gap-2 px-6 py-2.5 rounded-lg bg-accent hover:bg-accent/90 text-white transition-all duration-200 text-xs font-mono uppercase tracking-widest font-bold shadow-lg shadow-accent/20 hover:shadow-accent/40"
-              >
-                {isLast ? (
-                  <>
-                    novo ciclo <RefreshCw className="w-4 h-4 ml-1" />
-                  </>
-                ) : (
-                  <>
-                    próxima <ChevronRight className="w-4 h-4 ml-1" />
-                  </>
-                )}
-              </button>
-            </div>
           </FadeIn>
         </div>
       </div>
