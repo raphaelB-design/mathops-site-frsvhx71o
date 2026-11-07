@@ -41,6 +41,7 @@ export function Industries() {
                         src={ind.thumbnail}
                         alt={ind.imageAlt}
                         loading="lazy"
+                        decoding="async"
                         sizes="(max-width: 768px) 100vw, 50vw"
                         className="w-full h-full object-cover opacity-60 group-hover:opacity-80 grayscale scale-100 group-hover:scale-105 transition-all duration-700 ease-in-out"
                       />

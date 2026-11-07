@@ -48,16 +48,16 @@ export function HeroVideo() {
     : `${VIDEO_BASE}/olho-hero-poster.jpg`
 
   // Desktop: olho inteiro no terço direito; celular: centralizado um pouco acima
+  // Ajuste 2026-11: sem escala extra e com o recipiente limitado a 100svh, o olho
+  // aparece por completo dentro da primeira dobra (sem rolar a página).
   const objectPosition = isMobile ? 'center 35%' : '72% 45%'
-  // Ampliação reduzida: em vez de "cover" (que amplia demais o olho), o vídeo usa
-  // "contain" com uma leve escala — mostra o quadro quase inteiro (olho menor) e as
-  // bordas reveladas são preenchidas por uma camada desfocada do próprio poster,
-  // sem "bordas vazias" visíveis.
-  const videoTransform = isMobile ? 'scale(1.0)' : 'scale(1.08)'
   const objectFit = 'contain' as const
 
   return (
-    <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+    <div
+      className="absolute inset-x-0 top-0 h-full max-h-[100svh] z-0 pointer-events-none"
+      aria-hidden="true"
+    >
       {/* Preenchimento desfocado atrás do vídeo (evita bordas vazias no modo contain) */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-2xl brightness-[0.85]"
@@ -74,7 +74,6 @@ export function HeroVideo() {
             backgroundImage: `url(${poster})`,
             backgroundPosition: objectPosition,
             backgroundSize: 'contain',
-            transform: videoTransform,
             transformOrigin: 'center center',
           }}
         />
@@ -84,7 +83,6 @@ export function HeroVideo() {
           style={{
             objectPosition,
             objectFit,
-            transform: videoTransform,
             transformOrigin: 'center center',
           }}
           autoPlay

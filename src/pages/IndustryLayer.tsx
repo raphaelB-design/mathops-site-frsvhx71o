@@ -42,6 +42,8 @@ export default function IndustryLayer() {
           <img
             src={layer.image}
             alt={layer.name}
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-full object-cover opacity-60 grayscale"
           />{' '}
           {/* 1.7 Duotone azul-noite/azul (#0A0F1C -> hsl(var(--accent))) */}
@@ -123,6 +125,8 @@ export default function IndustryLayer() {
                     <img
                       src={ind.thumbnail}
                       alt={ind.name}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover opacity-60 group-hover:opacity-80 grayscale transition-transform duration-700 group-hover:scale-105"
                     />
                     {/* 1.7 Duotone azul-noite/azul */}

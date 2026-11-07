@@ -1,11 +1,15 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense, lazy } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { Menu, ArrowRight, ExternalLink } from 'lucide-react'
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 import { BrandLogo } from '@/components/BrandLogo'
 import { trackClick } from '@/services/analytics'
 import { FloatingWhatsApp } from '@/components/FloatingWhatsApp'
-import { FloatingContactWidget } from '@/components/FloatingContactWidget'
+// Formulário de contato (dialog): react-hook-form + zod só entram em chunk separado,
+// carregado em idle após a hidratação — não pesa o carregamento inicial.
+const FloatingContactWidget = lazy(() =>
+  import('@/components/FloatingContactWidget').then((m) => ({ default: m.FloatingContactWidget })),
+)
 import { Footer } from '@/components/sections/Footer'
 import { CookieBanner } from '@/components/CookieBanner'
 import { cn } from '@/lib/utils'
@@ -206,7 +210,9 @@ export function Layout() {
       </main>
       <Footer />
       <FloatingWhatsApp />
-      <FloatingContactWidget />
+      <Suspense fallback={null}>
+        <FloatingContactWidget />
+      </Suspense>
       <CookieBanner />
     </div>
   )
