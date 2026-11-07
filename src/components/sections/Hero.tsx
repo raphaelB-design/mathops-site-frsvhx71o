@@ -6,7 +6,6 @@ import { useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { trackClick } from '@/services/analytics'
 import { HeroVideo } from '@/components/HeroVideo'
-import { SectionBackdrop } from '@/components/SectionBackdrop'
 
 const statsCards = [
   {
@@ -43,9 +42,6 @@ export function Hero() {
     >
       {/* Vídeo do olho ao fundo */}
       <HeroVideo />
-
-      {/* 2.3 Executive backdrop (só textura) */}
-      <SectionBackdrop variant="executive" opacityClass="opacity-[0.06]" />
 
       {/* Top badge */}
       <FadeIn delay={50}>
