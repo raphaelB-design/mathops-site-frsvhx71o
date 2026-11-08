@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useReducedMotion } from '@/hooks/use-reduced-motion'
 
 const VIDEO_BASE =
@@ -21,7 +21,10 @@ interface VideoBackdropProps {
 
 /**
  * Vídeo de fundo reutilizável para seções.
- * - Desktop: vídeo em loop (webm preferencial, mp4 fallback), carregado após o load da página
+ * - Desktop: vídeo em loop (webm preferencial, mp4 fallback). O carregamento começa quando a
+ *   seção se aproxima da tela (IntersectionObserver com 1200px de antecedência), e não mais
+ *   só após o window load: assim o vídeo já está pronto ao rolar, sem competir com o hero
+ *   (o olho carrega primeiro, pois sua capa/vídeo são renderizados no primeiro frame).
  * - Celular (<768px) e prefers-reduced-motion: apenas a capa estática (sem <video>)
  * - Decorativo: aria-hidden; o conteúdo da seção deve estar em uma camada acima (z-10)
  */
@@ -38,6 +41,7 @@ export function VideoBackdrop({
     typeof window !== 'undefined' ? window.matchMedia('(max-width: 767px)').matches : false,
   )
   const [shouldLoad, setShouldLoad] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
 
   // Detecta celular no mount e acompanha mudanças de largura
   useEffect(() => {
@@ -48,17 +52,29 @@ export function VideoBackdrop({
     return () => mql.removeEventListener('change', onChange)
   }, [])
 
-  // Carrega o vídeo somente após o load da página (não bloquear o LCP)
+  // Gatilho: iniciar quando a seção estiver a até 1200px da área visível (antecedência de
+  // uma tela), sem esperar o window load. Trade-off: não baixa vídeos de seções distantes
+  // (economia de banda para o hero) e o vídeo já está pronto antes de o visitante chegar.
   useEffect(() => {
-    if (prefersReducedMotion || isMobile) return
-    if (document.readyState === 'complete') {
+    if (prefersReducedMotion || isMobile || shouldLoad) return
+    const el = containerRef.current
+    if (!el) return
+    if (typeof IntersectionObserver === 'undefined') {
       setShouldLoad(true)
       return
     }
-    const onLoad = () => setShouldLoad(true)
-    window.addEventListener('load', onLoad, { once: true })
-    return () => window.removeEventListener('load', onLoad)
-  }, [prefersReducedMotion, isMobile])
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setShouldLoad(true)
+          io.disconnect()
+        }
+      },
+      { rootMargin: '1200px 0px' },
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [prefersReducedMotion, isMobile, shouldLoad])
 
   const poster = `${VIDEO_BASE}/${name}-poster.jpg`
   const showPosterOnly = prefersReducedMotion || isMobile || !shouldLoad || !videoActive
@@ -70,7 +86,11 @@ export function VideoBackdrop({
   }
 
   return (
-    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
+    <div
+      ref={containerRef}
+      className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
+      aria-hidden="true"
+    >
       {showPosterOnly ? (
         <img
           src={poster}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useIsMobile } from '@/hooks/use-mobile'
 import { useReducedMotion } from '@/hooks/use-reduced-motion'
 
@@ -23,25 +23,13 @@ function isSlowConnection(): boolean {
  * - Desktop: olho-hero-1080 (webm preferencial, mp4 fallback); conexão lenta: 720.mp4
  * - Celular: olho-hero-mobile-9x16 (webm/mp4)
  * - prefers-reduced-motion: apenas a capa (sem reprodução)
- * - Carregamento adiado para depois do evento load da página
+ * - Inicia já no primeiro render (sem esperar window load): a capa aparece
+ *   imediatamente e o vídeo começa a carregar/tocar o mais cedo possível.
  */
 export function HeroVideo() {
   const isMobile = useIsMobile()
   const prefersReducedMotion = useReducedMotion()
-  const [shouldLoad, setShouldLoad] = useState(false)
   const [slow] = useState(() => isSlowConnection())
-
-  // Carregar o vídeo somente após o load da página (não bloquear o carregamento inicial)
-  useEffect(() => {
-    if (prefersReducedMotion) return
-    if (document.readyState === 'complete') {
-      setShouldLoad(true)
-      return
-    }
-    const onLoad = () => setShouldLoad(true)
-    window.addEventListener('load', onLoad, { once: true })
-    return () => window.removeEventListener('load', onLoad)
-  }, [prefersReducedMotion])
 
   const poster = isMobile
     ? `${VIDEO_BASE}/olho-hero-mobile-poster.jpg`
@@ -66,8 +54,8 @@ export function HeroVideo() {
           transform: 'scale(1.1)',
         }}
       />
-      {prefersReducedMotion || !shouldLoad ? (
-        // Capa estática (reduced motion) ou enquanto o vídeo não carregou
+      {prefersReducedMotion ? (
+        // Capa estática (prefers-reduced-motion)
         <div
           className="absolute inset-0 bg-no-repeat"
           style={{
@@ -89,7 +77,7 @@ export function HeroVideo() {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           poster={poster}
         >
           {!isMobile && !slow && (

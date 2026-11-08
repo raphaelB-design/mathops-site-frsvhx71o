@@ -7,10 +7,19 @@
     <link rel="dns-prefetch" href="https://img.usecurling.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <!-- Fontes sem bloquear a renderização: folha carregada como print e ativada no load -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap"
+      />
+    </noscript>
     <title>MathOps | Consultoria em Dados, Processos e Riscos</title>
     <meta
       name="description"
@@ -48,28 +57,12 @@
       content="consultoria em dados, dashboards interativos, painéis gerenciais, business intelligence, indicadores de gestão, Lean Six Sigma, melhoria de processos, mapeamento de processos BPMN, gestão de riscos, controles internos COSO, controle de obras EVM, consultoria São Paulo"
     />
     <link rel="canonical" href="https://www.mathops.com.br/" />
-
-    <!-- LCP: capa do vídeo do olho (hero) pré-carregada por breakpoint -->
-    <link
-      rel="preload"
-      as="image"
-      href="https://qzdsxtqskwrslsxodexc.supabase.co/storage/v1/object/public/site-media/olho-hero-poster.jpg"
-      media="(min-width: 768px)"
-      fetchpriority="high"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="https://qzdsxtqskwrslsxodexc.supabase.co/storage/v1/object/public/site-media/olho-hero-mobile-poster.jpg"
-      media="(max-width: 767px)"
-      fetchpriority="high"
-    />
   </head>
 
   <body>
     <div id="root"></div>
     <!-- @skip-protected: Do not remove. Required for app features. -->
-    <script src="https://goskip.dev/skip.js"></script>
+    <script src="https://goskip.dev/skip.js" defer></script>
     <!-- @skip-protected: Do not remove. App entrypoint. -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
