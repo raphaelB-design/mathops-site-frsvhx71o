@@ -1,6 +1,22 @@
 # Security headers. Most static hosts (Netlify, Cloudflare Pages and Skip's
 # static hosting) read this file. If your host ignores it, replicate these
 # headers in the host's config / a reverse proxy.
+#
+# style-src mantém 'unsafe-inline' DE PROPÓSITO (decisão de segurança documentada):
+# - Há estilos inline dinâmicos via prop style do React, com valores calculados
+#   em tempo de execução (ex.: VideoBackdrop, HeroVideo, HeroExecutiveChart com
+#   rotação pelo mouse, fade-in com transition-delay, barras de progresso,
+#   MagneticButton, Estatisticas, Metodologia, SectionBackdrop, ControlChartLive).
+#   Valores dinâmicos não podem ser cobertos por hash SHA-256 fixo, e nonce não
+#   se aplica a atributos style.
+# - Bibliotecas em runtime (ex.: react-remove-scroll / react-style-singleton, usadas
+#   pelo Radix Dialog/Sheet) injetam <style> sem nonce. Sem 'unsafe-inline', esses
+#   estilos seriam bloqueados e o layout mudaria.
+# Caminho futuro para remover 'unsafe-inline': migrar valores dinâmicos para
+# CSS custom properties (--x) definidas via classes Tailwind com arbitrary values,
+# trocar estilos estáticos por classes, e configurar nonce nas bibliotecas que
+# injetam <style> (get-nonce / setNonce) com um host que renderize o nonce.
+# Nenhuma outra diretiva da CSP foi alterada por esta decisão.
 
 /*
   Content-Security-Policy: default-src 'self'; img-src 'self' https://img.usecurling.com data:; connect-src 'self' https://qzdsxtqskwrslsxodexc.supabase.co https://www.google-analytics.com https://challenges.cloudflare.com; script-src 'self' https://www.googletagmanager.com https://goskip.dev https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src https://challenges.cloudflare.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
