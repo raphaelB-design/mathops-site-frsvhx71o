@@ -34,3 +34,5 @@ screenshot.png
 
 # Environment variables
 .env*
+
+# ATENÇÃO: nunca versionar arquivos SQL com senhas em texto claro.
