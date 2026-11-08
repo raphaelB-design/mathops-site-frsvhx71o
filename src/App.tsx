@@ -12,6 +12,7 @@ import { TooltipProvider } from '@/components/ui/tooltip'
 import { Layout } from '@/components/Layout'
 import { IndexSkeleton } from '@/components/skeletons/IndexSkeleton'
 import { SmoothScroll } from '@/components/SmoothScroll'
+import { ProtectedRoute } from '@/components/ProtectedRoute'
 import { AuthProvider } from '@/hooks/use-auth'
 import { ConsentProvider } from '@/hooks/use-consent'
 import { usePageTracking } from '@/hooks/use-page-tracking'
@@ -77,7 +78,14 @@ function RootApp() {
 const routes = createRoutesFromElements(
   <Route element={<RootApp />}>
     {/* Hidden admin statistics route - without public Layout */}
-    <Route path="/estatisticas" element={<Estatisticas />} />
+    <Route
+      path="/estatisticas"
+      element={
+        <ProtectedRoute>
+          <Estatisticas />
+        </ProtectedRoute>
+      }
+    />
 
     <Route element={<Layout />}>
       <Route

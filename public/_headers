@@ -9,3 +9,6 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), camera=(), microphone=(), interest-cohort=()
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
+/estatisticas
+  X-Robots-Tag: noindex, nofollow
